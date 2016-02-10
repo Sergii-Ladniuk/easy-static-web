@@ -1,5 +1,3 @@
-var Promise = require('grunt-promise').using('bluebird');
-
 module.exports = function (grunt) {
 
     var img = grunt.option('img');
@@ -107,8 +105,9 @@ module.exports = function (grunt) {
 
     })
 
-    grunt.registerPromise('run-generate', function () {
-        return require('./scripts/generate').generate();
+    grunt.registerTask('run-generate', function () {
+        var done = this.async();
+        require('./scripts/generate').generate().then(done);
     })
 
     grunt.registerTask('generate', ['static', 'run-generate']);

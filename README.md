@@ -29,6 +29,14 @@ npm install
 ```
 Note that it may take some time on the slow internet connections as it should download some friles from internet.
 
+You can ignore the following warning messages:
+```
+npm WARN engine to-markdown@2.0.1: wanted: {"node":"^4"} (current: {"node":"5.4.1","npm":"3.3.12"})
+npm WARN deprecated lodash@0.9.2: lodash@<3.0.0 is no longer maintained. Upgrade to lodash@^4.0.0
+npm WARN deprecated lodash@2.4.2: lodash@<3.0.0 is no longer maintained. Upgrade to lodash@^4.0.0
+npm WARN deprecated lodash@1.0.2: lodash@<3.0.0 is no longer maintained. Upgrade to lodash@^4.0.0
+```
+
 # Configuration
 * Make a copy of settings.example.json called settings.json
 * Modify settings.json by the following changing text to correct value:
@@ -89,6 +97,10 @@ Note that as our output is static to support paging we build a lot of folders ca
         /2
         /3
 ```
+
+# Images
+
+Copy images to public-debug/img folder.
 
 # Run server and see how the built website looks locally
 
