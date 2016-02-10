@@ -1,0 +1,24 @@
+doctype | &quot;
+// TODO ie checks
+html
+    head
+        meta(http-equiv='content-type', content='text/html; charset=utf-8')
+        //TODO meta tags here
+        title marinatravelblog
+        link(rel='stylesheet', href='/css/bootstrap.css')
+        link(rel='stylesheet', href='/css/travel-style.css')
+        link(rel='stylesheet', href='/css/lazy-img.css')
+    body
+        .container-fluid
+            .row!=widgets.menu
+            .row
+                .col-md-1
+                .col-md-7.post!= content
+                .col-md-3!=widgets['sidebar-right']
+                .col-md-1
+            .row
+                .col-sm-12
+    script(src='/js/responsive-img.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(type='text/javascript', src='http://twitter.github.io/bootstrap/assets/js/bootstrap-dropdown.js')

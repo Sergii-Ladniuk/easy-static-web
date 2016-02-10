@@ -1,0 +1,11 @@
+[
+  "menu.jade",
+  {
+    "sidebar-right.jade": [
+      "about-us.jade",
+      "email-subscribe.html",
+      "travelpayouts.html",
+      "tag-cloud.jade"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+div.navbar.navbar-default
+    div.container-fluid
+        div.navbar-header
+            a.navbar-brand(href="/#/")="marinatravelblog:"
+        div.navbar-collapse.collapse
+            ul.nav.navbar-nav
+                each itemName in menuRootOrder
+                    - var item = menu[itemName]
+                    if item.children
+                        li.dropdown
+                            a.dropdown-toggle.disabled(data-toggle="dropdown", href=item.url)= item.name
+                                span.caret
+                            ul.dropdown-menu
+                                each child in item.children
+                                    li
+                                        a(href=child.url)= child.name
+                    else
+                        if item.postNumber > 0 && item.name != 'АФРИКА'
+                            li
+                                a(href=item.url)= item.name

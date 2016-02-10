@@ -1,0 +1,94 @@
+img {
+    width: 100%;
+    max-width: 800px;
+}
+
+.post .lazy-load img {
+    display: inline;
+}
+
+.post img, .post div {
+    display: block;
+    margin: 1.5em 0em 1.5em 0em;
+}
+
+.jump-thumbnail150 {
+    width: 150px;
+    height: auto;
+}
+.jump-thumbnail150 tr:nth-child(even) {
+    float: left;
+    margin: 15px 15px 15px 0px;
+}
+
+.jump-thumbnail150 tr:nth-child(even) {
+    float: right;
+    margin: 15px 15px 15px 0px;
+}
+
+/*.jump-thumbnail150 + p {*/
+    /*clear: both;*/
+/*}*/
+
+.post div.lazy-load {
+    margin: 10px 0px 10px 0px;
+    height: 0px;
+}
+
+.accent {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.widget {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.widget h2 {
+    margin-bottom: 20px;
+}
+
+.widget, .widget-no-border {
+    margin: 10px 0px 10px 0px;
+    font-size: 14px;
+}
+
+.centered,
+.widget > form {
+    text-align: center;
+}
+
+ul.nav > li:hover{
+    background-color: hsl(0,0%,75%);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.post-summary {
+    margin-top: 35px;
+}
+
+.tag-cloud {
+    line-height: 1.5em;
+    text-align: center;
+}
+.tag-cloud a {
+    /*word-wrap: break-word;*/
+    display: inline-block;
+    margin: 0.2em;
+    /*float: left;*/
+}
+
+.related-posts .header {
+    font-weight: bold;
+    margin-top: 1em;
+}
+.related-posts .list {
+    margin-top: 1em;
+}
+.related-posts .list > li {
+    margin-top: 0.3em;
+}

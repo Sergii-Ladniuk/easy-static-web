@@ -1,0 +1,13 @@
+h1
+    a(href=content.link)=content.meta.title
+!{content.html}
+if content.meta.type === 'post'
+
+    .related-posts
+        each relPostEntry in content.related
+            if relPostEntry.content && relPostEntry.content.length > 0
+                p.header= relPostEntry.text
+                ul.list
+                    each relPost in relPostEntry.content
+                        li
+                            a(href=relPost.meta.link)=relPost.meta.title

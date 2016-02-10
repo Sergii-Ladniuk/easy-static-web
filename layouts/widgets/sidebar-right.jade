@@ -1,0 +1,8 @@
+.container-fluid
+    each rootWidget in widgetDesc
+        if typeof rootWidget === 'object' && rootWidget['sidebar-right.jade']
+            - var sidebarInfo = rootWidget['sidebar-right.jade']
+            each w in sidebarInfo
+                - w = w.replace(/\.jade$/, '').replace(/\.html$/, '');
+                !{widgets[w]}
+
