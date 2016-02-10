@@ -1,5 +1,5 @@
 # About easy-static-web
-I am doing a small static generation framework. Now it is designed for my website only, but maybe I will have time to make it reusable.
+I am doing a small static generation framework. Now it is designed for my website only, but maybe I will have time to make it reusable.  
 
 # Conventions
 

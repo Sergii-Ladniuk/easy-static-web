@@ -46,7 +46,7 @@ exports.import = function (xmlFileName) {
         .then(function () {
             return new Promise(function (resolve) {
 
-                wpXmlPath = path.join(settings.path.wpXml, wpXmlPath || xmlFileName || 'wp.xml');
+                wpXmlPath = path.join(settings.path.wpXml, wpXmlPath || xmlFileName || 'marinatravelblogcom.wordpress.2016-02-10.xml');
 
                 Promise.join(fs.readFileAsync(settings.path.wpJson, "utf-8"), fs.statAsync(wpXmlPath))
 
@@ -122,7 +122,7 @@ exports.import = function (xmlFileName) {
             });
 
             var tags = {};
-            wpJson.channel['wp:tag'].forEach(function (rawTag) {
+            wpJson.rss.channel[0]['wp:tag'].forEach(function (rawTag) {
                 const name = rawTag['wp:tag_name'][0];
                 tags[name] = {
                     id: rawTag['wp:term_id'][0],
@@ -130,7 +130,7 @@ exports.import = function (xmlFileName) {
                 }
             });
 
-            wpJson.channel['item'].forEach(function (item) {
+            wpJson.rss.channel[0]['item'].forEach(function (item) {
                 var postType = item['wp:post_type'][0];
                 if (postType === 'post' || postType === 'page') {
                     var next = {
@@ -286,7 +286,7 @@ function extractRelatedPosts(content, meta) {
 function parseCategoriesRaw(wpJson) {
     var categoriesRaw = []
 
-    wpJson.channel['wp:category'].forEach(function (entry) {
+    wpJson.rss.channel[0]['wp:category'].forEach(function (entry) {
         var next = {
             id: entry['wp:term_id'][0],
             parent: entry['wp:category_parent'][0],
