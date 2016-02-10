@@ -19,10 +19,15 @@ cd [blog folder]
 git clone https://github.com/Sergii-Ladniuk/easy-static-web.git
 ```
 * Install [Node JS](https://nodejs.org/en/download/)
+* It created a folder called "easy-static-web" in your directory. Go to it using the following command:
+```
+cd easy-static-web
+```
 * Run in the Terminal
 ```
 npm install
 ```
+Note that it may take some time on the slow internet connections as it should download some friles from internet.
 
 # Configuration
 * Make a copy of settings.example.json called settings.json
