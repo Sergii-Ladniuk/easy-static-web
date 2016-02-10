@@ -1,13 +1,13 @@
 {
   "path": {
-    "blog": "path to blog folder"
+    "blog": "[blog folder]"
   },
   "server": {
     "local": {
       "port": 4000
     },
     "prod": {
-      "url": "production site URL"
+      "url": "[your website URL]"
     }
   },
   "generate": {
