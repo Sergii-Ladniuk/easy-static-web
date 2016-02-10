@@ -21,7 +21,7 @@ _*
 **/.idea
 **/*.iml
 static/img/**
-import
+import/**
 content
 public
 public*

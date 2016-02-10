@@ -3,9 +3,8 @@ I am doing a small static generation framework. Now it is designed for my websit
 
 # Conventions
 
-[your website URL] | is the URL of your website e.g. ours http://marinatravelblog.com
-[blog folder]      | is a folder where you want to keep the framework files, the website content source files and HTML output. 
-We'll call it also *project root*.
+* *[your website URL]*  is the URL of your website e.g. ours http://marinatravelblog.com
+* *[blog folder]*       is a folder where you want to keep the framework files, the website content source files and the HTML output. We'll call it also *project root*.
 
 # Installation
 
