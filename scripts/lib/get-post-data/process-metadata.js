@@ -1,11 +1,17 @@
 var general = require('../general');
 
-var mm = require('meta-marked');
+var mm = require('./meta-marked');
+var marked = require('marked');
 var extend = require('extend');
+var os = require('os');
+var newline = os.EOL;
+var util = require('util');
 
 var processMetadata = function (data) {
     var target = data.target;
+
     var parsedData = mm(target.text);
+
     extend(true, target, parsedData);
 
     if (target.meta['featured-tag']) {
@@ -17,7 +23,7 @@ var processMetadata = function (data) {
     }
 
     extend(data.common, {
-        categories: target.meta.type === 'page' ? [] :  parsedData.meta.categories.map(function (category) {
+        categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
             return {
                 name: category.toLowerCase(),
                 posts: target.meta.draft ? [] : [target],
@@ -118,10 +124,10 @@ describe("process-metadata :", function () {
         // when
         var resultData = processMetadata(givenData);
         // then
-        resultData.common.categories = resultData.common.categories.map(function(category) {
+        resultData.common.categories = resultData.common.categories.map(function (category) {
             return category.name;
         })
-        resultData.common.tags = resultData.common.tags.map(function(tag) {
+        resultData.common.tags = resultData.common.tags.map(function (tag) {
             return tag.name;
         })
         resultData.should.deepEqual(expectedData);

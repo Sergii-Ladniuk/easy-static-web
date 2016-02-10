@@ -103,12 +103,12 @@ module.exports = function (grunt) {
             done(true);
         });
 
-    })
+    });
 
     grunt.registerTask('run-generate', function () {
         var done = this.async();
         require('./scripts/generate').generate().then(done);
-    })
+    });
 
     grunt.registerTask('generate', ['static', 'run-generate']);
     grunt.registerTask('import', ['init', 'run-import']);
