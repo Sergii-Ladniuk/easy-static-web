@@ -15,7 +15,6 @@ function toLocalhost(text, url, port) {
 
 exports.changeToLocalhost = function (data) {
     data.common.list.forEach(function (post) {
-        post.markdown = toLocalhost(post.markdown, data.basic.settings.server.prod.url, data.basic.settings.server.local.port);
         post.meta.link = toLocalhost(post.meta.link, data.basic.settings.server.prod.url, data.basic.settings.server.local.port);
     });
     return data;

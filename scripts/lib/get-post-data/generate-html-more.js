@@ -1,3 +1,4 @@
+var general = require('../general');
 var marked = require('marked');
 var toc = require('marked-toc');
 var os = require('os');
@@ -5,40 +6,68 @@ var newline = os.EOL;
 var moreRegex = /([^]*?)<!--more([^]*?)-->/;
 var util = require('util');
 
-var renderer = new marked.Renderer();
+function renderer(settings) {
+    var renderer = new marked.Renderer();
 
-renderer.heading = function (text, level) {
-    var escapedText = text.toLowerCase().replace(/[?:,| \/\\\!\#@%\^&\*\.\(\)]+/g, '-')
-        .replace(/\-+$/, '');
+    renderer.heading = function (text, level) {
+        // todo use some slugify impl.
+        var escapedText = text.toLowerCase()
+            .replace(/<a.*?>(.*?)<\/a>/, '$1')
+            .replace(/[?:,| \/\\\!\#@%\^&\*\.\(\)]+/g, '-')
+            .replace(/\-+$/, '')
+            .replace(/^\-+/, '');
 
-    var result = util.format('<h%d id="%s">%s</h%d>', level, escapedText, text, level);
+        var result = util.format('<h%d id="%s">%s</h%d>', level, escapedText, text, level);
 
-    return result;
-};
+        return result;
+    };
 
-function fixUrl(url) {
-    return url.replace('http://marinatravelblog.com/', 'http://localhost:4000/');
+    function fixUrl(url) {
+        return url.replace(settings.server.prod.url, 'http://localhost:4000/');
+    }
+
+    function isHomeUrl(url) {
+        return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url);
+    }
+
+    renderer.image = function (href, title, alt) {
+        href = fixUrl(href);
+        var out = '<img src="' + href + '" alt="' + alt + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        out += this.options.xhtml ? '/>' : '>';
+        return out;
+    };
+
+    function doFollow(url) {
+        return settings.generate['do-follow'].map(function(pattern) {
+            return new RegExp(general.util.escapeRegExp(pattern)).test(url)
+        }).reduce(function(a,b) {
+            return a || b;
+        })
+    }
+
+    renderer.link = function (href, title, text) {
+        var nofollow = '';
+        if (!isHomeUrl(href) && !doFollow(href)) {
+            nofollow = ' rel="nofollow" '
+        }
+
+        href = fixUrl(href);
+        var out = '<a href="' + href + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        out += nofollow;
+        out += ' target="_blank" ';
+        out += '>' + text + '</a>';
+        return out;
+    };
+
+    return renderer;
 }
 
-renderer.image = function (href, title, alt) {
-    href = fixUrl(href);
-    var out = '<img src="' + href + '" alt="' + alt + '"';
-    if (title) {
-        out += ' title="' + title + '"';
-    }
-    out += this.options.xhtml ? '/>' : '>';
-    return out;
-};
-
-renderer.link = function (href, title, text) {
-    href = fixUrl(href);
-    var out = '<a href="' + href + '"';
-    if (title) {
-        out += ' title="' + title + '"';
-    }
-    out += '>' + text + '</a>';
-    return out;
-};
 
 var parseMore = function (post, settings) {
     var match = moreRegex.exec(post.html);
@@ -70,7 +99,7 @@ module.exports = function (data) {
         + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
     var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
 
-    post.html = marked(post.markdown, {renderer: renderer});
+    post.html = marked(post.markdown, {renderer: renderer(data.basic.settings)});
 
     parseMore(post, data.basic.settings);
 
