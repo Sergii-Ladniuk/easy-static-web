@@ -1,5 +1,6 @@
 # About easy-static-web
-I am doing a small static generation framework. Now it is designed for my website only, but maybe I will have time to make it reusable.  
+
+I am making a small static generation framework. Now it is designed for my website only, but maybe I will have time to make it reusable.  
 
 # Conventions
 
@@ -8,26 +9,27 @@ I am doing a small static generation framework. Now it is designed for my websit
 
 # Installation
 
+* Install [Node JS](https://nodejs.org/en/download/)
 * Create a folder with the path to it [blog folder]
 * Open a terminal window
 * Navigate to your project
 ```
 cd [blog folder]
 ```
-* Run
+* Run in the Terminal:
 ```
 git clone https://github.com/Sergii-Ladniuk/easy-static-web.git
 ```
-* Install [Node JS](https://nodejs.org/en/download/)
 * It created a folder called "easy-static-web" in your directory. Go to it using the following command:
 ```
 cd easy-static-web
 ```
-* Run in the Terminal
+* Run in the Terminal:
 ```
 npm install
+npm install -g grunt-cli
 ```
-Note that it may take some time on the slow internet connections as it should download some friles from internet.
+Note that it may take some time on the slow internet connections as it should download some files from internet.
 
 You can ignore the following warning messages:
 ```
@@ -38,22 +40,23 @@ npm WARN deprecated lodash@1.0.2: lodash@<3.0.0 is no longer maintained. Upgrade
 ```
 
 # Configuration
-* Make a copy of settings.example.json called settings.json
-* Modify settings.json by the following changing text to correct value:
-    * [blog folder]
-    * [your website URL]
+* Make a copy of settings.example.json and name it settings.json
+* Modify settings.json by changing some properties:
+    * [blog folder] - the folder where your blog was installed ("easy-static-web" by default but you may rename it if you wish).
+    * [your website URL] - your website url. If you do not have an url yet, put http://localhost:4000, but don't forget to change it to your real url later. Don't worry - it will not affect your already running website.
 
+For example:
 ```javascript
 {
   "path": {
-    "blog": "[blog folder]"
+    "blog": "C:\Users\John\Downloads\mysuperblog\easy-static-web"
   },
   "server": {
     "local": {
       "port": 4000
     },
     "prod": {
-      "url": "[your website URL]"
+      "url": "http://marinatravelblog/com"
     }
   },
   "generate": {
@@ -65,9 +68,9 @@ npm WARN deprecated lodash@1.0.2: lodash@<3.0.0 is no longer maintained. Upgrade
 
 # Import from Wordpress
 
-* Download a wordpress export file XML
-* Save it to [blog folder]/import
-* Run in the Terminal
+* Download a wordpress export file XML. In Wordpress Admin panel, go to Tools -> Export, choose "All content" and click on "Download Export File". It might take up to a few minutes depending on your website size and internet connection speed.
+* Save it to [blog folder]/import (you'll need to create this folder).
+* Run in the Terminal:
 ```
 grunt all --target=[your wordpress export file name].xml
 ```
@@ -89,7 +92,7 @@ The last step will create folders:
     /public-debug
 ```
 
-Please expore them. 
+Please explore them. 
 Note that as our output is static to support paging we build a lot of folders called 1,2,3,... (for each page) in public-debug, e.g.:
 ```
     /public-debug
@@ -104,23 +107,19 @@ Copy images to public-debug/img folder.
 
 # Run server and see how the built website looks locally
 
-In the terminal go to the project folder and run
+In the Terminal go to the project folder and run
 ```
 node scripts/testServer.js 
 ```
-If it answers:
-```
-Express server listening on port 4000
-```
-then everything is OK.
+If it answers: `Express server listening on port 4000`, then everything is OK.
 
-Keep the terminal window running this command all the time opened until you work on the website.
+Keep the terminal window running this command all the time opened while you work on the website.
 
-Now you can go to the browser and open http://localhost:4000 .
+Now you can go to the browser, open http://localhost:4000 and see how your website looks like.
 
 # Making changes to the content
 
-After changing any changes you have to run
+After making any changes you have to run in another Terminal:
 ```
 grunt generate
 ```
