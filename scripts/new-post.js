@@ -32,6 +32,9 @@ function buildImgTags(imagePattern, settings, alt) {
             .filter(function (img) {
                 return new RegExp(imagePattern).test(img);
             })
+            .map(function(img) {
+                return path.basename(img);
+            })
             .map(function (img) {
                 //![Кафайяте, курортный городок, дегустация вин](http://marinatravelblog.com/img/Cafayate-1015.jpg)
                 return util.format('![%s](%simg/%s)', alt, settings.server.prod.url, img);
