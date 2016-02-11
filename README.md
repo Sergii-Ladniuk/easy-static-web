@@ -152,3 +152,37 @@ Then reload the browser tab containing <a href="http://localhost:4000" target="_
 
 * File -> Import... , point to the project root folder, agree to everything it says.
 * In the left bottom corner you have a grunt window. Double clicking on 'generate' will do the same as 'grunt generate' in the terminal. 
+
+# Create a new post script
+
+Run in the terminal a command similar to the following:
+```
+grunt new --title="тест" --img=".*Cafayate.*[0-9]{4}\.jpg" --alt="Кафайате"
+```
+
+It creates a post:
+```markdown
+---
+title: тест
+link: 'http://marinatravelblog.com/test'
+debug_link: 'http://localhost:4000/test'
+slug: test
+date:
+    2016-02-11T17:54:32.073
+draft: true
+type: post
+categories: []
+tags: []
+seo:
+    title: тест
+    description: ""
+    keywords:
+        - 'TODO: keywords here'
+
+---
+![Кафайате](http://marinatravelblog.com/img/Cafayate-1000.jpg)
+
+![Кафайате](http://marinatravelblog.com/img/Cafayate-1001.jpg)
+
+![Кафайате](http://marinatravelblog.com/img/Cafayate-1002.jpg)
+```
