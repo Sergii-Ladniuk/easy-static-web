@@ -8,38 +8,44 @@ var newline = os.EOL;
 var util = require('util');
 
 var processMetadata = function (data) {
-    var target = data.target;
+    try {
 
-    var parsedData = mm(target.text);
+        var target = data.target;
 
-    extend(true, target, parsedData);
+        var parsedData = mm(target.text);
 
-    if (target.meta['featured-tag']) {
-        target.meta['featured-tag'] = target.meta['featured-tag'].toLowerCase().replace(/ +/g, '-');
+        extend(true, target, parsedData);
+
+        if (target.meta['featured-tag']) {
+            target.meta['featured-tag'] = target.meta['featured-tag'].toLowerCase().replace(/ +/g, '-');
+        }
+
+        if (target.meta['featured-category']) {
+            target.meta['featured-category'] = target.meta['featured-category'].toLowerCase();
+        }
+
+        extend(data.common, {
+            categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
+                return {
+                    name: category.toLowerCase(),
+                    posts: target.meta.draft ? [] : [target],
+                }
+            }),
+            tags: target.meta.type === 'page' ? [] : parsedData.meta.tags.map(function (tag) {
+                return {
+                    name: tag.toLowerCase().replace(/ +/g, '-'),
+                    posts: target.meta.draft ? [] : [target],
+                }
+            }),
+            list: [target]
+        });
+        target.link = target.meta.link = target.meta.link || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
+        delete target.text;
+        return data;
+    } catch (e) {
+        e.message = "\nFailed to process " + data.target.path + " (metadata error)\n" + e.message;
+        throw e;
     }
-
-    if (target.meta['featured-category']) {
-        target.meta['featured-category'] = target.meta['featured-category'].toLowerCase();
-    }
-
-    extend(data.common, {
-        categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
-            return {
-                name: category.toLowerCase(),
-                posts: target.meta.draft ? [] : [target],
-            }
-        }),
-        tags: target.meta.type === 'page' ? [] : parsedData.meta.tags.map(function (tag) {
-            return {
-                name: tag.toLowerCase().replace(/ +/g, '-'),
-                posts: target.meta.draft ? [] : [target],
-            }
-        }),
-        list: [target]
-    });
-    target.link = target.meta.link = target.meta.link || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
-    delete target.text;
-    return data;
 };
 
 module.exports = processMetadata;

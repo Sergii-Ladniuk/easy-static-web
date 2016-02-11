@@ -22,25 +22,9 @@ function finilize(data) {
     return extend(common, data.basic);
 }
 
-function listFiles(dir) {
-    return new Promise(function (fulfil) {
-
-        var postFinder = findit(dir);
-        var files = [];
-
-        postFinder.on('file', function (filePath) {
-            files.push(filePath);
-        });
-
-        postFinder.on('end', function () {
-            fulfil(files);
-        })
-    })
-}
-
 function listContent(data) {
     var contentFolder = data.settings.path.content;
-    return listFiles(contentFolder);
+    return general.util.listFiles(contentFolder);
 }
 
 function loadContent(data) {
@@ -54,9 +38,11 @@ function loadContent(data) {
                 fs.readFileAsync(filePath, "utf-8").then(function (content) {
                     fulfil({
                         target: {
-                            text: content
+                            text: content,
+                            path: filePath
                         },
                         common: {},
+                        // TODO: check if filePath should go here
                         basic: extend({path: filePath}, data)
                     })
                 })

@@ -435,7 +435,7 @@ function downloadImages(content, settings) {
 
             if (typeof img === 'string' && !(img in visitedImages)) {
                 visitedImages[img] = true;
-                const file = path.join(settings.path.public, 'img', img);
+                const file = path.join(settings.path.public.img, img);
                 var task = fileExists(file)
                     .then(function (exists) {
                         if (!exists) {

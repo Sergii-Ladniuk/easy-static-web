@@ -102,7 +102,26 @@ module.exports = function (grunt) {
         promise.then(function() {
             done(true);
         });
+    });
 
+    grunt.registerTask('new', function() {
+        var type = grunt.option('type') || 'post';
+        var imgPattern = grunt.option('img') || '';
+        var alt = grunt.option('alt') || '';
+        var title = grunt.option('title');
+
+        if (!title) {
+            throw new Error('Post title is not specified!\n Usage:\n ' +
+                'grunt new --title [title] --img [image pattern] --type ["post" or "page"] --alt [common alt for images]')
+        }
+
+        if (type && type !== 'post' && type !== 'page' ) {
+            throw new Error('Type argument should either "post" or "page"!\n Usage:\n ' +
+                'grunt new --title [title] --img [image pattern] --type ["post" or "page"] --alt [common alt for images]')
+        }
+
+        var done = this.async();
+        require('./scripts/new-post')(title, imgPattern, alt, type);
     });
 
     grunt.registerTask('run-generate', function () {

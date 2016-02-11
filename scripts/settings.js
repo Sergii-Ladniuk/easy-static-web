@@ -20,7 +20,7 @@ exports.load = new Promise(function (resolve, reject) {
                 // temporary fpr hugo
                 exports.settings.path.publicFolder = path.join(exports.settings.path.blog, "/public/")
                 // new approach
-                exports.settings.path.public = path.join(exports.settings.path.blog, "/public-debug/")
+                exports.settings.path.public = { _: path.join(exports.settings.path.blog, "/public-debug/")}
                 exports.settings.path.pagesFolder = path.join(exports.settings.path.blog, "/public/page/")
 
                 exports.settings.path.source = {_: path.join(exports.settings.path.blog, "source")}
@@ -29,6 +29,7 @@ exports.load = new Promise(function (resolve, reject) {
                 exports.settings.path.static.img = path.join(exports.settings.path.static._, "img")
                 exports.settings.path.wpImg = path.join(exports.settings.path.blog, "zz_img_processed/img/")
                 exports.settings.path.static.css = path.join(exports.settings.path.static._, "css")
+                exports.settings.path.public.img = path.join(exports.settings.path.public._, "img")
 
                 exports.settings.path.oldImgs = exports.settings.path.blog + "/zz_all_wp_img_bk"
                 exports.settings.path.hugoContentFolder = exports.settings.path.blog + "content"

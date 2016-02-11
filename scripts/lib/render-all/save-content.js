@@ -7,7 +7,7 @@ function saveContent(data, htmlPromise, index, folder) {
     var html2save;
     return htmlPromise.then(function (html) {
         html2save = html
-        var publicPath = data.settings.path.public;
+        var publicPath = data.settings.path.public._;
 
         if (!folder) {
             return publicPath;
