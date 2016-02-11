@@ -10,7 +10,7 @@ var yaml = require('yamljs');
 var slugify = require('uslug');
 var parseArgs = require('minimist');
 
-var argv = require('minimist')(process.argv.slice(2));
+var argv = parseArgs(process.argv.slice(2));
 
 var general = require('./lib/general');
 
@@ -28,7 +28,7 @@ function buildImgTags(imagePattern, settings, alt) {
     }
     var separator = newline + newline;
     if (imagePattern) {
-        return Promise.all(listImgFolder(settings)
+        var imgPromises = listImgFolder(settings)
             .filter(function (img) {
                 return new RegExp(imagePattern).test(img);
             })
@@ -38,9 +38,9 @@ function buildImgTags(imagePattern, settings, alt) {
             .map(function (img) {
                 //![Кафайяте, курортный городок, дегустация вин](http://marinatravelblog.com/img/Cafayate-1015.jpg)
                 return util.format('![%s](%simg/%s)', alt, settings.server.prod.url, img);
-            }))
+            });
+        return Promise.all(imgPromises)
             .then(function (arr) {
-                console.log(arr)
                 return arr.join(separator);
             });
     } else {
@@ -84,13 +84,13 @@ function newPost(title, imagePattern, alt, type) {
             var separator = '---';
             var metaYaml = me.metaYaml;
             var text = [separator, metaYaml, separator, content].join(newline);
-            console.log('Template: \n\n', text);
+            console.log('\n\nTemplate: \n\n', text);
             var outputPath = path.join(settings.path['content_' + type + 's' + '_drafts'], slug + '.md');
             console.log('\n\nOutput path: \n', outputPath);
             return fs.writeFileAsync(outputPath, text);
         })
         .then(function () {
-            console.log('DONE.')
+            console.log('\n\nDONE.\n\n')
         })
 }
 
