@@ -5,9 +5,7 @@ var util = require('util');
 var os = require('os');
 var path = require('path');
 
-var translit = require('translitit-cyrillic-russian-to-latin');
 var yaml = require('yamljs');
-var slugify = require('uslug');
 var parseArgs = require('minimist');
 
 var argv = parseArgs(process.argv.slice(2));
@@ -15,7 +13,6 @@ var argv = parseArgs(process.argv.slice(2));
 var general = require('./lib/general');
 
 var newline = os.EOL;
-var slugifyOptions = {allowedChars: '-'};
 
 function listImgFolder(settings) {
     var imgFolder = settings.path.public.img;
@@ -50,7 +47,7 @@ function buildImgTags(imagePattern, settings, alt) {
 
 function newPost(title, imagePattern, alt, type) {
     var type = type || 'post';
-    var slug = slugify(translit(title), slugifyOptions);
+    var slug = general.util.slugifyTranslit(title);
     var me = {};
     return require('./settings.js').load
         .then(function (settings) {

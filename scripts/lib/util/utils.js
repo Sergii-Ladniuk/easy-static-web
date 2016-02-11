@@ -1,4 +1,12 @@
 var findit = require('findit');
+var slugify = require('uslug');
+var translit = require('translitit-cyrillic-russian-to-latin');
+
+var slugifyOptions = {allowedChars: '-'};
+
+function slugifyTranslit(str) {
+    return slugify(translit(str), slugifyOptions);
+}
 
 function escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
@@ -23,3 +31,4 @@ function listFiles(dir) {
 
 exports.escapeRegExp = escapeRegExp;
 exports.listFiles = listFiles;
+exports.slugifyTranslit = slugifyTranslit;

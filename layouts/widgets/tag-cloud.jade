@@ -1,3 +1,4 @@
 .widget.tag-cloud
     each tag in tags
-        a(href=tag.url, style='font-size:'+(tag.postNumber/avgPostPerTag*0.2+0.9) +'em')= tag.name
+        if tag.postNumber
+            a(href=tag.url, style='font-size:'+(tag.postNumber/avgPostPerTag*0.2+0.9) +'em')= tag.name

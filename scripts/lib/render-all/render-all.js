@@ -48,7 +48,7 @@ module.exports = function (data) {
 };
 
 function processMenu(data) {
-    var pageCatalogue = data.list.map(function(post) {
+    var pageCatalogue = data.list.map(function (post) {
         var result = {};
         if (post.meta.type === 'page') {
             result[post.meta.slug] = post;
@@ -63,7 +63,7 @@ function processMenu(data) {
             data.menu[item] = data.categoryTree[item];
         } else {
             if (pageCatalogue[item]) {
-                var page =pageCatalogue[item];
+                var page = pageCatalogue[item];
                 data.menu[item] = {
                     'niceName': page.meta.slug,
                     'name': page.meta.title,
@@ -71,7 +71,7 @@ function processMenu(data) {
                     'page': true
                 };
             } else {
-                console.error('Cannot match menu item '+ item);
+                console.error('Cannot match menu item ' + item);
             }
         }
     })
@@ -86,6 +86,7 @@ function processMenu(data) {
             item.posts = info.posts;
         }
     }
+
     for (var p in data.menu) {
         addPostsRefToMenu(data.menu[p]);
     }
@@ -93,10 +94,33 @@ function processMenu(data) {
     return data;
 }
 
+function getPostNumber(posts) {
+    return !posts.length ? 0 : posts
+        .map(function (post) {
+            return post.draft ? 0 : 1;
+        })
+        .reduce(function (postNumberA, postNumberB) {
+            return postNumberA + postNumberB;
+        })
+}
+
 function processCategoriesAndTags(data) {
     data.categories.forEach(function (cat) {
         const categoryInfo = data.categoryInfo[cat.name];
+        if (!categoryInfo) {
+            throw new Error('Unknown category "' + cat.name + "\nPlease add it to content/categories.json"
+                + "\nThe entry is supposed to be: \n" + "\n\n"
+                + JSON.stringify(
+                    {
+                        "niceName": general.util.slugifyTranslit(cat.name),
+                        "name": cat.name
+                    },
+                    null, 4)
+                + "\nJust place it in the right as subcategory or root category.\n\n"
+            )
+        }
         categoryInfo.posts = cat.posts;
+        categoryInfo.postNumber = getPostNumber(categoryInfo.posts);
         extend(cat, categoryInfo);
     });
 
@@ -104,6 +128,18 @@ function processCategoriesAndTags(data) {
 
     data.tags.forEach(function (tag) {
         var info = data.tagInfo[tag.name];
+
+        if (!info) {
+            info = data.tagInfo[tag.name] = {
+                slug: general.util.slugifyTranslit(tag.name)
+            };
+            var wrapper = {};
+            wrapper[tag.name]= info;
+            console.warn('New tag found : \n' + JSON.stringify(wrapper, null, 4));
+            console.warn('It is better to add it to content/tags.json');
+            data.saveTagInfo = true;
+        }
+
         if (!data.tagInfo[tag.name])
             console.log('fail ' + tag.name)
         // FIXME
@@ -112,6 +148,7 @@ function processCategoriesAndTags(data) {
         tag.postNumber = tag.posts.length;
         totalPostsTagged += tag.postNumber;
         info.posts = tag.posts;
+        info.postNumber = getPostNumber(tag.posts);
     });
 
     data.avgPostPerTag = totalPostsTagged / data.tags.length;

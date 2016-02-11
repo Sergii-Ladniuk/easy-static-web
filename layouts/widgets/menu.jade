@@ -12,10 +12,10 @@ div.navbar.navbar-default
                                 span.caret
                             ul.dropdown-menu
                                 each child in item.children
-                                    if child.page || child.posts && child.posts.length
+                                    if child.page || child.postNumber
                                         li
                                             a(href=child.url)= child.name
                     else
-                        if item.page || item.posts && item.posts.length
+                        if item.page || item.postNumber
                             li
                                 a(href=item.url)= item.name
