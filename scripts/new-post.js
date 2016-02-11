@@ -28,13 +28,16 @@ function buildImgTags(imagePattern, settings, alt) {
     }
     var separator = newline + newline;
     if (imagePattern) {
-        return listImgFolder(settings)
+        return Promise.all(listImgFolder(settings)
             .filter(function (img) {
                 return new RegExp(imagePattern).test(img);
-            }).map(function (img) {
+            })
+            .map(function (img) {
                 //![Кафайяте, курортный городок, дегустация вин](http://marinatravelblog.com/img/Cafayate-1015.jpg)
                 return util.format('![%s](%simg/%s)', alt, settings.server.prod.url, img);
-            }).all(function (arr) {
+            }))
+            .then(function (arr) {
+                console.log(arr)
                 return arr.join(separator);
             });
     } else {
@@ -44,15 +47,13 @@ function buildImgTags(imagePattern, settings, alt) {
 
 function newPost(title, imagePattern, alt, type) {
     var type = type || 'post';
+    var slug = slugify(translit(title), slugifyOptions);
     var me = {};
     return require('./settings.js').load
         .then(function (settings) {
             me.settings = settings;
-            return buildImgTags(imagePattern, settings, alt);
-        })
-        .then(function (imgs) {
-            var settings = me.settings;
-            var slug = slugify(translit(title), slugifyOptions);
+            var promise = buildImgTags(imagePattern, settings, alt);
+
             var meta = {
                 title: title,
                 link: settings.server.prod.url + slug,
@@ -70,16 +71,22 @@ function newPost(title, imagePattern, alt, type) {
                     keywords: ["TODO: keywords here"]
                 }
             };
+            me.metaYaml = yaml.stringify(meta, 4).replace('Zdraft:', newline + 'draft:');
+
+            return promise;
+        })
+        .then(function (imgs) {
+            var settings = me.settings;
             var content = imgs;
             var separator = '---';
-            var metaYaml = yaml.stringify(meta, 4).replace('Zdraft:',newline+'draft:');
+            var metaYaml = me.metaYaml;
             var text = [separator, metaYaml, separator, content].join(newline);
-            console.log('Template: \n', text);
-            var outputPath = path.join(settings.path['content_' + type + 's'+'_drafts'], slug + '.md');
-            console.log('Output path: \n', outputPath);
+            console.log('Template: \n\n', text);
+            var outputPath = path.join(settings.path['content_' + type + 's' + '_drafts'], slug + '.md');
+            console.log('\n\nOutput path: \n', outputPath);
             return fs.writeFileAsync(outputPath, text);
         })
-        .then(function() {
+        .then(function () {
             console.log('DONE.')
         })
 }
