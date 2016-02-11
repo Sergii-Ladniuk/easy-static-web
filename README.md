@@ -138,7 +138,7 @@ If it answers: `Express server listening on port 4000`, then everything is OK.
 
 Keep the terminal window running this command all the time opened while you work on the website.
 
-Now you can go to the browser, open http://localhost:4000 and see how your website looks like.
+Now you can go to the browser, open <a href="http://localhost:4000" target="_blank"></a> and see how your website looks like.
 
 # Making changes to the content
 
@@ -146,7 +146,7 @@ After making any changes you have to run in another Terminal:
 ```
 grunt generate
 ```
-Then reload the browser tab containing http://localhost:4000 
+Then reload the browser tab containing <a href="http://localhost:4000" target="_blank"></a> 
 
 # Intellij Idea
 
