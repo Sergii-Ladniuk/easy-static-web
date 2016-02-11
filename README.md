@@ -2,6 +2,8 @@
 
 I am making a small static generation framework. Now it is designed for my website only, but maybe I will have time to make it reusable.  
 
+<!-- toc -->
+
 # Conventions
 
 * *[your website URL]*  is the URL of your website e.g. ours http://marinatravelblog.com
@@ -104,6 +106,27 @@ Note that as our output is static to support paging we build a lot of folders ca
 # Images
 
 Copy images to public-debug/img folder.
+
+# Menu
+
+Create a file content/menu.json. It should contain an array. Each element of the array is either:
+* a category's nice name (see content/categories.json)
+* a page's slug (open any page and find a slug field in the meta-data YAML on top of the page)
+
+Example:
+```javascript
+[
+  "o-nas",
+  "europe",
+  "asia",
+  "america",
+  "about-travel",
+  "obzory",
+  "faq-chavo",
+  "kak-podpisatsya"
+]
+```
+
 
 # Run server and see how the built website looks locally
 

@@ -6,15 +6,20 @@ div.navbar.navbar-default
             ul.nav.navbar-nav
                 each itemName in menuRootOrder
                     - var item = menu[itemName]
+                    - console.log(itemName)
+                    - console.log(item)
                     if item.children
                         li.dropdown
                             a.dropdown-toggle.disabled(data-toggle="dropdown", href=item.url)= item.name
                                 span.caret
                             ul.dropdown-menu
                                 each child in item.children
-                                    li
-                                        a(href=child.url)= child.name
+                                    if child.page || child.posts && child.posts.length
+                                        //child.posts && child.posts.length
+                                        li
+                                            a(href=child.url)= child.name
                     else
-                        if item.postNumber > 0 && item.name != 'АФРИКА'
+                        if item.page || item.posts && item.posts.length
+                            //item.posts && item.posts.length > 0 && item.name != 'АФРИКА'
                             li
                                 a(href=item.url)= item.name

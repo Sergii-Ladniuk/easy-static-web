@@ -43,6 +43,7 @@ exports.load = new Promise(function (resolve, reject) {
 
                 exports.settings.path.tags = exports.settings.path.content + "/tags.json"
                 exports.settings.path.categories = exports.settings.path.content + "/categories.json"
+                exports.settings.path.menu = path.join( exports.settings.path.content, "/menu.json")
                 exports.settings.path.featuredText = exports.settings.path.content + "/featured-text.json"
                 exports.settings.path.posts = exports.settings.path.content + "/posts.json"
 

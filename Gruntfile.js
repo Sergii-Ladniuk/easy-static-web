@@ -97,7 +97,7 @@ module.exports = function (grunt) {
         var parseArgs = require('minimist');
         var argv = require('minimist')(process.argv.slice(2));
 
-        var importFileName = argv.target || 'marinatravelblogcom.wordpress.2016-01-21.xml';
+        var importFileName = argv.target || 'marinatravelblogcom.wordpress.2016-02-10_(1).xml';
         var promise = require('./scripts/plugins/wp-import/wp-import').import(importFileName);
         promise.then(function() {
             done(true);

@@ -3,6 +3,7 @@ var fs = Promise.promisifyAll(require('fs')),
     xml2js = require('xml2js');
 var translit = require('translitit-cyrillic-russian-to-latin');
 var yaml = require('yamljs');
+var extend = require('extend');
 var request = require('request');
 var util = require('util');
 var path = require('path');
@@ -50,14 +51,13 @@ exports.import = function (xmlFileName) {
 
                 Promise.join(fs.readFileAsync(settings.path.wpJson, "utf-8"), fs.statAsync(wpXmlPath))
 
-                    .then(function (data, xmlStats) {
-                        console.log(xmlStats)
+                    .spread(function (data, xmlStats) {
                         var xmlModifiedTime = xmlStats.mtime;
 
                         // cashed json exists and read
                         const wpJson = JSON.parse(data);
 
-                        if (wpJson.cachedTime && wpJson.cachedTime < xmlModifiedTime && wpJson.wpXmlPath === wpXmlPath ) {
+                        if (wpJson.cachedTime && (wpJson.cachedTime < xmlModifiedTime && wpJson.wpXmlPath !== wpXmlPath)) {
                             console.log('Cached json expired.');
                             readAndParseWpXml().then(resolve)
                         } else {
@@ -66,10 +66,9 @@ exports.import = function (xmlFileName) {
                         }
                     })
                     .catch(function (err) {
-                        console.warn(err);
                         console.log('No cached json.');
                         // no cashed json => parse XML
-                        resolve( readAndParseWpXml() );
+                        resolve(readAndParseWpXml());
                     });
             })
         })
@@ -80,10 +79,13 @@ exports.import = function (xmlFileName) {
 
             var categories = {
                 tree: {},
-                flat: {}
+                flat: {},
+                byId: []
             };
 
-            var categoriesRaw = parseCategoriesRaw(wpJson);
+            var answer = parseCategoriesRaw(wpJson);
+            var categoriesRaw = answer.categoriesRaw;
+            categories.byId = answer.byId;
 
             function buildCategories() {
 
@@ -91,35 +93,45 @@ exports.import = function (xmlFileName) {
 
             categoriesRaw.forEach(
                 function (next) {
+                    var category = {
+                        niceName: next.niceName,
+                        name: next.name,
+                        postNumber: 0
+                    };
                     if (!next.parent) {
-                        var category = {
-                            niceName: next.niceName,
-                            name: next.name,
-                            url: 'http://localhost:4000/category/' + next.niceName,//FIXME
-                            postNumber: 0
-                        };
-                        categories.tree[category.niceName] = category;
-                        categories.flat[category.niceName] = category;
+                        //FIXME
+                        category.url = 'http://localhost:4000/category/' + next.niceName;
+                    } else {
+                        //FIXME
+                        category.url = 'http://localhost:4000/category/' + next.parent + '/' + next.niceName;
+                        category.path = [next.parent, next.niceName];
+                        categories.tree[next.parent] = categories.tree[next.parent] || {};
+                        categories.tree[next.parent].children = categories.tree[next.parent].children || [];
+                        categories.tree[next.parent].children.push(category);
                     }
+                    categories.flat[category.niceName] = category;
+                    categories.tree[category.niceName] = extend(categories.tree[category.niceName] || {}, category);
                 }
             );
 
-            categoriesRaw.forEach(function (entry) {
-                if (entry.parent) {
-                    if (!categories.tree[entry.parent].children) {
-                        categories.tree[entry.parent].children = [];
-                    }
-                    var category = {
-                        niceName: entry.niceName,
-                        name: entry.name,
-                        url: 'http://localhost:4000/category/' + entry.parent + '/' + entry.niceName,
-                        path: [entry.parent, entry.niceName],
-                        postNumber: 0
-                    };
-                    categories.flat[category.niceName] = category;
-                    categories.tree[entry.parent].children.push(category);
-                }
-            });
+            //categoriesRaw.forEach(function (entry) {
+            //    if (entry.parent) {
+            //        var category = {
+            //            niceName: entry.niceName,
+            //            name: entry.name,
+            //            url: 'http://localhost:4000/category/' + entry.parent + '/' + entry.niceName,
+            //            path: [entry.parent, entry.niceName],
+            //            postNumber: 0
+            //        };
+            //        categories.flat[category.niceName] = category;
+            //        if (categories.tree[entry.parent]) {
+            //            if (!categories.tree[entry.parent].children) {
+            //                categories.tree[entry.parent].children = [];
+            //            }
+            //            categories.tree[entry.parent].children.push(category);
+            //        }
+            //    }
+            //});
 
             var tags = {};
             wpJson.rss.channel[0]['wp:tag'].forEach(function (rawTag) {
@@ -130,9 +142,14 @@ exports.import = function (xmlFileName) {
                 }
             });
 
+            var pages = [];
+            var menuRaw = [];
             wpJson.rss.channel[0]['item'].forEach(function (item) {
                 var postType = item['wp:post_type'][0];
                 if (postType === 'post' || postType === 'page') {
+                    var id = item['wp:post_id'][0];
+                    pages[id] = item['wp:post_name'][0];
+
                     var next = {
                         title: item.title[0],
                         link: item.link[0],
@@ -224,6 +241,49 @@ exports.import = function (xmlFileName) {
                     tasks.push(fs.writeFileAsync(mdPath, mdAll).then(reportDone));
                     reportDone();
                 }
+
+                if (postType === 'nav_menu_item') {
+                    var next = {};
+                    item['wp:postmeta'].forEach(function (meta) {
+                        var value = meta['wp:meta_value'][0];
+                        switch (meta['wp:meta_key'][0]) {
+                            case '_menu_item_object' :
+                                next.class = value;
+                                break;
+                            case '_menu_item_object_id':
+                                next.id = parseInt(value);
+                                break;
+                            case '_menu_item_menu_item_parent':
+                                next.parentId = parseInt(value);
+                                break;
+                        }
+                    });
+                    next.order = parseInt(item['wp:menu_order'][0]);
+                    menuRaw.push(next);
+                }
+            });
+
+            menuRaw.sort(function (a, b) {
+                return a.order - b.order;
+            })
+
+            var menu = [];
+
+            menuRaw.forEach(function (item) {
+                // todo handle items with parent
+                if (item.class && !item.parentId) {
+                    if (item.class === 'page') {
+                        var page = pages[item.id];
+                        if (page) {
+                            menu.push(page);
+                        }
+                    } else if (item.class === 'category') {
+                        var category = categories.byId[item.id];
+                        if (category) {
+                            menu.push(category);
+                        }
+                    }
+                }
             });
 
             tasks.push(fs.writeFileAsync(settings.path.tags, JSON.stringify(tags, null, 4)).then(reportDone))
@@ -284,7 +344,8 @@ function extractRelatedPosts(content, meta) {
 }
 
 function parseCategoriesRaw(wpJson) {
-    var categoriesRaw = []
+    var categoriesRaw = [];
+    var byId = [];
 
     wpJson.rss.channel[0]['wp:category'].forEach(function (entry) {
         var next = {
@@ -293,6 +354,7 @@ function parseCategoriesRaw(wpJson) {
             niceName: entry['wp:category_nicename'][0],
             name: entry['wp:cat_name'][0]
         }
+        byId[next.id] = next.niceName;
         categoriesRaw.push(next)
     });
 
@@ -304,7 +366,10 @@ function parseCategoriesRaw(wpJson) {
         return 0;
     });
 
-    return categoriesRaw
+    return {
+        categoriesRaw: categoriesRaw,
+        byId: byId
+    }
 }
 
 function readAndParseWpXml() {

@@ -40,11 +40,58 @@ module.exports = function (data) {
             return extend(data, additionalData);
         })
         .then(processCategoriesAndTags)
+        .then(processMenu)
         .then(renderWidgets)
         .then(function (data) {
             return Promise.join(renderIndex(data), renderSingleAll(data), renderCategoryLists(data));
         })
 };
+
+function processMenu(data) {
+    var pageCatalogue = data.list.map(function(post) {
+        var result = {};
+        if (post.meta.type === 'page') {
+            result[post.meta.slug] = post;
+        }
+        return result;
+    }).reduce(extend);
+
+    data.menu = [];
+
+    data.menuRootOrder.forEach(function (item) {
+        if (data.categoryTree[item]) {
+            data.menu[item] = data.categoryTree[item];
+        } else {
+            if (pageCatalogue[item]) {
+                var page =pageCatalogue[item];
+                data.menu[item] = {
+                    'niceName': page.meta.slug,
+                    'name': page.meta.title,
+                    'url': page.meta.link,
+                    'page': true
+                };
+            } else {
+                console.error('Cannot match menu item '+ item);
+            }
+        }
+    })
+
+    function addPostsRefToMenu(item) {
+        if (item.children) {
+            item.children.forEach(addPostsRefToMenu);
+        }
+        var key = item.name.toLowerCase();
+        var info = data.categoryInfo[key];
+        if (info) {
+            item.posts = info.posts;
+        }
+    }
+    for (var p in data.menu) {
+        addPostsRefToMenu(data.menu[p]);
+    }
+
+    return data;
+}
 
 function processCategoriesAndTags(data) {
     data.categories.forEach(function (cat) {
@@ -95,7 +142,7 @@ function processRelatedPosts(data) {
 }
 
 function truncateRelated(post, max) {
-    for (var i = 0 ; i< post.related.length;i++) {
+    for (var i = 0; i < post.related.length; i++) {
         const length = post.related[i].content.length;
         if (length > max) {
             post.related[i].content.splice(max);
@@ -128,7 +175,7 @@ function buildRelated(post, data) {
         featured: post.meta['featured-tag'],
         textData: featuredText.featuredInfoTags,
         info: data.tagInfo
-    }].forEach(function(next) {
+    }].forEach(function (next) {
         if (next.featured) {
             var name = next.featured.toLowerCase();
             var text = next.textData[name];
