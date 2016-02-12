@@ -30,6 +30,7 @@ cd easy-static-web
 ```
 npm install
 npm install -g grunt-cli
+npm install -g bower
 ```
 Note that it may take some time on the slow internet connections as it should download some files from internet.
 

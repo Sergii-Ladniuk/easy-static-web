@@ -134,7 +134,7 @@ function processCategoriesAndTags(data) {
                 slug: general.util.slugifyTranslit(tag.name)
             };
             var wrapper = {};
-            wrapper[tag.name]= info;
+            wrapper[tag.name] = info;
             console.warn('New tag found : \n' + JSON.stringify(wrapper, null, 4));
             console.warn('It is better to add it to content/tags.json');
             data.saveTagInfo = true;
@@ -173,33 +173,35 @@ function processRelatedPosts(data) {
 
             buildRelated(post, data);
             removeRepeatedRelated(post);
-            truncateRelated(post, 15);
+            truncateRelated(post, data.settings.generate['related-posts-max-length']);
         }
     });
 }
 
 function truncateRelated(post, max) {
     for (var i = 0; i < post.related.length; i++) {
-        const length = post.related[i].content.length;
-        if (length > max) {
-            post.related[i].content.splice(max);
+        var content = post.related[i].content;
+        if (content.length > max) {
+            content.splice(max);
         }
     }
 }
 
 function removeRepeatedRelated(post) {
-    for (var i = 0; i < post.related.length - 1; i++) {
-        var first = post.related[i];
-        var second = post.related[i + 1];
-        var firstContent = first.content;
-        var secondContent = second.content;
-
-        if (firstContent.length > secondContent.length) {
-            first.content = arrRemove(firstContent, secondContent);
-        } else {
-            second.content = arrRemove(secondContent, firstContent);
+    function cut(arr) {
+        arr.sort(function(a,b) {
+            return b.content.length - a.content.length;
+        });
+        var removeFrom = arr.splice(0, 1)[0];
+        if (arr.length) {
+            arr.forEach(function(removeMe) {
+                removeFrom.content = arrRemove(removeFrom.content, removeMe.content);
+            });
+            cut(arr);
         }
     }
+
+    cut([].concat(post.related));
 }
 
 function buildRelated(post, data) {
@@ -214,24 +216,26 @@ function buildRelated(post, data) {
         info: data.tagInfo
     }].forEach(function (next) {
         if (next.featured) {
-            var name = next.featured.toLowerCase();
-            var text = next.textData[name];
-            if (!text) {
-                text = 'Читать больше в рубрике "' + next.info[name].name + '":';
-            }
+            next.featured.forEach(function (name) {
+                var text = next.textData[name];
 
-            // make a copy of category's posts
-            var content = [].concat(next.info[name].posts);
+                if (!text) {
+                    text = 'Читать больше в рубрике "' + next.info[name].name + '":';
+                }
 
-            // remove the current post
-            content.splice(content.indexOf(post), 1);
+                // make a copy of category's posts
+                var content = [].concat(next.info[name].posts);
 
-            if (content.length > 1) {
-                post.related.push({
-                    text: text,
-                    content: content
-                });
-            }
+                // remove the current post
+                content.splice(content.indexOf(post), 1);
+
+                if (content.length > 1) {
+                    post.related.push({
+                        text: text,
+                        content: content
+                    });
+                }
+            });
         }
     })
 

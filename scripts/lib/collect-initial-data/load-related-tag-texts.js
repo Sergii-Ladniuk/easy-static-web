@@ -11,7 +11,10 @@ module.exports = function (settings, db) {
                 for (var p in arr) {
                     var next = arr[p];
                     delete arr[p];
-                    arr[p.toLowerCase().replace(/ +/g,'-')] = next;
+                    function slugify(p) {
+                        return p.toLowerCase().replace(/ +/g,'-');
+                    }
+                    arr[slugify(p)] = next;
                 }
             });
             return {

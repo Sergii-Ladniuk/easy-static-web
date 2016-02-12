@@ -30,3 +30,4 @@ settings.json
 **/.DS_Store
 **/.Trash
 **/bin
+static/components

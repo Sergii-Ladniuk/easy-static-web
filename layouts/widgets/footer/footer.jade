@@ -1,0 +1,6 @@
+each rootWidget in widgetDesc
+    if typeof rootWidget === 'object' && rootWidget['footer.jade']
+        - var footer = rootWidget['footer.jade']
+        each w in footer
+            - w = w.replace(/\.jade$/, '').replace(/\.html$/, '');
+            !{widgets[w]}

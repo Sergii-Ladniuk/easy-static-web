@@ -49,6 +49,38 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
+            "bootstrap-css": {
+                expand: true,
+                cwd: 'static/components/bootstrap/dist/css/',
+                src: 'bootstrap.min.css',
+                dest: './public-debug/css',
+                flatten: true,
+                filter: 'isFile'
+            },
+            "bootstrap-fonts": {
+                expand: true,
+                cwd: 'static/components/bootstrap/dist/fonts/',
+                src: 'glyphicons-halflings-regular.*',
+                dest: './public-debug/fonts',
+                flatten: true,
+                filter: 'isFile'
+            },
+            "bootstrap-js": {
+                expand: true,
+                cwd: 'static/components/bootstrap/dist/js/',
+                src: 'bootstrap.min.js',
+                dest: './public-debug/js',
+                flatten: true,
+                filter: 'isFile'
+            },
+            "jquery": {
+                expand: true,
+                cwd: 'static/components/jquery/dist/',
+                src: 'jquery.min.js',
+                dest: './public-debug/js',
+                flatten: true,
+                filter: 'isFile'
+            },
             html: {
                 expand: true,
                 cwd: 'static/html',
@@ -73,14 +105,22 @@ module.exports = function (grunt) {
                         'content/pages/drafts', 'content/pages/published', 'public-debug/img']
                 }
             }
-        }
+        },
+        bower: {
+            install: {}
+        },
+        clean: {bower:[
+            "lib"
+        ]}
     });
 
 
+    grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-mkdir');
-//    grunt.loadNpmTasks('grunt-sharp');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    //    grunt.loadNpmTasks('grunt-sharp');
 
     // Default task(s).
     grunt.registerTask('ri', ['responsive_images']);
@@ -89,7 +129,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('init', ['mkdir:init']);
 
-    grunt.registerTask('static', ['copy:css', 'copy:js', 'copy:html']);
+    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:html', 'copy:bootstrap-css', 'copy:bootstrap-fonts'
+        , 'copy:bootstrap-js', 'copy:jquery']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
@@ -99,12 +140,12 @@ module.exports = function (grunt) {
 
         var importFileName = argv.target || 'marinatravelblogcom.wordpress.2016-02-10_(1).xml';
         var promise = require('./scripts/plugins/wp-import/wp-import').import(importFileName);
-        promise.then(function() {
+        promise.then(function () {
             done(true);
         });
     });
 
-    grunt.registerTask('new', function() {
+    grunt.registerTask('new', function () {
         var type = grunt.option('type') || 'post';
         var imgPattern = grunt.option('img') || '';
         var alt = grunt.option('alt') || '';
@@ -115,7 +156,7 @@ module.exports = function (grunt) {
                 'grunt new --title [title] --img [image pattern] --type ["post" or "page"] --alt [common alt for images]')
         }
 
-        if (type && type !== 'post' && type !== 'page' ) {
+        if (type && type !== 'post' && type !== 'page') {
             throw new Error('Type argument should either "post" or "page"!\n Usage:\n ' +
                 'grunt new --title [title] --img [image pattern] --type ["post" or "page"] --alt [common alt for images]')
         }

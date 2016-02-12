@@ -16,13 +16,9 @@ var processMetadata = function (data) {
 
         extend(true, target, parsedData);
 
-        if (target.meta['featured-tag']) {
-            target.meta['featured-tag'] = target.meta['featured-tag'].toLowerCase().replace(/ +/g, '-');
-        }
-
-        if (target.meta['featured-category']) {
-            target.meta['featured-category'] = target.meta['featured-category'].toLowerCase();
-        }
+        ['featured-tag','featured-category'].forEach(function (item) {
+            target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
+        });
 
         extend(data.common, {
             categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
@@ -49,6 +45,20 @@ var processMetadata = function (data) {
 };
 
 module.exports = processMetadata;
+
+function arrayifyIfString(item) {
+    if (typeof item === 'string') {
+        return [item];
+    } else {
+        return item;
+    }
+}
+
+function slugifyAll(arr) {
+    return !arr || !arr.length ? [] : arr.map(function(item) {
+        return general.util.slugifyOnly(item);
+    })
+}
 
 // tests:
 
@@ -139,4 +149,6 @@ describe("process-metadata :", function () {
         resultData.should.deepEqual(expectedData);
     })
 });
+
+
 

@@ -1,15 +1,16 @@
-doctype | &quot;
+doctype html
 // TODO ie checks
-html
+html(lang='ru')
     head
         meta(http-equiv='content-type', content='text/html; charset=utf-8')
         //TODO meta tags here
         title marinatravelblog
-        link(rel='stylesheet', href='/css/bootstrap.css')
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
         link(rel='stylesheet', href='/css/travel-style.css')
         link(rel='stylesheet', href='/css/lazy-img.css')
+        link(rel='stylesheet', href='/css/return-to-top.css')
     body
-        .container-fluid
+        .container-fluid#top
             .row!=widgets.menu
             .row
                 .col-md-1
@@ -18,7 +19,4 @@ html
                 .col-md-1
             .row
                 .col-sm-12
-    script(src='/js/responsive-img.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js')
-    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
-    script(type='text/javascript', src='http://twitter.github.io/bootstrap/assets/js/bootstrap-dropdown.js')
+        !{widgets['footer']}

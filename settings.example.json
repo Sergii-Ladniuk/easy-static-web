@@ -12,6 +12,10 @@
   },
   "generate": {
     "mandatory-more": false,
-    "mandatory-more-limit": 100500
+    "mandatory-more-limit": 100500,
+    "related-posts-max-length": 12,
+    "do-follow": [
+      "some.url.without.http"
+    ]
   }
 }

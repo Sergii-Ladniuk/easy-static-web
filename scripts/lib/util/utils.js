@@ -8,6 +8,10 @@ function slugifyTranslit(str) {
     return slugify(translit(str), slugifyOptions);
 }
 
+function slugifyOnly(str) {
+    return slugify(str, slugifyOptions);
+}
+
 function escapeRegExp(str) {
     return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
 }
@@ -32,3 +36,4 @@ function listFiles(dir) {
 exports.escapeRegExp = escapeRegExp;
 exports.listFiles = listFiles;
 exports.slugifyTranslit = slugifyTranslit;
+exports.slugifyOnly = slugifyOnly;
