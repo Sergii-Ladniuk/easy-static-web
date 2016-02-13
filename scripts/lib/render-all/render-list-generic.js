@@ -1,8 +1,8 @@
 var renderPage = require('./render-page');
 var saveContent = require('./save-content');
 
-function renderIndexPage(data, page) {
-    return renderPage(data, page, 'index.jade');
+function renderIndexPage(data, page, meta) {
+    return renderPage(data, page, 'index.jade', meta);
 }
 
 function savePage(htmlPromise, index, data, folder) {

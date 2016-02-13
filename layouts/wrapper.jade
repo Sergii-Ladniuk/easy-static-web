@@ -1,14 +1,45 @@
 doctype html
 // TODO ie checks
-html(lang='ru')
+html(lang='ru-RU',itemscope, itemtype="http://schema.org/Article",prefix="og: http://ogp.me/ns#")
     head
         meta(http-equiv='content-type', content='text/html; charset=utf-8')
-        //TODO meta tags here
-        title marinatravelblog
+
+        title= meta.title || 'marinatravelblog'
+
         link(rel='stylesheet', href='/css/bootstrap.min.css')
         link(rel='stylesheet', href='/css/travel-style.css')
         link(rel='stylesheet', href='/css/lazy-img.css')
         link(rel='stylesheet', href='/css/return-to-top.css')
+
+        link(rel='author', href='https://plus.google.com/113719564593581367589/')
+
+        if meta.seo
+            if meta.seo.description
+                meta(name="description", itemprop="description", content=meta.seo.description )
+                meta(property="og:description", content=meta.seo.description )
+                meta(name='twitter:description', content=meta.seo.description)
+            if meta.seo.title
+                meta(property='og:title', content=meta.seo.title + ' | marinatravelblog.com')
+                meta(name='twitter:title', content=meta.seo.title + ' | marinatravelblog.com')
+            if !meta.seo.keywords.join
+                - console.log(meta.seo.keywords)
+            if meta.seo.keywords && meta.seo.keywords.join
+                meta(name='keywords', itemprop='keywords', content=meta.seo.keywords.join(','))
+                each kw in meta.seo.keywords
+                    meta(property='article:tag', content=kw)
+                link(rel='canonical', href=meta.link)
+                meta(property='og:url', content=meta.link)
+                meta(property='og:type', content='article')
+                meta(property='og:site_name', content='marinatravelblog.com')
+                meta(property='og:image', content=meta.img)
+                meta(property='fb:admins', content='maryna.sukhomlynova')
+                meta(property='article:published_time', content=meta.publishedDate)
+                meta(property='article:modified_time', content=meta.modifiedDate)
+                meta(name='twitter:card', content='summary_large_image')
+                meta(name='twitter:site', content='@marinatravelblg')
+                meta(name='twitter:creator', content='@marinatravelblg')
+                meta(name='twitter:image', content=meta.img)
+                meta(itemprop='image', content=meta.img)
     body
         .container-fluid#top
             .row!=widgets.menu

@@ -32,6 +32,11 @@ function renderer(settings) {
 
     renderer.image = function (href, title, alt) {
         href = fixUrl(href);
+
+        if (!this.firstImage) {
+            this.firstImage = href;
+        }
+
         var out = '<img src="' + href + '" alt="' + alt + '"';
         if (title) {
             out += ' title="' + title + '"';
@@ -99,7 +104,9 @@ module.exports = function (data) {
         + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
     var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
 
-    post.html = marked(post.markdown, {renderer: renderer(data.basic.settings)});
+    var rendererObj = renderer(data.basic.settings);
+    post.html = marked(post.markdown, {renderer: rendererObj});
+    post.meta.img = rendererObj.firstImage;
 
     parseMore(post, data.basic.settings);
 

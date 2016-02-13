@@ -4,7 +4,7 @@ var saveContent = require('./save-content');
 const renderSingleAll = function (data) {
     return Promise.all(
         Promise.map(data.list, function (content) {
-            return saveContent(data, renderPage(data, content, 'single.jade'), 0, content.meta.slug);
+            return saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
         })
     );
 };

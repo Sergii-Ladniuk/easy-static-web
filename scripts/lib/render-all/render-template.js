@@ -1,14 +1,15 @@
-function renderTemplate(name, data, content) {
+function renderTemplate(name, data, content, meta) {
     if (content.then) {
         return content.then(function(content) {
-            return renderTemplate(name, data, content);
+            return renderTemplate(name, data, content, meta);
         })
     }
     return data.jadeTemplates[name].then(function (template) {
         var templateData = {
             data: data,
             widgets: data.widgets,
-            content: content
+            content: content,
+            meta: meta || {}
         };
         return template(templateData);
     })

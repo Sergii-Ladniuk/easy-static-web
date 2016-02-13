@@ -153,8 +153,8 @@ exports.import = function (xmlFileName) {
                     var next = {
                         title: item.title[0],
                         link: item.link[0],
-                        // TODO : verify publish data
-                        date: item['wp:post_date'][0],
+                        publishedDate: item['wp:post_date'][0],
+                        modifiedDate: item['wp:post_date'][0],
                         shortLink: item.guid[0]._,
                         type: postType,
                         draft: item['wp:status'][0] !== 'publish',
@@ -163,7 +163,11 @@ exports.import = function (xmlFileName) {
                     (item['wp:postmeta'] || []).forEach(function (meta) {
                         switch (meta['wp:meta_key'][0]) {
                             case '_aioseop_keywords' :
-                                next.seo.keywords = meta['wp:meta_value'][0];
+                                next.seo.keywords = meta['wp:meta_value'][0].split(',').map(function (kw) {
+                                    return kw.replace(/^ +/g, '').replace(/ $/g, '');
+                                }).filter(function(kw) {
+                                    return kw;
+                                });
                                 break;
                             case '_aioseop_title' :
                                 next.seo.title = meta['wp:meta_value'][0];

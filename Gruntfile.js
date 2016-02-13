@@ -73,6 +73,14 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
+            "bootstrap-dropdown-js": {
+                expand: true,
+                cwd: 'static/components/bootstrap-dropdown/',
+                src: 'index.js',
+                dest: './public-debug/js/bootstrap-dropdown/',
+                flatten: true,
+                filter: 'isFile'
+            },
             "jquery": {
                 expand: true,
                 cwd: 'static/components/jquery/dist/',
@@ -96,6 +104,14 @@ module.exports = function (grunt) {
                 dest: './public-debug/js',
                 flatten: true,
                 filter: 'isFile'
+            },
+            pretty: {
+                expand: true,
+                cwd: 'public-pretty',
+                src: '**/*',
+                dest: 'public-debug',
+                flatten: true,
+                filter: 'isFile'
             }
         },
         mkdir: {
@@ -109,12 +125,29 @@ module.exports = function (grunt) {
         bower: {
             install: {}
         },
-        clean: {bower:[
-            "lib"
-        ]}
+        clean: {
+            bower: [
+                "lib"
+            ],
+            pretty: [
+                "public-pretty"
+            ]
+        },
+        prettify: {
+            options: {
+            },
+            all: {
+                expand: true,
+                cwd: 'public-debug',
+                ext: '.html',
+                src: ['**/*.html'],
+                dest: 'public-pretty'
+            }
+        }
     });
 
 
+    grunt.loadNpmTasks('grunt-prettify');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-responsive-images');
@@ -129,8 +162,9 @@ module.exports = function (grunt) {
 
     grunt.registerTask('init', ['mkdir:init']);
 
-    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:html', 'copy:bootstrap-css', 'copy:bootstrap-fonts'
-        , 'copy:bootstrap-js', 'copy:jquery']);
+    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js',
+        'copy:html', 'copy:bootstrap-css', 'copy:bootstrap-fonts', 'copy:bootstrap-js',
+        'copy:bootstrap-dropdown-js', 'copy:jquery']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
@@ -174,4 +208,6 @@ module.exports = function (grunt) {
     grunt.registerTask('import', ['init', 'run-import']);
 
     grunt.registerTask('all', ['import', 'generate']);
+
+    grunt.registerTask('pretty-html', ['prettify', 'copy-pretty', 'clean:pretty']);
 };
