@@ -19,8 +19,8 @@ html(lang='ru-RU',itemscope, itemtype="http://schema.org/Article",prefix="og: ht
                 meta(property="og:description", content=meta.seo.description )
                 meta(name='twitter:description', content=meta.seo.description)
             if meta.seo.title
-                meta(property='og:title', content=meta.seo.title + ' | marinatravelblog.com')
-                meta(name='twitter:title', content=meta.seo.title + ' | marinatravelblog.com')
+                meta(property='og:title', content=meta.seo.title)
+                meta(name='twitter:title', content=meta.seo.title)
             if !meta.seo.keywords.join
                 - console.log(meta.seo.keywords)
             if meta.seo.keywords && meta.seo.keywords.join
