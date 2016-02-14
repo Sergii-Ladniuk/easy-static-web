@@ -5,8 +5,10 @@
       "about-us.jade",
       "email-subscribe.html",
       "travelpayouts.html",
-      "tag-cloud.jade"
-    ]
+      "airbnb.html",
+      "tag-cloud.jade",
+      "add-to-favourites.html"
+      ]
   },
   {
     "footer.jade": [

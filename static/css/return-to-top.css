@@ -1,10 +1,10 @@
 #top-link-block.affix-top {
     position: absolute;
-    bottom: -82px;
-    left: 10px;
+    top: -82px;
+    right: 10px;
 }
 #top-link-block.affix {
     position: fixed;
-    bottom: 18px;
-    left: 10px;
+    top: 18px;
+    right: 10px;
 }
