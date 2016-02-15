@@ -126,6 +126,21 @@ ul.nav > li:hover{
     line-height: 1;
     }
 
+.social-buttons a:hover,
+a:hover {
+    color: orange;
+}
+
 .body {
     font-size: 16px;
+}
+
+.navbar-default {
+    background-color: #18bc9c;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: whitesmoke;
+    color: #18bc9c;
 }
