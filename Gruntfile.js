@@ -178,9 +178,10 @@ module.exports = function (grunt) {
 
     grunt.registerTask('init', ['mkdir:init']);
 
-    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js',
-        'copy:html', 'copy:bootstrap-css', 'copy:bootstrap-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery']);
+    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:html',
+        'copy:bootstrap-css', 'copy:font-awesome-css', 'copy:bootstrap-fonts',
+        'copy:font-awesome-fonts', 'copy:bootstrap-js', 'copy:bootstrap-dropdown-js',
+        'copy:jquery']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
