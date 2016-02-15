@@ -2,7 +2,7 @@
   "menu.jade",
   {
     "sidebar-right.jade": [
-      "about-us.jade",
+      "about-us.html",
       "email-subscribe.html",
       "travelpayouts.html",
       "airbnb.html",
