@@ -9,7 +9,7 @@ img {
 
 .post img, .post div {
     display: block;
-    margin: 1.5em 0em 1.5em 0em;
+    margin: 1.5em 0 1.5em 0;
 }
 
 ol {
@@ -45,12 +45,12 @@ li ol > li:before {
 }
 .jump-thumbnail150 tr:nth-child(even) {
     float: left;
-    margin: 15px 15px 15px 0px;
+    margin: 15px 15px 15px 0;
 }
 
 .jump-thumbnail150 tr:nth-child(even) {
     float: right;
-    margin: 15px 15px 15px 0px;
+    margin: 15px 15px 15px 0;
 }
 
 /*.jump-thumbnail150 + p {*/
@@ -58,8 +58,8 @@ li ol > li:before {
 /*}*/
 
 .post div.lazy-load {
-    margin: 10px 0px 10px 0px;
-    height: 0px;
+    margin: 10px 0 10px 0;
+    height: 0;
 }
 
 .accent {
@@ -67,22 +67,24 @@ li ol > li:before {
     font-weight: bold;
 }
 
-.widget {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-.widget h2 {
-    margin-bottom: 20px;
-}
-
 .widget, .widget-no-border {
-    margin: 10px 0px 10px 0px;
+    margin: 10px 0 10px 0;
     font-size: 14px;
 }
 
 .centered,
 .widget > form {
+    text-align: center;
+}
+
+.widget {
+    padding: 10px;
+    background-color: #EDF2F4;
+}
+
+.widget-header {
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -128,19 +130,53 @@ ul.nav > li:hover{
 
 .social-buttons a:hover,
 a:hover {
-    color: orange;
+    color: #337bae;
 }
 
-.body {
+body {
     font-size: 16px;
 }
 
+a {
+    color: #f25c00;
+}
+
 .navbar-default {
-    background-color: #18bc9c;
+    background-color: #f25c00;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     background-color: whitesmoke;
-    color: #18bc9c;
+    color: #f25c00;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #EDF2F4;
+}
+
+.navbar-collapse.collapse {
+    text-align: center;
+}
+
+.navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.email-input-sidebar {
+    color: black;
+    width: 90%;
+    height: 40px;
+    font-size: 18px;
+}
+
+.btn-email-sidebar {
+    background-color: #f25c00;
+    font-size: 20px;
+    text-align: center;
+    padding: 3px 13px 3px 15px;
+    color: whitesmoke;
+    width: 90%;
+    margin-top: 10px;
 }
