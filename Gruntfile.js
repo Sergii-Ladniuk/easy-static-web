@@ -57,10 +57,26 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
+			"font-awesome-css": {
+                expand: true,
+                cwd: 'static/components/font-awesome/css/',
+                src: 'font-awesome.min.css',
+                dest: './public-debug/css',
+                flatten: true,
+                filter: 'isFile'
+            },
             "bootstrap-fonts": {
                 expand: true,
                 cwd: 'static/components/bootstrap/dist/fonts/',
                 src: 'glyphicons-halflings-regular.*',
+                dest: './public-debug/fonts',
+                flatten: true,
+                filter: 'isFile'
+            },
+			"font-awesome-fonts": {
+                expand: true,
+                cwd: 'static/components/font-awesome/fonts/',
+                src: 'fontawesome-webfont.*',
                 dest: './public-debug/fonts',
                 flatten: true,
                 filter: 'isFile'
