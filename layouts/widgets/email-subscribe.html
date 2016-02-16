@@ -3,15 +3,15 @@
             action="https://feedburner.google.com/fb/a/mailverify"
             method="post" target="popupwindow"
             onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom', 'popupwindow', 'scrollbars=yes,width=350,height=200');return true">
-        <p class="widget-header">Получай новости по e-mail :)</p>
-        <p>Никакого спама, только личный опыт!</p>
-        <input class="email-input-sidebar" type="text" name="email"/>
+        <p class="widget-header">Получай новости по Email :)</p>
+        <input type="email" class="form-control email-input-sidebar" id="exampleInputEmail1" placeholder="Email">
         <input type="hidden"
                value="marinatravelblogcom"
                name="uri"/>
         <input type="hidden"
                name="loc"
                value="ru_RU"/>
-        <input type="submit" class="btn-email-sidebar" value="Подписаться"/>
+        <input type="submit" class="btn btn-default btn-email-sidebar" value="Подписаться"/>
+        <p>Только личный опыт, без спама!</p>
         </form>
 </div>

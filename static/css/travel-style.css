@@ -68,7 +68,7 @@ li ol > li:before {
 }
 
 .widget, .widget-no-border {
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
     font-size: 14px;
 }
 
@@ -129,6 +129,7 @@ ul.nav > li:hover{
     }
 
 .social-buttons a:hover,
+.btn-email-sidebar a:hover,
 a:hover {
     color: #337bae;
 }
@@ -165,18 +166,18 @@ a {
 }
 
 .email-input-sidebar {
-    color: black;
     width: 90%;
-    height: 40px;
-    font-size: 18px;
+    margin:auto;
+    alignment: center;
 }
 
 .btn-email-sidebar {
     background-color: #f25c00;
     font-size: 20px;
-    text-align: center;
-    padding: 3px 13px 3px 15px;
-    color: whitesmoke;
     width: 90%;
     margin-top: 10px;
+}
+
+.btn-default:hover {
+    background-color: #337bae;
 }
