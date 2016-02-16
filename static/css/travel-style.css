@@ -1,3 +1,8 @@
+h1 {
+    font-size: 2em;
+    margin-top: 2em
+}
+
 img {
     width: 100%;
     max-width: 800px;
@@ -65,11 +70,6 @@ li ol > li:before {
 .accent {
     font-size: 18px;
     font-weight: bold;
-}
-
-.widget, .widget-no-border {
-    margin: 20px 0 20px 0;
-    font-size: 14px;
 }
 
 .centered,

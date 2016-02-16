@@ -1,6 +1,6 @@
 include ./iterate-posts
     .post-summary
-        h2
+        h1
             a(href=post.meta.link)=post.meta.title + (post.meta.draft ? '[DRAFT]' : '')
         div!=post.summary
         a(href=post.meta.link)!=post.more
