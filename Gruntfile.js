@@ -97,6 +97,15 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
+            "boostrap-theme": {
+                expand: true,
+                cwd: 'static/components/bower-bootswatch-flatly/css/',
+                src: 'flatly.min.css',
+                dest: './public-debug/css',
+                flatten: true,
+                filter: 'isFile'
+
+            },
             "jquery": {
                 expand: true,
                 cwd: 'static/components/jquery/dist/',
@@ -190,7 +199,7 @@ module.exports = function (grunt) {
     grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js',
         'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
         'copy:bootstrap-fonts', 'copy:font-awesome-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon']);
+        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon','copy:boostrap-theme']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();

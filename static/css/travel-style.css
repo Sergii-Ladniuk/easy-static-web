@@ -87,6 +87,9 @@ li ol > li:before {
 .widget {
     padding: 10px;
     background-color: #EDF2F4;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 100%;
 }
 
 .widget-header {
