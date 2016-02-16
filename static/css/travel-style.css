@@ -10,9 +10,15 @@ img {
 
 .post .lazy-load img {
     display: inline;
+    margin: 0;
 }
 
 .post img, .post div {
+    display: block;
+    margin: 1.5em 0 1.5em 0;
+}
+
+.lazy-load, .post img, .post div {
     display: block;
     margin: 1.5em 0 1.5em 0;
 }
@@ -48,6 +54,7 @@ li ol > li:before {
     width: 150px;
     height: auto;
 }
+
 .jump-thumbnail150 tr:nth-child(even) {
     float: left;
     margin: 15px 15px 15px 0;
@@ -59,7 +66,7 @@ li ol > li:before {
 }
 
 /*.jump-thumbnail150 + p {*/
-    /*clear: both;*/
+/*clear: both;*/
 /*}*/
 
 .post div.lazy-load {
@@ -88,8 +95,8 @@ li ol > li:before {
     text-align: center;
 }
 
-ul.nav > li:hover{
-    background-color: hsl(0,0%,75%);
+ul.nav > li:hover {
+    background-color: hsl(0, 0%, 75%);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -104,6 +111,7 @@ ul.nav > li:hover{
     line-height: 1em;
     text-align: center;
 }
+
 .tag-cloud a {
     /*word-wrap: break-word;*/
     display: inline-block;
@@ -115,9 +123,11 @@ ul.nav > li:hover{
     font-weight: bold;
     margin-top: 1em;
 }
+
 .related-posts .list {
     margin-top: 1em;
 }
+
 .related-posts .list > li {
     margin-top: 0.3em;
 }
@@ -126,7 +136,7 @@ ul.nav > li:hover{
     padding: 1px 1px;
     font-size: 2.3vw;
     line-height: 1;
-    }
+}
 
 .social-buttons a:hover,
 .btn-email-sidebar a:hover,
@@ -152,7 +162,7 @@ a {
     color: #f25c00;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav > li > a {
     color: #EDF2F4;
 }
 
@@ -167,7 +177,7 @@ a {
 
 .email-input-sidebar {
     width: 90%;
-    margin:auto;
+    margin: auto;
     alignment: center;
 }
 

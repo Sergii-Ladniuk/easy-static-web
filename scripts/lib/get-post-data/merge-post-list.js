@@ -59,7 +59,7 @@ function mergeOrdered(a, b, comparator) {
 }
 
 function compareByDate(a, b) {
-    return a.meta.date > b.meta.date
+    return a.meta.modifiedDate > b.meta.modifiedDate
 }
 
 function mergePostAll(a, b) {

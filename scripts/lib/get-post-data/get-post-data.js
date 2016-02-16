@@ -15,9 +15,9 @@ function finilize(data) {
     var common = data.common;
 
     // TODO : remove logging
-    console.log('posts: '+common.list.length)
-    console.log('tags: '+common.tags.length)
-    console.log('categories: '+common.categories.length)
+    console.log('posts: ' + common.list.length)
+    console.log('tags: ' + common.tags.length)
+    console.log('categories: ' + common.categories.length)
 
     return extend(common, data.basic);
 }
@@ -52,7 +52,12 @@ function loadContent(data) {
 
 
 module.exports = function (data) {
-    return loadContent(data)
+    return data.imageInfoPromise
+        .then(function (imageInfo) {
+            data.imageInfo = imageInfo;
+            return data;
+        })
+        .then(loadContent)
         .map(readMetadata)
         .map(preprocess)
         .map(generateHtmlAndMore)

@@ -3,7 +3,7 @@ var extend = require('extend')
 var general = require('./general.js');
 exports.module = extend(
     {
-        ResponsiveImgs: require('./get-post-data/preprocess/responsive-imgs.js')
+        ResponsiveImgs: require('./render-all/responsive-imgs.js')
 //        ,
 //        processMetadata: require('./generation/process-metadata.js'),
 //        generateHtmlAndMore: require('./generation/generate-html-more'),

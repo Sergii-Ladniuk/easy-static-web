@@ -9,6 +9,7 @@ var renderWidgets = require('./render-widgets');
 var renderIndex = require('./render-index');
 var renderSingleAll = require('./render-single-all');
 var renderCategoryLists = require('./render-category-and-tags-lists');
+var respImgs = require('../render-all/responsive-imgs');
 
 /**
  * In case if some properties of `data` object are promises,
@@ -34,17 +35,36 @@ function waitAll(data) {
 }
 
 module.exports = function (data) {
-    return data.renderBlockingPromise
-        .then(waitAll)
-        .then(function (additionalData) {
-            return extend(data, additionalData);
-        })
-        .then(processCategoriesAndTags)
-        .then(processMenu)
-        .then(renderWidgets)
-        .then(function (data) {
-            return Promise.join(renderIndex(data), renderSingleAll(data), renderCategoryLists(data));
-        })
+    return new Promise(function (renderAllDone) {
+        data.renderBlockingPromise
+            .then(waitAll)
+            .then(function (additionalData) {
+                return extend(data, additionalData);
+            })
+            .then(processCategoriesAndTags)
+            .then(processMenu)
+            .then(renderWidgets)
+            .then(function (data) {
+                var renderSingleAllPromise = renderSingleAll(data);
+                renderSingleAllPromise.then(function () {
+                    console.log('render single done!!')
+                })
+                Promise.join(
+                    renderIndex(data),
+                    renderSingleAllPromise
+                    ,
+                    renderCategoryLists(data)
+                    )
+                    .then(function() {
+                        console.log('saveImgInfo')
+                        respImgs.saveImgInfo(data)
+                    })
+                    .then(function(){
+                        respImgs.removeUseless(data)
+                    })
+                    .then(renderAllDone);
+            });
+    });
 };
 
 function processMenu(data) {
@@ -189,12 +209,12 @@ function truncateRelated(post, max) {
 
 function removeRepeatedRelated(post) {
     function cut(arr) {
-        arr.sort(function(a,b) {
+        arr.sort(function (a, b) {
             return b.content.length - a.content.length;
         });
         var removeFrom = arr.splice(0, 1)[0];
         if (arr.length) {
-            arr.forEach(function(removeMe) {
+            arr.forEach(function (removeMe) {
                 removeFrom.content = arrRemove(removeFrom.content, removeMe.content);
             });
             cut(arr);

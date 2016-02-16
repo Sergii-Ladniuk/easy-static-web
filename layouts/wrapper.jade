@@ -47,10 +47,8 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
         .container-fluid#top
             .row!=widgets.menu
             .row
-                .col-md-1
-                .col-md-7.post!= content
-                .col-md-3!=widgets['sidebar-right']
-                .col-md-1
-            .row
-                .col-sm-12
+                .col-lg-1
+                .col-md-8.col-lg-7.post!= content
+                .col-md-4.col-lg-3!=widgets['sidebar-right']
+                .col-lg-1
         !{widgets['footer']}

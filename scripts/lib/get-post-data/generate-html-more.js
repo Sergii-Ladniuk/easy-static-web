@@ -6,7 +6,10 @@ var newline = os.EOL;
 var moreRegex = /([^]*?)<!--more([^]*?)-->/;
 var util = require('util');
 
-function renderer(settings) {
+var respImgs = require('../render-all/responsive-imgs');
+
+function renderer(data) {
+    var settings = data.basic.settings;
     var renderer = new marked.Renderer();
 
     renderer.heading = function (text, level) {
@@ -30,6 +33,7 @@ function renderer(settings) {
         return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url);
     }
 
+
     renderer.image = function (href, title, alt) {
         href = fixUrl(href);
 
@@ -42,13 +46,14 @@ function renderer(settings) {
             out += ' title="' + title + '"';
         }
         out += this.options.xhtml ? '/>' : '>';
+
         return out;
     };
 
     function doFollow(url) {
-        return settings.generate['do-follow'].map(function(pattern) {
+        return settings.generate['do-follow'].map(function (pattern) {
             return new RegExp(general.util.escapeRegExp(pattern)).test(url)
-        }).reduce(function(a,b) {
+        }).reduce(function (a, b) {
             return a || b;
         })
     }
@@ -104,7 +109,7 @@ module.exports = function (data) {
         + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
     var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
 
-    var rendererObj = renderer(data.basic.settings);
+    var rendererObj = renderer(data);
     post.html = marked(post.markdown, {renderer: rendererObj});
     post.meta.img = rendererObj.firstImage;
 
@@ -116,7 +121,7 @@ module.exports = function (data) {
     // skip toc in the post summary
     post.summary = post.summary.replace(/\[ *?toc *?\]/g, '');
 
-
     delete post.markdown;
+
     return data;
 };

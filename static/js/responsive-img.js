@@ -22,6 +22,7 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
 
     var imgAlt = noscriptTag.getAttribute("data-alt");
     var imgUrl = noscriptTag.getAttribute("data-s");
+    var imgExt = noscriptTag.getAttribute("data-ext");
 
     //create element with correct size and insert it
     var img = document.createElement("img");
@@ -33,13 +34,16 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
     var pre;
     var width = RespImgs.screenWidth;
     if (width <= 375) {
-        pre = 'sm';
+        pre = '-sm';
     } else if (width <= 600) {
-        pre = 'md';
+        pre = '-md';
     } else {
-        pre = 'lg';
+        pre = '';
     }
-    img.setAttribute('src', '/img/' + imgUrl + '-' + pre + '.jpg');
+
+    var baseUrl = 'http://localhost:4000/';
+
+    img.setAttribute('src', '/img/' + imgUrl + pre + imgExt);
     lazyLoadMe.appendChild(img);
 }
 

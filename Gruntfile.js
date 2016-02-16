@@ -142,7 +142,7 @@ module.exports = function (grunt) {
             init: {
                 options: {
                     create: ['content/posts/drafts', 'content/posts/published',
-                        'content/pages/drafts', 'content/pages/published', 'public-debug/img']
+                        'content/pages/drafts', 'content/pages/published', 'public-debug/img','public/img']
                 }
             }
         },
@@ -178,6 +178,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-contrib-clean');
     //    grunt.loadNpmTasks('grunt-sharp');
+    grunt.loadNpmTasks('grunt-imageoptim');
 
     // Default task(s).
     grunt.registerTask('ri', ['responsive_images']);
@@ -194,10 +195,8 @@ module.exports = function (grunt) {
     grunt.registerTask('run-import', function () {
         var done = this.async();
 
-        var parseArgs = require('minimist');
-        var argv = require('minimist')(process.argv.slice(2));
+        var importFileName = grunt.option('target') || 'marinatravelblogcom.wordpress.2016-02-10_(1).xml';
 
-        var importFileName = argv.target || 'marinatravelblogcom.wordpress.2016-02-10_(1).xml';
         var promise = require('./scripts/plugins/wp-import/wp-import').import(importFileName);
         promise.then(function () {
             done(true);

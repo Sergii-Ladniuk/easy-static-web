@@ -11,11 +11,17 @@ exports.generate = function () {
             var data = collectInitialData(settings);
             data.settings = settings;
             return getPostData(data)
-                .then(renderAll)
-                .then(function () {
-                    console.log('DONE.')
-                });
         })
+        .then(function(data) {
+            var promise = renderAll(data);
+            if (!promise.then) {
+                throw new Error('renderAll no promise');
+            }
+            return promise;
+        })
+        .then(function () {
+            console.log('ALL DONE.')
+        });
 };
 
 if (argv.r) {
