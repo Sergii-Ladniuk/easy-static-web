@@ -194,3 +194,7 @@ a {
 .btn-default:hover {
     background-color: #337bae;
 }
+
+.btn-default {
+    color: whitesmoke;
+}
