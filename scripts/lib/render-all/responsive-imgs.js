@@ -6,9 +6,11 @@ const fs = mainModule.fs;
 const gm = mainModule.gm;
 const util = require('util');
 const ncp = Promise.promisify(require('ncp').ncp);
-const gmSemaphor = require('semaphore')(5);
+const gmSemaphor = require('semaphore')(20);
 var mkdirp = Promise.promisify(require('mkdirp'));
 var findit = require('findit');
+
+var compressTasks = [];
 
 
 gmSemaphor.takeAsync = function () {
@@ -31,16 +33,23 @@ gmSemaphor.takeAsync = function () {
 var imgDone = 0;
 function reportDoneImage() {
     imgDone++;
-    if (imgDone % 50) {
+    if (imgDone % 100 === 0) {
         process.stdout.write(".");
     }
 }
 
-function compress(fullFileName, gmAsync, sizes, settings) {
+var compressing = {};
+
+function compress(fullFileName, gmAsync, sizes, settings, actualWidth) {
+    if (!compressing[fullFileName]) {
+        compressing[fullFileName] = true;
+    } else {
+        return;
+    }
+
     var parsedName = path.parse(fullFileName);
     var fileName = parsedName.name;
     var ext = parsedName.ext;
-    var tasks = [];
 
     ['lg', 'md', 'sm'].forEach(function (sizeLevel) {
         var width = sizes[sizeLevel];
@@ -49,38 +58,64 @@ function compress(fullFileName, gmAsync, sizes, settings) {
             suffix = '-' + sizeLevel;
         }
 
+        var srcPath = path.join(settings.path.static.img, fullFileName);
         var outputFilePath = path.join(settings.path.public.img, fileName + suffix + ext);
-        var outputFilePathProd = path.join(settings.path.public_prod.img, fileName + suffix + ext);
 
-        var promise;
+        var compressPromise = exists(outputFilePath).then(function(exists) {
+            if (!exists) {
+                var promise;
 
-        return gmSemaphor.takeAsync()
-            .then(function () {
-                promise = gmAsync
-                    .resize(sizes[sizeLevel])
-                    .quality(100)
-                    //.unsharp(0.3, 1.0, 85, 4)
-                    .writeAsync(outputFilePath)
-                ;
-                tasks.push(promise);
-                return promise;
-            })
-            .then(function () {
-                reportDoneImage();
-                return ncp(outputFilePath, outputFilePathProd);
-            })
-            .then(function () {
-                gmSemaphor.leave();
+                if (actualWidth > sizes[sizeLevel])
+                    promise = gmSemaphor.takeAsync()
+                        .then(function () {
+                            return gmAsync
+                                .resize(sizes[sizeLevel])
+                                .quality(100)
+                                .writeAsync(outputFilePath);
+                        });
+                else {
+                    promise = gmSemaphor.takeAsync()
+                        .then(function () {
+                            //console.log('compress copy', srcPath, outputFilePath);
+                            return ncp(srcPath, outputFilePath);
+                        })
+                        .delay(500)
+                        .then(function () {
+                            //console.log('compress copy done', srcPath, outputFilePath);
+                        })
+                        .catch(function (err) {
+                            //console.log('compress copy error', srcPath, outputFilePath, err);
+                        });
+                }
+
+                return promise.then(function () {
+                        gmSemaphor.leave();
+                        reportDoneImage();
+                        //console.log('compress copy to prod', outputFilePath, outputFilePathProd);
+                        //return ncp(outputFilePath, outputFilePathProd).catch(function (err) {
+                        //    console.log('compress copy to prod error', outputFilePath, outputFilePathProd, err);
+                        //});
+                    })
+                    .then(function () {
+                        return true;
+                    });
+
+            } else {
                 return true;
-            });
+            }
+        })
+
+        compressTasks.push(compressPromise);
 
 
     });
 
-    return Promise.all(tasks);
+    return Promise.all(compressTasks);
 }
 
+
 function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
+    //console.log('process ', fileName);
     var settings = data.settings || data.basic.settings;
     var filePath = path.join(settings.path.static.img, fileName);
     var gmAsync = Promise.promisifyAll(gm(filePath));
@@ -90,6 +125,17 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
         })
         .catch(function (err) {
             console.log(err);
+            var srcPath = path.join(settings.path.static.img, fileName);
+            var outputFilePath = path.join(settings.path.public.img, fileName);
+            var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
+            console.log('process copy', srcPath, outputFilePath);
+            console.log('process copy', srcPath, outputFilePathProd);
+            ncp(srcPath, outputFilePath).catch(function (err) {
+                console.log('process copy error', srcPath, outputFilePath, err);
+            });
+            //ncp(srcPath, outputFilePathProd).catch(function (err) {
+            //    console.log('process copy error', srcPath, outputFilePathProd, err);
+            //});
             imageInfo.images[fileName] = {
                 mtime: new Date(),
                 html: false,
@@ -100,6 +146,8 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
         .then(function (size) {
             gmSemaphor.leave();
 
+            reportDoneImage();
+
             if (!size) {
                 console.log('false');
                 return false;
@@ -107,40 +155,42 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
 
             var css = processCss(size, imageInfo);
 
-            //var compressPromise;
-            //if (size.width >= sizes.lg) {
-            //    compressPromise = compress(fileName, gmAsync, sizes, settings);
-            //} else {
-            //    var srcPath = path.join(settings.path.static.img, fileName);
-            //    var outputFilePath = path.join(settings.path.public.img, fileName);
-            //    var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
-            //    ncp(srcPath, outputFilePath);
-            //    ncp(srcPath, outputFilePathProd);
-            //    imageInfo.images[fileName] = {
-            //        mtime: new Date(),
-            //        html: false,
-            //        error: 'too small file'
-            //    };
-            //    return false;
-            //}
+            if (size.width > sizes.sm + 100) {
+                compress(fileName, gmAsync, sizes, settings, size.width);
 
-            var parsed = path.parse(fileName);
+                var parsed = path.parse(fileName);
 
-            var html = template({
-                file: parsed.name,
-                ext: parsed.ext,
-                title: title,
-                alt: alt,
-                css: css
-            });
+                var html = template({
+                    file: parsed.name,
+                    ext: parsed.ext,
+                    title: title,
+                    alt: alt,
+                    css: css
+                });
 
 
-            imageInfo.images[fileName] = {
-                mtime: new Date(),
-                html: html
-            };
+                imageInfo.images[fileName] = {
+                    mtime: new Date(),
+                    html: html
+                };
 
-            return html;
+                return html;
+            } else {
+                var srcPath = path.join(settings.path.static.img, fileName);
+                var outputFilePath = path.join(settings.path.public.img, fileName);
+                var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
+                console.log('copy', srcPath, outputFilePath);
+                console.log('copy', srcPath, outputFilePathProd);
+                ncp(srcPath, outputFilePath);
+                //ncp(srcPath, outputFilePathProd);
+                imageInfo.images[fileName] = {
+                    mtime: new Date(),
+                    html: false,
+                    error: 'too small file'
+                };
+                return false;
+            }
+
         })
 }
 
@@ -175,7 +225,7 @@ function exists(file) {
             } else if (err.code == 'ENOENT') {
                 done(false);
             } else {
-                console.error('Unexpected error: ', err);
+                console.error('Unexpected error when check exists: ', err);
                 done(false);
             }
         });
@@ -237,6 +287,8 @@ exports.removeUseless = function (data) {
     var usedFolderJpg = path.join(imgFolder, 'used-jpg');
     var usedFolderOther = path.join(imgFolder, 'used-other');
     var postFinder = findit(imgFolder);
+    var imgFolderPublic = data.settings.path.static.img;
+
     var tasks = [];
 
     var dirs = [
@@ -265,106 +317,6 @@ exports.removeUseless = function (data) {
         .then(function () {
             console.log('remove unused img done');
         })
-
-    //.then(function () {
-    //    postFinder.on('file', function (filePath) {
-    //
-    //        var name = path.basename(filePath);
-    //        if (!imageInfo.images[name]) {
-    //            //console.log('copy',filePath, path.join(unusedFolder, name))
-    //            //console.log('delete',filePath)
-    //            var promise = ncp(filePath, path.join(unusedFolder, name))
-    //                .then(function () {
-    //                    return fs.unlinkAsync(filePath);
-    //                });
-    //            tasks.push(promise);
-    //        }
-    //    });
-    //    return new Promise(function (done) {
-    //        postFinder.on('end', function () {
-    //            Promise.all(tasks).then(done)
-    //        })
-    //    })
-    //})
 };
 
 exports.handleImg = handleImg;
-
-//
-//
-//var ResponsiveImgs = function () {
-//    this.css = "";
-//    this.cssNames = {}
-//};
-//
-///**
-// * Replaces md image tags with div/noscript for responsive images
-// * @returns {Array} array
-// */
-//ResponsiveImgs.prototype.replaceImgs = function (data, settings) {
-//    // replace img notations with shortcodes http://gohugo.io/extras/shortcodes/
-//    // ![Баньос, Тунгурауа, Эквадор](http://localhost:4000/img/Banos-Tingurahua-Ecuador-3.jpg)
-//    // ==>
-//    // {{% img "Баньос, Тунгурауа, Эквадор" "http://localhost:4000/img/Banos-Tingurahua-Ecuador-3.jpg" %}}
-//
-//    var imgRegex = /!\[([^\(]+)]\(([^\)]+)\)/g;
-//    var next
-//    var gmPromises = []
-//    var me = this;
-//    while (next = imgRegex.exec(data)) {
-//        (function (oldImg, alt, fileUrl) {
-//            // todo not only jpg ?
-//            var match = /\/([^\/]+)\.jpg/.exec(fileUrl);
-//            if (match && match.length === 2) {
-//                var fileName = match[1] + '-lg.jpg';
-//                var fileNameShort = match[1];
-//                var gmPromise = new Promise(function (done, reject) {
-//                    //FIXME
-//                    var filePath = path.join(settings.path.wpImg, fileName);
-//                    gm(filePath)
-//                        .size(function (err, size) {
-//                            if (!err) {
-//                                var padding = Math.floor(size.height / size.width * 100 + 0.1) + 1;
-//                                var sizeClass = util.format('p%d', padding);
-//                                if (!me.cssNames[sizeClass]) {
-//                                    me.css += util.format('.%s{ padding-bottom:%d%%;}', sizeClass, padding)
-//                                    me.cssNames[sizeClass] = true
-//                                }
-//                                var newImg = util.format('{{% img "%s" "%s" "%s" %}}', alt, fileNameShort, sizeClass)
-//                                data = data.replace(oldImg, newImg)
-//                                done(data);
-//                            } else {
-//                                console.error('Failed processing ' + filePath);
-//                                done(data);
-//                            }
-//                        });
-//                })
-//                gmPromises.push(gmPromise)
-//            } else {
-//                console.warn('cannot process ' + fileUrl)
-//                var match = /\/([^\/]+\.(png|gif))/.exec(fileUrl);
-//                if (match && match[1]) {
-//                    var fileName = match[1];
-//                    data = data.replace(fileUrl, '/img/' + fileName)
-//                } else {
-//                    console.log('cannot fix URL ' + fileUrl)
-//                }
-//                gmPromises.push(new Promise(function (done) {
-//                    done(data);
-//                }));
-//            }
-//        })(next[0], next[1], next[2])
-//    }
-//    var gmPromiseAll = Promise.all(gmPromises);
-//    return new Promise(function (done) {
-//        gmPromiseAll.then(function () {
-//            done(data);
-//        });
-//    });
-//}
-//
-//ResponsiveImgs.prototype.saveLazyLoadCss = function (settings) {
-//    return fs.writeFileAsync(path.join(settings.path.static.css, 'lazy-img.css'), this.css);
-//}
-//
-//

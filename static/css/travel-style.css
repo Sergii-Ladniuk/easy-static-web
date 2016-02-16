@@ -1,6 +1,6 @@
 h1 {
     font-size: 2em;
-    margin-top: 2em
+    margin-top: 2em;
 }
 
 img {
@@ -11,6 +11,7 @@ img {
 .post .lazy-load img {
     display: inline;
     margin: 0;
+    width: 100%;
 }
 
 .post img, .post div {
@@ -91,6 +92,10 @@ li ol > li:before {
     margin-bottom: 2em;
     width: 100%;
 }
+
+/*.sidebar .widget:first-of-type {*/
+    /*margin-top: 120px;*/
+/*}*/
 
 .widget-header {
     font-size: 16px;
@@ -178,6 +183,16 @@ a {
     float: none;
 }
 
+/*.navbar.affix {*/
+    /*opacity: 1;*/
+/*}*/
+/*.navbar.affix a {*/
+    /*opacity: 1;*/
+/*}*/
+/*.navbar.affix-top {*/
+    /*opacity: 1;*/
+/*}*/
+
 .email-input-sidebar {
     width: 90%;
     margin: auto;
@@ -193,4 +208,9 @@ a {
 
 .btn-default:hover {
     background-color: #337bae;
+}
+
+/* a button for collapsing navbar */
+#toggle-menu {
+    /*width: 140px;*/
 }

@@ -1,7 +1,7 @@
 article
     header
         h1
-            a(href=content.link)=content.meta.title
+            a(href=content.meta.link)=content.meta.title
     !{content.html}
     footer
         if content.meta.type === 'post'
