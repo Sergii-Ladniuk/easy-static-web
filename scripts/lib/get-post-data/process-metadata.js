@@ -16,7 +16,28 @@ var processMetadata = function (data) {
 
         extend(true, target, parsedData);
 
-        ['featured-tag','featured-category'].forEach(function (item) {
+        target.meta.seo = target.meta.seo || {};
+        target.meta.seo.keywords = target.meta.seo.keywords || '';
+        target.meta.seo.keywords = target.meta.seo.keywords.split(',').map(function (kw) {
+            return kw.replace(/^ +/g, '').replace(/ $/g, '');
+        }).filter(function (kw) {
+            return kw;
+        })
+        //    .map(function(kw) {
+        //    // ((камбоджа!!) ((ангор ват!!храм ангор)) ((отзывы!!негативные отзывы!!советы!!на велосипеде))
+        //    function simplify(kw) {
+        //        if (!/\(\(/.test(kw)) {
+        //            return [kw];
+        //        } else {
+        //            var regex = /(.*?)\[(.*?)\](.*)/;
+        //
+        //        }
+        //    }
+        //});
+
+
+
+        ['featured-tag', 'featured-category'].forEach(function (item) {
             target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
         });
 
@@ -55,7 +76,7 @@ function arrayifyIfString(item) {
 }
 
 function slugifyAll(arr) {
-    return !arr || !arr.length ? [] : arr.map(function(item) {
+    return !arr || !arr.length ? [] : arr.map(function (item) {
         return general.util.slugifyOnly(item);
     })
 }

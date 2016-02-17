@@ -164,11 +164,7 @@ exports.import = function (xmlFileName) {
                     (item['wp:postmeta'] || []).forEach(function (meta) {
                         switch (meta['wp:meta_key'][0]) {
                             case '_aioseop_keywords' :
-                                next.seo.keywords = meta['wp:meta_value'][0].split(',').map(function (kw) {
-                                    return kw.replace(/^ +/g, '').replace(/ $/g, '');
-                                }).filter(function(kw) {
-                                    return kw;
-                                });
+                                next.seo.keywords = meta['wp:meta_value'][0];
                                 break;
                             case '_aioseop_title' :
                                 next.seo.title = meta['wp:meta_value'][0];
