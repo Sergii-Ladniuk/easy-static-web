@@ -4,21 +4,54 @@ RespImgs = {};
 RespImgs.devicePixelRatio = window.devicePixelRatio || 1;
 
 //screenwidth = width * pixelratio
-RespImgs.screenWidth = Math.min( window.innerWidth * RespImgs.devicePixelRatio, screen.width);
+
+RespImgs.getScreenWidth = function () {
+    var w = window,
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        x = w.innerWidth || e.clientWidth || g.clientWidth || screen.width;
+
+    console.log('w', x);
+
+    RespImgs.screenWidth = Math.min(x, screen.width);
+};
+
+RespImgs.shouldResize = function () {
+    return RespImgs.prevWidth < RespImgs.screenWidth
+        && RespImgs.getPrefix(RespImgs.screenWidth) !== RespImgs.getPrefix(RespImgs.prevWidth);
+};
+
 
 //get images blocks and loop through them
 RespImgs.lazyLoadImages = function () {
-    var lazyloadUs = document.getElementsByClassName("lazy-load");
-    for (var i = 0; i < lazyloadUs.length; i++) {
-        RespImgs.lazyloadImage(lazyloadUs[i]);
+    RespImgs.getScreenWidth();
+    if (RespImgs.prevWidth === 0 || RespImgs.shouldResize()) {
+        var lazyloadUs = document.getElementsByClassName("lazy-load");
+        for (var i = 0; i < lazyloadUs.length; i++) {
+            RespImgs.lazyloadImage(lazyloadUs[i]);
+        }
     }
-    timeoutOffset = false;
-}
+};
+
+RespImgs.prevWidth = 0;
+
+RespImgs.getPrefix = function (width) {
+    if (width <= 375) {
+        return '-sm';
+    } else if (width <= 600) {
+        return '-md';
+    } else {
+        return '';
+    }
+};
 
 //insert 'correct' image
 RespImgs.lazyloadImage = function (lazyLoadMe) {
 
-    var noscriptTag = lazyLoadMe.children[0];
+    var children = lazyLoadMe.children;
+
+    var noscriptTag = children[0];
 
     var imgAlt = noscriptTag.getAttribute("data-alt");
     var imgUrl = noscriptTag.getAttribute("data-s");
@@ -31,24 +64,46 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
         img.setAttribute("alt", imgAlt);
     }
 
-    var pre;
     var width = RespImgs.screenWidth;
-    if (width <= 375) {
-        pre = '-sm';
-    } else if (width <= 600) {
-        pre = '-md';
-    } else {
-        pre = '';
-    }
+
+    var pre = RespImgs.getPrefix(RespImgs.screenWidth);
 
     var baseUrl = 'http://localhost:4000/';
 
-    img.setAttribute('src', '/img/' + imgUrl + pre + imgExt);
-    lazyLoadMe.appendChild(img);
-}
+    img.setAttribute('src', baseUrl + 'img/' + imgUrl + pre + imgExt);
+
+    if (children.length == 1) {
+        lazyLoadMe.appendChild(img);
+    } else {
+        lazyLoadMe.replaceChild(img, children[1]);
+    }
+
+    RespImgs.prevWidth = width;
+};
+
+RespImgs.resizingNow = false;
+RespImgs.resizingRequested = false;
+
+RespImgs.lazyResize = function () {
+    if (!this.resizingNow) {
+        RespImgs.resizingNow = true;
+        RespImgs.resizingRequested = false;
+        RespImgs.lazyLoadImages();
+        setTimeout(1000, function () {
+            RespImgs.resizingNow = false;
+            if (RespImgs.resizingRequested) {
+                RespImgs.lazyResize();
+            }
+        });
+    } else {
+        this.resizingRequested = true;
+    }
+};
 
 // run the code
 RespImgs.lazyLoadImages();
+
+window.onresize = RespImgs.lazyResize;
 
 
 //timeoutOffset = false;

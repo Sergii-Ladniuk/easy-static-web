@@ -57,6 +57,13 @@ module.exports = function (data) {
             data.imageInfo = imageInfo;
             return data;
         })
+        .then(function (data) {
+            return data.oldData;
+        })
+        .then(function(oldData) {
+            data.oldData = oldData;
+            return data;
+        })
         .then(loadContent)
         .map(readMetadata)
         .map(preprocess)

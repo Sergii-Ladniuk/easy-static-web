@@ -17,21 +17,28 @@ var pageSize = 15;
 
 module.exports = function (data) {
 
+    var tasks = [];
+
     data.categories.forEach(function (category) {
         var f = renderIndexFunction(
             pageSize,
             category.path
                 ? path.join('category', category.path[0], category.path[1])
                 : path.join('category', category.niceName));
-        f(data, category.posts);
+        var promise = f(data, category.posts);
+
+        tasks.push(promise);
     });
+
     data.tags.forEach(function (tag) {
         var f = renderIndexFunction(
             pageSize,
             path.join('tag', tag.slug));
-        f(data, tag.posts);
+        var promise = f(data, tag.posts);
+        tasks.push(promise);
     });
 
+    return Promise.all(tasks);
 };
 
 

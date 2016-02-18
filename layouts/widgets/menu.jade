@@ -1,9 +1,16 @@
+//.navbar-fixed-top
 div.navbar.navbar-default
+    div.navbar-header
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#mainMenu")#toggle-menu
+            //span="Меню"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
     div.container-fluid
-        div.navbar-header
-            a.navbar-brand(href="/#/")="Главная"
-        div.navbar-collapse.collapse
+        div.navbar-collapse.collapse#mainMenu
             ul.nav.navbar-nav
+                li
+                    a(href="/#/")="Главная"
                 each itemName in menuRootOrder
                     - var item = menu[itemName]
                     if item.children

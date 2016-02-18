@@ -6,4 +6,5 @@ $(function() {
             offset: {top:100}
         });
     }
+    //$('.navbar').affix({offset: {top: 100} });
 })

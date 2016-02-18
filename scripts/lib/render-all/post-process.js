@@ -12,7 +12,7 @@ function postProcessHtml(data, html) {
     var resultHtml = html;
 
 
-    return new Promise(function(postProcessDone) {
+    return new Promise(function (postProcessDone) {
         data.responsiveImgSettings
             .then(function (responsiveImgSettings) {
                 var tasks = [];
@@ -23,10 +23,9 @@ function postProcessHtml(data, html) {
                 var sizeRegex = /data-size *= *[\"\'](.*?)[\"\']/;
                 var match;
                 while (match = imgRegex.exec(html)) {
-                    (function (match) {
-                        var oldImgTag = match[0];
-                        var attrs = match[1];
-                        var src = srcRegex.exec(attrs)[1];
+                    var attrs = match[1];
+                    var src = srcRegex.exec(attrs)[1];
+                    if (/localhost:4000/.test(src)) {
                         var sizeMatch = sizeRegex.exec(attrs);
                         var sizeClass = sizeMatch && sizeMatch[1] ? sizeMatch[1] : '';
                         var altMatch = altRegex.exec(attrs);
@@ -34,32 +33,34 @@ function postProcessHtml(data, html) {
                         var titleMatch = titleRegex.exec(title);
                         var title = titleMatch && titleMatch[1] ? titleMatch[1] : '';
 
-                        if (/localhost:4000/.test(src)) {
-                            tasks.push(new Promise(function(done) {
-                                var promise = responsiveImg.handleImg(data, src, alt, title, {lg: 800, md: 570, sm: 330});
-                                promise.then(function (newImgTag) {
-                                    if (newImgTag) {
-                                        done({
-                                            oldImgTag: oldImgTag,
-                                            newImgTag: newImgTag
-                                        });
-                                    } else {
-                                        done(false);
-                                    }
-                                });
-                            }));
-                        }
-
-                    })(match);
+                        (function (oldImgTag, src, alt, title) {
+                            var promise = new Promise(function (done) {
+                                responsiveImg.handleImg(data, src, alt, title, {
+                                        lg: 800,
+                                        md: 570,
+                                        sm: 330
+                                    })
+                                    .then(function (newImgTag) {
+                                        if (newImgTag) {
+                                            done({
+                                                oldImgTag: oldImgTag,
+                                                newImgTag: newImgTag
+                                            });
+                                        } else {
+                                            done(false);
+                                        }
+                                    });
+                            });
+                            tasks.push(promise);
+                        })(match[0], src, alt, title);
+                    }
                 }
                 return tasks;
             })
-            .each(function(toReplace) {
+            .each(function (toReplace) {
                 reportProgress();
                 if (toReplace) {
                     resultHtml = resultHtml.replace(toReplace.oldImgTag, toReplace.newImgTag);
-                } else {
-                    console.log('skip replace')
                 }
             })
             .then(function () {

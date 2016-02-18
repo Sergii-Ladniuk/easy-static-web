@@ -1,11 +1,14 @@
+'use strict';
 var general = require('../general');
 
+var fs = general.fs;
 var mm = require('./meta-marked');
 var marked = require('marked');
 var extend = require('extend');
 var os = require('os');
 var newline = os.EOL;
 var util = require('util');
+var equal = require('deep-equal');
 
 var processMetadata = function (data) {
     try {
@@ -16,9 +19,51 @@ var processMetadata = function (data) {
 
         extend(true, target, parsedData);
 
-        ['featured-tag','featured-category'].forEach(function (item) {
+        target.meta.seo = target.meta.seo || {};
+        target.meta.seo.keywords = target.meta.seo.keywords || '';
+        target.meta.seo.keywords = target.meta.seo.keywords.split(',').map(function (kw) {
+            return kw.replace(/^ +/g, '').replace(/ $/g, '');
+        }).filter(function (kw) {
+            return kw;
+        });
+        //    .map(function(kw) {
+        //    // ((камбоджа!!) ((ангор ват!!храм ангор)) ((отзывы!!негативные отзывы!!советы!!на велосипеде))
+        //    function simplify(kw) {
+        //        if (!/\(\(/.test(kw)) {
+        //            return [kw];
+        //        } else {
+        //            var regex = /(.*?)\[(.*?)\](.*)/;
+        //
+        //        }
+        //    }
+        //});
+
+
+        ['featured-tag', 'featured-category'].forEach(function (item) {
             target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
         });
+
+        target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
+
+        //var oldPost = data.basic.oldData[target.path];
+        //
+        //delete oldPost.meta.img;
+        //target.changes = {
+        //    meta: !equal(oldPost.meta, target.meta),
+        //    md: !equal(oldPost.markdown, target.markdown)
+        //};
+        //
+        //if (oldPost) {
+        //    if (target.changes.meta || target.changes.md) {
+        //        var date = new Date();
+        //        var updatedText = target.text.replace(/modifiedDate\: *[\'\"].*?[\'\"]/,
+        //            "modifiedDate: '" +
+        //            date.toISOString().replace('T',' ').replace('Z','') + "'");
+        //        target.meta.modifiedDate = date;
+        //        console.log(target.path, 'changed')
+        //        fs.writeFileAsync(target.path, updatedText);
+        //    }
+        //}
 
         extend(data.common, {
             categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
@@ -55,7 +100,7 @@ function arrayifyIfString(item) {
 }
 
 function slugifyAll(arr) {
-    return !arr || !arr.length ? [] : arr.map(function(item) {
+    return !arr || !arr.length ? [] : arr.map(function (item) {
         return general.util.slugifyOnly(item);
     })
 }

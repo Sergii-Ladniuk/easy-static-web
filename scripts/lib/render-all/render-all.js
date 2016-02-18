@@ -9,7 +9,9 @@ var renderWidgets = require('./render-widgets');
 var renderIndex = require('./render-index');
 var renderSingleAll = require('./render-single-all');
 var renderCategoryLists = require('./render-category-and-tags-lists');
+var renderRss = require('./render-rss');
 var respImgs = require('../render-all/responsive-imgs');
+var sitemapRenderer = require('./render-sitemap');
 
 /**
  * In case if some properties of `data` object are promises,
@@ -46,21 +48,28 @@ module.exports = function (data) {
             .then(renderWidgets)
             .then(function (data) {
                 var renderSingleAllPromise = renderSingleAll(data);
-                renderSingleAllPromise.then(function () {
-                    console.log('render single done!!')
-                })
                 Promise.join(
                     renderIndex(data),
-                    renderSingleAllPromise
-                    ,
-                    renderCategoryLists(data)
-                    )
-                    .then(function() {
+                    renderSingleAllPromise,
+                    renderRss(data),
+                    renderCategoryLists(data))
+                    .then(function () {
                         console.log('saveImgInfo')
                         respImgs.saveImgInfo(data)
                     })
-                    .then(function(){
-                        respImgs.removeUseless(data)
+                    .then(function () {
+                        return respImgs.removeUseless(data)
+                    })
+                    .then(function () {
+                        data.list.forEach(function (post) {
+                            delete post.related;
+                        })
+                        return fs.writeFileAsync(data.settings.path.oldData, JSON.stringify({
+                            posts: data.list
+                        }, null, 4));
+                    })
+                    .then(function () {
+                        sitemapRenderer.render(data);
                     })
                     .then(renderAllDone);
             });

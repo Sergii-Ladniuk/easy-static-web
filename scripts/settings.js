@@ -20,10 +20,14 @@ exports.load = new Promise(function (resolve, reject) {
                 // temporary fpr hugo
                 exports.settings.path.publicFolder = path.join(exports.settings.path.blog, "/public/")
                 // new approach
-                exports.settings.path.public = {_: path.join(exports.settings.path.blog, "/public-debug/")}
-                exports.settings.path.public.img = path.join(exports.settings.path.public._, "img")
-                exports.settings.path.public_prod = {_: path.join(exports.settings.path.blog, "/public/")}
-                exports.settings.path.public_prod.img = path.join(exports.settings.path.public_prod._, "img")
+                exports.settings.path.public = exports.settings.path.public
+                    || {_: path.join(exports.settings.path.blog, "/public-debug/")};
+                exports.settings.path.public.img = exports.settings.path.public.img
+                    || path.join(exports.settings.path.public._, "img");
+                exports.settings.path.public_prod = exports.settings.path.public_prod
+                    || {_: path.join(exports.settings.path.blog, "/public/")}
+                exports.settings.path.public_prod.img = exports.settings.path.public_prod.img
+                    || path.join(exports.settings.path.public_prod._, "img")
 
                 exports.settings.path.pagesFolder = path.join(exports.settings.path.blog, "/public/page/")
 
@@ -46,6 +50,7 @@ exports.load = new Promise(function (resolve, reject) {
                 exports.settings.path.content_pages_published = path.join(exports.settings.path.content_pages, "published")
 
                 exports.settings.path.responsiveImgSettings = path.join(exports.settings.path.content, "responsive-img-settings.json");
+                exports.settings.path.oldData = path.join(exports.settings.path.content, "old-data.json");
 
                 exports.settings.path.imageInfo = path.join(exports.settings.path.content, "images.json")
                 exports.settings.path.tags = exports.settings.path.content + "/tags.json"
