@@ -161,26 +161,11 @@ module.exports = function (grunt) {
         clean: {
             bower: [
                 "lib"
-            ],
-            pretty: [
-                "public-pretty"
             ]
-        },
-        prettify: {
-            options: {
-            },
-            all: {
-                expand: true,
-                cwd: 'public-debug',
-                ext: '.html',
-                src: ['**/*.html'],
-                dest: 'public-pretty'
-            }
         }
     });
 
 
-    grunt.loadNpmTasks('grunt-prettify');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-responsive-images');
@@ -211,7 +196,6 @@ module.exports = function (grunt) {
             done(true);
         });
     });
-
     grunt.registerTask('new', function () {
         var type = grunt.option('type') || 'post';
         var imgPattern = grunt.option('img') || '';
@@ -231,16 +215,11 @@ module.exports = function (grunt) {
         var done = this.async();
         require('./scripts/new-post')(title, imgPattern, alt, type);
     });
-
     grunt.registerTask('run-generate', function () {
         var done = this.async();
         require('./scripts/generate').generate().then(done);
     });
-
     grunt.registerTask('generate', ['static', 'run-generate']);
     grunt.registerTask('import', ['init', 'run-import']);
-
     grunt.registerTask('all', ['import', 'generate']);
-
-    grunt.registerTask('pretty-html', ['prettify', 'copy-pretty', 'clean:pretty']);
 };

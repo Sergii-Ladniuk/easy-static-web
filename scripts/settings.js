@@ -20,10 +20,14 @@ exports.load = new Promise(function (resolve, reject) {
                 // temporary fpr hugo
                 exports.settings.path.publicFolder = path.join(exports.settings.path.blog, "/public/")
                 // new approach
-                exports.settings.path.public = {_: path.join(exports.settings.path.blog, "/public-debug/")}
-                exports.settings.path.public.img = path.join(exports.settings.path.public._, "img")
-                exports.settings.path.public_prod = {_: path.join(exports.settings.path.blog, "/public/")}
-                exports.settings.path.public_prod.img = path.join(exports.settings.path.public_prod._, "img")
+                exports.settings.path.public = exports.settings.path.public
+                    || {_: path.join(exports.settings.path.blog, "/public-debug/")};
+                exports.settings.path.public.img = exports.settings.path.public.img
+                    || path.join(exports.settings.path.public._, "img");
+                exports.settings.path.public_prod = exports.settings.path.public_prod
+                    || {_: path.join(exports.settings.path.blog, "/public/")}
+                exports.settings.path.public_prod.img = exports.settings.path.public_prod.img
+                    || path.join(exports.settings.path.public_prod._, "img")
 
                 exports.settings.path.pagesFolder = path.join(exports.settings.path.blog, "/public/page/")
 
