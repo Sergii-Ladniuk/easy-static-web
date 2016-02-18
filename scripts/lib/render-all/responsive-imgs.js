@@ -281,42 +281,42 @@ function listImages(data) {
 }
 
 exports.removeUseless = function (data) {
-    var imageInfo = data.imageInfo || data.basic.imageInfo;
-    var imgFolder = data.settings.path.static.img;
-    var unusedFolder = path.join(imgFolder, 'unused');
-    var usedFolderJpg = path.join(imgFolder, 'used-jpg');
-    var usedFolderOther = path.join(imgFolder, 'used-other');
-    var postFinder = findit(imgFolder);
-    var imgFolderPublic = data.settings.path.static.img;
-
-    var tasks = [];
-
-    var dirs = [
-        mkdirp(unusedFolder),
-        mkdirp(usedFolderJpg),
-        mkdirp(usedFolderOther)
-    ];
-    return Promise.all(dirs)
-        .then(function () {
-            return Promise.map(listImages(data), function (filePath) {
-                var name = path.basename(filePath);
-                var ext = path.extname(filePath);
-                var promise;
-                if (!imageInfo.images[name]) {
-                    promise = ncp(filePath, path.join(unusedFolder, name))
-                } else {
-                    if (ext === '.jpg') {
-                        promise = ncp(filePath, path.join(usedFolderJpg, name))
-                    } else {
-                        promise = ncp(filePath, path.join(usedFolderOther, name))
-                    }
-                }
-                return promise;
-            }, {concurrency: 5});
-        })
-        .then(function () {
-            console.log('remove unused img done');
-        })
+    //var imageInfo = data.imageInfo || data.basic.imageInfo;
+    //var imgFolder = data.settings.path.static.img;
+    //var unusedFolder = path.join(imgFolder, 'unused');
+    //var usedFolderJpg = path.join(imgFolder, 'used-jpg');
+    //var usedFolderOther = path.join(imgFolder, 'used-other');
+    //var postFinder = findit(imgFolder);
+    //var imgFolderPublic = data.settings.path.static.img;
+    //
+    //var tasks = [];
+    //
+    //var dirs = [
+    //    mkdirp(unusedFolder),
+    //    mkdirp(usedFolderJpg),
+    //    mkdirp(usedFolderOther)
+    //];
+    //return Promise.all(dirs)
+    //    .then(function () {
+    //        return Promise.map(listImages(data), function (filePath) {
+    //            var name = path.basename(filePath);
+    //            var ext = path.extname(filePath);
+    //            var promise;
+    //            if (!imageInfo.images[name]) {
+    //                promise = ncp(filePath, path.join(unusedFolder, name))
+    //            } else {
+    //                if (ext === '.jpg') {
+    //                    promise = ncp(filePath, path.join(usedFolderJpg, name))
+    //                } else {
+    //                    promise = ncp(filePath, path.join(usedFolderOther, name))
+    //                }
+    //            }
+    //            return promise;
+    //        }, {concurrency: 5});
+    //    })
+    //    .then(function () {
+    //        console.log('remove unused img done');
+    //    })
 };
 
 exports.handleImg = handleImg;

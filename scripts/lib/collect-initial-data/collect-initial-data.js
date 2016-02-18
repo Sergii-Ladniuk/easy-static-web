@@ -1,3 +1,7 @@
+'use strict';
+var general = require('../general');
+
+var fs = general.fs;
 var extend = require('extend');
 var loadCategoriesTree = require('./load-categories-tree');
 var loadTagsInfo = require('./load-tags-info');
@@ -7,14 +11,23 @@ var loadRelatedPostsInfo = require('./load-related-tag-texts');
 var persistedDataManager = require('./persisted-data-manager');
 
 module.exports = function (settings, db) {
-    var data = {
-        settings: settings
-    };
     var jadeTemplates = compileTemplates(settings);
     return {
         imageInfoPromise: persistedDataManager.loadImageInfo(settings),
         responsiveImgSettings: persistedDataManager.loadResponsiveImgSettings(settings),
         jadeTemplates: jadeTemplates,
+        oldData: fs.readFileAsync(settings.path.oldData, 'utf-8').then(function (oldData) {
+            var result = !oldData
+                ? {} :
+                JSON.parse(oldData).posts.map(function(post) {
+                    var entry = {};
+                    entry [post.path] = post;
+                    return entry;
+                }).reduce(extend);
+            return result;
+        }).catch(function () {
+            return {};
+        }),
         renderBlockingPromise: Promise.map(
             [
                 loadCategoriesTree, loadTagsInfo,

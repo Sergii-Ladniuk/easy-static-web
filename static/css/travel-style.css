@@ -14,6 +14,11 @@ img {
     width: 100%;
 }
 
+.lazy-load {
+    width: 100%;
+    max-width: 800px;
+}
+
 .post img, .post div {
     display: block;
     margin: 1.5em 0 1.5em 0;

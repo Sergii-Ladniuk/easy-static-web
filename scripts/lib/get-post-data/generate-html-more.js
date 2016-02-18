@@ -121,7 +121,7 @@ module.exports = function (data) {
     // skip toc in the post summary
     post.summary = post.summary.replace(/\[ *?toc *?\]/g, '');
 
-    delete post.markdown;
+//    delete post.markdown;
 
     return data;
 };

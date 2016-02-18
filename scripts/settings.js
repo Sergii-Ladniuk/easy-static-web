@@ -46,6 +46,7 @@ exports.load = new Promise(function (resolve, reject) {
                 exports.settings.path.content_pages_published = path.join(exports.settings.path.content_pages, "published")
 
                 exports.settings.path.responsiveImgSettings = path.join(exports.settings.path.content, "responsive-img-settings.json");
+                exports.settings.path.oldData = path.join(exports.settings.path.content, "old-data.json");
 
                 exports.settings.path.imageInfo = path.join(exports.settings.path.content, "images.json")
                 exports.settings.path.tags = exports.settings.path.content + "/tags.json"

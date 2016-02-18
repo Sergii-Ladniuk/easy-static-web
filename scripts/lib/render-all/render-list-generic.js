@@ -1,5 +1,6 @@
 var renderPage = require('./render-page');
 var saveContent = require('./save-content');
+var sitemapRenderer = require('./render-sitemap');
 
 function renderIndexPage(data, page, meta) {
     return renderPage(data, page, 'index.jade', meta);
@@ -10,6 +11,7 @@ function savePage(htmlPromise, index, data, folder) {
 }
 
 function renderIndexFunction(pageSize, folder) {
+    sitemapRenderer.add('http://marinatravelblog.com/' + (folder || ''), 'weekly', folder ? 0.3 : 1.0);
     return doRenderIndexFunction(renderIndexPage, savePage, pageSize, folder);
 }
 
