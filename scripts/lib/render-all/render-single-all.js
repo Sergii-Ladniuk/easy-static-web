@@ -17,7 +17,7 @@ const renderSingleAll = function (data) {
             return content;
         }),
         function (content) {
-            var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
+                var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
             sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug, 'monthly', content.priority);
             if (!promise.then) {
                 throw new Error('bad promise')

@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
-			"font-awesome-css": {
+            "font-awesome-css": {
                 expand: true,
                 cwd: 'static/components/font-awesome/css/',
                 src: 'font-awesome.min.css',
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
-			"font-awesome-fonts": {
+            "font-awesome-fonts": {
                 expand: true,
                 cwd: 'static/components/font-awesome/fonts/',
                 src: 'fontawesome-webfont.*',
@@ -151,7 +151,7 @@ module.exports = function (grunt) {
             init: {
                 options: {
                     create: ['content/posts/drafts', 'content/posts/published',
-                        'content/pages/drafts', 'content/pages/published', 'public-debug/img','public/img']
+                        'content/pages/drafts', 'content/pages/published', 'public-debug/img', 'public/img']
                 }
             }
         },
@@ -161,7 +161,14 @@ module.exports = function (grunt) {
         clean: {
             bower: [
                 "lib"
-            ]
+            ],
+            "public-debug": {
+                contents: [
+                    "public-debug",
+                    "!public-debug/img",
+                    "!public-debug/img/**"
+                ]
+            }
         }
     });
 
@@ -184,7 +191,7 @@ module.exports = function (grunt) {
     grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js',
         'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
         'copy:bootstrap-fonts', 'copy:font-awesome-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon','copy:boostrap-theme']);
+        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon', 'copy:boostrap-theme']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
@@ -214,6 +221,12 @@ module.exports = function (grunt) {
 
         var done = this.async();
         require('./scripts/new-post')(title, imgPattern, alt, type);
+    });
+    grunt.registerTask('load-settings', function () {
+        var done = this.async();
+        require('./scripts/settings').load.then(function (settings) {
+            this.customSettings = settings;
+        });
     });
     grunt.registerTask('run-generate', function () {
         var done = this.async();

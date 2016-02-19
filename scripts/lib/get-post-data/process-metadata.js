@@ -82,6 +82,7 @@ var processMetadata = function (data) {
         });
         target.link = target.meta.link = target.meta.link || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
         delete target.text;
+
         return data;
     } catch (e) {
         e.message = "\nFailed to process " + data.target.path + " (metadata error)\n" + e.message;

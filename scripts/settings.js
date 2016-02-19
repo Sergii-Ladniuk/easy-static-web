@@ -17,9 +17,6 @@ exports.load = new Promise(function (resolve, reject) {
 
                 exports.settings.path.wpContentFolder = exports.settings.path.blog + "/content_from_wp"
 
-                // temporary fpr hugo
-                exports.settings.path.publicFolder = path.join(exports.settings.path.blog, "/public/")
-                // new approach
                 exports.settings.path.public = exports.settings.path.public
                     || {_: path.join(exports.settings.path.blog, "/public-debug/")};
                 exports.settings.path.public.img = exports.settings.path.public.img
@@ -39,7 +36,6 @@ exports.load = new Promise(function (resolve, reject) {
                 exports.settings.path.static.css = path.join(exports.settings.path.static._, "css")
 
                 exports.settings.path.oldImgs = exports.settings.path.blog + "/zz_all_wp_img_bk"
-                exports.settings.path.hugoContentFolder = exports.settings.path.blog + "content"
 
                 exports.settings.path.content = path.join(exports.settings.path.blog, "content")
                 exports.settings.path.content_posts = path.join(exports.settings.path.content, "posts")

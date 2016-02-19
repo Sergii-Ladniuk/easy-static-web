@@ -102,10 +102,10 @@ var parseMore = function (post, settings) {
 }
 
 module.exports = function (data) {
-    var post = data.target;
 
     return handleEmbeds(data)
         .then(function () {
+            var post = data.target;
             var tocTemplate = '<%= depth %><%= bullet %>[<%= heading %>](' + 'http://localhost:4000/' + post.meta.slug + '/#<%= url %>)\n';
             var table = '## Содержание ##' + newline
                 + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
@@ -129,11 +129,11 @@ module.exports = function (data) {
 };
 
 function handleEmbeds(data) {
-    var post = data.target;
     return data.basic.renderBlockingPromise.then(function (promises) {
             return promises.embedTemplates;
         })
         .then(function (embed) {
+            var post = data.target;
             var toReplace = [];
             var tasks = [];
             embed.forEach(function (templateDef) {
