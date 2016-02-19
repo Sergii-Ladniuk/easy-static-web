@@ -47,6 +47,13 @@ module.exports = function (data) {
             .then(processMenu)
             .then(renderWidgets)
             .then(function (data) {
+                //require('fs').writeFileSync('/Users/sergii/dev/blog/_data.json', JSON.stringify(
+                //    data.list.map(function (post) {
+                //        var post = extend({}, post);
+                //        delete post.related;
+                //        return post;
+                //    }),
+                //    null, 4));
                 var renderSingleAllPromise = renderSingleAll(data);
                 Promise.join(
                     renderIndex(data),

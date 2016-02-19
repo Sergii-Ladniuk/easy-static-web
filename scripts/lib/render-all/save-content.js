@@ -5,19 +5,19 @@ var path = require('path');
 var postProcessHtml = require('./post-process').postProcessHtml;
 
 function saveContent(data, htmlPromise, index, folder, ext, fileName) {
-    ext = ext || "html";
-    fileName = fileName || 'index';
-    var html2save;
-    var indexPath;
-
-    if (!htmlPromise.then) {
-        var text = htmlPromise;
-        htmlPromise = new Promise(function(done) {
-            done(text);
-        });
-    }
-
+    var ext = ext || "html";
+    var fileName = fileName || 'index';
     return new Promise(function (saveContentDone) {
+        var html2save;
+        var indexPath;
+
+        if (!htmlPromise.then) {
+            var text = htmlPromise;
+            htmlPromise = new Promise(function(done) {
+                done(text);
+            });
+        }
+
         htmlPromise.then(function (html) {
             return ext === 'html' ? postProcessHtml(data, html) : html;
         }).then(function (html) {
@@ -37,7 +37,7 @@ function saveContent(data, htmlPromise, index, folder, ext, fileName) {
             if (!index) {
                 return dir;
             } else {
-                dir = path.join(dir, index.toString());
+                dir = path.join(dir, 'page/' + index.toString());
                 return mkdirp(dir).then(function () {
                     return dir;
                 })

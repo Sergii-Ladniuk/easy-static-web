@@ -5,9 +5,10 @@ var sitemapRenderer = require('./render-sitemap');
 const renderSingleAll = function (data) {
     var postIndex = 4;
     var promise = Promise.map(data.list
-        .filter(function (content) {
-            return content.meta.type === 'post'
-        })
+        // TODO why added this while doing responsive imgs??
+        //.filter(function (content) {
+            //return content.meta.type === 'post'
+        //})
         .map(function (content) {
             postIndex++
             content.priority = Math.floor( 10 - postIndex / 2) / 10;

@@ -9,10 +9,8 @@ function reportProgress() {
 }
 
 function postProcessHtml(data, html) {
-    var resultHtml = html;
-
-
     return new Promise(function (postProcessDone) {
+        var resultHtml = html;
         data.responsiveImgSettings
             .then(function (responsiveImgSettings) {
                 var tasks = [];
