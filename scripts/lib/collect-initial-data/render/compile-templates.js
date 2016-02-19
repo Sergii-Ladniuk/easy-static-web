@@ -1,4 +1,4 @@
-global.Promise = require('bluebird');
+var general = require('../../general');
 const fs = Promise.promisifyAll(require('fs'));
 const findit = Promise.promisifyAll(require('findit'));
 const path = require('path');
@@ -22,24 +22,39 @@ function parseFileName(filePath) {
     var info = path.parse(filePath);
     return {
         compile: info.ext === '.jade',
-        name: info.base
+        name: info.base,
+        ext: info.ext
     };
 }
 
 function iterateTemplates(settings) {
     var finder = findit(settings.path.layouts);
     var templates = {};
+    var embed = [];
     finder.on('file', function (filePath) {
         var info = parseFileName(filePath);
-        if (info.compile) {
-            templates[info.name] = compileOneTemplate(filePath);
-        } else {
-            templates[info.name] = readOneTemplate(filePath);
+        if (info.ext === '.html' || info.ext === '.jade') {
+            if (info.compile) {
+                templates[info.name] = compileOneTemplate(filePath);
+            } else {
+                templates[info.name] = readOneTemplate(filePath);
+            }
+            embed.push({
+                name: info.name,
+                regexp: new RegExp('\\['
+                    + path.parse(general.util.escapeRegExp(info.name)).name.replace(/\-/g, '\\-')
+                    + ' *(.*?) *\\]', 'g'),
+                template: templates[info.name]
+            });
         }
     });
     return new Promise(function (done) {
         finder.on('end', function () {
-            done({jadeTemplates: templates})
+            done(
+                {
+                    jadeTemplates: templates,
+                    embedTemplates: embed
+                })
         })
     })
 }

@@ -104,24 +104,68 @@ var parseMore = function (post, settings) {
 module.exports = function (data) {
     var post = data.target;
 
-    var tocTemplate = '<%= depth %><%= bullet %>[<%= heading %>](' + 'http://localhost:4000/' + post.meta.slug + '/#<%= url %>)\n';
-    var table = '## Содержание ##' + newline
-        + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
-    var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
+    return handleEmbeds(data)
+        .then(function () {
+            var tocTemplate = '<%= depth %><%= bullet %>[<%= heading %>](' + 'http://localhost:4000/' + post.meta.slug + '/#<%= url %>)\n';
+            var table = '## Содержание ##' + newline
+                + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
+            var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
 
-    var rendererObj = renderer(data);
-    post.html = marked(post.markdown, {renderer: rendererObj});
-    post.meta.img = rendererObj.firstImage;
+            var rendererObj = renderer(data);
+            post.html = marked(post.markdown, {renderer: rendererObj});
 
-    parseMore(post, data.basic.settings);
+            post.meta.img = rendererObj.firstImage;
 
-    // replace [toc] with the table of contents
-    post.html = post.html.replace(/\[ *?toc *?\]/g, tableHtml).replace(/<!-- *?toc *?-->/g, tableHtml);
+            parseMore(post, data.basic.settings);
 
-    // skip toc in the post summary
-    post.summary = post.summary.replace(/\[ *?toc *?\]/g, '');
+            // replace [toc] with the table of contents
+            post.html = post.html.replace(/\[ *?toc *?\]/g, tableHtml).replace(/<!-- *?toc *?-->/g, tableHtml);
 
-//    delete post.markdown;
+            // skip toc in the post summary
+            post.summary = post.summary.replace(/\[ *?toc *?\]/g, '');
 
-    return data;
+            return data;
+        })
 };
+
+function handleEmbeds(data) {
+    var post = data.target;
+    return data.basic.renderBlockingPromise.then(function (promises) {
+            return promises.embedTemplates;
+        })
+        .then(function (embed) {
+            var toReplace = [];
+            var tasks = [];
+            embed.forEach(function (templateDef) {
+                var match;
+                while (match = templateDef.regexp.exec(post.markdown)) {
+                    var item = match[0];
+                    var attrsRaw = match[1];
+
+                    var attrRegex = /(.*)?=\"(.*?)\"/g;
+                    var attrMatch;
+                    var attrs = {};
+                    while (attrMatch = attrRegex.exec(attrsRaw)) {
+                        var name = attrMatch[1];
+                        var val = attrMatch[2];
+                        attrs[name] = val;
+                    }
+
+                    var nextReplacement = templateDef.template.then(function (template) {
+                        return {
+                            src: item,
+                            dest: template(attrs)
+                        };
+                    });
+                    toReplace.push(nextReplacement);
+                }
+                var promise = Promise.map(toReplace, function (next) {
+                    post.markdown = post.markdown.replace(next.src, next.dest);
+                });
+                tasks.push(Promise.all(promise));
+            });
+            return Promise.all(tasks).then(function () {
+                return data;
+            })
+        })
+}

@@ -19,7 +19,7 @@ var patches = [{
 
 function applyPatches(content) {
     patches.forEach(function (patch) {
-        if (target === patch.name && target === 'all') {
+        if (target === patch.name || target === 'all') {
             content = patch.transform(content);
         }
     });
@@ -28,7 +28,10 @@ function applyPatches(content) {
 
 
 function listContent() {
-    return general.util.listFiles(settings.path.public.img);
+    return general.util.listFiles(settings.path.content)
+        .filter(function (file) {
+            return path.extname(file) === '.md';
+        });
 }
 
 require('../settings.js').load
@@ -39,14 +42,14 @@ require('../settings.js').load
         Promise.map(
             listContent(),
             function (file) {
-                return fs.readFileAsync(file)
+                return fs.readFileAsync(file, 'utf-8')
                     .then(function (content) {
                         var contentUpdated = applyPatches(content);
                         return fs.writeFileAsync(file, contentUpdated);
                     })
             },
             {concurrency: 5})
-            .then(function() {
+            .then(function () {
                 console.log('done');
             })
     })
