@@ -46,7 +46,6 @@ function iterateTemplates(settings) {
                     + ' *(.*?) *\\]', 'g'),
                 template: templates[info.name]
             });
-            console.dir(embed[embed.length-1])
         }
     });
     return new Promise(function (done) {
