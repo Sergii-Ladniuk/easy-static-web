@@ -1,0 +1,30 @@
+div#paging-container
+    ul.pagination#paging
+        if(paging.pageIndex == 0)
+            li.disabled
+                a(href='#')
+                    span.fa.fa-arrow-left
+                    | Назад
+        else
+            li
+                a(href= paging.pageIndex === 1 ? paging.url : '#{paging.url}page/#{paging.pageIndex - 1}')
+                    span.fa.fa-arrow-left
+                    | Назад
+        - for(var i=paging.start;i< paging.start+ paging.pageNumber;i++) {
+            if (i == paging.pageIndex)
+                li.active
+                    a(href='#') #{i + 1}
+            else
+                li
+                    a(href= i === 0 ? paging.url : '#{paging.url}page/#{i}') #{i + 1}
+            - }
+        if(paging.pageIndex === paging.start+ paging.pageNumber - 1)
+            li.disabled
+                a(href='#')
+                    | Далее
+                    span.fa.fa-arrow-right
+        else
+            li
+                a(href='#{paging.url}page/#{paging.pageIndex + 1}')
+                    | Далее
+                    span.fa.fa-arrow-right

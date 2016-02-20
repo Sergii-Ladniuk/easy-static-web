@@ -1,7 +1,7 @@
-function renderTemplate(name, data, content, meta) {
+function renderTemplate(name, data, content, meta, paging) {
     if (content.then) {
         return content.then(function(content) {
-            return renderTemplate(name, data, content, meta);
+            return renderTemplate(name, data, content, meta,paging);
         })
     }
     return data.jadeTemplates[name].then(function (template) {
@@ -9,7 +9,8 @@ function renderTemplate(name, data, content, meta) {
             data: data,
             widgets: data.widgets,
             content: content,
-            meta: meta || {}
+            meta: meta || {},
+            paging: paging
         };
         return template(templateData);
     })

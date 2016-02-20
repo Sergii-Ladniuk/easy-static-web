@@ -37,7 +37,8 @@ exports.load = new Promise(function (resolve, reject) {
 
                 exports.settings.path.oldImgs = exports.settings.path.blog + "/zz_all_wp_img_bk"
 
-                exports.settings.path.content = path.join(exports.settings.path.blog, "content")
+                exports.settings.path.content = exports.settings.path.content
+                    || path.join(exports.settings.path.blog, "content")
                 exports.settings.path.content_posts = path.join(exports.settings.path.content, "posts")
                 exports.settings.path.content_posts_drafts = path.join(exports.settings.path.content_posts, "drafts")
                 exports.settings.path.content_posts_published = path.join(exports.settings.path.content_posts, "published")

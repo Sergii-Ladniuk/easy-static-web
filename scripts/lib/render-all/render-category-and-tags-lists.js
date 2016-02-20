@@ -13,7 +13,7 @@ var renderIndexFunction = require('./render-list-generic');
 
 
 // FIXME
-var pageSize = 15;
+var pageSize = 10;
 
 module.exports = function (data) {
 

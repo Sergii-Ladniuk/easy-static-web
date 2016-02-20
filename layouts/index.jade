@@ -4,3 +4,4 @@ include ./iterate-posts
             a(href=post.meta.link)=post.meta.title + (post.meta.draft ? '[DRAFT]' : '')
         div!=post.summary
         a(href=post.meta.link)!=post.more
+include ./partials/paging

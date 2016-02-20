@@ -2,8 +2,8 @@ var renderPage = require('./render-page');
 var saveContent = require('./save-content');
 var sitemapRenderer = require('./render-sitemap');
 
-function renderIndexPage(data, page, meta) {
-    return renderPage(data, page, 'index.jade', meta);
+function renderIndexPage(data, page, meta, paging) {
+    return renderPage(data, page, 'index.jade', meta, paging);
 }
 
 function savePage(htmlPromise, index, data, folder) {
@@ -22,19 +22,30 @@ function doRenderIndexFunction(renderPage, savePage, pageSize, folder) {
         var totalIndex = 0,
             currentIndex = 0,
             totalLength = list.length,
+            pageNumber = Math.floor(totalLength / pageSize),
             nextPage = [],
             pageIndex = 0,
             tasks = [];
 
+        if (!folder)
+            console.log(totalLength, pageNumber)
+
         function createPage() {
-            var promise = savePage(renderPage(data, nextPage), pageIndex++, data, folder);
+            var start = Math.max(0, pageIndex - Math.floor(pageSize/2));
+            var paging = {
+                pageNumber: Math.min(pageNumber-start+1, 10),
+                pageIndex: pageIndex,
+                start: start,
+                url: 'http://localhost:4000/' + (folder ? folder + '/' : '')
+            };
+            var promise = savePage(renderPage(data, nextPage, 'index.jade', paging), pageIndex++, data, folder);
             tasks.push(promise);
         }
 
         while (totalIndex < totalLength) {
             if (!list[totalIndex].meta.draft && list[totalIndex].meta.type === 'post') {
                 nextPage[currentIndex++] = list[totalIndex++];
-                if (currentIndex == pageSize) {
+                if (currentIndex == pageSize-1) {
                     createPage();
                     currentIndex = 0;
                     nextPage = [];
