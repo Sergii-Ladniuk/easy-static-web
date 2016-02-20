@@ -13,3 +13,8 @@ article
                             each relPost in relPostEntry.content
                                 li
                                     a(href=relPost.meta.link)=relPost.meta.title
+        div#disqus_thread
+        noscript
+            p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
+script
+    |var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';

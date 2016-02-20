@@ -38,6 +38,17 @@ var processMetadata = function (data) {
         //    }
         //});
 
+        if (!target.meta.shortLink) {
+            target.meta.shortLink = target.meta.link;
+            target.meta.id = target.meta.slug;
+        } else {
+            target.meta.id = /\?(.*)/.exec(target.meta.shortLink)[1];
+            var regExp = /page_id=(.*)/;
+            if (regExp.test(target.meta.id)) {
+                target.meta.id = target.meta.id.replace(regExp, '$1');
+            }
+        }
+
 
         ['featured-tag', 'featured-category'].forEach(function (item) {
             target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
