@@ -38,7 +38,7 @@ var processMetadata = function (data) {
         //    }
         //});
 
-        if (!target.meta.shortLink) {
+        if (!target.meta.shortLink || !/\?(.*)/.test(target.meta.shortLink)) {
             target.meta.shortLink = target.meta.link;
             target.meta.id = target.meta.slug;
         } else {
