@@ -42,10 +42,11 @@ function iterateTemplates(settings) {
             embed.push({
                 name: info.name,
                 regexp: new RegExp('\\['
-                    + path.parse(general.util.escapeRegExp(info.name)).name.replace(/\-/g, '\\-')
+                    + general.util.escapeRegExp(path.parse(info.name).name).replace(/\-/g, '\\-')
                     + ' *(.*?) *\\]', 'g'),
                 template: templates[info.name]
             });
+            console.dir(embed[embed.length-1])
         }
     });
     return new Promise(function (done) {
