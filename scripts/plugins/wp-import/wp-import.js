@@ -49,6 +49,7 @@ exports.import = function (xmlFileName) {
 
                 wpXmlPath = path.join(settings.path.wpXml, wpFilePath
                     || xmlFileName || 'marinatravelblogcom.wordpress.2016-02-10.xml');
+                console.log(wpXmlPath);
 
                 Promise.join(fs.readFileAsync(settings.path.wpJson, "utf-8"), fs.statAsync(wpXmlPath))
 

@@ -239,15 +239,15 @@ function handleImg(data, url, alt, title, sizes) {
 
     return new Promise(function (handleImgDone) {
         exists(srcPath).then(function (exists) {
+            var imageInfo = data.imageInfo || data.basic.imageInfo;
+            var info = imageInfo.images[fileName];
             if (exists) {
                 return Promise.join(
                     fs.statAsync(srcPath),
                     imgTemplate(data))
                     .spread(function (srcStats, template) {
-                        var imageInfo = data.imageInfo || data.basic.imageInfo;
                         if (typeof template !== 'function')
                             throw new Error('bad template');
-                        var info = imageInfo.images[fileName];
                         var srcModifiedDate = srcStats.mtime;
                         if (!info || !srcModifiedDate <= info.mtime) {
                             processImage(
@@ -258,7 +258,11 @@ function handleImg(data, url, alt, title, sizes) {
                         }
                     })
             } else {
-                handleImgDone(false);
+                if (info) {
+                    handleImgDone(imageInfo.images[fileName].html);
+                } else {
+                    handleImgDone(false);
+                }
             }
         });
     })

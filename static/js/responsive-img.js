@@ -53,32 +53,35 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
 
     var noscriptTag = children[0];
 
-    var imgAlt = noscriptTag.getAttribute("data-alt");
-    var imgUrl = noscriptTag.getAttribute("data-s");
-    var imgExt = noscriptTag.getAttribute("data-ext");
+    if (noscriptTag) {
 
-    //create element with correct size and insert it
-    var img = document.createElement("img");
+        var imgAlt = noscriptTag.getAttribute("data-alt");
+        var imgUrl = noscriptTag.getAttribute("data-s");
+        var imgExt = noscriptTag.getAttribute("data-ext");
 
-    if (imgAlt) {
-        img.setAttribute("alt", imgAlt);
+        //create element with correct size and insert it
+        var img = document.createElement("img");
+
+        if (imgAlt) {
+            img.setAttribute("alt", imgAlt);
+        }
+
+        var width = RespImgs.screenWidth;
+
+        var pre = RespImgs.getPrefix(RespImgs.screenWidth);
+
+        var baseUrl = 'http://localhost:4000/';
+
+        img.setAttribute('src', baseUrl + 'img/' + imgUrl + pre + imgExt);
+
+        if (children.length == 1) {
+            lazyLoadMe.appendChild(img);
+        } else {
+            lazyLoadMe.replaceChild(img, children[1]);
+        }
+
+        RespImgs.prevWidth = width;
     }
-
-    var width = RespImgs.screenWidth;
-
-    var pre = RespImgs.getPrefix(RespImgs.screenWidth);
-
-    var baseUrl = 'http://localhost:4000/';
-
-    img.setAttribute('src', baseUrl + 'img/' + imgUrl + pre + imgExt);
-
-    if (children.length == 1) {
-        lazyLoadMe.appendChild(img);
-    } else {
-        lazyLoadMe.replaceChild(img, children[1]);
-    }
-
-    RespImgs.prevWidth = width;
 };
 
 RespImgs.resizingNow = false;
