@@ -13,7 +13,9 @@
   {
     "footer.jade": [
       "return-to-top.html",
-      "js.jade"
+      "js.jade",
+      "metrics.html"
     ]
-  }
+  },
+  "copyright.jade"
 ]

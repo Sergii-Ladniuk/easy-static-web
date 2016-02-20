@@ -1,3 +1,4 @@
+var extend = require('extend');
 var renderTemplate = require('./render-template');
 
 function renderPage(data, content, template, meta, paging) {

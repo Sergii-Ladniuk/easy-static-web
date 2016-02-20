@@ -250,3 +250,6 @@ a {
     /*width: 140px;*/
 }
 
+.copyright > a {
+    margin-left: 1em;
+}

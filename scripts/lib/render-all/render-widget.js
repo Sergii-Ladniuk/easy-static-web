@@ -12,9 +12,13 @@ var renderWidget = function (name, data, children) {
 
         var html;
 
-        return data.jadeTemplates[name].then(function(widgetTemplate) {
+        return data.jadeTemplates[name].then(function (widgetTemplate) {
             if (ext === '.jade') {
-                var dataCopy = extend({widgets: children}, data);
+                var dataCopy = extend({
+                    widgets: children,
+                    year: new Date().getFullYear(),
+                    daysInTravel: Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24))
+                }, data);
                 html = widgetTemplate(dataCopy);
             } else {
                 html = widgetTemplate;
