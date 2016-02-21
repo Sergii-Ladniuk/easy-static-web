@@ -56,7 +56,7 @@ ol {
 ol > li {
     display: table;
     counter-increment: item;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.2em;
 }
 
 ol > li:before {
