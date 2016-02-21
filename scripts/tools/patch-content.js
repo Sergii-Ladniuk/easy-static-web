@@ -10,12 +10,23 @@ var argv = parseArgs(process.argv.slice(2));
 var target = argv.t || argv.target;
 var settings;
 
-var patches = [{
-    name: 'youtube',
-    transform: function (content) {
-        return content.replace(/\[embed](.*?)\[\/embed\][^]*?\[.*?\][^]*?\([^]*?\)/g, '[youtube src="$1"]');
+var patches = [
+    {
+        name: 'youtube',
+        transform: function (content) {
+            return content.replace(/\[embed](.*?)\[\/embed\][^]*?\[.*?\][^]*?\([^]*?\)/g, '[youtube src="$1"]');
+        }
+    },
+    {
+        name: 'captions',
+        transform: function (content) {
+            var newline = require('os').EOL;
+            return content
+                .replace(/\[caption.*?\](.*?\)) *(.*?) *\[\/caption\]/g, '$1' + newline + '_$2_' + newline)
+                .replace(/\[[\/]?caption.*?\]/g, '');
+        }
     }
-}];
+];
 
 function applyPatches(content) {
     patches.forEach(function (patch) {
@@ -52,4 +63,4 @@ require('../settings.js').load
             .then(function () {
                 console.log('done');
             })
-    })
+    });
