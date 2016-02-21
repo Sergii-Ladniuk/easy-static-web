@@ -253,3 +253,20 @@ a {
 .copyright > a {
     margin-left: 1em;
 }
+
+#banner,
+#banner-noscript {
+    width: 100%;
+    padding-bottom: 15%;
+    background-position: center;
+    background-size:cover;
+    margin-bottom:-0.5em;
+}
+#mainMenu{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+#banner-noscript{
+    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
+}

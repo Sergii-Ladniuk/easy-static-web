@@ -1,5 +1,6 @@
 [
   "menu.jade",
+  "banner.html",
   {
     "sidebar-right.jade": [
       "about-us.html",

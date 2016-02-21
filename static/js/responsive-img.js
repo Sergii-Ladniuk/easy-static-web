@@ -31,17 +31,27 @@ RespImgs.lazyLoadImages = function () {
         for (var i = 0; i < lazyloadUs.length; i++) {
             RespImgs.lazyloadImage(lazyloadUs[i]);
         }
+        document.getElementById('banner').style.backgroundImage = 'url(http://localhost:4000/img/' + 'Valley-of-fire-banner'
+            + RespImgs.getPrefix(RespImgs.screenWidth,true) + '.jpg)';
+        //if (RespImgs.trgMax)
+        //    document.getElementById('banner-holder').style.width = RespImgs.maxWidth + 'px';
+        //else
+        //    document.getElementById('banner-holder').style.maxWidth = RespImgs.maxWidth + 'px';
     }
 };
 
 RespImgs.prevWidth = 0;
 
-RespImgs.getPrefix = function (width) {
+RespImgs.getPrefix = function (width,vlg) {
+    RespImgs.trgMax = false;
     if (width <= 375) {
+        RespImgs.maxWidth = 375;
         return '-sm';
     } else if (width <= 600) {
+        RespImgs.maxWidth = 600;
         return '-md';
     } else {
+        RespImgs.maxWidth = 1440;
         return '';
     }
 };
