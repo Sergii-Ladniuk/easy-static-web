@@ -7,6 +7,12 @@ var postProcessHtml = require('./post-process').postProcessHtml;
 function saveContent(data, htmlPromise, index, folder, ext, fileName) {
     var ext = ext || "html";
     var fileName = fileName || 'index';
+
+    if (folder === '404') {
+        folder = '';
+        fileName = '404';
+    }
+
     return new Promise(function (saveContentDone) {
         var html2save;
         var indexPath;
