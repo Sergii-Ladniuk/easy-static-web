@@ -50,6 +50,7 @@ ol {
     counter-reset: item;
     margin: 0;
     padding: 0;
+    line-height: 1.2;
 }
 
 ol > li {
@@ -167,11 +168,16 @@ ul.nav > li:hover {
     line-height: 1;
 }
 
-.social-buttons a:hover,
 .btn-email-sidebar a:hover,
+.social-buttons a:hover,
 #paging:hover,
-a:hover {
+a:hover
+{
     color: #337bae;
+}
+
+.social-buttons a:visited {
+    color: #f25c00;
 }
 
 body {
