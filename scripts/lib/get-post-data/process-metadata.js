@@ -19,6 +19,11 @@ var processMetadata = function (data) {
 
         extend(true, target, parsedData);
 
+
+        if (!target.meta.slug) {
+            throw  new Error ("No slug specified for", target.path)
+        }
+
         target.meta.seo = target.meta.seo || {};
         target.meta.seo.keywords = target.meta.seo.keywords || '';
         target.meta.seo.keywords = target.meta.seo.keywords.split(',').map(function (kw) {
