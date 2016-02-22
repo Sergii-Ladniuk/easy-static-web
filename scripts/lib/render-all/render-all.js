@@ -256,6 +256,9 @@ function buildRelated(post, data) {
                 var text = next.textData[name];
 
                 if (!text) {
+                    if (!next.info[name]) {
+                        throw new Error('Unknown tag/category ' + name + ' in post ' + post.meta.slug);
+                    }
                     text = 'Читать больше в рубрике "' + next.info[name].name + '":';
                 }
 
