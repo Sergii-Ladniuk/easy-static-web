@@ -171,7 +171,8 @@ ul.nav > li:hover {
 .btn-email-sidebar a:hover,
 .social-buttons a:hover,
 #paging:hover,
-a:hover
+a:hover,
+.social-buttons a:visited:hover
 {
     color: #337bae;
 }
@@ -257,7 +258,7 @@ a {
 }
 
 .copyright > a {
-    margin-left: 1em;
+    margin-left: 0.5em;
 }
 
 #banner,
@@ -275,4 +276,8 @@ a {
 }
 #banner-noscript{
     background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
+}
+
+.social-buttons .fa  {
+    font-size: 32px;
 }
