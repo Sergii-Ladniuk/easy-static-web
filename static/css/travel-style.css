@@ -3,6 +3,14 @@ h1 {
     margin-top: 2em;
 }
 
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
 img {
     /*max-height: 100%;*/
     height: auto;
@@ -182,7 +190,7 @@ a:hover,
 }
 
 body {
-    font-size: 1.5em;
+    font-size: 1.6em;
 }
 
 #paging > li > a,
