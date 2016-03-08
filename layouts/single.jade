@@ -4,12 +4,10 @@ article
             a(href=content.meta.link)=content.meta.title
     !{content.html}
     footer
-        p
-            strong Понравилась запись? Обязательно поделись! :)
-        div#uptolike_holder_bottom
-        p
-        p
         if content.meta.type === 'post'
+            p
+                strong Понравилась запись? Обязательно поделись! :)
+            div#uptolike_holder_bottom
             .related-posts
                 each relPostEntry in content.related
                     if relPostEntry.content && relPostEntry.content.length > 0
@@ -18,14 +16,14 @@ article
                             each relPost in relPostEntry.content
                                 li
                                     a(href=relPost.meta.link)=relPost.meta.title
-        if (content.meta.slug !== '404')
-            div#uptolike_holder_side
-            p
             p
                 strong Остались вопросы? Есть уточнения или дополнения? Оставь комментарий!
-            div#disqus_thread
-            noscript
-                p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
+            if (content.meta.slug !== '404')
+                div#uptolike_holder_side
+
+        div#disqus_thread
+        noscript
+            p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
 script
-    |var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';
+    | var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';
 

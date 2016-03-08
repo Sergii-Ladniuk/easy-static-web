@@ -191,7 +191,7 @@ seo:
 #Useful file references
 
 ```settings.json``` test and prod websites, do-follow links, related-posts-max-length
-```single.jade``` single post structure
+```single.jade``` single post structure 
 ```tags.json``` all tags
 ```categories.json``` all categories
 ```menu.json``` top level of the menu structure
