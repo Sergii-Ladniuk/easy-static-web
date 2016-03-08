@@ -4,6 +4,11 @@ article
             a(href=content.meta.link)=content.meta.title
     !{content.html}
     footer
+        p
+            strong Понравилась запись? Обязательно поделись! :)
+        div#uptolike_holder_bottom
+        p
+        p
         if content.meta.type === 'post'
             .related-posts
                 each relPostEntry in content.related
@@ -15,7 +20,9 @@ article
                                     a(href=relPost.meta.link)=relPost.meta.title
         if (content.meta.slug !== '404')
             div#uptolike_holder_side
-            div#uptolike_holder_bottom
+            p
+            p
+                strong Остались вопросы? Есть уточнения или дополнения? Оставь комментарий!
             div#disqus_thread
             noscript
                 p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
