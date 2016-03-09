@@ -88,14 +88,16 @@ var parseMore = function (post, settings) {
     } else {
         // TODO more limit
         var msg = 'No more tag in the post ' + post.meta.slug;
-        if (!post['skip-more'] && !post.meta.draft &&
-            settings.generate['mandatory-more']
-            || settings.generate['mandatory-more-limit']
-            && settings.generate['mandatory-more-limit'] < post.markdown.length) {
-            throw new Error(msg)
-        }
-        else {
-            console.warn(msg)
+        if (!post.meta['no-more']) {
+            if (!post.meta.draft
+                && (settings.generate['mandatory-more']
+                || settings.generate['mandatory-more-limit']
+                && settings.generate['mandatory-more-limit'] < post.markdown.length)) {
+                throw new Error(msg)
+            }
+            else {
+                console.warn(msg);
+            }
         }
         post.summary = post.html;
     }
