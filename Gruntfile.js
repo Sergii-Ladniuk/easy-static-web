@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
 
+    var settings = require('./scripts/settings').loadSync();
+
     var img = grunt.option('img');
     //FIXME
     var imgPath = '/Users/sergii/dev/blog-hugo/' + img;
@@ -97,15 +99,6 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
-            "boostrap-theme": {
-                expand: true,
-                cwd: 'static/components/bower-bootswatch-flatly/css/',
-                src: 'flatly.min.css',
-                dest: './public-debug/css',
-                flatten: true,
-                filter: 'isFile'
-
-            },
             "jquery": {
                 expand: true,
                 cwd: 'static/components/jquery/dist/',
@@ -125,6 +118,14 @@ module.exports = function (grunt) {
             js: {
                 expand: true,
                 cwd: 'static/js',
+                src: '**',
+                dest: './public-debug/js',
+                flatten: true,
+                filter: 'isFile'
+            },
+            js1: {
+                expand: true,
+                cwd: 'static/js-alone',
                 src: '**',
                 dest: './public-debug/js',
                 flatten: true,
@@ -169,6 +170,38 @@ module.exports = function (grunt) {
                     "!public-debug/img/**"
                 ]
             }
+        },
+        uglify: {
+            options: {
+                ASCIIOnly: true
+            },
+            publish: {
+                files: {
+                     '../public/js/all.js': [
+                         'static/components/jquery/dist/jquery.min.js',
+                         'static/components/bootstrap/dist/js/bootstrap.min.js',
+                         'static/components/bootstrap-dropdown/index.js',
+                         'static/js/*.js']
+                }
+            },
+            'publish-alone': {
+                files: {
+                    '../public/js/no-defer.js': [
+                        'static/js-alone/*.js'
+                    ]
+                }
+            }
+        },
+        cssmin: {
+            options: {
+                preserveComments: 0,
+                keepSpecialComments: 0
+            },
+            publish: {
+                files: {
+                    '../public/css/all.css': ['public-debug/css/*.css']
+                }
+            }
         }
     });
 
@@ -178,20 +211,17 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-responsive-images');
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    //    grunt.loadNpmTasks('grunt-sharp');
     grunt.loadNpmTasks('grunt-imageoptim');
-
-    // Default task(s).
-    grunt.registerTask('ri', ['responsive_images']);
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
-//    grunt.registerTask('sharp', ['grunt-sharp']);
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
     grunt.registerTask('init', ['mkdir:init']);
 
-    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js',
+    grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:js1',
         'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
         'copy:bootstrap-fonts', 'copy:font-awesome-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon', 'copy:boostrap-theme']);
+        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
@@ -233,6 +263,8 @@ module.exports = function (grunt) {
         require('./scripts/generate').generate().then(done);
     });
     grunt.registerTask('generate', ['static', 'run-generate']);
+    grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin'])
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
+
 };
