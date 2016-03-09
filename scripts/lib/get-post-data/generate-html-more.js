@@ -11,6 +11,7 @@ var respImgs = require('../render-all/responsive-imgs');
 function renderer(data) {
     var settings = data.basic.settings;
     var renderer = new marked.Renderer();
+    var post = data.target;
 
     renderer.heading = function (text, level) {
         // todo use some slugify impl.
@@ -33,6 +34,7 @@ function renderer(data) {
         return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url);
     }
 
+    var currentImg, prevImg;
 
     renderer.image = function (href, title, alt) {
         href = fixUrl(href);
@@ -40,6 +42,19 @@ function renderer(data) {
         if (!this.firstImage) {
             this.firstImage = href;
         }
+
+        currentImg = {
+            src: href,
+            alt: alt,
+            title: title,
+            previous: prevImg
+        };
+
+        post.images.push(currentImg);
+        if (prevImg) {
+            prevImg.next = currentImg;
+        }
+        prevImg = currentImg;
 
         var out = '<img src="' + href + '" alt="' + alt + '"';
         if (title) {
@@ -112,6 +127,8 @@ module.exports = function (data) {
             var table = '## Содержание ##' + newline
                 + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
             var tableHtml = util.format('<div class="toc">%s</div>', marked(table));
+
+            post.images = post.images || [];
 
             var rendererObj = renderer(data);
             post.html = marked(post.markdown, {renderer: rendererObj});

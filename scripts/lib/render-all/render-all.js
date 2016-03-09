@@ -12,6 +12,7 @@ var renderCategoryLists = require('./render-category-and-tags-lists');
 var renderRss = require('./render-rss');
 var respImgs = require('../render-all/responsive-imgs');
 var sitemapRenderer = require('./render-sitemap');
+var renderImageLandings = require('./render-image-landing');
 
 /**
  * In case if some properties of `data` object are promises,
@@ -58,6 +59,7 @@ module.exports = function (data) {
                 Promise.join(
                     renderIndex(data),
                     renderSingleAllPromise,
+                    renderImageLandings(data),
                     renderRss(data),
                     renderCategoryLists(data))
                     .then(function () {

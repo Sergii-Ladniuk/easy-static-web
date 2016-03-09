@@ -20,6 +20,10 @@ img {
 img {
 }
 
+.img-nav {
+    margin-right: 3em;
+}
+
 .post .lazy-load img {
     display: inline;
     margin: 0;
