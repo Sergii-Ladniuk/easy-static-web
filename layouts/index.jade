@@ -4,4 +4,7 @@ include ./iterate-posts
             a(href=post.meta.link)=post.meta.title + (post.meta.draft ? '[DRAFT]' : '')
         div!=post.summary
         a(href=post.meta.link)!=post.more
+        div#comments.hidden
+            | Комментарии:
+            span.disqus-comment-count(data-disqus-url=post.meta.link.replace('localhost:4000', 'marinatravelblog.com'))
 include ./partials/paging

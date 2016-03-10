@@ -173,7 +173,7 @@ function handleEmbeds(data) {
                     var nextReplacement = templateDef.template.then(function (template) {
                         return {
                             src: item,
-                            dest: template(attrs)
+                            dest: typeof template === 'function' ? template(attrs) : template
                         };
                     });
                     toReplace.push(nextReplacement);
