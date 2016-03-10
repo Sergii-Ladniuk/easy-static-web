@@ -8,6 +8,18 @@ article
             p
                 strong Понравилась запись? Обязательно поделись! :)
             div#uptolike_holder_bottom
+            html
+                body
+                    strong
+                        p Подпишись и будь в курсе всех новостей! :)
+                        a(href='https://www.facebook.com/marinatravelblog')  Facebook |
+                        a(href='http://vk.com/marinatravelblog')  Вконтакте |
+                        a(href='https://instagram.com/sergii_ladniuk/')  Instagram |
+                        a(href='https://twitter.com/marinatravelblg/')  Twitter |
+                        a(href='https://www.youtube.com/c/marinatravelblog?sub_confirmation=1')  Youtube |
+                        a(href='https://plus.google.com/+Marinatravelblog/posts')  Google+ |
+                        a(href='http://marinatravelblog.com/feed/')  RSS |
+                        a(href='http://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom&loc=ru_RU')  E-mail
             .related-posts
                 each relPostEntry in content.related
                     if relPostEntry.content && relPostEntry.content.length > 0
