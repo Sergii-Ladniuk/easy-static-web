@@ -71,6 +71,8 @@ module.exports = function (data) {
                     })
                     .then(function () {
                         data.list.forEach(function (post) {
+                            delete post.categoriesEx;
+                            delete post.tagsEx;
                             delete post.related;
                         })
                         return fs.writeFileAsync(data.settings.path.oldData, JSON.stringify({
@@ -112,7 +114,7 @@ function processMenu(data) {
                 console.error('Cannot match menu item ' + item);
             }
         }
-    })
+    });
 
     function addPostsRefToMenu(item) {
         if (item.children) {
@@ -158,6 +160,10 @@ function processCategoriesAndTags(data) {
             )
         }
         categoryInfo.posts = cat.posts;
+        categoryInfo.posts.forEach(function(post) {
+            post.categoriesEx = post.categoriesEx || [];
+            post.categoriesEx.push(categoryInfo);
+        })
         categoryInfo.postNumber = getPostNumber(categoryInfo.posts);
         extend(cat, categoryInfo);
     });
@@ -187,6 +193,11 @@ function processCategoriesAndTags(data) {
         totalPostsTagged += tag.postNumber;
         info.posts = tag.posts;
         info.postNumber = getPostNumber(tag.posts);
+
+        info.posts.forEach(function(post) {
+            post.tagsEx = post.tagsEx || [];
+            post.tagsEx.push(tag);
+        })
     });
 
     data.avgPostPerTag = totalPostsTagged / data.tags.length;

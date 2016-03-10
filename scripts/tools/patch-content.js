@@ -25,6 +25,12 @@ var patches = [
                 .replace(/\[caption.*?\](.*?\)) *(.*?) *\[\/caption\]/g, '$1' + newline + '_$2_' + newline)
                 .replace(/\[[\/]?caption.*?\]/g, '');
         }
+    },
+    {
+        name: 'dates',
+        transform: function( content) {
+            return content.replace(/Date\: *[\'\"](.*?)[\'\"]/g, 'Date: $1');
+        }
     }
 ];
 
