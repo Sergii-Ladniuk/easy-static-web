@@ -1,0 +1,19 @@
+article
+    header
+        h1
+            a(href=content.postLink)=content.title || content.alt
+    img(src=content.src,alt=content.alt,title=content.title)
+    a(href=content.postLink)!=content.more
+    div
+        if (content.previous)
+            a.img-nav(href=content.previous.landingUrl)
+                i.glyphicon.glyphicon-chevron-left
+                |Предыдущее фото
+        if (content.next)
+            a.img-nav(href=content.next.landingUrl)
+                | Следующее фото
+                i.glyphicon.glyphicon-chevron-right
+    footer
+        div#disqus_thread
+        noscript
+            p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.

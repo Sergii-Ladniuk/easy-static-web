@@ -12,6 +12,7 @@ var renderCategoryLists = require('./render-category-and-tags-lists');
 var renderRss = require('./render-rss');
 var respImgs = require('../render-all/responsive-imgs');
 var sitemapRenderer = require('./render-sitemap');
+var renderImageLandings = require('./render-image-landing');
 
 /**
  * In case if some properties of `data` object are promises,
@@ -58,6 +59,7 @@ module.exports = function (data) {
                 Promise.join(
                     renderIndex(data),
                     renderSingleAllPromise,
+                    renderImageLandings(data),
                     renderRss(data),
                     renderCategoryLists(data))
                     .then(function () {
@@ -69,6 +71,8 @@ module.exports = function (data) {
                     })
                     .then(function () {
                         data.list.forEach(function (post) {
+                            delete post.categoriesEx;
+                            delete post.tagsEx;
                             delete post.related;
                         })
                         return fs.writeFileAsync(data.settings.path.oldData, JSON.stringify({
@@ -110,7 +114,7 @@ function processMenu(data) {
                 console.error('Cannot match menu item ' + item);
             }
         }
-    })
+    });
 
     function addPostsRefToMenu(item) {
         if (item.children) {
@@ -156,6 +160,10 @@ function processCategoriesAndTags(data) {
             )
         }
         categoryInfo.posts = cat.posts;
+        categoryInfo.posts.forEach(function(post) {
+            post.categoriesEx = post.categoriesEx || [];
+            post.categoriesEx.push(categoryInfo);
+        })
         categoryInfo.postNumber = getPostNumber(categoryInfo.posts);
         extend(cat, categoryInfo);
     });
@@ -185,6 +193,11 @@ function processCategoriesAndTags(data) {
         totalPostsTagged += tag.postNumber;
         info.posts = tag.posts;
         info.postNumber = getPostNumber(tag.posts);
+
+        info.posts.forEach(function(post) {
+            post.tagsEx = post.tagsEx || [];
+            post.tagsEx.push(tag);
+        })
     });
 
     data.avgPostPerTag = totalPostsTagged / data.tags.length;

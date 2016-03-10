@@ -61,6 +61,12 @@ var processMetadata = function (data) {
 
         target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
 
+        if (target.meta.modifiedDate) {
+            target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
+            var dateFormat = require('dateformat');
+            target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
+        }
+
         //var oldPost = data.basic.oldData[target.path];
         //
         //delete oldPost.meta.img;
@@ -107,6 +113,11 @@ var processMetadata = function (data) {
 };
 
 module.exports = processMetadata;
+
+function daysBetween(d1, d2) {
+    var diff = Math.abs(d1.getTime() - d2.getTime());
+    return diff / (1000 * 60 * 60 * 24);
+};
 
 function arrayifyIfString(item) {
     if (typeof item === 'string') {

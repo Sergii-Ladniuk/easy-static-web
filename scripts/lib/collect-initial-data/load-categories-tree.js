@@ -13,16 +13,18 @@ module.exports = function (settings, db) {
             for (var p in categories) {
                 var cat = categories[p];
                 var catLower = cat.name.toLowerCase();
-                categoryInfo[catLower] = cat;
-                categoryInfo[catLower].url = 'http://localhost:4000/category/' + cat.niceName + '/';
-                if (cat.children) {
-                    var parent = categoryInfo[catLower];
-                    cat.children.forEach(function (child) {
-                        var childLower = child.name.toLowerCase();
-                        categoryInfo[childLower] = child;
-                        categoryInfo[childLower].url = parent.url + child.niceName + '/';
-                        categoryInfo[childLower].path = [parent.niceName, child.niceName];
-                    })
+                if (!categoryInfo[catLower]) {
+                    categoryInfo[catLower] = cat;
+                    categoryInfo[catLower].url = 'http://localhost:4000/category/' + cat.niceName + '/';
+                    if (cat.children) {
+                        var parent = categoryInfo[catLower];
+                        cat.children.forEach(function (child) {
+                            var childLower = child.name.toLowerCase();
+                            categoryInfo[childLower] = child;
+                            categoryInfo[childLower].url = parent.url + child.niceName + '/';
+                            categoryInfo[childLower].path = [parent.niceName, child.niceName];
+                        })
+                    }
                 }
             }
 
@@ -32,4 +34,4 @@ module.exports = function (settings, db) {
                 categoryInfo: categoryInfo
             };
         });
-}
+};

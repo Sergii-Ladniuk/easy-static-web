@@ -6,12 +6,13 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
 
         title= meta.title || 'marinatravelblog'
 
+        //[css
         link(rel='stylesheet', href='/css/bootstrap.min.css')
         link(rel='stylesheet', href='/css/font-awesome.min.css')
         link(rel='stylesheet', href='/css/lazy-img.css')
         link(rel='stylesheet', href='/css/return-to-top.css')
         link(rel='stylesheet', href='/css/travel-style.css')
-        //link(rel='stylesheet', href='/css/flatly.min.css')
+        //css]
 
         link(rel='author', href='https://plus.google.com/113719564593581367589/')
 
@@ -37,8 +38,10 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
                 meta(property='og:site_name', content='marinatravelblog.com')
                 meta(property='og:image', content=meta.img)
                 meta(property='fb:admins', content='maryna.sukhomlynova')
-                meta(property='article:published_time', content=meta.publishedDate)
-                meta(property='article:modified_time', content=meta.modifiedDate)
+                if meta.publishedDate
+                    meta(property='article:published_time', content=meta.publishedDate.toISOString())
+                if meta.modifiedDate
+                    meta(property='article:modified_time', content=meta.modifiedDate.toISOString())
                 meta(name='twitter:card', content='summary_large_image')
                 meta(name='twitter:site', content='@marinatravelblg')
                 meta(name='twitter:creator', content='@marinatravelblg')
@@ -51,7 +54,6 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
             .row
                 .col-lg-1
                 .col-md-8.col-lg-7.post!= content
-                    !{widgets['copyright']}
                 .col-md-4.col-lg-3!=widgets['sidebar-right']
                 .col-lg-1
         !{widgets['footer']}

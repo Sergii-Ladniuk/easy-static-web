@@ -20,6 +20,10 @@ img {
 img {
 }
 
+.img-nav {
+    margin-right: 3em;
+}
+
 .post .lazy-load img {
     display: inline;
     margin: 0;
@@ -288,4 +292,16 @@ a {
 
 .social-buttons .fa  {
     font-size: 32px;
+}
+
+.post-info > .categories,
+.post-info > .tags {
+    margin-right: 15px;
+}
+.post-info * {
+    margin-left: 0.3em;
+}
+
+.post-info {
+    word-break: keep-all;
 }

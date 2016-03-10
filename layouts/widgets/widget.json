@@ -13,6 +13,7 @@
   },
   {
     "footer.jade": [
+      "copyright.jade",
       "return-to-top.html",
       "js.jade",
       "metrics.html"
