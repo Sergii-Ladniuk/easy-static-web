@@ -1,7 +1,7 @@
 //.navbar-fixed-top
 div.navbar.navbar-default#mainMenu
     div.navbar-header
-        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#mainMenu")#toggle-menu
+        button.navbar-toggle(type="button", data-toggle="collapse", data-target="#mainMenu-colapse")#toggle-menu
             //span="Меню"
             span.icon-bar
             span.icon-bar
@@ -9,7 +9,7 @@ div.navbar.navbar-default#mainMenu
             html
                 p.menu-mobile МЕНЮ
     div.container-fluid
-        div.navbar-collapse.collapse
+        div.navbar-collapse.collapse#mainMenu-colapse
             ul.nav.navbar-nav
                 li
                     a(href="/#/")="Главная"

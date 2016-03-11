@@ -202,6 +202,21 @@ module.exports = function (grunt) {
                     '../public/css/all.css': ['public-debug/css/*.css']
                 }
             }
+        },
+        linkChecker: {
+            // Use a large amount of concurrency to speed up check
+            options: {
+                maxConcurrency: 20
+            },
+            dev: {
+                site: 'localhost',
+                options: {
+                    initialPort: 4000
+                }
+            },
+            postDeploy: {
+                site: 'marinatravelblog.com'
+            }
         }
     });
 
@@ -215,6 +230,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-execute');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-link-checker');
 
     grunt.registerTask('init', ['mkdir:init']);
 
