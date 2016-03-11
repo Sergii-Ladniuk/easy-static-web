@@ -1,3 +1,7 @@
+body {
+    font-size: 16px;
+}
+
 h1 {
     font-size: 2em;
     margin-top: 2em;
@@ -9,6 +13,27 @@ h2 {
 
 h3 {
     font-size: 1.5em;
+}
+
+a.youtube {
+    font-size: 1.3em;
+}
+
+.accent {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.widget-header {
+    font-size: 16px;
+}
+
+.social-buttons .btn {
+    font-size: 2.3vw;
+}
+
+.social-buttons .fa {
+    font-size: 32px;
 }
 
 img {
@@ -45,6 +70,10 @@ img {
     margin: 1.5em 0 1.5em 0;
 }
 
+#uptolike_holder_bottom, #uptolike_holder_bottom div {
+    margin-bottom: 0;
+}
+
 iframe.youtube {
     height: 30vw;
     margin-bottom: 0.5em;
@@ -52,7 +81,6 @@ iframe.youtube {
 
 a.youtube {
     font-style: italic;
-    font-size: 1.3em;
     margin-bottom: 1.5em;
     display: block;
 }
@@ -109,11 +137,6 @@ li ol > li:before {
     height: 0;
 }
 
-.accent {
-    font-size: 18px;
-    font-weight: bold;
-}
-
 .centered,
 .widget > form {
     text-align: center;
@@ -132,7 +155,6 @@ li ol > li:before {
 /*}*/
 
 .widget-header {
-    font-size: 16px;
     font-weight: bold;
     text-align: center;
 }
@@ -176,7 +198,6 @@ ul.nav > li:hover {
 
 .social-buttons .btn {
     padding: 1px 1px;
-    font-size: 2.3vw;
     line-height: 1;
 }
 
@@ -184,17 +205,12 @@ ul.nav > li:hover {
 .social-buttons a:hover,
 #paging:hover,
 a:hover,
-.social-buttons a:visited:hover
-{
+.social-buttons a:visited:hover {
     color: #337bae;
 }
 
 .social-buttons a:visited {
     color: #f25c00;
-}
-
-body {
-    font-size: 1.6em;
 }
 
 #paging > li > a,
@@ -273,39 +289,82 @@ a {
     margin-left: 0.5em;
 }
 
+#days-in-travel {
+    text-align: right;
+}
+
 #banner,
 #banner-noscript {
     width: 100%;
     padding-bottom: 15%;
     background-position: center;
-    background-size:cover;
-    margin-bottom:-0.5em;
+    background-size: cover;
+    margin-bottom: -0.5em;
 }
-#mainMenu{
+
+#mainMenu {
     border-top: none;
     border-left: none;
     border-right: none;
 }
-#banner-noscript{
-    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
-}
 
-.social-buttons .fa  {
-    font-size: 32px;
+#banner-noscript {
+    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
 }
 
 .post-info > .categories,
 .post-info > .tags {
     margin-right: 15px;
 }
+
+.post-info .fa {
+    display: inline;
+}
+
 .post-info * {
-    margin-left: 0.3em;
+    margin-left: 6px;
 }
 
 .post-info {
     word-break: keep-all;
 }
 
+@media only screen
+and (min-device-width: 768px)
+and (max-device-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+
+    #top-link-block {
+        font-size: 1.4em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .post-info > * {
+        display: block;
+    }
+
+    #to-top-comment {
+        display: none;
+    }
+
+    .social-buttons .fa {
+        font-size: 28px;
+    }
+
+    .copyright,
+    #days-in-travel {
+        font-size: 0.8em;
+        text-align: left;
+        margin-top: 0.5em;
+    }
+}
 .menu-mobile {
     font-size: 7px;
     line-height: 1;

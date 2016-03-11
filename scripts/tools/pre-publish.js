@@ -79,4 +79,5 @@ function prePublish() {
         .then(processJs);
 }
 
-prePublish();
+module.exports = prePublish;
+//prePublish();

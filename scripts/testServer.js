@@ -2,10 +2,22 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 
+var parseArgs = require('minimist');
+var argv = parseArgs(process.argv.slice(2));
+
 require('./settings.js').load
     .then(function (settings) {
         var app = express();
-        const public = settings.path.public._;
+        var public, port;
+
+        if (argv.prod) {
+            public = settings.path.public_prod._;
+            port = 4001;
+        }
+        else {
+            public = settings.path.public._;
+            port = 4000;
+        }
 
         app.use(express.static(public));
 
@@ -38,7 +50,7 @@ require('./settings.js').load
 
         module.exports = app;
 
-        http.createServer(app).listen(4000, function () {
-            console.log('Express server listening on port ' + 4000);
+        http.createServer(app).listen(port, function () {
+            console.log('Express server listening on port ' + port);
         });
     });

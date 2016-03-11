@@ -278,8 +278,14 @@ module.exports = function (grunt) {
         var done = this.async();
         require('./scripts/generate').generate().then(done);
     });
+    grunt.registerTask('fix-links', function() {
+        var done = this.async();
+        require('./scripts/tools/pre-publish')()
+            .then(done);
+    });
     grunt.registerTask('generate', ['static', 'run-generate']);
-    grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin'])
+    grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin']);
+    grunt.registerTask('publish', ['pre-publish', 'fix-links']);
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
 
