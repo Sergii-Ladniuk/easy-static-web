@@ -305,3 +305,9 @@ a {
 .post-info {
     word-break: keep-all;
 }
+
+.menu-mobile {
+    font-size: 7px;
+    line-height: 1;
+    margin: 5px 0 -5px 0;
+}

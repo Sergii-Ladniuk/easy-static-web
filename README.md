@@ -194,7 +194,7 @@ seo:
 ```single.jade``` single post structure 
 ```tags.json``` all tags
 ```categories.json``` all categories
-```menu.json``` top level of the menu structure
+```menu.json``` & ```menu.jade``` top menu structure
 ```featured-text.json``` "Read more about ..." texts
 ```img.jade``` images code
 ```responsive-img-settings.json``` sizes for responsive images
