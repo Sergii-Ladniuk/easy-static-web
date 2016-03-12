@@ -15,6 +15,10 @@ h3 {
     font-size: 1.5em;
 }
 
+.fa-chevron-right, .fa-chevron-left, .fa-chevron-up {
+    margin: 0px 5px 0px 5px;
+}
+
 a.youtube {
     font-size: 1.3em;
 }
@@ -68,10 +72,6 @@ img {
 .lazy-load, .post img, .post div {
     display: block;
     margin: 1.5em 0 1.5em 0;
-}
-
-#uptolike_holder_bottom, #uptolike_holder_bottom div {
-    margin-bottom: 0;
 }
 
 iframe.youtube {
@@ -329,18 +329,6 @@ a {
     word-break: keep-all;
 }
 
-@media only screen
-and (min-device-width: 768px)
-and (max-device-width: 992px) {
-    body {
-        font-size: 18px;
-    }
-
-    #top-link-block {
-        font-size: 1.4em;
-    }
-}
-
 @media only screen and (max-width: 768px) {
     body {
         font-size: 18px;
@@ -364,7 +352,12 @@ and (max-device-width: 992px) {
         text-align: left;
         margin-top: 0.5em;
     }
+
+    #uptolike_holder_bottom, #uptolike_holder_bottom div {
+        margin-bottom: 0;
+    }
 }
+
 .menu-mobile {
     font-size: 7px;
     line-height: 1;
