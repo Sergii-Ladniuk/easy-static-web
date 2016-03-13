@@ -83,6 +83,14 @@ module.exports = function (grunt) {
                 flatten: true,
                 filter: 'isFile'
             },
+            "font-awesome-fonts-publish": {
+                expand: true,
+                cwd: 'static/components/font-awesome/fonts/',
+                src: 'fontawesome-webfont.*',
+                dest: '../public/fonts',
+                flatten: true,
+                filter: 'isFile'
+            },
             "bootstrap-js": {
                 expand: true,
                 cwd: 'static/components/bootstrap/dist/js/',
@@ -146,6 +154,14 @@ module.exports = function (grunt) {
                 dest: 'public-debug',
                 flatten: true,
                 filter: 'isFile'
+            },
+            "favicon-publish": {
+                expand: true,
+                cwd: 'static',
+                src: 'favicon.ico',
+                dest: '../public',
+                flatten: true,
+                filter: 'isFile'
             }
         },
         mkdir: {
@@ -186,9 +202,9 @@ module.exports = function (grunt) {
             },
             'publish-alone': {
                 files: {
-                    '../public/js/no-defer.js': [
-                        'static/js-alone/*.js'
-                    ]
+                    //'../public/js/no-defer.js': [
+                    //    'static/js-alone/*.js'
+                    //]
                 }
             }
         },
@@ -199,7 +215,13 @@ module.exports = function (grunt) {
             },
             publish: {
                 files: {
-                    '../public/css/all.css': ['public-debug/css/*.css']
+                    '../public/css/all.css': [
+                        'public-debug/css/bootstrap.min.css',
+                        'public-debug/css/font-awesome.min.css',
+                        'public-debug/css/lazy-img.css',
+                        'public-debug/css/return-to-top.css',
+                        'public-debug/css/travel-style.css'
+                    ]
                 }
             }
         },
@@ -236,7 +258,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:js1',
         'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
-        'copy:bootstrap-fonts', 'copy:font-awesome-fonts', 'copy:bootstrap-js',
+        'copy:font-awesome-fonts', 'copy:bootstrap-js',
         'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon']);
 
     grunt.registerTask('run-import', function () {
@@ -278,8 +300,15 @@ module.exports = function (grunt) {
         var done = this.async();
         require('./scripts/generate').generate().then(done);
     });
+    grunt.registerTask('fix-links', function() {
+        var done = this.async();
+        require('./scripts/tools/pre-publish')()
+            .then(done);
+    });
     grunt.registerTask('generate', ['static', 'run-generate']);
-    grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin'])
+    grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin',
+        'copy:font-awesome-fonts-publish', 'copy:favicon-publish']);
+    grunt.registerTask('publish', ['pre-publish', 'fix-links']);
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
 

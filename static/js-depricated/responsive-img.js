@@ -80,9 +80,10 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
 
         var pre = RespImgs.getPrefix(RespImgs.screenWidth);
 
-        var baseUrl = 'http://localhost:4000/';
+        //var baseUrl = 'http://192.168.0.6:4000//';
+        var baseUrl = 'http://localhost:4000/img/';
 
-        img.setAttribute('src', baseUrl + 'img/' + imgUrl + pre + imgExt);
+        img.setAttribute('src', baseUrl + imgUrl + pre + imgExt);
 
         if (children.length == 1) {
             lazyLoadMe.appendChild(img);

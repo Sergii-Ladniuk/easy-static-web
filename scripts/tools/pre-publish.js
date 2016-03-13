@@ -10,7 +10,7 @@ var minify = require('html-minifier').minify;
 
 function changeUrlsToProd(text) {
     return text
-        .replace(/localhost\:4000\/img/g, 'marinatravelblog.com/wp-content/uploads')
+        .replace(/localhost\:4000\/*img/g, 'marinatravelblog.com/wp-content/uploads')
         .replace(/localhost\:4000/g, 'marinatravelblog.com');
 }
 
@@ -22,10 +22,9 @@ function prePublish() {
         return Promise.map(general.util.listFiles(path.join(dest, target)),
             function (file) {
                 if (path.extname(file) === '.'+target) {
-                    fs.readFileAsync(file, 'utf-8')
+                    return fs.readFileAsync(file, 'utf-8')
                         .then(function (text) {
                             text = changeUrlsToProd(text);
-                            console.log(file)
                             return fs.writeFileAsync(file, text);
                         })
                 }
@@ -49,14 +48,13 @@ function prePublish() {
             var relPath = file.replace(src, '');
             var folder = path.join(dest, path.dirname(relPath));
             var destFile = path.join(dest, relPath);
-            console.log(destFile)
             return mkdirp(folder)
                 .then(function () {
                     return fs.readFileAsync(file, 'utf-8')
                 })
                 .then(function (text) {
                     text = changeUrlsToProd(text);
-                    var scripts = '<script src="/js/no-defer.js" async></script><script src="/js/all.js" defer></script>';
+                    var scripts = '<script src="/js/all.js" defer></script>';
                     var css = '<link rel="stylesheet" href="/css/all.css">';
                     text = text
                         .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
@@ -71,12 +69,26 @@ function prePublish() {
                         removeAttributeQuotes: true,
                         useShortDoctype: true
                     });
+                    reportProgress();
                     return fs.writeFileAsync(destFile, text);
                 });
         },
         {concurrency: 20})
         .then(processCss)
-        .then(processJs);
+        .then(processJs)
+        .catch(function(err) {
+            console.error(err);
+            var stack = new Error().stack;
+            console.log( stack )
+        });
 }
 
+module.exports = prePublish;
 prePublish();
+
+var opDone = 0;
+function reportProgress() {
+    if (opDone % 300 === 0) {
+        process.stdout.write(".");
+    }
+}

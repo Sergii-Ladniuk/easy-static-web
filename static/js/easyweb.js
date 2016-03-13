@@ -12,6 +12,8 @@ $(function () {
             $(item).removeClass('disabled');
         })
     }
+
+    $('#daysInTravel').text(Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24)));
 });
 
 function is_touch_device() {
