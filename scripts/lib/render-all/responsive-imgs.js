@@ -198,7 +198,7 @@ function processCss(size, imageInfo) {
     var padding = Math.floor(size.height / size.width * 100 + 0.1) + 1;
     var sizeClass = util.format('p%d', padding);
     if (!imageInfo.cssNames[sizeClass]) {
-        imageInfo.css += util.format('.%s{ padding-bottom:%d%%;}', sizeClass, padding)
+        imageInfo.css += util.format('.%s{ padding-bottom:%d%%;}', sizeClass, padding);
         imageInfo.cssNames[sizeClass] = true
     }
     return sizeClass;

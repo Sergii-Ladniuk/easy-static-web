@@ -308,10 +308,6 @@ a {
     border-right: none;
 }
 
-#banner-noscript {
-    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
-}
-
 .post-info > .categories,
 .post-info > .tags {
     margin-right: 15px;
@@ -329,6 +325,19 @@ a {
     word-break: keep-all;
 }
 
+#banner-holder {
+    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
+}
+@media only screen and (max-width: 600px) {
+    #banner-holder {
+        background: url(http://localhost:4000/img/Valley-of-fire-banner-md.jpg)
+    }
+}
+@media only screen and (max-width: 350px) {
+    #banner-holder {
+        background: url(http://localhost:4000/img/Valley-of-fire-banner-sm.jpg)
+    }
+}
 @media only screen and (max-width: 768px) {
     body {
         font-size: 18px;

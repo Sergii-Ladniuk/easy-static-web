@@ -202,9 +202,9 @@ module.exports = function (grunt) {
             },
             'publish-alone': {
                 files: {
-                    '../public/js/no-defer.js': [
-                        'static/js-alone/*.js'
-                    ]
+                    //'../public/js/no-defer.js': [
+                    //    'static/js-alone/*.js'
+                    //]
                 }
             }
         },

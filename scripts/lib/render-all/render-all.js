@@ -75,7 +75,7 @@ module.exports = function (data) {
                             delete post.tagsEx;
                             delete post.related;
                             delete post.images;
-                        })
+                        });
                         return fs.writeFileAsync(data.settings.path.oldData, JSON.stringify({
                             posts: data.list
                         }, null, 4));

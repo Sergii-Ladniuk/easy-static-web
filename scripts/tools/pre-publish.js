@@ -54,7 +54,7 @@ function prePublish() {
                 })
                 .then(function (text) {
                     text = changeUrlsToProd(text);
-                    var scripts = '<script src="/js/no-defer.js" async></script><script src="/js/all.js" defer></script>';
+                    var scripts = '<script src="/js/all.js" defer></script>';
                     var css = '<link rel="stylesheet" href="/css/all.css">';
                     text = text
                         .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
