@@ -188,6 +188,8 @@ seo:
 ![Кафайате](http://marinatravelblog.com/img/Cafayate-1002.jpg)
 ```
 
+Place the post images into static/img folder.
+
 #Useful file references
 
 ```settings.json``` test and prod websites, do-follow links, related-posts-max-length
