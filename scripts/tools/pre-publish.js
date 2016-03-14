@@ -47,8 +47,6 @@ function prePublish() {
         .then(JSON.parse)
         .then(function (publishInfo) {
             version = publishInfo["asset-version"];
-            // FIXME!!!
-            //publishInfo["asset-version"]++;
             return Promise.join(
                 publishInfo,
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'js', 'all.js'), 'utf-8'),

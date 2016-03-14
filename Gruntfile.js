@@ -43,6 +43,14 @@ module.exports = function (grunt) {
             }
         },
         copy: {
+            seo: {
+                expand: true,
+                cwd: 'static/seo',
+                src: '**',
+                dest: '../public',
+                flatten: true,
+                filter: 'isFile'
+            },
             css: {
                 expand: true,
                 cwd: 'static/css',
@@ -312,7 +320,7 @@ module.exports = function (grunt) {
     });
     grunt.registerTask('generate', ['static', 'run-generate']);
     grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin',
-        'copy:font-awesome-fonts-publish', 'copy:favicon-publish']);
+        'copy:font-awesome-fonts-publish', 'copy:favicon-publish', 'copy:seo']);
     grunt.registerTask('publish', ['pre-publish', 'fix-links']);
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
