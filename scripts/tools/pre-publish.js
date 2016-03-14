@@ -116,16 +116,19 @@ function prePublish() {
                                 .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
                                 .replace(/<!-- *\[ *css *-->[^]*?<!-- *css *\] *-->/g, css);
 
-                            text = minify(text, {
-                                removeAttributeQuotes: true,
-                                removeComments: true,
-                                collapseWhitespace: true,
-                                conservativeCollapse: false,
-                                collapseBooleanAttributes: true,
-                                removeTagWhitespace: true,
-                                removeAttributeQuotes: true,
-                                useShortDoctype: true
-                            });
+                            if (path.extname(file) === '.html') {
+                                text = minify(text, {
+                                    removeAttributeQuotes: true,
+                                    removeComments: true,
+                                    collapseWhitespace: true,
+                                    conservativeCollapse: false,
+                                    collapseBooleanAttributes: true,
+                                    removeTagWhitespace: true,
+                                    removeAttributeQuotes: true,
+                                    useShortDoctype: true
+                                });
+                            }
+
                             reportProgress();
                             return fs.writeFileAsync(destFile, text);
                         });

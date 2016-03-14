@@ -63,10 +63,9 @@ article
                 strong Остались вопросы? Есть уточнения или дополнения? Оставь комментарий!
             if (content.meta.slug !== '404')
                 div#uptolike_holder_side
-
-        div#disqus_thread
-        noscript
-            p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
+                div#disqus_thread
+                noscript
+                    p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
 script
     | var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';
 

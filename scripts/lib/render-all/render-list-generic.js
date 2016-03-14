@@ -11,7 +11,9 @@ function savePage(htmlPromise, index, data, folder) {
 }
 
 function renderIndexFunction(pageSize, folder) {
-    sitemapRenderer.add('http://marinatravelblog.com/' + (folder || ''), 'weekly', folder ? 0.3 : 1.0);
+    if (!folder) {
+        sitemapRenderer.add('http://marinatravelblog.com/' + (folder || ''), 'weekly', folder ? 0.3 : 1.0);
+    }
     return doRenderIndexFunction(renderIndexPage, savePage, pageSize, folder);
 }
 
