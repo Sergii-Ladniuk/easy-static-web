@@ -202,9 +202,9 @@ module.exports = function (grunt) {
             },
             'publish-alone': {
                 files: {
-                    //'../public/js/no-defer.js': [
-                    //    'static/js-alone/*.js'
-                    //]
+                    '../public/js/no-defer.js': [
+                        'static/js-alone/*.js'
+                    ]
                 }
             }
         },
@@ -257,9 +257,14 @@ module.exports = function (grunt) {
     grunt.registerTask('init', ['mkdir:init']);
 
     grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:js1',
-        'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
-        'copy:font-awesome-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon']);
+        'copy:html',
+        //'copy:bootstrap-css',
+        'copy:font-awesome-css',
+        'copy:font-awesome-fonts',
+        //'copy:bootstrap-js',
+        //'copy:bootstrap-dropdown-js',
+        //'copy:jquery',
+        'copy:favicon']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
