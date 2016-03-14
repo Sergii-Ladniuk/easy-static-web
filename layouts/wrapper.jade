@@ -15,7 +15,7 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
         link(rel='stylesheet', href='/css/travel-style.css')
         //css]
 
-        link(rel='author', href='https://plus.google.com/113719564593581367589/')
+        a(rel='author', href='https://plus.google.com/113719564593581367589/')
 
         link(rel='shortcut icon', href='/favicon.ico', type='image/x-icon')
 
@@ -36,7 +36,7 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
                 link(rel='canonical', href=meta.link)
                 meta(property='og:url', content=meta.link)
                 meta(property='og:type', content='article')
-                meta(property='og:site_name', content='marinatravelblog.com')
+                meta(property='og:site_name', content='Наша кругосветка и другие путешествия!')
                 meta(property='og:image', content=meta.img)
                 meta(property='fb:admins', content='maryna.sukhomlynova')
                 if meta.publishedDate
@@ -44,7 +44,7 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
                 if meta.modifiedDate
                     meta(property='article:modified_time', content=meta.modifiedDate.toISOString())
                 meta(name='twitter:card', content='summary_large_image')
-                meta(name='twitter:site', content='@marinatravelblg')
+                meta(name='twitter:site', content='marinatravelblog.com')
                 meta(name='twitter:creator', content='@marinatravelblg')
                 meta(name='twitter:image', content=meta.img)
                 meta(itemprop='image', content=meta.img)
