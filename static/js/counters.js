@@ -1,4 +1,4 @@
-$(function () {
+(function () {
 
 // Yandex.Metrika counter
     (function (d, w, c) {
@@ -59,4 +59,4 @@ $(function () {
         r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
     })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
-});
+})();

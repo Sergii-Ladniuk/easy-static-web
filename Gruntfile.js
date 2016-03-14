@@ -43,6 +43,14 @@ module.exports = function (grunt) {
             }
         },
         copy: {
+            seo: {
+                expand: true,
+                cwd: 'static/seo',
+                src: '**',
+                dest: '../public',
+                flatten: true,
+                filter: 'isFile'
+            },
             css: {
                 expand: true,
                 cwd: 'static/css',
@@ -195,16 +203,16 @@ module.exports = function (grunt) {
                 files: {
                      '../public/js/all.js': [
                          'static/components/jquery/dist/jquery.min.js',
-                         'static/components/bootstrap/dist/js/bootstrap.min.js',
-                         'static/components/bootstrap-dropdown/index.js',
+                         //'static/components/bootstrap/dist/js/bootstrap.min.js',
+                         //'static/components/bootstrap-dropdown/index.js',
                          'static/js/*.js']
                 }
             },
             'publish-alone': {
                 files: {
-                    //'../public/js/no-defer.js': [
-                    //    'static/js-alone/*.js'
-                    //]
+                    '../public/js/no-defer.js': [
+                        'static/js-alone/*.js'
+                    ]
                 }
             }
         },
@@ -257,9 +265,14 @@ module.exports = function (grunt) {
     grunt.registerTask('init', ['mkdir:init']);
 
     grunt.registerTask('static', ['bower', 'clean:bower', 'copy:css', 'copy:js', 'copy:js1',
-        'copy:html', 'copy:bootstrap-css', 'copy:font-awesome-css',
-        'copy:font-awesome-fonts', 'copy:bootstrap-js',
-        'copy:bootstrap-dropdown-js', 'copy:jquery', 'copy:favicon']);
+        'copy:html',
+        //'copy:bootstrap-css',
+        'copy:font-awesome-css',
+        'copy:font-awesome-fonts',
+        //'copy:bootstrap-js',
+        //'copy:bootstrap-dropdown-js',
+        'copy:jquery',
+        'copy:favicon']);
 
     grunt.registerTask('run-import', function () {
         var done = this.async();
@@ -307,7 +320,7 @@ module.exports = function (grunt) {
     });
     grunt.registerTask('generate', ['static', 'run-generate']);
     grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin',
-        'copy:font-awesome-fonts-publish', 'copy:favicon-publish']);
+        'copy:font-awesome-fonts-publish', 'copy:favicon-publish', 'copy:seo']);
     grunt.registerTask('publish', ['pre-publish', 'fix-links']);
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
