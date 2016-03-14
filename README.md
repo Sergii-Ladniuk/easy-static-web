@@ -158,7 +158,8 @@ Then reload the browser tab containing <a href="http://localhost:4000" target="_
 
 Run in the terminal a command similar to the following:
 ```
-grunt new --title="тест" --img=".*Cafayate.*[0-9]{4}\.jpg" --alt="Кафайате"
+grunt new --title="post-title-here" --img="ImageName.*" --alt="ImageAltText"
+
 ```
 
 It creates a post:

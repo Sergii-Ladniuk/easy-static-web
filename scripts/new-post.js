@@ -15,7 +15,7 @@ var general = require('./lib/general');
 var newline = os.EOL;
 
 function listImgFolder(settings) {
-    var imgFolder = settings.path.public.img;
+    var imgFolder = settings.path.static.img;
     return general.util.listFiles(imgFolder);
 }
 
@@ -46,7 +46,7 @@ function buildImgTags(imagePattern, settings, alt) {
 }
 
 function newPost(title, imagePattern, alt, type) {
-    var type = type || 'post';
+    type = type || 'post';
     var slug = general.util.slugifyTranslit(title);
     var me = {};
     return require('./settings.js').load
