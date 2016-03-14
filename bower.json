@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "font-awesome": "fontawesome#^4.5.0",
-    "bower-bootswatch-flatly": "flatly-less#^2.3.2"
+    "bower-bootswatch-flatly": "flatly-less#^2.3.2",
+    "jquery": "^2.2.1"
   }
 }

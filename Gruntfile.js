@@ -195,8 +195,8 @@ module.exports = function (grunt) {
                 files: {
                      '../public/js/all.js': [
                          'static/components/jquery/dist/jquery.min.js',
-                         'static/components/bootstrap/dist/js/bootstrap.min.js',
-                         'static/components/bootstrap-dropdown/index.js',
+                         //'static/components/bootstrap/dist/js/bootstrap.min.js',
+                         //'static/components/bootstrap-dropdown/index.js',
                          'static/js/*.js']
                 }
             },
@@ -263,7 +263,7 @@ module.exports = function (grunt) {
         'copy:font-awesome-fonts',
         //'copy:bootstrap-js',
         //'copy:bootstrap-dropdown-js',
-        //'copy:jquery',
+        'copy:jquery',
         'copy:favicon']);
 
     grunt.registerTask('run-import', function () {
