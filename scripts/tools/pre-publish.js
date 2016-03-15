@@ -125,7 +125,8 @@ function prePublish() {
                                     collapseBooleanAttributes: true,
                                     removeTagWhitespace: true,
                                     removeAttributeQuotes: true,
-                                    useShortDoctype: true
+                                    useShortDoctype: true,
+                                    minifyJS: true
                                 });
                             }
 

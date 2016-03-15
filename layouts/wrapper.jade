@@ -33,6 +33,11 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
                 meta(name='keywords', itemprop='keywords', content=meta.seo.keywords.join(','))
                 each kw in meta.seo.keywords
                     meta(property='article:tag', content=kw)
+                if (meta.link)
+                    link(rel='canonical', href=meta.link)
+                    meta(property='og:url', content=meta.link)
+                    meta(property='og:type', content='article')
+                meta(property='og:site_name', content='marinatravelblog.com')
                 link(rel='canonical', href=meta.link)
                 meta(property='og:url', content=meta.link)
                 meta(property='og:type', content='article')
@@ -46,8 +51,10 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
                 meta(name='twitter:card', content='summary_large_image')
                 meta(name='twitter:site', content='marinatravelblog.com')
                 meta(name='twitter:creator', content='@marinatravelblg')
-                meta(name='twitter:image', content=meta.img)
-                meta(itemprop='image', content=meta.img)
+                if meta.img
+                    meta(property='og:image', content=meta.img)
+                    meta(name='twitter:image', content=meta.img)
+                    meta(itemprop='image', content=meta.img)
     body
         .container-fluid#top
             !{widgets.banner}

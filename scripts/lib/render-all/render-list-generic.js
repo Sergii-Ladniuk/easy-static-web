@@ -12,7 +12,7 @@ function savePage(htmlPromise, index, data, folder) {
 
 function renderIndexFunction(pageSize, folder) {
     if (!folder) {
-        sitemapRenderer.add('http://marinatravelblog.com/' + (folder || ''), 'weekly', folder ? 0.3 : 1.0);
+        sitemapRenderer.add('http://marinatravelblog.com/' , 'weekly', folder ? 0.3 : 1.0);
     }
     return doRenderIndexFunction(renderIndexPage, savePage, pageSize, folder);
 }
@@ -40,7 +40,11 @@ function doRenderIndexFunction(renderPage, savePage, pageSize, folder) {
                 start: start,
                 url: 'http://localhost:4000/' + (folder ? folder + '/' : '')
             };
-            var promise = savePage(renderPage(data, nextPage, 'index.jade', paging), pageIndex++, data, folder);
+            var meta = {};
+            if (!folder && !pageIndex) {
+                meta.seo = data.seoGeneral;
+            }
+            var promise = savePage(renderPage(data, nextPage, meta, paging), pageIndex++, data, folder);
             tasks.push(promise);
         }
 

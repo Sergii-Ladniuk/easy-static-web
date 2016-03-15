@@ -61,6 +61,7 @@ function setDefaults() {
     exports.settings.path.content = exports.settings.path.content
         || path.join(exports.settings.path.blog, "content")
     exports.settings.path.content_posts = path.join(exports.settings.path.content, "posts")
+    exports.settings.path.content_seo_general = path.join(exports.settings.path.content, "seo.json")
     exports.settings.path.content_publish_json = path.join(exports.settings.path.content, "publish.json")
     exports.settings.path.content_posts_drafts = path.join(exports.settings.path.content_posts, "drafts")
     exports.settings.path.content_posts_published = path.join(exports.settings.path.content_posts, "published")
