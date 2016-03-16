@@ -16,6 +16,9 @@ module.exports = function (settings, db) {
         imageInfoPromise: persistedDataManager.loadImageInfo(settings),
         responsiveImgSettings: persistedDataManager.loadResponsiveImgSettings(settings),
         jadeTemplates: jadeTemplates,
+        seoGeneral: fs.readFileAsync(settings.path.content_seo_general, 'utf-8').then(function(seo) {
+            return JSON.parse(seo);
+        }),
         oldData: fs.readFileAsync(settings.path.oldData, 'utf-8').then(function (oldData) {
             var result = !oldData
                 ? {} :

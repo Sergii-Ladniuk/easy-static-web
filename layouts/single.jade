@@ -1,11 +1,12 @@
 article
     header
+        script(type="application/ld+json")!=content.meta.articleSchema
         h1
             a(href=content.meta.link)=content.meta.title
         div.post-info
             if content.categoriesEx && content.categoriesEx.length
                 - var tag;
-                if (content.meta.categories.length+content.meta.tags.length > 5)
+                if (content.meta.categories.length + content.meta.tags.length > 5)
                     - tag = 'div';
                 else
                     - tag = 'span';
@@ -14,12 +15,12 @@ article
                     each item,index in content.categoriesEx
                         a(href=item.url,target='_blank')=item.name
                         if item.children
-                            if content.categoriesEx[index+1] && !content.categoriesEx[index+1].children
+                            if content.categoriesEx[index + 1] && !content.categoriesEx[index + 1].children
                                 | &nbsp>
                             else
                                 | ,
                         else
-                            if content.categoriesEx[index+1]
+                            if content.categoriesEx[index + 1]
                                 | ,
             if content.tagsEx && content.tagsEx.length
                 span.tags

@@ -18,8 +18,58 @@ const renderSingleAll = function (data) {
             return content;
         }),
         function (content) {
+            var article = {
+                "@context": "http://schema.org",
+                "@type": "Article",
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": content.meta.link
+                },
+                "headline": content.meta.seo.title,
+                "author": [{
+                    "@type": "Person",
+                    "name": "Maryna Sukhomlynova",
+                    "url": "https://plus.google.com/113719564593581367589/",
+                    "affiliation": "marinatravelblog"
+                },
+                    {
+                        "@type": "Person",
+                        "name": "Sergii Ladniuk",
+                        "url": "https://plus.google.com/u/0/116606126305251345109",
+                        "affiliation": "marinatravelblog"
+                    }],
+                "datePublished": content.meta.publishedDate ? content.meta.publishedDate.toISOString() : "",
+                "dateModified": content.meta.modifiedDate ? content.meta.modifiedDate.toISOString() : "",
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "marinatravelblog",
+                    "url": "http://marinatravelblog.com",
+                    "sameAs": [
+                        "http://www.facebook.com/marinatravelblog",
+                        "http://twitter.com/marinatravelblg",
+                        "https://www.youtube.com/c/marinatravelblog",
+                        "http://vk.com/marinatravelblog",
+                        "https://plus.google.com/+Marinatravelblog/posts/",
+                        "https://instagram.com/sergii_ladniuk/"
+                    ],
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "http://marinatravelblog.com/wp-content/uploads/logo-valley-of-fire-long.jpg",
+                        "width": 401,
+                        "height": 60
+                    }
+                }
+                ,
+                "image": {
+                    "@type": "ImageObject",
+                    "url": content.meta.img,
+                    "width": 800,
+                    "height": 533
+                }
+            };
+            content.meta.articleSchema = JSON.stringify(article);
             var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
-            if (!/404/.test(content.meta.slug)) {
+            if (content.meta.slug !== '404') {
                 sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug, 'monthly', content.priority);
             }
             if (!promise.then) {

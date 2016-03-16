@@ -47,6 +47,12 @@ module.exports = function (data) {
             .then(processCategoriesAndTags)
             .then(processMenu)
             .then(renderWidgets)
+            .then(function () {
+                return data.seoGeneral;
+            }).then(function (seoGeneral) {
+                data.seoGeneral = seoGeneral;
+                return data;
+            })
             .then(function (data) {
                 //require('fs').writeFileSync('/Users/sergii/dev/blog/_data.json', JSON.stringify(
                 //    data.list.map(function (post) {
@@ -161,7 +167,7 @@ function processCategoriesAndTags(data) {
             )
         }
         categoryInfo.posts = cat.posts;
-        categoryInfo.posts.forEach(function(post) {
+        categoryInfo.posts.forEach(function (post) {
             post.categoriesEx = post.categoriesEx || [];
             post.categoriesEx.push(categoryInfo);
         })
@@ -195,7 +201,7 @@ function processCategoriesAndTags(data) {
         info.posts = tag.posts;
         info.postNumber = getPostNumber(tag.posts);
 
-        info.posts.forEach(function(post) {
+        info.posts.forEach(function (post) {
             post.tagsEx = post.tagsEx || [];
             post.tagsEx.push(tag);
         })
