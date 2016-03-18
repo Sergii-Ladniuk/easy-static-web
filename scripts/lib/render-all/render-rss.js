@@ -1,4 +1,3 @@
-var renderTemplate = require('./render-template');
 var saveContent = require('./save-content');
 var RSS = require('rss');
 
@@ -19,18 +18,18 @@ const renderRss = module.exports = function (data) {
 
     var feed = new RSS(feedOpts);
 
-    data.list.filter(function (post) {
-        return !post.draft && post.meta.type === 'post';
-    }).forEach(function (post) {
-        feed.item({
-            title: post.meta.title,
-            description: post.summary.replace(/<div.*?>[^]*?<noscript.*?>([^]*?)<\/noscript>[^]*?<\/div>/g, '$1')
-            + '<a href="' + post.meta.link + '">' + post.more + '</a>',
-            url: post.meta.link,
-            guid: post.meta.id,
-            categories: post.meta.categories,
-            date: post.meta.publishedDate
-        });
+    data.list.forEach(function (post) {
+        if (!post.meta.draft && post.meta.type === 'post') {
+            feed.item({
+                title: post.meta.title,
+                description: post.summary.replace(/<div.*?>[^]*?<noscript.*?>([^]*?)<\/noscript>[^]*?<\/div>/g, '$1')
+                + '<a href="' + post.meta.link + '">' + post.more + '</a>',
+                url: post.meta.link,
+                guid: post.meta.id,
+                categories: post.meta.categories,
+                date: post.meta.publishedDate
+            });
+        }
     });
 
     //return saveContent(data, renderTemplate('rss.jade', data, content), 0, null, 'xml', 'feed');

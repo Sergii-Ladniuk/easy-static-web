@@ -8,6 +8,9 @@ var mkdirp = Promise.promisify(require('mkdirp'));
 var minify = require('html-minifier').minify;
 const ncp = Promise.promisify(require('ncp').ncp);
 var critical = require('critical');
+var data;
+var posts = {};
+var rimraf = require('rimraf');
 
 var version;
 
@@ -52,10 +55,15 @@ function prePublish() {
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'js', 'all.js'), 'utf-8'),
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'js', 'all-' + version + '.js'), 'utf-8'),
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'css', 'all.css'), 'utf-8'),
-                fs.readFileAsync(path.join(settings.path.public_prod._, 'css', 'all-' + version + '.css'), 'utf-8')
+                fs.readFileAsync(path.join(settings.path.public_prod._, 'css', 'all-' + version + '.css'), 'utf-8'),
+                fs.readFileAsync(settings.path.oldData)
             );
         })
-        .spread(function (publishInfo, jsNew, jsOld, cssNew, cssOld) {
+        .spread(function (publishInfo, jsNew, jsOld, cssNew, cssOld, oldData) {
+            data = JSON.parse(oldData);
+            data.posts.forEach(function (post) {
+                posts[post.meta.slug] = post;
+            });
             console.log('css length', cssNew.length)
             if (jsNew !== jsOld || cssNew !== cssOld) {
                 version = ++publishInfo["asset-version"];
@@ -96,43 +104,50 @@ function prePublish() {
                 }),
                 function (file) {
                     var relPath = file.replace(src, '');
-                    var folder = path.join(dest, path.dirname(relPath));
+                    var slug = path.dirname(relPath);
+                    var folder = path.join(dest, slug);
                     var destFile = path.join(dest, relPath);
-                    return mkdirp(folder)
-                        .then(function () {
-                            return fs.readFileAsync(file, 'utf-8')
-                        })
-                        .then(function (text) {
-                            var scripts =
-                                '<script>' + nodeferJs + '</script>';
-
-                            var css =
-                                '<noscript><link rel="stylesheet" href="/css/all-' + version + '.css"></noscript>' +
-                                '<style>' + criticalCss + '</style>';
-
-                            text = changeUrlsToProd(text);
-
-                            text = text
-                                .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
-                                .replace(/<!-- *\[ *css *-->[^]*?<!-- *css *\] *-->/g, css);
-
-                            if (path.extname(file) === '.html') {
-                                text = minify(text, {
-                                    removeAttributeQuotes: true,
-                                    removeComments: true,
-                                    collapseWhitespace: true,
-                                    conservativeCollapse: false,
-                                    collapseBooleanAttributes: true,
-                                    removeTagWhitespace: true,
-                                    removeAttributeQuotes: true,
-                                    useShortDoctype: true,
-                                    minifyJS: true
-                                });
-                            }
-
-                            reportProgress();
-                            return fs.writeFileAsync(destFile, text);
+                    if (posts[slug] && posts[slug].meta.draft) {
+                        rimraf(path.join(dest, slug), function(err) {
                         });
+                        return false;
+                    } else {
+                        return mkdirp(folder)
+                            .then(function () {
+                                return fs.readFileAsync(file, 'utf-8')
+                            })
+                            .then(function (text) {
+                                var scripts =
+                                    '<script>' + nodeferJs + '</script>';
+
+                                var css =
+                                    '<noscript><link rel="stylesheet" href="/css/all-' + version + '.css"></noscript>' +
+                                    '<style>' + criticalCss + '</style>';
+
+                                text = changeUrlsToProd(text);
+
+                                text = text
+                                    .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
+                                    .replace(/<!-- *\[ *css *-->[^]*?<!-- *css *\] *-->/g, css);
+
+                                if (path.extname(file) === '.html') {
+                                    text = minify(text, {
+                                        removeAttributeQuotes: true,
+                                        removeComments: true,
+                                        collapseWhitespace: true,
+                                        conservativeCollapse: false,
+                                        collapseBooleanAttributes: true,
+                                        removeTagWhitespace: true,
+                                        removeAttributeQuotes: true,
+                                        useShortDoctype: true,
+                                        minifyJS: true
+                                    });
+                                }
+
+                                reportProgress();
+                                return fs.writeFileAsync(destFile, text);
+                            });
+                    }
                 },
                 {concurrency: 20})
                 .catch(function (err) {

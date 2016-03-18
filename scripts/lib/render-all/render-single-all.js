@@ -69,7 +69,7 @@ const renderSingleAll = function (data) {
             };
             content.meta.articleSchema = JSON.stringify(article);
             var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
-            if (content.meta.slug !== '404') {
+            if (content.meta.slug !== '404' && !content.meta.draft) {
                 sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug, 'monthly', content.priority);
             }
             if (!promise.then) {
