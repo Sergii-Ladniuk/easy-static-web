@@ -11,6 +11,9 @@ var critical = require('critical');
 var data;
 var posts = {};
 var rimraf = require('rimraf');
+var parseArgs = require('minimist');
+var argv = parseArgs(process.argv.slice(2));
+var run = argv.r || argv.run;
 
 var version;
 
@@ -163,7 +166,10 @@ function prePublish() {
 }
 
 module.exports = prePublish;
-prePublish();
+
+if (run) {
+    prePublish();
+}
 
 var opDone = 0;
 function reportProgress() {
