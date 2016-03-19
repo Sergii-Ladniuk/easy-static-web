@@ -64,6 +64,7 @@ function prePublish() {
             data.posts.forEach(function (post) {
                 posts[post.meta.slug] = post;
             });
+            console.log('current version', version)
             console.log('css length', cssNew.length)
             console.log('jsNew !== jsOld || cssNew !== cssOld', jsNew !== jsOld || cssNew !== cssOld);
             console.log('jsNew !== jsOld', jsNew !== jsOld)
