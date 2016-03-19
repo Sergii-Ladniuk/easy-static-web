@@ -8,8 +8,9 @@ var Git = require("nodegit");
 
 
 var deploy = module.exports = function () {
-    commitAndPush();
-    updateRemoteServer();
+    commitAndPush().then(function() {
+        updateRemoteServer();
+    });
 };
 
 if (run) {
@@ -48,7 +49,7 @@ function commitAndPush() {
     var spawn = require('child-process-promise').spawn;
 
 
-    Promise.each(cmds, function(cmd) {
+   return Promise.each(cmds, function(cmd) {
         console.log('exec:', cmd);
         return spawn(cmd.cmd, cmd.args, {capture: ['stdout', 'stderr']})
             .then(function (result) {
