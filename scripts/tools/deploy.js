@@ -9,8 +9,7 @@ var Git = require("nodegit");
 
 var deploy = module.exports = function () {
     commitAndPush();
-    //updateRemoteServer();
-
+    updateRemoteServer();
 };
 
 if (run) {
@@ -38,15 +37,12 @@ function updateRemoteServer() {
 
 function commitAndPush() {
     var folder = settings.path.public_prod._;
-    var cd = 'cd ' + folder;
-    var git_add = 'git add .';
 
     var cmds = [
         {cmd: 'cd', args:[folder]},
         {cmd: 'git', args: ['add', '.']},
-        {cmd: 'git', args: ['commit', '-m', '"update"']}
-        //,
-        //'git commit -m "update"'
+        {cmd: 'git', args: ['commit', '-m', '"update"']},
+        {cmd: 'git', args: ['push', 'origin', 'master']}
     ];
 
     var spawn = require('child-process-promise').spawn;
@@ -55,10 +51,6 @@ function commitAndPush() {
     Promise.each(cmds, function(cmd) {
         console.log('exec:', cmd);
         return spawn(cmd.cmd, cmd.args, {capture: ['stdout', 'stderr']})
-            //.progress(function (childProcess) {
-            //    childProcess.stdout.setEncoding('utf8');
-            //    childProcess.stderr.setEncoding('utf8');
-            //})
             .then(function (result) {
                 if (result.stdout)
                     console.log('[spawn] stdout: ', result.stdout.toString());
