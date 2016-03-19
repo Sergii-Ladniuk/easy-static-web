@@ -65,6 +65,9 @@ function prePublish() {
                 posts[post.meta.slug] = post;
             });
             console.log('css length', cssNew.length)
+            console.log('jsNew !== jsOld || cssNew !== cssOld', jsNew !== jsOld || cssNew !== cssOld);
+            console.log('jsNew !== jsOld', jsNew !== jsOld)
+            console.log('cssNew !== cssOld', cssNew !== cssOld)
             if (jsNew !== jsOld || cssNew !== cssOld) {
                 version = ++publishInfo["asset-version"];
                 console.log('issue new version of css&js : ', version);
@@ -124,11 +127,11 @@ function prePublish() {
                                     '<noscript><link rel="stylesheet" href="/css/all-' + version + '.css"></noscript>' +
                                     '<style>' + criticalCss + '</style>';
 
-                                text = changeUrlsToProd(text);
-
                                 text = text
                                     .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
                                     .replace(/<!-- *\[ *css *-->[^]*?<!-- *css *\] *-->/g, css);
+
+                                text = changeUrlsToProd(text);
 
                                 if (path.extname(file) === '.html') {
                                     text = minify(text, {
@@ -159,7 +162,7 @@ function prePublish() {
 }
 
 module.exports = prePublish;
-//prePublish();
+prePublish();
 
 var opDone = 0;
 function reportProgress() {
