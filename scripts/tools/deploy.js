@@ -47,6 +47,8 @@ function commitAndPush(msg) {
     ];
 
     return Promise.map(folders, function (folder) {
+        console.log('****************************************************');
+        console.log('committing folder:', folder);
 
         var cmds = [
             {cmd: 'cd', args: [folder]},

@@ -368,15 +368,16 @@ a {
 
     .post-info > .categories,
     .post-info > .tags {
-        margin: 10px 6px 25px 6px;
+        margin: 10px 6px 15px 6px;
     }
 
     .post-info * {
-        margin-left: 16px;
+        margin-left: 15px;
     }
 
     .post-info a {
         display: inline-block;
+        margin-bottom: 15px;
     }
 }
 
