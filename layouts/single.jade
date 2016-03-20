@@ -39,19 +39,20 @@ article
         if content.meta.type === 'post'
             p
                 strong Понравилась запись? Обязательно поделись! :)
-            div#uptolike_holder_bottom
-            html
-                body
-                    strong
-                        p Подпишись и будь в курсе всех новостей! :)
-                        a(href='https://www.facebook.com/marinatravelblog')  Facebook |
-                        a(href='http://vk.com/marinatravelblog')  Вконтакте |
-                        a(href='https://instagram.com/sergii_ladniuk/')  Instagram |
-                        a(href='https://twitter.com/marinatravelblg/')  Twitter |
-                        a(href='https://www.youtube.com/c/marinatravelblog?sub_confirmation=1')  Youtube |
-                        a(href='https://plus.google.com/+Marinatravelblog/posts')  Google+ |
-                        a(href='http://marinatravelblog.com/feed/')  RSS |
-                        a(href='http://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom&loc=ru_RU')  E-mail
+            //div#uptolike_holder_bottom
+            script(type='text/javascript', src='//yastatic.net/es5-shims/0.0.2/es5-shims.min.js', charset='utf-8', async)
+            script(type='text/javascript', src='//yastatic.net/share2/share.js', charset='utf-8', async)
+            .ya-share2(data-services='facebook,vkontakte,evernote,pocket,whatsapp', data-counter='')
+            strong
+                p Подпишись и будь в курсе всех новостей! :)
+                a(href='https://www.facebook.com/marinatravelblog')  Facebook |
+                a(href='http://vk.com/marinatravelblog')  Вконтакте |
+                a(href='https://instagram.com/sergii_ladniuk/')  Instagram |
+                a(href='https://twitter.com/marinatravelblg/')  Twitter |
+                a(href='https://www.youtube.com/c/marinatravelblog?sub_confirmation=1')  Youtube |
+                a(href='https://plus.google.com/+Marinatravelblog/posts')  Google+ |
+                a(href='http://marinatravelblog.com/feed/')  RSS |
+                a(href='http://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom&loc=ru_RU')  E-mail
             .related-posts
                 each relPostEntry in content.related
                     if relPostEntry.content && relPostEntry.content.length > 0
@@ -63,10 +64,9 @@ article
             p
                 strong Остались вопросы? Есть уточнения или дополнения? Оставь комментарий!
             if (content.meta.slug !== '404')
-                div#uptolike_holder_side
+                //div#uptolike_holder_side
                 div#disqus_thread
                 noscript
                     p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
 script
     | var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';
-
