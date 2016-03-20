@@ -10,8 +10,8 @@ var Git = require("nodegit");
 
 var deploy = module.exports = function (msg) {
     msg = msg || 'update';
-    commitAndPush(msg).then(function () {
-        updateRemoteServer();
+    return commitAndPush(msg).then(function () {
+        return updateRemoteServer();
     });
 };
 
@@ -20,7 +20,7 @@ if (run) {
 }
 
 function updateRemoteServer() {
-    ssh.connect(settings.deploy.ssh)
+    return ssh.connect(settings.deploy.ssh)
         .then(function () {
             return ssh.execCommand(
                 'git pull origin master',

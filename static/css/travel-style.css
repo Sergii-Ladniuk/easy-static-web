@@ -321,6 +321,10 @@ a {
     word-break: keep-all;
 }
 
+.post-info * {
+    margin-left: 8px;
+}
+
 #banner-holder {
     background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
 }
