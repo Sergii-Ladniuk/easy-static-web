@@ -326,6 +326,12 @@ a {
     margin-left: 8px;
 }
 
+#social-btns-bottom .ya-share2__icon {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+}
+
 #banner-holder {
     background-image: url(http://localhost:4000/img/Valley-of-fire-banner.jpg);
 }

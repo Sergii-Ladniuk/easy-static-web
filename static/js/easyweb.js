@@ -11,6 +11,11 @@ $(function () {
         $('.dropdown-toggle.disabled').each(function(index, item) {
             $(item).removeClass('disabled');
         })
+    } else {
+        $('.ya-share2__item_service_whatsapp').hide();
+        onload(function() {
+            $('.ya-share2__item_service_whatsapp').hide();
+        })
     }
 
     $('#daysInTravel').text(Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24)));
