@@ -21,7 +21,7 @@ if (run) {
 
 function updateRemoteServer() {
     console.log('****************************************************');
-    console.log('updating remote server:', folder);
+    console.log('updating remote server');
     return ssh.connect(settings.deploy.ssh)
         .then(function () {
             return ssh.execCommand(
