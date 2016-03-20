@@ -310,15 +310,11 @@ a {
 
 .post-info > .categories,
 .post-info > .tags {
-    margin-right: 15px;
+    margin: 7px 15px 7px 6px;
 }
 
 .post-info .fa {
     display: inline;
-}
-
-.post-info * {
-    margin-left: 6px;
 }
 
 .post-info {
@@ -364,6 +360,19 @@ a {
 
     #uptolike_holder_bottom, #uptolike_holder_bottom div {
         margin-bottom: 0;
+    }
+
+    .post-info > .categories,
+    .post-info > .tags {
+        margin: 10px 6px 25px 6px;
+    }
+
+    .post-info * {
+        margin-left: 16px;
+    }
+
+    .post-info a {
+        display: inline-block;
     }
 }
 

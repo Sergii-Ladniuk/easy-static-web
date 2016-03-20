@@ -325,10 +325,18 @@ module.exports = function (grunt) {
         require('./scripts/tools/pre-publish')()
             .then(done);
     });
+    grunt.registerTask('deploy', function() {
+        var done = this.async();
+        var msg = grunt.option('m') || grunt.option('msg') || 'update';
+        require('./scripts/tools/deploy')(msg)
+            .then(done);
+    });
+
     grunt.registerTask('generate', ['static', 'run-generate']);
     grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin',
         'copy:font-awesome-fonts-publish', 'copy:favicon-publish', 'copy:seo', 'copy:htaccess']);
     grunt.registerTask('publish', ['pre-publish', 'fix-links']);
+    grunt.registerTask('publish-deploy', ['publish', 'deploy']);
     grunt.registerTask('import', ['init', 'run-import']);
     grunt.registerTask('all', ['import', 'generate']);
 
