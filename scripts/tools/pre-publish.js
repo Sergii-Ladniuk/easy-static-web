@@ -93,9 +93,14 @@ function prePublish() {
             return Promise.join(
                 generateCriticalCss({
                     base: settings.path.public._,
-                    src: 'index.html',
-                    width: 1300,
-                    height: 900,
+                    src: 'peru-laguna-69-huaraz/index.html',
+                    dimensions: [{
+                        width: 1300,
+                        height: 900
+                    }, {
+                        width: 320,
+                        height: 640
+                    }],
                     minify: true
                 }),
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'js', 'no-defer.js'), 'utf-8')
@@ -115,7 +120,7 @@ function prePublish() {
                     var folder = path.join(dest, slug);
                     var destFile = path.join(dest, relPath);
                     if (posts[slug] && posts[slug].meta.draft) {
-                        rimraf(path.join(dest, slug), function(err) {
+                        rimraf(path.join(dest, slug), function (err) {
                         });
                         return false;
                     } else {
