@@ -100,6 +100,9 @@ function prePublish() {
                     }, {
                         width: 320,
                         height: 640
+                    }, {
+                        width: 1600,
+                        height: 800
                     }],
                     minify: true
                 }),
