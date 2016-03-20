@@ -231,7 +231,7 @@ module.exports = function (grunt) {
             publish: {
                 files: {
                     '../public/css/all.css': [
-                        'public-debug/css/bootstrap.min.css',
+                        'public-debug/css/bootstrap.css',
                         'public-debug/css/font-awesome.min.css',
                         'public-debug/css/lazy-img.css',
                         'public-debug/css/return-to-top.css',
