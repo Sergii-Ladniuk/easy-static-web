@@ -1,0 +1,17 @@
+{
+  "name": "static-web-editor",
+  "homepage": "https://github.com/Sergii-Ladniuk/easy-static-web",
+  "authors": [
+    "Sergii Ladniuk <sergii.ladniuk@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.2",
+    "wiz-markdown": "^1.2.0",
+    "angular-json-editor": "^0.2.1"
+  }
+}

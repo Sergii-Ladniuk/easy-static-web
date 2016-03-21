@@ -31,4 +31,5 @@ settings.json
 **/.Trash
 **/bin
 static/components
+editor/components
 russian.dic
