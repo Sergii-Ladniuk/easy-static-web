@@ -326,10 +326,25 @@ a {
     margin-left: 8px;
 }
 
-#social-btns-bottom .ya-share2__icon {
+#social-btns-bottom .ya-share2__icon,#social-btns-side .ya-share2__icon {
     width: 40px;
     height: 40px;
     background-size: 40px 40px;
+}
+
+#social-btns-bottom .ya-share2__counter,#social-btns-side .ya-share2__counter {
+    padding-top: 13px;
+}
+
+#social-btns-side .ya-share2__item {
+    margin-bottom: 14px;   
+}
+
+#social-btns-side {
+    width:40px;
+    position: fixed ;
+    bottom: 30%;
+    left:10px;
 }
 
 #banner-holder {
@@ -390,6 +405,10 @@ a {
     .post-info a {
         display: inline-block;
         margin-bottom: 15px;
+    }
+
+    #social-btns-bottom .ya-share2__item {
+        margin-right: 14px;   
     }
 }
 

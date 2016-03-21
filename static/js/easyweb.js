@@ -1,3 +1,11 @@
+function onload(f) {
+    if (window.addEventListener)
+        window.addEventListener("load", f, false);
+    else if (window.attachEvent)
+        window.attachEvent("onload", f);
+    else window.onload = f;
+}
+
 $(function () {
     console.log($(window).height());
     console.log($(document).height());
