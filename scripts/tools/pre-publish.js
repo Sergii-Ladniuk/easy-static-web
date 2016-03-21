@@ -11,6 +11,9 @@ var critical = require('critical');
 var data;
 var posts = {};
 var rimraf = require('rimraf');
+var parseArgs = require('minimist');
+var argv = parseArgs(process.argv.slice(2));
+var run = argv.r || argv.run;
 
 var version;
 
@@ -64,7 +67,11 @@ function prePublish() {
             data.posts.forEach(function (post) {
                 posts[post.meta.slug] = post;
             });
+            console.log('current version', version)
             console.log('css length', cssNew.length)
+            console.log('jsNew !== jsOld || cssNew !== cssOld', jsNew !== jsOld || cssNew !== cssOld);
+            console.log('jsNew !== jsOld', jsNew !== jsOld)
+            console.log('cssNew !== cssOld', cssNew !== cssOld)
             if (jsNew !== jsOld || cssNew !== cssOld) {
                 version = ++publishInfo["asset-version"];
                 console.log('issue new version of css&js : ', version);
@@ -86,9 +93,17 @@ function prePublish() {
             return Promise.join(
                 generateCriticalCss({
                     base: settings.path.public._,
-                    src: 'index.html',
-                    width: 1300,
-                    height: 900,
+                    src: 'peru-laguna-69-huaraz/index.html',
+                    dimensions: [{
+                        width: 1300,
+                        height: 900
+                    }, {
+                        width: 320,
+                        height: 640
+                    }, {
+                        width: 1600,
+                        height: 800
+                    }],
                     minify: true
                 }),
                 fs.readFileAsync(path.join(settings.path.public_prod._, 'js', 'no-defer.js'), 'utf-8')
@@ -108,7 +123,7 @@ function prePublish() {
                     var folder = path.join(dest, slug);
                     var destFile = path.join(dest, relPath);
                     if (posts[slug] && posts[slug].meta.draft) {
-                        rimraf(path.join(dest, slug), function(err) {
+                        rimraf(path.join(dest, slug), function (err) {
                         });
                         return false;
                     } else {
@@ -124,11 +139,11 @@ function prePublish() {
                                     '<noscript><link rel="stylesheet" href="/css/all-' + version + '.css"></noscript>' +
                                     '<style>' + criticalCss + '</style>';
 
-                                text = changeUrlsToProd(text);
-
                                 text = text
                                     .replace(/<!-- *\[ *scripts *-->[^]*?<!-- *scripts *\] *-->/g, scripts)
                                     .replace(/<!-- *\[ *css *-->[^]*?<!-- *css *\] *-->/g, css);
+
+                                text = changeUrlsToProd(text);
 
                                 if (path.extname(file) === '.html') {
                                     text = minify(text, {
@@ -159,7 +174,10 @@ function prePublish() {
 }
 
 module.exports = prePublish;
-//prePublish();
+
+if (run) {
+    prePublish();
+}
 
 var opDone = 0;
 function reportProgress() {

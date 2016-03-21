@@ -61,7 +61,6 @@ img {
 
 .lazy-load {
     width: 100%;
-    max-width: 800px;
 }
 
 .post img, .post div {
@@ -293,13 +292,15 @@ a {
     text-align: right;
 }
 
-#banner,
-#banner-noscript {
+#banner {
     width: 100%;
     padding-bottom: 15%;
+    margin-bottom: -0.5em;
+}
+
+#banner-holder {
     background-position: center;
     background-size: cover;
-    margin-bottom: -0.5em;
 }
 
 #mainMenu {
@@ -310,37 +311,63 @@ a {
 
 .post-info > .categories,
 .post-info > .tags {
-    margin-right: 15px;
+    margin: 7px 15px 7px 6px;
 }
 
 .post-info .fa {
     display: inline;
 }
 
-.post-info * {
-    margin-left: 6px;
-}
-
 .post-info {
     word-break: keep-all;
 }
 
+.post-info * {
+    margin-left: 8px;
+}
+
+#social-btns-bottom .ya-share2__icon,#social-btns-side .ya-share2__icon {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+}
+
+#social-btns-bottom .ya-share2__counter,#social-btns-side .ya-share2__counter {
+    padding-top: 13px;
+}
+
+#social-btns-side .ya-share2__item {
+    margin-bottom: 14px;   
+}
+
+#social-btns-side {
+    width:40px;
+    position: fixed ;
+    bottom: 30%;
+    left:10px;
+}
+
 #banner-holder {
-    background: url(http://localhost:4000/img/Valley-of-fire-banner.jpg)
+    background-image: url(http://localhost:4000/img/Valley-of-fire-banner.jpg);
 }
 @media only screen and (max-width: 600px) {
     #banner-holder {
-        background: url(http://localhost:4000/img/Valley-of-fire-banner-md.jpg)
+        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-md.jpg)
     }
 }
 @media only screen and (max-width: 350px) {
     #banner-holder {
-        background: url(http://localhost:4000/img/Valley-of-fire-banner-sm.jpg)
+        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-sm.jpg)
+    }
+}
+@media only screen and (min-width: 1440px) {
+    #banner-holder {
+        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-w1920.jpg)
     }
 }
 @media only screen and (max-width: 768px) {
     body {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .post-info > * {
@@ -364,6 +391,24 @@ a {
 
     #uptolike_holder_bottom, #uptolike_holder_bottom div {
         margin-bottom: 0;
+    }
+
+    .post-info > .categories,
+    .post-info > .tags {
+        margin: 10px 6px 15px 6px;
+    }
+
+    .post-info * {
+        margin-left: 15px;
+    }
+
+    .post-info a {
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    #social-btns-bottom .ya-share2__item {
+        margin-right: 14px;   
     }
 }
 
