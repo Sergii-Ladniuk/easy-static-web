@@ -10,17 +10,29 @@ var rest = require('./editor/editorRest');
 var app = express();
 var port = 4002;
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(require('express-promise')());
 
 app.get('/list', function (req, res) {
-    rest.list().then(function(list) {
+    var list = rest.list();
+    res.send(list)
+});
+
+app.get('/images', function (req, res) {
+    rest.images().then(function (list) {
         res.send(list)
     })
 });
 
-app.get('/images', function(req,res) {
-    rest.images().then(function(list) {
-        res.send(list)
-    })
+app.post('/post', function(req,res) {
+    if (req.body) {
+        rest.save(req.body)
+        res.send('ok')
+    } else {
+        res.send('')
+    }
 });
 
 app.use("/img", express.static("../static/img"));
@@ -36,13 +48,13 @@ app.use(function (req, res) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        console.log(err)
-        res.status(err.status || 500);
-        res.render(JSON.stringify(err));
-    });
-}
+//if (app.get('env') === 'development') {
+//    app.use(function (err, req, res, next) {
+//        console.dir(err)
+//        res.status(err.status || 500);
+//        res.render(JSON.stringify(err));
+//    });
+//}
 
 // production error handler
 // no stacktraces leaked to user

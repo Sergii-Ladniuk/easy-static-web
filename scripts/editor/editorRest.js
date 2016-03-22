@@ -7,23 +7,26 @@ var ncp = Promise.promisify(require('ncp').ncp);
 var parseArgs = require('minimist');
 
 var argv = parseArgs(process.argv.slice(2));
-var target = argv.t || argv.target;
 var settings = require('../settings.js').loadSync();
 var mm = require('../lib/get-post-data/meta-marked');
+
+var os = require('os');
+var newline = os.EOL;
+var yaml = require('yamljs');
+
+var posts;
 
 exports.list = function () {
     return listContent()
         .map(function (file) {
-            return fs.readFileAsync(file, 'utf-8').then(function (text) {
-
-                var parsedData = mm(text);
-
-                return {
-                    name: path.basename(file),
-                    content: parsedData.markdown,
-                    meta: parsedData.meta
-                }
-            })
+            if (posts) {
+                return posts
+            } else {
+                return loadPosts(file)
+            }
+        }).then(function (_posts) {
+            posts = _posts;
+            return posts;
         })
 };
 
@@ -38,9 +41,56 @@ exports.images = function () {
         })
 };
 
-exports.save = function(post) {
-
+exports.save = function (post) {
+    if (posts) {
+        return savePost(post);
+    } else {
+        return loadPosts(file)
+            .then(function () {
+                savePost(post);
+            })
+    }
 };
+
+function savePost(post) {
+    posts.forEach(function (cachedPost, index) {
+        if (post.name === cachedPost.name) {
+            if (post.content === cachedPost.content && JSON.stringify(post.meta) === JSON.stringify(cachedPost.meta)) {
+                console.log('no change');
+            } else {
+                console.log('changed', index);
+                posts[index] = post;
+                post.meta.modifiedDate = new Date();
+
+                var separator = '---';
+                var metaYaml = yaml.stringify(post.meta, 4);
+                var text = [separator, metaYaml, separator, post.content].join(newline)
+                    .replace(/(modifiedDate[^]*?Z)/, '$1' + newline)
+                    .replace(/(publishedDate[^]*?)\'([^]*?)\'/, '$1$2');
+
+                var filePath = path.join(
+                    (post.meta.draft ? settings.path.content_posts_drafts : settings.path.content_posts_published),
+                    post.name);
+
+                return fs.writeFileAsync(
+                    filePath, text)
+            }
+        }
+    })
+}
+
+function loadPosts(file) {
+    return fs.readFileAsync(file, 'utf-8').then(function (text) {
+
+        var parsedData = mm(text);
+
+        return {
+            name: path.basename(file),
+            content: parsedData.markdown,
+            meta: parsedData.meta
+        }
+    });
+}
 
 function listContent() {
     return general.util.listFiles(settings.path.content)

@@ -9,7 +9,6 @@ var os = require('os');
 var newline = os.EOL;
 var util = require('util');
 var equal = require('deep-equal');
-
 var processMetadata = function (data) {
     try {
 
@@ -24,24 +23,18 @@ var processMetadata = function (data) {
             throw  new Error ("No slug specified for", target.path)
         }
 
+
+        if (typeof target.meta.categories === 'string') {
+            target.meta.categories = parseArray(target.meta.categories);
+        }
+
+        if (typeof target.meta.tags === 'string') {
+            target.meta.tags = parseArray(target.meta.tags);
+        }
+
         target.meta.seo = target.meta.seo || {};
         target.meta.seo.keywords = target.meta.seo.keywords || '';
-        target.meta.seo.keywords = target.meta.seo.keywords.split(',').map(function (kw) {
-            return kw.replace(/^ +/g, '').replace(/ $/g, '');
-        }).filter(function (kw) {
-            return kw;
-        });
-        //    .map(function(kw) {
-        //    // ((камбоджа!!) ((ангор ват!!храм ангор)) ((отзывы!!негативные отзывы!!советы!!на велосипеде))
-        //    function simplify(kw) {
-        //        if (!/\(\(/.test(kw)) {
-        //            return [kw];
-        //        } else {
-        //            var regex = /(.*?)\[(.*?)\](.*)/;
-        //
-        //        }
-        //    }
-        //});
+        target.meta.seo.keywords = parseArray(target.meta.seo.keywords);
 
         if (!target.meta.shortLink || !/\?(.*)/.test(target.meta.shortLink)) {
             target.meta.shortLink = target.meta.link;
@@ -88,13 +81,13 @@ var processMetadata = function (data) {
         //}
 
         extend(data.common, {
-            categories: target.meta.type === 'page' ? [] : parsedData.meta.categories.map(function (category) {
+            categories: target.meta.type === 'page' ? [] : target.meta.categories.map(function (category) {
                 return {
                     name: category.toLowerCase(),
                     posts: target.meta.draft ? [] : [target],
                 }
             }),
-            tags: target.meta.type === 'page' ? [] : parsedData.meta.tags.map(function (tag) {
+            tags: target.meta.type === 'page' ? [] : target.meta.tags.map(function (tag) {
                 return {
                     name: tag.toLowerCase().replace(/ +/g, '-'),
                     posts: target.meta.draft ? [] : [target],
@@ -131,6 +124,14 @@ function slugifyAll(arr) {
     return !arr || !arr.length ? [] : arr.map(function (item) {
         return general.util.slugifyOnly(item);
     })
+}
+
+function parseArray(str) {
+    return str.split(',').map(function (kw) {
+        return kw.replace(/^ +/g, '').replace(/ $/g, '');
+    }).filter(function (kw) {
+        return kw;
+    });
 }
 
 // tests:

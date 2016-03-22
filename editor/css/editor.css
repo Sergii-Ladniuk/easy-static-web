@@ -2,6 +2,10 @@ body {
     font-size: 14px;
 }
 
+label {
+    font-weight: normal;
+}
+
 .markdown-editor, .markdown-input {
     width: 100%;
     height: 75vh;

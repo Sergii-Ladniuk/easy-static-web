@@ -101,7 +101,7 @@
                             <div class="col-xs-6 col-md-3" ng-repeat="image in service.images|filter:filterImages">
                                 <div class="thumbnail">
                                     <a href ng-click="service.addImg(image.url, alt)">
-                                        <img src="{{image.url}}" alt="{{image.name}}">
+                                        <img ng-src="{{image.url}}" alt="{{image.name}}">
                                         <!--<p class="caption">-->
                                         <!--{{image.name}}-->
                                         <!--</p>-->

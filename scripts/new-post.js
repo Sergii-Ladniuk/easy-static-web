@@ -52,11 +52,12 @@ function newPost(title, imagePattern, alt, type) {
     return require('./settings.js').load
         .then(function (settings) {
             me.settings = settings;
-            var promise = buildImgTags(imagePattern, settings, alt);
-
+            return buildImgTags(imagePattern, settings, alt);
+        })
+        .then(function (imgs) {
             var meta = {
                 title: title,
-                link: settings.server.prod.url + slug,
+                link: me.settings.server.prod.url + slug,
                 debug_link: 'http://localhost:4000/' + slug,
                 slug: slug,
                 // TODO verify all correct with the date
@@ -71,15 +72,12 @@ function newPost(title, imagePattern, alt, type) {
                     keywords: ["TODO: keywords here"]
                 }
             };
-            me.metaYaml = yaml.stringify(meta, 4).replace('Zdraft:', newline + 'draft:');
 
-            return promise;
-        })
-        .then(function (imgs) {
             var settings = me.settings;
+
             var content = imgs;
             var separator = '---';
-            var metaYaml = me.metaYaml;
+            var metaYaml = yaml.stringify(meta, 4).replace('Zdraft:', newline + 'draft:');
             var text = [separator, metaYaml, separator, content].join(newline);
             console.log('\n\nTemplate: \n\n', text);
             var outputPath = path.join(settings.path['content_' + type + 's' + '_drafts'], slug + '.md');
