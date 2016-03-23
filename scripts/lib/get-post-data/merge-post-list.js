@@ -10,7 +10,7 @@ function mergeUnique(a, b) {
     // put all a's elements to hash
     a.forEach(function (i) {
         hash[i] = 1;
-    })
+    });
 
     b.forEach(function (i) {
         if (!hash[i]) {
@@ -26,7 +26,7 @@ function mergeTags(a, b) {
     // put all a's elements to hash
     a.forEach(function (i) {
         hash[i.name] = i;
-    })
+    });
 
     b.forEach(function (i) {
         if (!hash[i.name]) {
@@ -59,7 +59,7 @@ function mergeOrdered(a, b, comparator) {
 }
 
 function compareByDate(a, b) {
-    return a.meta.modifiedDate > b.meta.modifiedDate
+    return a.meta.publishedDate > b.meta.publishedDate
 }
 
 function mergePostAll(a, b) {
@@ -67,7 +67,7 @@ function mergePostAll(a, b) {
     mergeTags(a.common.categories, b.common.categories);
     mergeTags(a.common.tags, b.common.tags);
     return a;
-};
+}
 
 module.exports = mergePostAll;
 
@@ -120,8 +120,8 @@ describe("merge-post-all function :", function () {
         return res;
     };
 
-    categories = result.common.categories.map(catMapping);
-    tags = result.common.tags.map(catMapping);
+    var categories = result.common.categories.map(catMapping);
+    var tags = result.common.tags.map(catMapping);
 
     it("should merge categories with no repeat, order is not important", function () {
         categories.should.containEql({a: ['1', '2']});
