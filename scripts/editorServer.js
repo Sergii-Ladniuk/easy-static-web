@@ -5,7 +5,7 @@ var http = require('http');
 var parseArgs = require('minimist');
 var argv = parseArgs(process.argv.slice(2));
 
-var rest = require('./editor/editorRest');
+var rest = require('.//editor/editorRest');
 
 var app = express();
 var port = 4002;
@@ -35,8 +35,8 @@ app.post('/post', function(req,res) {
     }
 });
 
-app.use("/img", express.static("../static/img"));
-app.use(express.static('../editor'));
+app.use("/img", express.static("./static/img"));
+app.use(express.static('./editor'));
 
 // catch 404
 app.use(function (req, res) {
