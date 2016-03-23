@@ -129,6 +129,9 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
+# Redirect RSS Feed
+RedirectMatch 301 /feed(.*) /feed.xml
+
 ##################
 # Browser cache expiry
 ##################
