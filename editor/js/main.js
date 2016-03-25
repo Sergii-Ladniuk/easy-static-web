@@ -1,23 +1,9 @@
 'use strict';
 
 var eswEditor = angular.module('eswEditor', [
-    'ui.ace', 'angular-json-editor'
-]).config(function (JSONEditorProvider) {
-    JSONEditorProvider.configure({
-        plugins: {
-            sceditor: {
-                style: 'sce/development/jquery.sceditor.default.css'
-            }
-        },
-        defaults: {
-            options: {
-                iconlib: 'bootstrap3',
-                theme: 'bootstrap3',
-                ajax: true
-            }
-        }
-    });
-});
+    'ui.ace',
+    'ui.bootstrap'
+]);
 
 eswEditor.controller('MainController', function ($scope, $http) {
     $scope.text = '';
@@ -35,6 +21,7 @@ eswEditor.controller('PostListController', function ($scope, $http, PostEditorSe
                 return !post.meta.draft;
             });
             PostEditorService.post = $scope.drafts[0];
+            PostEditorService.posts = $scope.posts;
 
             $scope.select = function (post) {
                 PostEditorService.post = post;
@@ -73,7 +60,7 @@ eswEditor.factory('ImageService', function ($http) {
         addImg: function () {
         },
         images: [],
-        reloadImages: function() {
+        reloadImages: function () {
             $http.get('/images').then(function (response) {
                 service.images = response.data;
             });
@@ -84,25 +71,28 @@ eswEditor.factory('ImageService', function ($http) {
 });
 
 eswEditor.controller('PostEditorController', function ($scope, $http, PostEditorService, ImageService) {
-    var editor;
     $scope.service = PostEditorService;
     $scope.alt = "";
     ImageService.addImg = function (url, alt) {
         //insertAtCursor($('.markdown-input')[0], '![' + alt + '](' + url + ')');
-        editor.insert('![' + alt + '](' + url + ')');
+        $scope.editor.insert('![' + alt + '](' + url + ')');
     };
-    $scope.$watch('service.post', function(post) {
+    $scope.addLink = function () {
+        $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://localhost:4000/'
+            + $scope.postToLink.meta.slug + ')');
+    };
+    $scope.$watch('service.post', function (post) {
         if (post) {
             var promise = PostEditorService.save(post);
             if (promise) {
-                promise.then(function(response) {
+                promise.then(function (response) {
                     $scope.console += response.data;
                 });
             }
         }
     }, true);
-    $scope.aceLoaded = function(_editor){
-        editor = _editor;
+    $scope.aceLoaded = function (_editor) {
+        $scope.editor = _editor;
     }
 });
 
@@ -111,13 +101,13 @@ eswEditor.controller('ImageController', function ($scope, ImageService) {
     $scope.refresh = function () {
         ImageService.reloadImages();
     };
- });
+});
 
 $(function () {
     $(".spoiler-trigger").click(function () {
         $(this).parent().next().collapse('toggle');
     });
-    $('.markdown-input').attr('ng-change','onPostChanged(post)');
+    $('.markdown-input').attr('ng-change', 'onPostChanged(post)');
 });
 
 function insertAtCursor(textArea, myValue) {

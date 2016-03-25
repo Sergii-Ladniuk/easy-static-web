@@ -1,0 +1,16 @@
+<div id="metadata">
+    <label>Title: <input ng-model="service.post.meta.title"></label>
+    <label>Slug: <input ng-model="service.post.meta.slug"></label>
+    <label>Modify Date: <input ng-model="service.post.meta.modifiedDate"></label>
+    <label>Publish Date: <input ng-model="service.post.meta.publishedDate"></label>
+    <!--<label>Link: <input ng-model="service.post.meta.link" readonly></label>-->
+    <label>Categories: <input ng-model="service.post.meta.categories"></label>
+    <label>Tags: <input ng-model="service.post.meta.tags"></label>
+    <label>SEO Title: <input ng-model="service.post.meta.seo.title"></label>
+    <label>SEO Description: <textarea
+            ng-model="service.post.meta.seo.description"></textarea></label>
+    <label>SEO Keywords: <textarea ng-model="service.post.meta.seo.keywords"></textarea></label>
+
+    <a href="http://localhost:4000/{{service.post.meta.slug}}" target="_blank">View Post</a>
+    <div ng-visible="service.post.meta.draft" class="text-danger">Draft</div>
+</div>

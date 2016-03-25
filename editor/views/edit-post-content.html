@@ -1,0 +1,23 @@
+<div id="link-add-holder" ng-controller="PostEditorController">
+    <script type="text/ng-template" id="linkTypeaheadTemplate.html">
+        <div ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+            <a class="dropdown-item">{{match.model.meta.title}} [{{match.model.name}}]</a>
+        </div>
+    </script>
+    <div class="input-group">
+        <input type="text" ng-model="postToLink" placeholder="Enter link..."
+               uib-typeahead="post as post.meta.title for post in service.posts | filter:{meta:{title: $viewValue}} | limitTo:8"
+               class="form-control" typeahead-template-url="linkTypeaheadTemplate.html">
+       <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="addLink()">Add Link</button>
+       </span>
+    </div>
+</div>
+<br>
+<div ui-ace="{
+              onLoad : aceLoaded,
+              useWrapMode: true,
+              theme: 'dreamweaver',
+              mode: 'markdown',
+              rendererOptions: { fontSize: 14 }
+            }" ng-model="service.post.content"></div>

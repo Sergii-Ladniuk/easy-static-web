@@ -10,6 +10,7 @@ label {
     width: 100%;
     height: 75vh;
     overflow-y: scroll;
+    font-size: 20px;
 }
 
 #images .image-list, #console {
@@ -32,13 +33,30 @@ label {
     font-size: 12px;
 }
 
-#metadata{
+#metadata {
     width: 100%;
 }
+
 #metadata label, #metadata input {
     width: 100%;
 }
+
 #metadata textarea {
     width: 100%;
     height: 15vh;
 }
+
+#link-add-holder .dropdown-menu .dropdown-item {
+    height: 10px;
+}
+
+/*#link-add-holder .dropdown-menu {*/
+    /*position: static;*/
+    /*float: none;*/
+    /*display: block;*/
+    /*min-width: 160px;*/
+    /*background-color: transparent;*/
+    /*border: none;*/
+    /*border-radius: 0;*/
+    /*box-shadow: none;*/
+/*}*/

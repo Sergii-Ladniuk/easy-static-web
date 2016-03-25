@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="css/editor.css">
     <!--<link rel="stylesheet" type="text/css" href="http://yandex.st/highlightjs/8.0/styles/github.min.css">-->
 
-    <script src="components/angular/angular.min.js"></script>
     <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="components/angular/angular.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="components/ace-builds/src-min-noconflict/ace.js"></script>
-    <!--<script src="components/wiz-markdown/wizMarkdown/wizMarkdown.js"></script>-->
-    <script type="text/javascript" src="components/angular-ui-ace/ui-ace.js"></script>
-    <!--<script src="components/json-editor/dist/jsoneditor.js"></script>-->
-    <script src="components/angular-json-editor/dist/angular-json-editor.js"></script>
+    <script src="components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="components/angular-ui-ace/ui-ace.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <script src="js/main.js"></script>
 </head>
@@ -26,126 +25,20 @@
 <h1>ESW Editor</h1>
 <div class="container-fluid" id="main">
     <div class="col-md-2" ng-controller="PostListController">
-        <div id="post-search">
-            <label>Search: <input ng-model="searchText"></label>
-        </div>
-        <div id="drafts" class="post-list">
-            <h2>Drafts:</h2>
-            <div>
-                <button type="button" class="list-group-item" ng-click="select(post)"
-                        ng-repeat="post in drafts|filter:searchText">
-                    {{post.name}}
-                </button>
-            </div>
-        </div>
-        <div id="published" class="post-list">
-            <h2>Published:</h2>
-            <div class="list-group">
-                <button type="button" class="list-group-item" ng-click="select(post)"
-                        ng-repeat="post in publishedPosts|filter:searchText">
-                    {{post.name}}
-                </button>
-            </div>
-        </div>
+        <div ng-include="'views/editor-post-list.html'"></div>
     </div>
     <div class="col-md-5" ng-controller="PostEditorController">
-        <div>
-            <h2>Metadata:
-                <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle
-                </button>
-            </h2>
-            <div class="panel-collapse collapse out in">
-                <div class="panel-body">
-                    <div id="metadata">
-                        <!--title: 'Сколько стоит кругосветка?'
-            link: 'http://marinatravelblog.com/skolko-stoyt-krugosvetka'
-            debug_link: 'http://localhost:4000/skolko-stoyt-krugosvetka'
-            slug: skolko-stoyt-krugosvetka
-            date:
-                2016-02-21T01:39:15.401
-            draft: true
-            type: post
-            categories: []
-            tags: []
-            seo:
-                title: 'Сколько стоит кругосветка?'
-                description: ""
-                keywords: ''-->
-                        <label>Title: <input ng-model="service.post.meta.title"></label>
-                        <label>Slug: <input ng-model="service.post.meta.slug"></label>
-                        <label>Modify Date: <input ng-model="service.post.meta.modifiedDate"></label>
-                        <label>Publish Date: <input ng-model="service.post.meta.publishedDate"></label>
-                        <!--<label>Link: <input ng-model="service.post.meta.link" readonly></label>-->
-                        <label>Categories: <input ng-model="service.post.meta.categories"></label>
-                        <label>Tags: <input ng-model="service.post.meta.tags"></label>
-                        <label>SEO Title: <input ng-model="service.post.meta.seo.title"></label>
-                        <label>SEO Description: <textarea
-                                ng-model="service.post.meta.seo.description"></textarea></label>
-                        <label>SEO Keywords: <textarea ng-model="service.post.meta.seo.keywords"></textarea></label>
-
-                        <a href="http://localhost:4000/{{service.post.meta.slug}}" target="_blank">View Post</a>
-                        <div ng-visible="service.post.meta.draft" class="text-danger">Draft</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div ng-controller="ImageController">
-            <h2>Images:
-                <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle
-                </button>
-                <button type="button" class="btn btn-default btn-xs" ng-click="refresh()">Refresh</button>
-            </h2>
-            <div class="panel-collapse collapse out in">
-                <label>Image Filter: <input ng-model="filterImages"></label>
-                <label>Image Alt: <input ng-model="alt"></label>
-                <div class="panel-body">
-                    <div id="images">
-                        <div class="row image-list">
-                            <div class="col-xs-6 col-md-3" ng-repeat="image in service.images|filter:filterImages">
-                                <div class="thumbnail">
-                                    <a href ng-click="service.addImg(image.url, alt)">
-                                        <img ng-src="{{image.url}}" alt="{{image.name}}">
-                                        <!--<p class="caption">-->
-                                        <!--{{image.name}}-->
-                                        <!--</p>-->
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h2>Markdown:
-                <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle
-                </button>
-            </h2>
-            <div id="link-add-holder" class="hidden">
-                <input type="text" ng-model="postToLink" placeholder="Enter link..."
-                       uib-typeahead="state for post in posts | filter:$viewValue | limitTo:8"
-                       class="form-control">
-                <button type="button" class="btn btn-default">Add Link</button>
-            </div>
-            <br>
-            <!--<wiz-markdown-editor content="service.post.content">-->
-            <!--<wiz-toolbar-button command="bold">Bold</wiz-toolbar-button>-->
-            <!--<wiz-toolbar-button command="italic">Italic</wiz-toolbar-button>-->
-            <!--<wiz-toolbar-button command="h2">H2</wiz-toolbar-button>-->
-            <!--<wiz-toolbar-button command="h3">H3</wiz-toolbar-button>-->
-            <!--<wiz-toolbar-button command="h4">H4</wiz-toolbar-button>-->
-            <!--</wiz-markdown-editor>-->
-            <div ui-ace="{
-              onLoad : aceLoaded,
-              useWrapMode: true,
-              theme: 'dreamweaver',
-              mode: 'markdown'
-            }" ng-model="service.post.content"></div>
-        </div>
-        <div>
-            <h2>Console:</h2>
-            <textarea id="console" readonly></textarea>
-        </div>
+        <uib-accordion close-others="false">
+            <uib-accordion-group heading="Metadata" is-open="true">
+                <div ng-include="'views/edit-metadata.html'"></div>
+            </uib-accordion-group>
+            <uib-accordion-group heading="Images" is-open="true">
+                <div ng-include="'views/image-list.html'"></div>
+            </uib-accordion-group>
+            <uib-accordion-group heading="Markdown Editor" is-open="true">
+            <div ng-include="'views/edit-post-content.html'"></div>
+            </uib-accordion-group>
+        </uib-accordion>
     </div>
     <div class="col-md-5">
         <h2>Output:</h2>

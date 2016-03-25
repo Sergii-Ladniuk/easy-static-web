@@ -1,0 +1,15 @@
+<div ng-controller="ImageController">
+    <label>Image Filter: <input ng-model="filterImages"></label>
+    <label>Image Alt: <input ng-model="alt"></label>
+    <div id="images">
+        <div class="row image-list">
+            <div class="col-xs-6 col-md-3" ng-repeat="image in service.images|filter:filterImages">
+                <div class="thumbnail">
+                    <a href ng-click="service.addImg(image.url, alt)">
+                        <img ng-src="{{image.url}}" alt="{{image.name}}">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

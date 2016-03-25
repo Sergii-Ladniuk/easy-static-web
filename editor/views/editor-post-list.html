@@ -1,0 +1,21 @@
+<div id="post-search">
+    <label>Search: <input ng-model="searchText"></label>
+</div>
+<div id="drafts" class="post-list">
+    <h2>Drafts:</h2>
+    <div>
+        <button type="button" class="list-group-item" ng-click="select(post)"
+                ng-repeat="post in drafts|filter:searchText">
+            {{post.name}}
+        </button>
+    </div>
+</div>
+<div id="published" class="post-list">
+    <h2>Published:</h2>
+    <div class="list-group">
+        <button type="button" class="list-group-item" ng-click="select(post)"
+                ng-repeat="post in publishedPosts|filter:searchText">
+            {{post.name}}
+        </button>
+    </div>
+</div>
