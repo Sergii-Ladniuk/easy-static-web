@@ -1,7 +1,7 @@
 'use strict';
 
 var eswEditor = angular.module('eswEditor', [
-    'wiz.markdown', 'angular-json-editor'
+    'ui.ace', 'angular-json-editor'
 ]).config(function (JSONEditorProvider) {
     JSONEditorProvider.configure({
         plugins: {
@@ -72,19 +72,24 @@ eswEditor.factory('ImageService', function ($http) {
     var service = {
         addImg: function () {
         },
-        images: []
+        images: [],
+        reloadImages: function() {
+            $http.get('/images').then(function (response) {
+                service.images = response.data;
+            });
+        }
     };
-    $http.get('/images').then(function (response) {
-        service.images = response.data;
-    });
+    service.reloadImages();
     return service;
 });
 
 eswEditor.controller('PostEditorController', function ($scope, $http, PostEditorService, ImageService) {
+    var editor;
     $scope.service = PostEditorService;
     $scope.alt = "";
     ImageService.addImg = function (url, alt) {
-        insertAtCursor($('.markdown-input')[0], '![' + alt + '](' + url + ')');
+        //insertAtCursor($('.markdown-input')[0], '![' + alt + '](' + url + ')');
+        editor.insert('![' + alt + '](' + url + ')');
     };
     $scope.$watch('service.post', function(post) {
         if (post) {
@@ -96,11 +101,17 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
             }
         }
     }, true);
+    $scope.aceLoaded = function(_editor){
+        editor = _editor;
+    }
 });
 
 eswEditor.controller('ImageController', function ($scope, ImageService) {
     $scope.service = ImageService;
-});
+    $scope.refresh = function () {
+        ImageService.reloadImages();
+    };
+ });
 
 $(function () {
     $(".spoiler-trigger").click(function () {

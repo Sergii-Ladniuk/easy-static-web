@@ -14,8 +14,10 @@
     <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.min.js"></script>
 
-    <script src="components/wiz-markdown/wizMarkdown/wizMarkdown.js"></script>
-    <script src="components/json-editor/dist/jsoneditor.js"></script>
+    <script type="text/javascript" src="components/ace-builds/src-min-noconflict/ace.js"></script>
+    <!--<script src="components/wiz-markdown/wizMarkdown/wizMarkdown.js"></script>-->
+    <script type="text/javascript" src="components/angular-ui-ace/ui-ace.js"></script>
+    <!--<script src="components/json-editor/dist/jsoneditor.js"></script>-->
     <script src="components/angular-json-editor/dist/angular-json-editor.js"></script>
 
     <script src="js/main.js"></script>
@@ -77,7 +79,8 @@
                         <label>Categories: <input ng-model="service.post.meta.categories"></label>
                         <label>Tags: <input ng-model="service.post.meta.tags"></label>
                         <label>SEO Title: <input ng-model="service.post.meta.seo.title"></label>
-                        <label>SEO Description: <textarea ng-model="service.post.meta.seo.description"></textarea></label>
+                        <label>SEO Description: <textarea
+                                ng-model="service.post.meta.seo.description"></textarea></label>
                         <label>SEO Keywords: <textarea ng-model="service.post.meta.seo.keywords"></textarea></label>
 
                         <a href="http://localhost:4000/{{service.post.meta.slug}}" target="_blank">View Post</a>
@@ -90,7 +93,7 @@
             <h2>Images:
                 <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle
                 </button>
-                <button type="button" class="btn btn-default btn-xs">Refresh</button>
+                <button type="button" class="btn btn-default btn-xs" ng-click="refresh()">Refresh</button>
             </h2>
             <div class="panel-collapse collapse out in">
                 <label>Image Filter: <input ng-model="filterImages"></label>
@@ -118,13 +121,26 @@
                 <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle
                 </button>
             </h2>
-            <wiz-markdown-editor content="service.post.content">
-                <wiz-toolbar-button command="bold">Bold</wiz-toolbar-button>
-                <wiz-toolbar-button command="italic">Italic</wiz-toolbar-button>
-                <wiz-toolbar-button command="h2">H2</wiz-toolbar-button>
-                <wiz-toolbar-button command="h3">H3</wiz-toolbar-button>
-                <wiz-toolbar-button command="h4">H4</wiz-toolbar-button>
-            </wiz-markdown-editor>
+            <div id="link-add-holder" class="hidden">
+                <input type="text" ng-model="postToLink" placeholder="Enter link..."
+                       uib-typeahead="state for post in posts | filter:$viewValue | limitTo:8"
+                       class="form-control">
+                <button type="button" class="btn btn-default">Add Link</button>
+            </div>
+            <br>
+            <!--<wiz-markdown-editor content="service.post.content">-->
+            <!--<wiz-toolbar-button command="bold">Bold</wiz-toolbar-button>-->
+            <!--<wiz-toolbar-button command="italic">Italic</wiz-toolbar-button>-->
+            <!--<wiz-toolbar-button command="h2">H2</wiz-toolbar-button>-->
+            <!--<wiz-toolbar-button command="h3">H3</wiz-toolbar-button>-->
+            <!--<wiz-toolbar-button command="h4">H4</wiz-toolbar-button>-->
+            <!--</wiz-markdown-editor>-->
+            <div ui-ace="{
+              onLoad : aceLoaded,
+              useWrapMode: true,
+              theme: 'dreamweaver',
+              mode: 'markdown'
+            }" ng-model="service.post.content"></div>
         </div>
         <div>
             <h2>Console:</h2>

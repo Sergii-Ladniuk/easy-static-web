@@ -17,17 +17,17 @@ var yaml = require('yamljs');
 var posts;
 
 exports.list = function () {
-    return listContent()
-        .map(function (file) {
-            if (posts) {
-                return posts
-            } else {
+    if (posts) {
+        return posts
+    } else {
+        return listContent()
+            .map(function (file) {
                 return loadPosts(file)
-            }
-        }).then(function (_posts) {
-            posts = _posts;
-            return posts;
-        })
+            }).then(function (_posts) {
+                posts = _posts;
+                return posts;
+            })
+    }
 };
 
 exports.images = function () {
