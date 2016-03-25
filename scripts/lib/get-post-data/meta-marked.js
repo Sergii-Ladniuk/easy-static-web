@@ -8,8 +8,13 @@ var yaml = require('js-yaml');
 
 // Splits the given string into a meta section and a markdown section if a meta section is present, else returns null
 function splitInput(str) {
-    if (str.slice(0, 3) !== '---') return;
-
+    //str = str.replace('^[^-]*','');
+    if (str.slice(0, 3) !== '---') {
+        console.log('"'+str[0]+'"');
+        console.error('markdown doc should start with ---');
+        console.error('actual:', '"'+str.slice(0, 4)+'"');
+        return;
+    }
     var matcher = /\n(\.{3}|-{3})/g;
     var metaEnd = matcher.exec(str);
 
