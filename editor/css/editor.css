@@ -29,7 +29,7 @@ label {
 
 .post-list {
     overflow-y: scroll;
-    height: 50%;
+    height: 50vh;
     font-size: 12px;
 }
 

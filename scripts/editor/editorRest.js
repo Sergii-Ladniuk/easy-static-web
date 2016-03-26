@@ -25,6 +25,15 @@ exports.list = function () {
                 return loadPosts(file)
             }).then(function (_posts) {
                 posts = _posts;
+
+                posts.sort(function (a, b) {
+                    a = a.name.toLowerCase();
+                    b = b.name.toLowerCase();
+                    if (a < b) return -1;
+                    if (a > b) return 1;
+                    return 0;
+                });
+
                 return posts;
             })
     }
