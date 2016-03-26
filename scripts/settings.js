@@ -28,9 +28,13 @@ exports.load = new Promise(function (resolve, reject) {
 
 exports.loadSync = function () {
     var settingsPath = __dirname + '/../settings.json';
-    exports.settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
-    setDefaults();
-    return exports.settings;
+    if (exports.settings) {
+        return exports.settings;
+    } else {
+        exports.settings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+        setDefaults();
+        return exports.settings;
+    }
 };
 
 function setDefaults() {

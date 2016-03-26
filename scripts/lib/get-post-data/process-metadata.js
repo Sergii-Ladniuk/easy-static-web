@@ -9,20 +9,21 @@ var os = require('os');
 var newline = os.EOL;
 var util = require('util');
 var equal = require('deep-equal');
-var processMetadata = function (data) {
-    try {
 
+var processMetadata = function (data) {
+
+    try {
         var target = data.target;
 
-        var parsedData = mm(target.text);
-
-        extend(true, target, parsedData);
+        if (!target.meta) {
+            var parsedData = mm(target.text);
+            extend(true, target, parsedData);
+        }
 
 
         if (!target.meta.slug) {
-            throw  new Error ("No slug specified for", target.path)
+            throw  new Error("No slug specified for", target.path)
         }
-
 
         if (typeof target.meta.categories === 'string') {
             target.meta.categories = parseArray(target.meta.categories);
