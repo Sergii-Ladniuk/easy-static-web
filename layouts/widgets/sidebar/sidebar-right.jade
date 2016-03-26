@@ -4,5 +4,5 @@
             - var sidebarInfo = rootWidget['sidebar-right.jade']
             each w in sidebarInfo
                 - w = w.replace(/\.jade$/, '').replace(/\.html$/, '');
-                !{widgets[w]}
+                | !{widgets[w]}
 
