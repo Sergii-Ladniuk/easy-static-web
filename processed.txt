@@ -1,0 +1,1798 @@
+Statistical profiling result from isolate-0x102800400-v8.log, (2927 ticks, 24 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    268    9.2%          /usr/local/bin/node
+      8    0.3%          /usr/lib/system/libsystem_platform.dylib
+      7    0.2%          /usr/lib/system/libsystem_pthread.dylib
+      5    0.2%          /usr/lib/system/libsystem_c.dylib
+      3    0.1%          /usr/lib/system/libsystem_malloc.dylib
+      1    0.0%          /usr/lib/system/libsystem_kernel.dylib
+      1    0.0%          /usr/lib/libstdc++.6.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     66    2.3%    2.5%  RegExp: ([^]*?)<!--more([^]*?)-->
+     30    1.0%    1.1%  RegExp: ^(\\/?|)([\\s\\S]*?)((?:\\.{1\,2}|[^\\/]+?|)(\\.[^.\\/]*|))(?:[\\/]*)$
+     21    0.7%    0.8%  LazyCompile: *module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+     14    0.5%    0.5%  LazyCompile: *exec native regexp.js:88:22
+     13    0.4%    0.5%  KeyedLoadIC: A keyed load IC from the snapshot
+     12    0.4%    0.5%  KeyedLoadIC: A keyed load IC from the snapshot {1}
+     11    0.4%    0.4%  Stub: BinaryOpWithAllocationSiteStub
+     10    0.3%    0.4%  Stub: CEntryStub
+      9    0.3%    0.3%  LazyCompile: *_unicodeCategory /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:7:34
+      9    0.3%    0.3%  Function: ~<anonymous> :8:49
+      8    0.3%    0.3%  Builtin: JSConstructStubGeneric
+      7    0.2%    0.3%  Stub: RegExpExecStub
+      7    0.2%    0.3%  LazyCompile: ~ToPropertyDescriptor native v8natives.js:237:30
+      7    0.2%    0.3%  LazyCompile: Join native array.js:106:14
+      7    0.2%    0.3%  LazyCompile: *Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      7    0.2%    0.3%  LazyCompile: *InlineLexer.output /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:562:40
+      6    0.2%    0.2%  RegExp: ^((?:[^\\n]+\\n?(?! *(`{3\,}|~{3\,})[ \\.]*(\\S+)? *\\n([\\s\\S]*?)\\s*\\2 *(?:\\n+|$)|( *)((?:[*+-]|\\d+\\.)) [\\s\\S]+?(?:\\n+(?=\\3?(?:[-*_] *){3\,}(?:\\n+|$))|\\n+(?= *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +["(]([^\\n]+)[")])? *(?:\\n+|$))|\\n{2\,}(?! )(?!\\1(?:[*+-]|\\d+\\.) )\\n*|\\s*$)|( *[-*_]){3\,} *(?:\\n+|$)| *(#{1\,6}) *([^\\n]+?) *#* *(?:\\n+|$)|([^\\n]+)\\n *(=|-){2\,} *(?:\\n+|$)|( *>[^\\n]+(\\n(?! *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +["(]([^\\n]+)[")])? *(?:\\n+|$))[^\\n]+)*\\n*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:\\/|[^\\w\\s@]*@)\\b| *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +["(]([^\\n]+)[")])? *(?:\\n+|$)))+)\\n*
+      6    0.2%    0.2%  Builtin: FunctionApply
+      5    0.2%    0.2%  Stub: SubStringStub
+      5    0.2%    0.2%  Stub: InstanceofStub
+      5    0.2%    0.2%  RegExp: ^[\\s\\S]+?(?=[\\\\<!\\[_*`~]|https?://| {2\,}\\n|$)
+      5    0.2%    0.2%  RegExp: ^([^\\n]+)\\n *(=|-){2\,} *(?:\\n+|$)
+      5    0.2%    0.2%  RegExp: <img *(.*?)>
+      5    0.2%    0.2%  LazyCompile: ~extend /Users/sergii/dev/blog/node_modules/extend/index.js:34:33
+      5    0.2%    0.2%  LazyCompile: *test native regexp.js:135:20
+      5    0.2%    0.2%  LazyCompile: *InnerArrayIndexOf native array.js:1049:27
+      4    0.1%    0.2%  Stub: StringAddStub_CheckNone_NotTenured
+      4    0.1%    0.2%  Stub: CompareICStub {2}
+      4    0.1%    0.2%  RegExp: ^( *)((?:[*+-]|\\d+\\.)) [\\s\\S]+?(?:\\n+(?=(?: *[-*_]){3\,} *(?:\\n+|$))|\\n{2\,}(?! )(?!\\1(?:[*+-]|\\d+\\.) )\\n*|\\s*$)
+      4    0.1%    0.2%  RegExp: ^ *(\\S.*\\|.*)\\n *([-:]+ *\\|[-| :]*)\\n((?:.*\\|.*(?:\\n|$))*)\\n*
+      4    0.1%    0.2%  LazyCompile: ~defineProperty native v8natives.js:766:30
+      4    0.1%    0.2%  LazyCompile: *join native array.js:337:19
+      4    0.1%    0.2%  LazyCompile: *handleImg /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:235:19
+      4    0.1%    0.2%  LazyCompile: *Promise._resolveCallback /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:413:46
+      4    0.1%    0.2%  Builtin: ArgumentsAdaptorTrampoline
+      3    0.1%    0.1%  Stub: ToBooleanStub {1}
+      3    0.1%    0.1%  Stub: ToBooleanStub
+      3    0.1%    0.1%  Stub: LoadConstantStub
+      3    0.1%    0.1%  Stub: FastNewContextStub
+      3    0.1%    0.1%  Stub: CompareICStub {7}
+      3    0.1%    0.1%  Stub: CallConstructStub
+      3    0.1%    0.1%  Stub: CEntryStub {1}
+      3    0.1%    0.1%  Stub: ArgumentsAccessStub
+      3    0.1%    0.1%  LazyCompile: ~SerializeObject native json.js:78:25
+      3    0.1%    0.1%  LazyCompile: ~InnerArrayJoin native array.js:321:24
+      3    0.1%    0.1%  LazyCompile: ~InlineLexer.output /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:562:40
+      3    0.1%    0.1%  LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      3    0.1%    0.1%  LazyCompile: ~<anonymous> fs.js:81:18
+      3    0.1%    0.1%  LazyCompile: *pp.parseSubscripts /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:222:31
+      3    0.1%    0.1%  LazyCompile: *JSONSerialize native json.js:123:23
+      3    0.1%    0.1%  LazyCompile: *Async.drainQueues /Users/sergii/dev/blog/node_modules/bluebird/js/release/async.js:15:33
+      3    0.1%    0.1%  Handler: An IC handler from the snapshot
+      3    0.1%    0.1%  Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      2    0.1%    0.1%  Stub: StringAddStub
+      2    0.1%    0.1%  Stub: LoadICStub
+      2    0.1%    0.1%  Stub: LoadConstantStub {3}
+      2    0.1%    0.1%  Stub: JSEntryStub
+      2    0.1%    0.1%  Stub: GrowArrayElementsStub
+      2    0.1%    0.1%  Stub: FastNewClosureStub
+      2    0.1%    0.1%  Stub: CompareNilICStub(NullValue)(MonomorphicMap)
+      2    0.1%    0.1%  Stub: CompareICStub {6}
+      2    0.1%    0.1%  Stub: CallFunctionStub
+      2    0.1%    0.1%  StoreMegamorphic: args_count: 0
+      2    0.1%    0.1%  RegExp: ^<!--[\\s\\S]*?-->|^<\\/?\\w+(?:"[^"]*"|'[^']*'|[^'">])*?>
+      2    0.1%    0.1%  RegExp: ^(break|case|catch|continue|debugger|default|do|else|finally|for|function|if|return|switch|throw|try|var|while|with|null|true|false|instanceof|typeof|void|delete|new|in|this|let|const|class|extends|export|import|yield|super)$
+      2    0.1%    0.1%  RegExp: ^!?\\[((?:\\[[^\\]]*\\]|[^\\[\\]]|\\](?=[^\\[]*\\]))*)\\]\\(\\s*<?([\\s\\S]*?)>?(?:\\s+['"]([\\s\\S]*?)['"])?\\s*\\)
+      2    0.1%    0.1%  RegExp: ^ +$
+      2    0.1%    0.1%  RegExp: ^ *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +["(]([^\\n]+)[")])? *(?:\\n+|$)
+      2    0.1%    0.1%  RegExp: ^ *(?:<!--[\\s\\S]*?-->|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|@)\\b)[\\s\\S]+?<\\/\\1>|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:/|@)\\b(?:"[^"]*"|'[^']*'|[^'">])*?>) *(?:\\n{2\,}|\\s*$)
+      2    0.1%    0.1%  RegExp: \\[email\\-subscribe *(.*?) *\\]
+      2    0.1%    0.1%  LazyCompile: ~ret :4:28
+      2    0.1%    0.1%  LazyCompile: ~pp.parseParenAndDistinguishExpression /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:346:50
+      2    0.1%    0.1%  LazyCompile: ~getOptions /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1383:20
+      2    0.1%    0.1%  LazyCompile: ~exec native regexp.js:88:22
+      2    0.1%    0.1%  LazyCompile: ~Url.parse url.js:88:31
+      2    0.1%    0.1%  LazyCompile: ~Promise._resolveCallback /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:413:46
+      2    0.1%    0.1%  LazyCompile: ~Parser /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1542:18
+      2    0.1%    0.1%  LazyCompile: ~Lexer.token /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:150:33
+      2    0.1%    0.1%  LazyCompile: ~Lexer.token /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:144:33
+      2    0.1%    0.1%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:241:39
+      2    0.1%    0.1%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/mkdirp/index.js:44:38
+      2    0.1%    0.1%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:462:45
+      2    0.1%    0.1%  LazyCompile: getThen /Users/sergii/dev/blog/node_modules/bluebird/js/release/thenables.js:38:17
+      2    0.1%    0.1%  LazyCompile: Error native messages.js:660:21
+      2    0.1%    0.1%  LazyCompile: APPLY_PREPARE native runtime.js:336:23
+      2    0.1%    0.1%  LazyCompile: *indexOf native string.js:80:25
+      2    0.1%    0.1%  LazyCompile: *checkForgottenReturns /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:297:31
+      2    0.1%    0.1%  LazyCompile: *captureStackTrace native messages.js:709:30
+      2    0.1%    0.1%  LazyCompile: *UseSparseVariant native array.js:93:26
+      2    0.1%    0.1%  LazyCompile: *Promise._settlePromiseCtx /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:584:47
+      2    0.1%    0.1%  LazyCompile: *Promise._addCallbacks /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:367:44
+      2    0.1%    0.1%  LazyCompile: *InnerArrayForEach native array.js:942:27
+      2    0.1%    0.1%  LazyCompile: *DebugItem /Users/sergii/dev/blog/node_modules/jade/lib/runtime.js:243:39
+      2    0.1%    0.1%  Handler: push
+      2    0.1%    0.1%  Handler: An IC handler from the snapshot {5}
+      2    0.1%    0.1%  Handler: An IC handler from the snapshot {1}
+      2    0.1%    0.1%  Function: ~<anonymous> :120:11
+      2    0.1%    0.1%  Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:34:35
+      1    0.0%    0.0%  Stub: ToBooleanStub(Undefined,SpecObject)
+      1    0.0%    0.0%  Stub: ToBooleanStub(String)
+      1    0.0%    0.0%  Stub: ToBooleanStub(Null)
+      1    0.0%    0.0%  Stub: ToBooleanStub(Bool,String)
+      1    0.0%    0.0%  Stub: StringAddStub_CheckNone_Tenured
+      1    0.0%    0.0%  Stub: StoreTransitionStub
+      1    0.0%    0.0%  Stub: StoreFieldStub
+      1    0.0%    0.0%  Stub: RecordWriteStub {3}
+      1    0.0%    0.0%  Stub: RecordWriteStub {2}
+      1    0.0%    0.0%  Stub: RecordWriteStub {1}
+      1    0.0%    0.0%  Stub: RecordWriteStub
+      1    0.0%    0.0%  Stub: LoadIndexedStringStub
+      1    0.0%    0.0%  Stub: LoadFieldStub {1}
+      1    0.0%    0.0%  Stub: LoadFieldStub
+      1    0.0%    0.0%  Stub: LoadFastElementStub
+      1    0.0%    0.0%  Stub: LoadConstantStub {5}
+      1    0.0%    0.0%  Stub: LoadConstantStub {4}
+      1    0.0%    0.0%  Stub: LoadConstantStub {2}
+      1    0.0%    0.0%  Stub: LoadConstantStub {1}
+      1    0.0%    0.0%  Stub: KeyedLoadSloppyArgumentsStub
+      1    0.0%    0.0%  Stub: FastNewContextStub {1}
+      1    0.0%    0.0%  Stub: CreateWeakCellStub
+      1    0.0%    0.0%  Stub: CompareICStub {9}
+      1    0.0%    0.0%  Stub: CompareICStub {8}
+      1    0.0%    0.0%  Stub: CompareICStub {5}
+      1    0.0%    0.0%  Stub: CompareICStub {4}
+      1    0.0%    0.0%  Stub: CompareICStub {3}
+      1    0.0%    0.0%  Stub: CompareICStub {1}
+      1    0.0%    0.0%  Stub: CompareICStub
+      1    0.0%    0.0%  Stub: CallFunctionStub_Args4
+      1    0.0%    0.0%  Stub: CallFunctionStub_Args1
+      1    0.0%    0.0%  Stub: CallFunctionStub_Args0
+      1    0.0%    0.0%  Stub: CallFunctionStub {2}
+      1    0.0%    0.0%  Stub: CallFunctionStub {1}
+      1    0.0%    0.0%  Stub: BinaryOpWithAllocationSiteStub(ADD_CreateAllocationMementos:Smi*String->String)
+      1    0.0%    0.0%  Stub: ArraySingleArgumentConstructorStub
+      1    0.0%    0.0%  StorePolymorphicIC: keywords
+      1    0.0%    0.0%  RegExp: src *= *[\\"\\'](.*?)[\\"\\']
+      1    0.0%    0.0%  RegExp: data-size *= *[\\"\\'](.*?)[\\"\\']
+      1    0.0%    0.0%  RegExp: alt *= *[\\"\\'](.*?)[\\"\\']
+      1    0.0%    0.0%  RegExp: ^yield *
+      1    0.0%    0.0%  RegExp: ^index\\.\\w+?$
+      1    0.0%    0.0%  RegExp: ^\\n+
+      1    0.0%    0.0%  RegExp: ^\\$
+      1    0.0%    0.0%  RegExp: ^<([^ >]+(@|:\\/)[^ >]+)>
+      1    0.0%    0.0%  RegExp: ^((?:[^\\n]+\\n?(?! *(`{3\,}|~{3\,}) *(\\S+)? *\\n([\\s\\S]+?)\\s*\\2 *(?:\\n+|$)|( *)((?:[*+-]|\\d+\\.)) [\\s\\S]+?(?:\\n+(?=(?: *[-*_]){3\,} *(?:\\n+|$))|\\n{2\,}(?! )(?!\\3(?:[*+-]|\\d+\\.) )\\n*|\\s*$)|( *[-*_]){3\,} *(?:\\n+|$)| *(#{1\,6}) *([^\\n]+?) *#* *(?:\\n+|$)|([^\\n]+)\\n *(=|-){2\,} *(?:\\n+|$)|( *>[^\\n]+(\\n[^\\n]+)*\\n*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\\b)\\w+(?!:\\/|@)\\b| *\\[([^\\]]+)\\]: *<?([^\\s>]+)>?(?: +["(]([^\\n]+)[")])? *(?:\\n+|$)))+)\\n*
+      1    0.0%    0.0%  RegExp: ^( {4}[^\\n]+\\n*)+
+      1    0.0%    0.0%  RegExp: ^( *[-*_]){3\,} *(?:\\n+|$)
+      1    0.0%    0.0%  RegExp: ^ {2\,}\\n(?!\\s*$)
+      1    0.0%    0.0%  RegExp: ^ *\\|(.+)\\n *\\|( *[-:]+[-| :]*)\\n((?: *\\|.*(?:\\n|$))*)\\n*
+      1    0.0%    0.0%  RegExp: \\r\\n|\\r
+      1    0.0%    0.0%  RegExp: \\n(\\.{3}|-{3})
+      1    0.0%    0.0%  RegExp: \\b(__p \\+=) '' \\+
+      1    0.0%    0.0%  RegExp: \\[youtube *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[tag\\-cloud *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[return\\-to\\-top *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[metrics *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[js *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[add\\-to\\-favourites *(.*?) *\\]
+      1    0.0%    0.0%  RegExp: \\[ *?toc *?\\]
+      1    0.0%    0.0%  RegExp: [\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F\\x7F-\\x84\\x86-\\x9F\\uFFFE\\uFFFF]|[\\uD800-\\uDBFF](?![\\uDC00-\\uDFFF])|(?:[^\\uD800-\\uDBFF]|^)[\\uDC00-\\uDFFF]
+      1    0.0%    0.0%  RegExp: ['\\n\\r\\t\\u2028\\u2029\\\\]
+      1    0.0%    0.0%  RegExp: [&<>"]
+      1    0.0%    0.0%  RegExp: <!-- *?toc *?-->
+      1    0.0%    0.0%  RegExp: (.*?)(?:[\\/]+|$)
+      1    0.0%    0.0%  RegExp: &(?!#?\\w+;)
+      1    0.0%    0.0%  LazyCompile: ~writeFd fs.js:1202:19
+      1    0.0%    0.0%  LazyCompile: ~wrapper fs.js:665:19
+      1    0.0%    0.0%  LazyCompile: ~union /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:4935:19
+      1    0.0%    0.0%  LazyCompile: ~toRealPath module.js:111:20
+      1    0.0%    0.0%  LazyCompile: ~substr native string.js:513:22
+      1    0.0%    0.0%  LazyCompile: ~stringify native json.js:158:23
+      1    0.0%    0.0%  LazyCompile: ~slowToString buffer.js:329:22
+      1    0.0%    0.0%  LazyCompile: ~skipSeparationSpace /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:333:29
+      1    0.0%    0.0%  LazyCompile: ~reverse native array.js:484:22
+      1    0.0%    0.0%  LazyCompile: ~renderer.heading /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:16:33
+      1    0.0%    0.0%  LazyCompile: ~recursiveDecomp /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:166:31
+      1    0.0%    0.0%  LazyCompile: ~pp.readWord1 /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:3097:25
+      1    0.0%    0.0%  LazyCompile: ~pp.readToken_lt_gt /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2670:31
+      1    0.0%    0.0%  LazyCompile: ~pp.readToken_dot /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2608:29
+      1    0.0%    0.0%  LazyCompile: ~pp.parseStatement /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1690:30
+      1    0.0%    0.0%  LazyCompile: ~pp.parseNew /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:427:24
+      1    0.0%    0.0%  LazyCompile: ~pp.parseMaybeConditional /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:927:37
+      1    0.0%    0.0%  LazyCompile: ~pp.parseExpression /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:879:31
+      1    0.0%    0.0%  LazyCompile: ~pp.parseExprList /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1438:29
+      1    0.0%    0.0%  LazyCompile: ~posix.resolve path.js:419:25
+      1    0.0%    0.0%  LazyCompile: ~needFinish _stream_writable.js:447:20
+      1    0.0%    0.0%  LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+      1    0.0%    0.0%  LazyCompile: ~mkdirP /Users/sergii/dev/blog/node_modules/mkdirp/index.js:7:17
+      1    0.0%    0.0%  LazyCompile: ~min native math.js:61:17
+      1    0.0%    0.0%  LazyCompile: ~match native string.js:122:23
+      1    0.0%    0.0%  LazyCompile: ~load /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1562:14
+      1    0.0%    0.0%  LazyCompile: ~isPlainObject /Users/sergii/dev/blog/node_modules/extend/index.js:14:43
+      1    0.0%    0.0%  LazyCompile: ~generate /Users/sergii/dev/blog/node_modules/marked-toc/index.js:35:18
+      1    0.0%    0.0%  LazyCompile: ~exports.setImmediate timers.js:420:32
+      1    0.0%    0.0%  LazyCompile: ~doGetThen /Users/sergii/dev/blog/node_modules/bluebird/js/release/thenables.js:34:19
+      1    0.0%    0.0%  LazyCompile: ~checkForgottenReturns /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:297:31
+      1    0.0%    0.0%  LazyCompile: ~charCodeAt native string.js:57:28
+      1    0.0%    0.0%  LazyCompile: ~baseFlatten /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:1011:25
+      1    0.0%    0.0%  LazyCompile: ~Uint8Array native typedarray.js:124:31
+      1    0.0%    0.0%  LazyCompile: ~UTC native date.js:185:17
+      1    0.0%    0.0%  LazyCompile: ~TimeString native date.js:145:20
+      1    0.0%    0.0%  LazyCompile: ~Tag /Users/sergii/dev/blog/node_modules/jade/lib/nodes/tag.js:15:40
+      1    0.0%    0.0%  LazyCompile: ~StringSplitOnRegExp native string.js:441:29
+      1    0.0%    0.0%  LazyCompile: ~RegExp native regexp.js:36:27
+      1    0.0%    0.0%  LazyCompile: ~ReductionPromiseArray._iterate /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:67:53
+      1    0.0%    0.0%  LazyCompile: ~PromiseArray._isResolved /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:119:47
+      1    0.0%    0.0%  LazyCompile: ~Promise._settlePromises /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:665:46
+      1    0.0%    0.0%  LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1    0.0%    0.0%  LazyCompile: ~MappingPromiseArray._promiseFulfilled /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:31:60
+      1    0.0%    0.0%  LazyCompile: ~Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1    0.0%    0.0%  LazyCompile: ~InnerArrayFilter native array.js:909:26
+      1    0.0%    0.0%  LazyCompile: ~Function native v8natives.js:1258:29
+      1    0.0%    0.0%  LazyCompile: ~Compiler.visitCode /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:564:22
+      1    0.0%    0.0%  LazyCompile: ~Compiler.visitBlock /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:281:23
+      1    0.0%    0.0%  LazyCompile: ~Async._drainQueue /Users/sergii/dev/blog/node_modules/bluebird/js/release/async.js:121:39
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> fs.js:1146:58
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> :3:16
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/save-content.js:16:33
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:240:33
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:222:32
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:41:52
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/merge-post-list.js:31:24
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      1    0.0%    0.0%  LazyCompile: tryCreateRegexp /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2807:25
+      1    0.0%    0.0%  LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    0.0%    0.0%  LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1    0.0%    0.0%  LazyCompile: fs.readFileSync fs.js:417:27
+      1    0.0%    0.0%  LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1    0.0%    0.0%  LazyCompile: Module._load module.js:271:24
+      1    0.0%    0.0%  LazyCompile: MOD native runtime.js:186:13
+      1    0.0%    0.0%  LazyCompile: INSTANCE_OF native runtime.js:289:21
+      1    0.0%    0.0%  LazyCompile: *warnings /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:806:23
+      1    0.0%    0.0%  LazyCompile: *tryConvertToPromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/thenables.js:7:29
+      1    0.0%    0.0%  LazyCompile: *substring native string.js:487:25
+      1    0.0%    0.0%  LazyCompile: *split native string.js:424:23
+      1    0.0%    0.0%  LazyCompile: *replace native string.js:152:23
+      1    0.0%    0.0%  LazyCompile: *readBlockMapping /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:946:26
+      1    0.0%    0.0%  LazyCompile: *pp.startNodeAt /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1263:27
+      1    0.0%    0.0%  LazyCompile: *pp.readWord1 /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:3097:25
+      1    0.0%    0.0%  LazyCompile: *pp.parseSubscripts /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1028:31
+      1    0.0%    0.0%  LazyCompile: *pp.parseLiteral /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:331:28
+      1    0.0%    0.0%  LazyCompile: *pp.parseIdent /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1460:26
+      1    0.0%    0.0%  LazyCompile: *pp.parseIdent /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:661:26
+      1    0.0%    0.0%  LazyCompile: *pp.parseExprList /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1438:29
+      1    0.0%    0.0%  LazyCompile: *pp.parseExprList /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:638:29
+      1    0.0%    0.0%  LazyCompile: *pp.next /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2434:20
+      1    0.0%    0.0%  LazyCompile: *pp.fullCharCodeAtPos /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3192:33
+      1    0.0%    0.0%  LazyCompile: *pp.finishToken /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3280:27
+      1    0.0%    0.0%  LazyCompile: *pp.finishOp /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3489:24
+      1    0.0%    0.0%  LazyCompile: *pp.expect /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1496:22
+      1    0.0%    0.0%  LazyCompile: *posix.resolve path.js:419:25
+      1    0.0%    0.0%  LazyCompile: *parse /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:904:15
+      1    0.0%    0.0%  LazyCompile: *map native array.js:1040:18
+      1    0.0%    0.0%  LazyCompile: *keys /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:1618:49
+      1    0.0%    0.0%  LazyCompile: *isEmpty internal/linkedlist.js:54:17
+      1    0.0%    0.0%  LazyCompile: *hasOwnProperty native v8natives.js:111:30
+      1    0.0%    0.0%  LazyCompile: *fs.fstatSync fs.js:881:24
+      1    0.0%    0.0%  LazyCompile: *composeNode /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1256:21
+      1    0.0%    0.0%  LazyCompile: *charCodeAt native string.js:57:28
+      1    0.0%    0.0%  LazyCompile: *captureSegment /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:240:24
+      1    0.0%    0.0%  LazyCompile: *attr /Users/sergii/dev/blog/node_modules/jade/lib/runtime.js:111:29
+      1    0.0%    0.0%  LazyCompile: *abs native math.js:9:17
+      1    0.0%    0.0%  LazyCompile: *_tokentype.types.parenL.updateContext /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2370:50
+      1    0.0%    0.0%  LazyCompile: *UChar.getDecomp /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:114:40
+      1    0.0%    0.0%  LazyCompile: *ToString native runtime.js:453:18
+      1    0.0%    0.0%  LazyCompile: *ToName native runtime.js:466:16
+      1    0.0%    0.0%  LazyCompile: *StringReplaceGlobalRegExpWithFunction native string.js:297:47
+      1    0.0%    0.0%  LazyCompile: *RecursDecompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:165:50
+      1    0.0%    0.0%  LazyCompile: *Promise._settlePromises /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:665:46
+      1    0.0%    0.0%  LazyCompile: *Promise._length /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:271:38
+      1    0.0%    0.0%  LazyCompile: *PadInt native date.js:499:16
+      1    0.0%    0.0%  LazyCompile: *Lexer.while /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:544:20
+      1    0.0%    0.0%  LazyCompile: *Lexer.token /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:150:33
+      1    0.0%    0.0%  LazyCompile: *Lexer.token /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:144:33
+      1    0.0%    0.0%  LazyCompile: *IsGenericDescriptor native v8natives.js:194:29
+      1    0.0%    0.0%  LazyCompile: *IsAccessorDescriptor native v8natives.js:186:30
+      1    0.0%    0.0%  LazyCompile: *InnerArrayFilter native array.js:909:26
+      1    0.0%    0.0%  LazyCompile: *DefaultNumber native runtime.js:514:23
+      1    0.0%    0.0%  LazyCompile: *DecompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:194:44
+      1    0.0%    0.0%  LazyCompile: *Buffer buffer.js:47:16
+      1    0.0%    0.0%  LazyCompile: *<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-all.js:226:32
+      1    0.0%    0.0%  LazyCompile: *<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:158:36
+      1    0.0%    0.0%  KeyedStorePolymorphicIC: args_count: 0 {1}
+      1    0.0%    0.0%  KeyedStoreIC: A keyed store IC from the snapshot
+      1    0.0%    0.0%  KeyedStoreIC:  {1275}
+      1    0.0%    0.0%  KeyedLoadIC: A keyed load IC from the snapshot {2}
+      1    0.0%    0.0%  Handler: widgets
+      1    0.0%    0.0%  Handler: title
+      1    0.0%    0.0%  Handler: test {1}
+      1    0.0%    0.0%  Handler: test
+      1    0.0%    0.0%  Handler: symbol("nonexistent_symbol" hash 26e8c588)
+      1    0.0%    0.0%  Handler: shift
+      1    0.0%    0.0%  Handler: setGet
+      1    0.0%    0.0%  Handler: process
+      1    0.0%    0.0%  Handler: on
+      1    0.0%    0.0%  Handler: length
+      1    0.0%    0.0%  Handler: join {1}
+      1    0.0%    0.0%  Handler: join
+      1    0.0%    0.0%  Handler: ino
+      1    0.0%    0.0%  Handler: inFunction
+      1    0.0%    0.0%  Handler: getMaxListenersAsync
+      1    0.0%    0.0%  Handler: getDecomp
+      1    0.0%    0.0%  Handler: end
+      1    0.0%    0.0%  Handler: curLine
+      1    0.0%    0.0%  Handler: cork
+      1    0.0%    0.0%  Handler: call
+      1    0.0%    0.0%  Handler: apply
+      1    0.0%    0.0%  Handler: _setAsyncGuaranteed
+      1    0.0%    0.0%  Handler: _proxy
+      1    0.0%    0.0%  Handler: DebugItem
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {9}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {8}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {7}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {6}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {4}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {3}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {2}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {11}
+      1    0.0%    0.0%  Handler: An IC handler from the snapshot {10}
+      1    0.0%    0.0%  Handler: $toString
+      1    0.0%    0.0%  Handler: $nonNumberToNumber
+      1    0.0%    0.0%  Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:35:45
+      1    0.0%    0.0%  Function: ~<anonymous> :507:11
+      1    0.0%    0.0%  Builtin: JSEntryTrampoline
+      1    0.0%    0.0%  Builtin: JSConstructEntryTrampoline
+
+ [C++]:
+   ticks  total  nonlib   name
+    200    6.8%    7.6%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+    122    4.2%    4.6%  __os_once
+     76    2.6%    2.9%  node::Buffer::CreateFromString(v8::FunctionCallbackInfo<v8::Value> const&)
+     73    2.5%    2.8%  ___munmap
+     50    1.7%    1.9%  node::Buffer::Utf8Slice(v8::FunctionCallbackInfo<v8::Value> const&)
+     32    1.1%    1.2%  _malloc_zone_malloc
+     29    1.0%    1.1%  unibrow::Utf8::Encode(char*, unsigned int, int, bool)
+     28    1.0%    1.1%  v8::internal::Handle<v8::internal::String> v8::internal::JsonParser<false>::ScanJsonString<false>()
+     27    0.9%    1.0%  _malloc_default_zone
+     24    0.8%    0.9%  v8::internal::PagedSpace::AllocateRawUnaligned(int)
+     22    0.8%    0.8%  v8::internal::Scanner::Scan()
+     21    0.7%    0.8%  node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+     19    0.6%    0.7%  v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::LookupIterator::Configuration)
+     18    0.6%    0.7%  v8::internal::Builtins::~Builtins()
+     18    0.6%    0.7%  ___coalition
+     17    0.6%    0.6%  __platform_bzero
+     16    0.5%    0.6%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+     16    0.5%    0.6%  v8::internal::Context::script_context()
+     16    0.5%    0.6%  ___carbon_delete
+     14    0.5%    0.5%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+     14    0.5%    0.5%  v8::internal::StringSearch<unsigned short, unsigned short>::BoyerMooreHorspoolSearch(v8::internal::StringSearch<unsigned short, unsigned short>*, v8::internal::Vector<unsigned short const>, int)
+     13    0.4%    0.5%  v8::internal::String::CalculateLineEnds(v8::internal::Handle<v8::internal::String>, bool)
+     13    0.4%    0.5%  v8::internal::LookupIterator::Next()
+     13    0.4%    0.5%  v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+     13    0.4%    0.5%  v8::internal::JSObjectWalkVisitor<v8::internal::AllocationSiteCreationContext>::StructureWalk(v8::internal::Handle<v8::internal::JSObject>)
+     11    0.4%    0.4%  v8::internal::IncrementalMarkingMarkingVisitor::VisitFixedArrayIncremental(v8::internal::Map*, v8::internal::HeapObject*)
+     10    0.3%    0.4%  v8::internal::TemplateHashMapImpl<v8::internal::FreeStoreAllocationPolicy>::LookupOrInsert(void*, unsigned int, v8::internal::FreeStoreAllocationPolicy)
+     10    0.3%    0.4%  v8::internal::PolymorphicCodeCacheHashTableKey::AsHandle(v8::internal::Isolate*)
+      9    0.3%    0.3%  v8::internal::Scanner::ScanIdentifierOrKeyword()
+      9    0.3%    0.3%  v8::internal::RelocInfoWriter::Write(v8::internal::RelocInfo const*)
+      9    0.3%    0.3%  node::StartProfilerIdleNotifier(v8::FunctionCallbackInfo<v8::Value> const&)
+      8    0.3%    0.3%  v8::internal::Scanner::ScanDecimalDigits()
+      8    0.3%    0.3%  v8::internal::JSObject::MigrateToMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+      8    0.3%    0.3%  v8::internal::IncrementalMarking::UpdateMarkingDequeAfterScavenge()
+      8    0.3%    0.3%  v8::internal::IncrementalMarking::RecordWriteSlow(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Object*)
+      8    0.3%    0.3%  v8::internal::Builtins::FrameDropper_LiveEdit()
+      8    0.3%    0.3%  int v8::internal::LinearSearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int*)
+      8    0.3%    0.3%  _vfprintf_l
+      8    0.3%    0.3%  _create_scalable_zone
+      8    0.3%    0.3%  __os_alloc_once
+      7    0.2%    0.3%  v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      7    0.2%    0.3%  v8::internal::StringSearch<unsigned short, unsigned short>::InitialSearch(v8::internal::StringSearch<unsigned short, unsigned short>*, v8::internal::Vector<unsigned short const>, int)
+      7    0.2%    0.3%  v8::internal::String::IsOneByteEqualTo(v8::internal::Vector<unsigned char const>)
+      7    0.2%    0.3%  v8::internal::Runtime::GetObjectProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode)
+      7    0.2%    0.3%  v8::internal::RelocIterator::next()
+      7    0.2%    0.3%  _vfwscanf
+      7    0.2%    0.3%  ___cxa_demangle
+      6    0.2%    0.2%  void v8::internal::Scanner::Advance<false, true>()
+      6    0.2%    0.2%  v8::internal::String::GetFlatContent()
+      6    0.2%    0.2%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      6    0.2%    0.2%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      6    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseMemberWithNewPrefixesExpression(v8::internal::ExpressionClassifier*, bool*)
+      6    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseBinaryExpression(int, bool, v8::internal::ExpressionClassifier*, bool*)
+      6    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseArrayLiteral(v8::internal::ExpressionClassifier*, bool*)
+      6    0.2%    0.2%  v8::internal::CodeCacheHashTable::Put(v8::internal::Handle<v8::internal::CodeCacheHashTable>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Code>)
+      6    0.2%    0.2%  v8::internal::AstValueFactory::GetOneByteStringInternal(v8::internal::Vector<unsigned char const>)
+      6    0.2%    0.2%  v8::internal::Assembler::j(v8::internal::Condition, v8::internal::Label*, v8::internal::Label::Distance)
+      6    0.2%    0.2%  v8::internal::Accessors::ArrayLengthSetter(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<void> const&)
+      6    0.2%    0.2%  __simple_getenv
+      5    0.2%    0.2%  v8::internal::Scope::Scope(v8::internal::Zone*, v8::internal::Scope*, v8::internal::ScopeType, v8::internal::AstValueFactory*, v8::internal::FunctionKind)
+      5    0.2%    0.2%  v8::internal::PositionsRecorder::RecordPosition(int)
+      5    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAssignmentExpression(bool, v8::internal::ExpressionClassifier*, bool*)
+      5    0.2%    0.2%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseAndClassifyIdentifier(v8::internal::ExpressionClassifier*, bool*)
+      5    0.2%    0.2%  v8::internal::NameDictionaryBase<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::FindEntry(v8::internal::Handle<v8::internal::Name>)
+      5    0.2%    0.2%  v8::internal::LChunk::MarkEmptyBlocks()
+      5    0.2%    0.2%  v8::internal::JSTypedArray::element_size()
+      5    0.2%    0.2%  v8::internal::JSObject::WriteToField(int, v8::internal::Object*)
+      5    0.2%    0.2%  v8::internal::Isolate::SetCaptureStackTraceForUncaughtExceptions(bool, int, v8::StackTrace::StackTraceOptions)
+      5    0.2%    0.2%  v8::internal::InnerPointerToCodeCache::GetCacheEntry(unsigned char*)
+      5    0.2%    0.2%  v8::internal::Builtins::InvokeApiFunction(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::Handle<v8::internal::Object>, int, v8::internal::Handle<v8::internal::Object>*)
+      5    0.2%    0.2%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::PromoteObject<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)0, (v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      5    0.2%    0.2%  bool v8::internal::CompiledReplacement::ParseReplacementPattern<unsigned char const>(v8::internal::ZoneList<v8::internal::CompiledReplacement::ReplacementPart>*, v8::internal::Vector<unsigned char const>, int, int, v8::internal::Zone*)
+      5    0.2%    0.2%  _mach_msg_overwrite
+      4    0.1%    0.2%  void v8::internal::RelocInfo::Visit<v8::internal::IncrementalMarkingMarkingVisitor>(v8::internal::Heap*)
+      4    0.1%    0.2%  v8::internal::StubCache::Initialize()
+      4    0.1%    0.2%  v8::internal::StringSearch<unsigned char, unsigned short>::SingleCharSearch(v8::internal::StringSearch<unsigned char, unsigned short>*, v8::internal::Vector<unsigned short const>, int)
+      4    0.1%    0.2%  v8::internal::String::SlowFlatten(v8::internal::Handle<v8::internal::ConsString>, v8::internal::PretenureFlag)
+      4    0.1%    0.2%  v8::internal::Scope::MustAllocateInContext(v8::internal::Variable*)
+      4    0.1%    0.2%  v8::internal::Runtime_StringIndexOf(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.1%    0.2%  v8::internal::RegExpImpl::IrregexpByteCode(v8::internal::FixedArray*, bool)
+      4    0.1%    0.2%  v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+      4    0.1%    0.2%  v8::internal::LCodeGenBase::DefineDeoptimizationLiteral(v8::internal::Handle<v8::internal::Object>)
+      4    0.1%    0.2%  v8::internal::JSReceiver::GetPropertyAttributes(v8::internal::LookupIterator*)
+      4    0.1%    0.2%  v8::internal::JSObject::MigrateFastToFast(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>)
+      4    0.1%    0.2%  v8::internal::Handle<v8::internal::JSFunction> v8::internal::Factory::New<v8::internal::JSFunction>(v8::internal::Handle<v8::internal::Map>, v8::internal::AllocationSpace)
+      4    0.1%    0.2%  v8::internal::FullCodeGenerator::EmitStoreToStackLocalOrContextSlot(v8::internal::Variable*, v8::internal::Operand)
+      4    0.1%    0.2%  v8::internal::Factory::NewRawConsString(v8::internal::Handle<v8::internal::Map>, int, v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>)
+      4    0.1%    0.2%  v8::internal::Factory::NewInternalizedStringImpl(v8::internal::Handle<v8::internal::String>, int, unsigned int)
+      4    0.1%    0.2%  v8::internal::Factory::NewFunctionPrototype(v8::internal::Handle<v8::internal::JSFunction>)
+      4    0.1%    0.2%  v8::internal::CompilationInfo::closure() const
+      4    0.1%    0.2%  v8::internal::AstValueFactory::GetString(unsigned int, bool, v8::internal::Vector<unsigned char const>)
+      4    0.1%    0.2%  _fputws_l
+      4    0.1%    0.2%  _____sigwait_nocancel
+      3    0.1%    0.1%  v8::internal::Zone::DeleteAll()
+      3    0.1%    0.1%  v8::internal::WeakHashTable::Lookup(v8::internal::Handle<v8::internal::HeapObject>)
+      3    0.1%    0.1%  v8::internal::StoreBuffer::ClearFilteringHashSets()
+      3    0.1%    0.1%  v8::internal::Scope::CheckConflictingVarDeclarations()
+      3    0.1%    0.1%  v8::internal::Runtime_StringToArray(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.1%    0.1%  v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.1%    0.1%  v8::internal::Runtime_CompileString(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.1%    0.1%  v8::internal::Runtime_CharFromCode(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.1%    0.1%  v8::internal::RelocIterator::RelocIterator(v8::internal::Code*, int)
+      3    0.1%    0.1%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseIdentifierOrStrictReservedWord(bool*, bool*)
+      3    0.1%    0.1%  v8::internal::Parser::ParseFunctionLiteral(v8::internal::AstRawString const*, v8::internal::Scanner::Location, v8::internal::FunctionNameValidity, v8::internal::FunctionKind, int, v8::internal::FunctionLiteral::FunctionType, v8::internal::FunctionLiteral::ArityRestriction, v8::internal::LanguageMode, bool*)
+      3    0.1%    0.1%  v8::internal::OptimizedFrame::StackSlotAt(int) const
+      3    0.1%    0.1%  v8::internal::Object::SetDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>)
+      3    0.1%    0.1%  v8::internal::Map::ReconfigureProperty(v8::internal::Handle<v8::internal::Map>, int, v8::internal::PropertyKind, PropertyAttributes, v8::internal::Representation, v8::internal::Handle<v8::internal::TypeImpl<v8::internal::HeapTypeConfig> >, v8::internal::StoreMode)
+      3    0.1%    0.1%  v8::internal::Map::CopyAsElementsKind(v8::internal::Handle<v8::internal::Map>, v8::internal::ElementsKind, v8::internal::TransitionFlag)
+      3    0.1%    0.1%  v8::internal::MacroAssembler::Move(v8::internal::Register, v8::internal::Register)
+      3    0.1%    0.1%  v8::internal::Log::MessageBuilder::WriteToLogFile()
+      3    0.1%    0.1%  v8::internal::LGapResolver::BuildInitialMoveList(v8::internal::LParallelMove*)
+      3    0.1%    0.1%  v8::internal::LCodeGenBase::GenerateBody()
+      3    0.1%    0.1%  v8::internal::LCodeGen::DoInstructionGap(v8::internal::LInstructionGap*)
+      3    0.1%    0.1%  v8::internal::LCodeGen::AddToTranslation(v8::internal::LEnvironment*, v8::internal::Translation*, v8::internal::LOperand*, bool, bool, int*, int*)
+      3    0.1%    0.1%  v8::internal::JSObject::Freeze(v8::internal::Handle<v8::internal::JSObject>)
+      3    0.1%    0.1%  v8::internal::JSObject::AddDataElement(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, PropertyAttributes)
+      3    0.1%    0.1%  v8::internal::Isolate::RemoveCallCompletedCallback(void (*)())
+      3    0.1%    0.1%  v8::internal::IC::IC(v8::internal::IC::FrameDepth, v8::internal::Isolate*, v8::internal::FeedbackNexus*)
+      3    0.1%    0.1%  v8::internal::IC::ComputeHandler(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>)
+      3    0.1%    0.1%  v8::internal::Heap::DoScavenge(v8::internal::ObjectVisitor*, unsigned char*)
+      3    0.1%    0.1%  v8::internal::Heap::CopyFixedArrayAndGrow(v8::internal::FixedArray*, int, v8::internal::PretenureFlag)
+      3    0.1%    0.1%  v8::internal::Heap::CanMoveObjectStart(v8::internal::HeapObject*)
+      3    0.1%    0.1%  v8::internal::Factory::NewJSArrayStorage(v8::internal::Handle<v8::internal::JSArray>, int, int, v8::internal::ArrayStorageAllocationMode)
+      3    0.1%    0.1%  v8::internal::Factory::NewHeapNumber(double, v8::internal::MutableMode, v8::internal::PretenureFlag)
+      3    0.1%    0.1%  v8::internal::Factory::NewAllocationSite()
+      3    0.1%    0.1%  v8::internal::Execution::ToObject(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+      3    0.1%    0.1%  v8::internal::DependentCode::Insert(v8::internal::Handle<v8::internal::DependentCode>, v8::internal::DependentCode::DependencyGroup, v8::internal::Handle<v8::internal::Object>)
+      3    0.1%    0.1%  v8::internal::CodeStub::GetCode()
+      3    0.1%    0.1%  v8::internal::CodeCache::Update(v8::internal::Handle<v8::internal::CodeCache>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Code>)
+      3    0.1%    0.1%  v8::internal::AstValueFactory::Internalize(v8::internal::Isolate*)
+      3    0.1%    0.1%  v8::internal::Assembler::movp(v8::internal::Register, void*, v8::internal::RelocInfo::Mode)
+      3    0.1%    0.1%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int, int*)
+      3    0.1%    0.1%  _swscanf
+      3    0.1%    0.1%  __platform_strncmp
+      3    0.1%    0.1%  ___wait4_nocancel
+      3    0.1%    0.1%  ___psynch_rw_longrdlock
+      3    0.1%    0.1%  _OSSpinLockLock
+      2    0.1%    0.1%  void v8::internal::HydrogenCodeStub::TraceTransition<v8::internal::CompareNilICStub::State>(v8::internal::CompareNilICStub::State, v8::internal::CompareNilICStub::State)
+      2    0.1%    0.1%  void node::StreamBase::JSMethod<node::StreamWrap, &(int node::StreamBase::WriteString<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&))>(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  v8::internal::VariableProxy::~VariableProxy()
+      2    0.1%    0.1%  v8::internal::TypeImpl<v8::internal::HeapTypeConfig>::Iterator<v8::internal::Map>::Current()
+      2    0.1%    0.1%  v8::internal::TypeImpl<v8::internal::HeapTypeConfig>::ConstantType::New(v8::internal::Handle<v8::internal::Object>, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::TranslatedValue::GetRawValue() const
+      2    0.1%    0.1%  v8::internal::TransitionArray::Insert(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Map>, v8::internal::SimpleTransitionFlag)
+      2    0.1%    0.1%  v8::internal::StringComparator::State::Init(v8::internal::String*)
+      2    0.1%    0.1%  v8::internal::String::ToCString(v8::internal::AllowNullsFlag, v8::internal::RobustnessFlag, int, int, int*)
+      2    0.1%    0.1%  v8::internal::StackFrameIterator::StackFrameIterator(v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::SeqString::Truncate(v8::internal::Handle<v8::internal::SeqString>, int)
+      2    0.1%    0.1%  v8::internal::ScopeInfo::Create(v8::internal::Isolate*, v8::internal::Zone*, v8::internal::Scope*)
+      2    0.1%    0.1%  v8::internal::Scope::PropagateScopeInfo(bool)
+      2    0.1%    0.1%  v8::internal::Scope::LookupRecursive(v8::internal::VariableProxy*, v8::internal::Scope::BindingKind*, v8::internal::AstNodeFactory*)
+      2    0.1%    0.1%  v8::internal::Scope::DeserializeScopeChain(v8::internal::Isolate*, v8::internal::Zone*, v8::internal::Context*, v8::internal::Scope*)
+      2    0.1%    0.1%  v8::internal::Scope::AllowsLazyCompilation() const
+      2    0.1%    0.1%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::EvacuateFixedArray(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      2    0.1%    0.1%  v8::internal::Runtime_RegExpExecMultiple(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_HasProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_EnqueueMicrotask(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime::CreateArrayLiteralBoilerplate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::FixedArray>, v8::internal::Handle<v8::internal::FixedArray>, bool)
+      2    0.1%    0.1%  v8::internal::Rewriter::Rewrite(v8::internal::ParseInfo*)
+      2    0.1%    0.1%  v8::internal::RelocInfoWriter::FlushPosition()
+      2    0.1%    0.1%  v8::internal::Property::node_type() const
+      2    0.1%    0.1%  v8::internal::PolymorphicCodeCacheHashTable::Lookup(v8::internal::List<v8::internal::Handle<v8::internal::Map>, v8::internal::FreeStoreAllocationPolicy>*, int)
+      2    0.1%    0.1%  v8::internal::PointersUpdatingVisitor::VisitPointers(v8::internal::Object**, v8::internal::Object**)
+      2    0.1%    0.1%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseYieldExpression(v8::internal::ExpressionClassifier*, bool*)
+      2    0.1%    0.1%  v8::internal::ParserBase<v8::internal::ParserTraits>::ParseLeftHandSideExpression(v8::internal::ExpressionClassifier*, bool*)
+      2    0.1%    0.1%  v8::internal::Parser::ParseIfStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*)
+      2    0.1%    0.1%  v8::internal::Parser::ParseExpressionOrLabelledStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*)
+      2    0.1%    0.1%  v8::internal::Operand::Operand(v8::internal::Register, int)
+      2    0.1%    0.1%  v8::internal::NativeRegExpMacroAssembler::Match(v8::internal::Handle<v8::internal::Code>, v8::internal::Handle<v8::internal::String>, int*, int, int, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::MarkCompactCollector::EvacuateNewSpaceAndCandidates()
+      2    0.1%    0.1%  v8::internal::Map::RawCopy(v8::internal::Handle<v8::internal::Map>, int)
+      2    0.1%    0.1%  v8::internal::Map::CopyWithField(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::TypeImpl<v8::internal::HeapTypeConfig> >, PropertyAttributes, v8::internal::Representation, v8::internal::TransitionFlag)
+      2    0.1%    0.1%  v8::internal::Malloced::Delete(void*)
+      2    0.1%    0.1%  v8::internal::LookupIterator::GetFieldIndex() const
+      2    0.1%    0.1%  v8::internal::LoadIC::UpdateCaches(v8::internal::LookupIterator*)
+      2    0.1%    0.1%  v8::internal::LGoto::Mnemonic() const
+      2    0.1%    0.1%  v8::internal::LGap::IsRedundant() const
+      2    0.1%    0.1%  v8::internal::LDummy::Mnemonic() const
+      2    0.1%    0.1%  v8::internal::LCodeGen::GeneratePrologue()
+      2    0.1%    0.1%  v8::internal::LCodeGen::DoStoreContextSlot(v8::internal::LStoreContextSlot*)
+      2    0.1%    0.1%  v8::internal::LCodeGen::DoStoreCodeEntry(v8::internal::LStoreCodeEntry*)
+      2    0.1%    0.1%  v8::internal::LAllocator::TraceAlloc(char const*, ...)
+      2    0.1%    0.1%  v8::internal::LAllocator::InactiveToHandled(v8::internal::LiveRange*)
+      2    0.1%    0.1%  v8::internal::JSObject::NormalizeProperties(v8::internal::Handle<v8::internal::JSObject>, v8::internal::PropertyNormalizationMode, int, char const*)
+      2    0.1%    0.1%  v8::internal::JSObject::InvalidatePrototypeChains(v8::internal::Map*)
+      2    0.1%    0.1%  v8::internal::JSObject::HasRealNamedProperty(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Name>)
+      2    0.1%    0.1%  v8::internal::IteratingStringHasher::VisitConsString(v8::internal::ConsString*)
+      2    0.1%    0.1%  v8::internal::Isolate::get_initial_js_array_map(v8::internal::ElementsKind, v8::internal::Strength)
+      2    0.1%    0.1%  v8::internal::Isolate::IsInternallyUsedPropertyName(v8::internal::Handle<v8::internal::Object>)
+      2    0.1%    0.1%  v8::internal::Isolate::CaptureSimpleStackTrace(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Object>)
+      2    0.1%    0.1%  v8::internal::Heap::CreateFillerObjectAt(unsigned char*, int)
+      2    0.1%    0.1%  v8::internal::Heap::AllocateUninitializedFixedDoubleArray(int, v8::internal::PretenureFlag)
+      2    0.1%    0.1%  v8::internal::Heap::AllocateByteArray(int, v8::internal::PretenureFlag)
+      2    0.1%    0.1%  v8::internal::HValue::GetInteger32Constant()
+      2    0.1%    0.1%  v8::internal::HOptimizedGraphBuilder::PropertyAccessInfo::LoadFieldMaps(v8::internal::Handle<v8::internal::Map>)
+      2    0.1%    0.1%  v8::internal::HGraphBuilder::FinishExitCurrentBlock(v8::internal::HControlInstruction*)
+      2    0.1%    0.1%  v8::internal::HBasicBlock::RegisterPredecessor(v8::internal::HBasicBlock*)
+      2    0.1%    0.1%  v8::internal::HBasicBlock::AddInstruction(v8::internal::HInstruction*, v8::internal::SourcePosition)
+      2    0.1%    0.1%  v8::internal::FullCodeGenerator::VisitWithStatement(v8::internal::WithStatement*)
+      2    0.1%    0.1%  v8::internal::FullCodeGenerator::StackValueContext::Plug(v8::internal::Variable*) const
+      2    0.1%    0.1%  v8::internal::FullCodeGenerator::MakeCode(v8::internal::CompilationInfo*)
+      2    0.1%    0.1%  v8::internal::FullCodeGenerator::EmitAccessor(v8::internal::Expression*)
+      2    0.1%    0.1%  v8::internal::FrameDescription::GetExpressionCount()
+      2    0.1%    0.1%  v8::internal::Factory::NewUninitializedFixedArray(int)
+      2    0.1%    0.1%  v8::internal::Factory::NewStringFromOneByte(v8::internal::Vector<unsigned char const>, v8::internal::PretenureFlag)
+      2    0.1%    0.1%  v8::internal::Factory::NewRawOneByteString(int, v8::internal::PretenureFlag)
+      2    0.1%    0.1%  v8::internal::Deoptimizer::VisitAllOptimizedFunctionsForContext(v8::internal::Context*, v8::internal::OptimizedFunctionVisitor*)
+      2    0.1%    0.1%  v8::internal::Deoptimizer::GetDeoptimizationEntry(v8::internal::Isolate*, int, v8::internal::Deoptimizer::BailoutType, v8::internal::Deoptimizer::GetEntryMode)
+      2    0.1%    0.1%  v8::internal::ConsString* v8::internal::String::VisitFlat<v8::Utf8WriterVisitor>(v8::Utf8WriterVisitor*, v8::internal::String*, int)
+      2    0.1%    0.1%  v8::internal::CompilationInfo::script() const
+      2    0.1%    0.1%  v8::internal::CodeStub::FindCodeInCache(v8::internal::Code**)
+      2    0.1%    0.1%  v8::internal::CallICState::CallICState(int)
+      2    0.1%    0.1%  v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>)
+      2    0.1%    0.1%  v8::internal::BackEdgeTable::AddStackCheck(v8::internal::Handle<v8::internal::Code>, unsigned int)
+      2    0.1%    0.1%  v8::internal::AstTyper::VisitYield(v8::internal::Yield*)
+      2    0.1%    0.1%  v8::internal::Assembler::pushq(v8::internal::Register)
+      2    0.1%    0.1%  v8::internal::Assembler::immediate_arithmetic_op(unsigned char, v8::internal::Register, v8::internal::Immediate, int)
+      2    0.1%    0.1%  v8::internal::Assembler::emit_operand(int, v8::internal::Operand const&)
+      2    0.1%    0.1%  v8::internal::Assembler::emit_mov(v8::internal::Operand const&, v8::internal::Register, int)
+      2    0.1%    0.1%  v8::internal::ApiNatives::ConfigureInstance(v8::internal::Isolate*, v8::internal::Handle<v8::internal::FunctionTemplateInfo>, v8::internal::Handle<v8::internal::JSObject>)
+      2    0.1%    0.1%  v8::internal::Accessors::FunctionPrototypeGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      2    0.1%    0.1%  v8::base::TimeTicks::HighResolutionNow()
+      2    0.1%    0.1%  v8::base::Mutex::Lock()
+      2    0.1%    0.1%  v8::Value::IsFunction() const
+      2    0.1%    0.1%  v8::HandleScope::Initialize(v8::Isolate*)
+      2    0.1%    0.1%  v8::Context::Enter()
+      2    0.1%    0.1%  std::ios_base::Init::Init()
+      2    0.1%    0.1%  _tempnam
+      2    0.1%    0.1%  _malloc_zone_memalign
+      2    0.1%    0.1%  _freopen
+      2    0.1%    0.1%  ___inline_signbitl
+      1    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<40>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<144>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  void v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectEvacuationStrategy<(v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::ObjectContents)1>::VisitSpecialized<40>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  void v8::internal::AstNumberingVisitor::ReserveFeedbackSlots<v8::internal::VariableProxy>(v8::internal::VariableProxy*)
+      1    0.0%    0.0%  v8::internal::operator<<(std::ostream&, v8::internal::BinaryOpICState const&)
+      1    0.0%    0.0%  v8::internal::Zone::Zone()
+      1    0.0%    0.0%  v8::internal::VariableProxy::BindTo(v8::internal::Variable*)
+      1    0.0%    0.0%  v8::internal::ValueContext::ReturnInstruction(v8::internal::HInstruction*, v8::internal::BailoutId)
+      1    0.0%    0.0%  v8::internal::UnaryOperation::Accept(v8::internal::AstVisitor*)
+      1    0.0%    0.0%  v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>::Union(v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*, v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>::BitsetType::Lub(v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*)
+      1    0.0%    0.0%  v8::internal::TypeFeedbackOracle::HasOnlyStringMaps(v8::internal::SmallMapList*)
+      1    0.0%    0.0%  v8::internal::TwoByteStringKey::~TwoByteStringKey()
+      1    0.0%    0.0%  v8::internal::Translation::StoreDoubleRegister(v8::internal::XMMRegister)
+      1    0.0%    0.0%  v8::internal::Translation::BeginJSFrame(v8::internal::BailoutId, int, unsigned int)
+      1    0.0%    0.0%  v8::internal::TranslatedState::CreateNextTranslatedFrame(v8::internal::TranslationIterator*, v8::internal::FixedArray*, unsigned char*, v8::internal::JSFunction*, __sFILE*)
+      1    0.0%    0.0%  v8::internal::TransitionArray::FindTransitionToField(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>)
+      1    0.0%    0.0%  v8::internal::StringTable::LookupTwoCharsStringIfExists(v8::internal::Isolate*, unsigned short, unsigned short)
+      1    0.0%    0.0%  v8::internal::StringSharedKey::AsHandle(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::StringHasher::GetHashField()
+      1    0.0%    0.0%  v8::internal::String::ToCString(v8::internal::AllowNullsFlag, v8::internal::RobustnessFlag, int*)
+      1    0.0%    0.0%  v8::internal::String::ComputeArrayIndex(unsigned int*)
+      1    0.0%    0.0%  v8::internal::String::ComputeAndSetHash()
+      1    0.0%    0.0%  v8::internal::StoreIC::UpdateCaches(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::Object::StoreFromKeyed)
+      1    0.0%    0.0%  v8::internal::StoreIC::Store(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::Object::StoreFromKeyed)
+      1    0.0%    0.0%  v8::internal::StaticVisitorBase::GetVisitorId(int, int, bool)
+      1    0.0%    0.0%  v8::internal::StackFrame::GetCallerState(v8::internal::StackFrame::State*) const
+      1    0.0%    0.0%  v8::internal::SlotsBuffer::IsTypedSlot(v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::SharedFunctionInfo::EvictFromOptimizedCodeMap(v8::internal::Code*, char const*)
+      1    0.0%    0.0%  v8::internal::SharedFunctionInfo::CalculateInObjectProperties()
+      1    0.0%    0.0%  v8::internal::ScopeInfo::CallsEval()
+      1    0.0%    0.0%  v8::internal::Scope::ResolveVariablesRecursively(v8::internal::ParseInfo*, v8::internal::AstNodeFactory*)
+      1    0.0%    0.0%  v8::internal::Scope::RemoveUnresolved(v8::internal::VariableProxy*)
+      1    0.0%    0.0%  v8::internal::Scope::LookupFunctionVar(v8::internal::AstRawString const*, v8::internal::AstNodeFactory*)
+      1    0.0%    0.0%  v8::internal::Scope::DeclareParameter(v8::internal::AstRawString const*, v8::internal::VariableMode, bool, bool*)
+      1    0.0%    0.0%  v8::internal::Scope::AddDeclaration(v8::internal::Declaration*)
+      1    0.0%    0.0%  v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::EvacuateSeqTwoByteString(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::ScavengeVisitor::VisitPointer(v8::internal::Object**)
+      1    0.0%    0.0%  v8::internal::Scanner::NextSymbol(v8::internal::AstValueFactory*)
+      1    0.0%    0.0%  v8::internal::SafepointTable::SafepointTable(v8::internal::Code*)
+      1    0.0%    0.0%  v8::internal::Runtime_TwoByteSeqStringSetChar(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StringTrim(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StoreLookupSlot(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_StoreCallbackProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_RegExpExecReThrow(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_NewRestParamSlow(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_IsInPrototypeChain(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_Interrupt(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_HasFastPackedElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_GetIndexedInterceptorElementNames(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_DefineAccessorPropertyUnchecked(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_BinaryOpIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_Apply(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Runtime_AllocateInTargetSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::RuntimeProfiler::RuntimeProfiler(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::RegExpStack::Reset()
+      1    0.0%    0.0%  v8::internal::RegExpNode::LimitVersions(v8::internal::RegExpCompiler*, v8::internal::Trace*)
+      1    0.0%    0.0%  v8::internal::RegExpMacroAssemblerX64::PushRegister(int, v8::internal::RegExpMacroAssembler::StackCheckFlag)
+      1    0.0%    0.0%  v8::internal::RegExpImpl::IrregexpExec(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::Handle<v8::internal::String>, int, v8::internal::Handle<v8::internal::JSArray>)
+      1    0.0%    0.0%  v8::internal::RegExpCharacterClass::~RegExpCharacterClass()
+      1    0.0%    0.0%  v8::internal::PropertyICCompiler::ComputeStore(v8::internal::Isolate*, v8::internal::InlineCacheState, int)
+      1    0.0%    0.0%  v8::internal::PropertyICCompiler::CompileStoreGeneric(unsigned int)
+      1    0.0%    0.0%  v8::internal::PropertyICCompiler::CompileMonomorphic(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Code>, v8::internal::Handle<v8::internal::Name>, v8::internal::IcCheckType)
+      1    0.0%    0.0%  v8::internal::Property::Accept(v8::internal::AstVisitor*)
+      1    0.0%    0.0%  v8::internal::PerIsolateAssertScope<(v8::internal::PerIsolateAssertType)1, false>::~PerIsolateAssertScope()
+      1    0.0%    0.0%  v8::internal::PerIsolateAssertScope<(v8::internal::PerIsolateAssertType)0, true>::~PerIsolateAssertScope()
+      1    0.0%    0.0%  v8::internal::ParserBase<v8::internal::ParserTraits>::CheckInOrOf(bool, v8::internal::ForEachStatement::VisitMode*, bool*)
+      1    0.0%    0.0%  v8::internal::Parser::ParseVariableDeclarations(v8::internal::ParserBase<v8::internal::ParserTraits>::VariableDeclarationContext, v8::internal::Parser::DeclarationParsingResult*, bool*)
+      1    0.0%    0.0%  v8::internal::Parser::ParseNamedImports(int, bool*)
+      1    0.0%    0.0%  v8::internal::Parser::Internalize(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Script>, bool)
+      1    0.0%    0.0%  v8::internal::OptimizingCompileDispatcher::QueueForOptimization(v8::internal::OptimizedCompileJob*)
+      1    0.0%    0.0%  v8::internal::Object::RedefineNonconfigurableProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode)
+      1    0.0%    0.0%  v8::internal::NewSpace::EnsureAllocation(int, v8::internal::AllocationAlignment)
+      1    0.0%    0.0%  v8::internal::ModuleDescriptor::LookupLocalExport(v8::internal::AstRawString const*, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::SweepOrWaitUntilSweepingCompleted(v8::internal::Page*)
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::ProcessAndClearWeakCells()
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::MigrateObject(v8::internal::HeapObject*, v8::internal::HeapObject*, int, v8::internal::AllocationSpace)
+      1    0.0%    0.0%  v8::internal::MarkCompactCollector::EmptyMarkingDeque()
+      1    0.0%    0.0%  v8::internal::Map::TransitionElementsTo(v8::internal::Handle<v8::internal::Map>, v8::internal::ElementsKind)
+      1    0.0%    0.0%  v8::internal::Map::GeneralizeFieldType(v8::internal::Representation, v8::internal::Handle<v8::internal::TypeImpl<v8::internal::HeapTypeConfig> >, v8::internal::Representation, v8::internal::Handle<v8::internal::TypeImpl<v8::internal::HeapTypeConfig> >, v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Map::CopyForPreventExtensions(v8::internal::Handle<v8::internal::Map>, PropertyAttributes, v8::internal::Handle<v8::internal::Symbol>, char const*)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::RecordWriteField(v8::internal::Register, int, v8::internal::Register, v8::internal::Register, v8::internal::SaveFPRegsMode, v8::internal::RememberedSetAction, v8::internal::SmiCheck, v8::internal::PointersToHereCheck)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::LoadSmiConstant(v8::internal::Register, v8::internal::Smi*)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::LoadFromSafepointRegisterSlot(v8::internal::Register, v8::internal::Register)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::Load(v8::internal::Register, v8::internal::Operand const&, v8::internal::Representation)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::Load(v8::internal::Register, v8::internal::ExternalReference)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::IndexFromHash(v8::internal::Register, v8::internal::Register)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::CompareRoot(v8::internal::Register, v8::internal::Heap::RootListIndex)
+      1    0.0%    0.0%  v8::internal::MacroAssembler::CompareRoot(v8::internal::Operand const&, v8::internal::Heap::RootListIndex)
+      1    0.0%    0.0%  v8::internal::LookupIterator::WriteDataValue(v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::Logger::ApiObjectAccess(char const*, v8::internal::JSObject*)
+      1    0.0%    0.0%  v8::internal::Log::MessageBuilder::Append(char const*, ...)
+      1    0.0%    0.0%  v8::internal::LoadICNexus::ConfigureMonomorphic(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Code>)
+      1    0.0%    0.0%  v8::internal::LoadIC::megamorphic_stub()
+      1    0.0%    0.0%  v8::internal::Literal::node_type() const
+      1    0.0%    0.0%  v8::internal::LayoutDescriptor::ShareAppend(v8::internal::Handle<v8::internal::Map>, v8::internal::PropertyDetails)
+      1    0.0%    0.0%  v8::internal::LTemplateResultInstruction<0>::HasResult() const
+      1    0.0%    0.0%  v8::internal::LSmiTag::Mnemonic() const
+      1    0.0%    0.0%  v8::internal::LPower::~LPower()
+      1    0.0%    0.0%  v8::internal::LParallelMove::IsRedundant() const
+      1    0.0%    0.0%  v8::internal::LLoadNamedField::CompileToNative(v8::internal::LCodeGen*)
+      1    0.0%    0.0%  v8::internal::LLabel::Mnemonic() const
+      1    0.0%    0.0%  v8::internal::LLabel::CompileToNative(v8::internal::LCodeGen*)
+      1    0.0%    0.0%  v8::internal::LInstruction::IsGap() const
+      1    0.0%    0.0%  v8::internal::LGapResolver::Resolve(v8::internal::LParallelMove*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::WriteTranslation(v8::internal::LEnvironment*, v8::internal::Translation*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::RegisterEnvironmentForDeoptimization(v8::internal::LEnvironment*, v8::internal::Safepoint::DeoptMode)
+      1    0.0%    0.0%  v8::internal::LCodeGen::PopulateDeoptimizationLiteralsWithInlinedFunctions()
+      1    0.0%    0.0%  v8::internal::LCodeGen::GenerateOsrPrologue()
+      1    0.0%    0.0%  v8::internal::LCodeGen::GenerateBodyInstructionPost(v8::internal::LInstruction*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::FinishCode(v8::internal::Handle<v8::internal::Code>)
+      1    0.0%    0.0%  v8::internal::LCodeGen::EmitPushTaggedOperand(v8::internal::LOperand*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::DoTypeofIsAndBranch(v8::internal::LTypeofIsAndBranch*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::DoLabel(v8::internal::LLabel*)
+      1    0.0%    0.0%  v8::internal::LCodeGen::DoConstantT(v8::internal::LConstantT*)
+      1    0.0%    0.0%  v8::internal::JsonParser<false>::ParseJsonValue()
+      1    0.0%    0.0%  v8::internal::JavaScriptFrame::~JavaScriptFrame()
+      1    0.0%    0.0%  v8::internal::JavaScriptFrame::Summarize(v8::internal::List<v8::internal::FrameSummary, v8::internal::FreeStoreAllocationPolicy>*)
+      1    0.0%    0.0%  v8::internal::JSTypedArray::type()
+      1    0.0%    0.0%  v8::internal::JSReceiver::GetDataProperty(v8::internal::LookupIterator*)
+      1    0.0%    0.0%  v8::internal::JSReceiver::GetDataProperty(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::Name>)
+      1    0.0%    0.0%  v8::internal::JSObject::MigrateFastToSlow(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+      1    0.0%    0.0%  v8::internal::JSObject::EnsureWritableFastElements(v8::internal::Handle<v8::internal::JSObject>)
+      1    0.0%    0.0%  v8::internal::JSObject::DeepWalk(v8::internal::Handle<v8::internal::JSObject>, v8::internal::AllocationSiteCreationContext*)
+      1    0.0%    0.0%  v8::internal::JSObject::AddSlowProperty(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, PropertyAttributes)
+      1    0.0%    0.0%  v8::internal::JSDate::GetField(v8::internal::Object*, v8::internal::Smi*)
+      1    0.0%    0.0%  v8::internal::JSArray::WouldChangeReadOnlyLength(v8::internal::Handle<v8::internal::JSArray>, unsigned int)
+      1    0.0%    0.0%  v8::internal::Isolate::use_crankshaft() const
+      1    0.0%    0.0%  v8::internal::Isolate::random_number_generator()
+      1    0.0%    0.0%  v8::internal::Isolate::CreateMessage(v8::internal::Handle<v8::internal::Object>, v8::internal::MessageLocation*)
+      1    0.0%    0.0%  v8::internal::IsMoreGeneralElementsKindTransition(v8::internal::ElementsKind, v8::internal::ElementsKind)
+      1    0.0%    0.0%  v8::internal::InternalizedStringKey::IsMatch(v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::IfStatement::node_type() const
+      1    0.0%    0.0%  v8::internal::IC::UpdateState(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::HeapIterator::next()
+      1    0.0%    0.0%  v8::internal::Heap::VisitExternalResources(v8::ExternalResourceVisitor*)
+      1    0.0%    0.0%  v8::internal::Heap::MoveElements(v8::internal::FixedArray*, int, int, int)
+      1    0.0%    0.0%  v8::internal::Heap::MarkCompactPrologue()
+      1    0.0%    0.0%  v8::internal::Heap::DeoptMarkedAllocationSites()
+      1    0.0%    0.0%  v8::internal::Heap::Contains(v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::Heap::AllocateWeakCell(v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::Heap::AllocateEmptyFixedArray()
+      1    0.0%    0.0%  v8::internal::Heap::AllocateCode(int, bool)
+      1    0.0%    0.0%  v8::internal::HandleScope::DeleteExtensions(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::Handle<v8::internal::TypeFeedbackVector> v8::internal::TypeFeedbackVector::Allocate<v8::internal::FeedbackVectorSpec>(v8::internal::Isolate*, v8::internal::FeedbackVectorSpec const*)
+      1    0.0%    0.0%  v8::internal::Handle<v8::internal::SlicedString> v8::internal::Factory::New<v8::internal::SlicedString>(v8::internal::Handle<v8::internal::Map>, v8::internal::AllocationSpace)
+      1    0.0%    0.0%  v8::internal::HSub::New(v8::internal::Isolate*, v8::internal::Zone*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::Strength)
+      1    0.0%    0.0%  v8::internal::HStoreNamedField* v8::internal::HGraphBuilder::Add<v8::internal::HStoreNamedField, v8::internal::HInstruction*, v8::internal::HObjectAccess, v8::internal::HValue*>(v8::internal::HInstruction*, v8::internal::HObjectAccess, v8::internal::HValue*)
+      1    0.0%    0.0%  v8::internal::HStoreContextSlot::~HStoreContextSlot()
+      1    0.0%    0.0%  v8::internal::HRepresentationChangesPhase::Run()
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::context()
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::VisitExpressions(v8::internal::ZoneList<v8::internal::Expression*>*)
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::VisitDelete(v8::internal::UnaryOperation*)
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::PushLoad(v8::internal::Property*, v8::internal::HValue*, v8::internal::HValue*)
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::PropertyAccessInfo::map()
+      1    0.0%    0.0%  v8::internal::HOptimizedGraphBuilder::BuildCompareInstruction(v8::internal::Token::Value, v8::internal::HValue*, v8::internal::HValue*, v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*, v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*, v8::internal::TypeImpl<v8::internal::ZoneTypeConfig>*, v8::internal::SourcePosition, v8::internal::SourcePosition, v8::internal::HOptimizedGraphBuilder::PushBeforeSimulateBehavior, v8::internal::BailoutId)
+      1    0.0%    0.0%  v8::internal::HObjectAccess::ForField(v8::internal::Handle<v8::internal::Map>, int, v8::internal::Representation, v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  v8::internal::HLoadNamedField::New(v8::internal::Isolate*, v8::internal::Zone*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HValue*, v8::internal::HObjectAccess)
+      1    0.0%    0.0%  v8::internal::HLoadEliminationTable::KillFieldInternal(v8::internal::HValue*, int, v8::internal::HValue*)
+      1    0.0%    0.0%  v8::internal::HLoadEliminationTable::Copy(v8::internal::HBasicBlock*, v8::internal::HBasicBlock*, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::HLoadContextSlot::opcode() const
+      1    0.0%    0.0%  v8::internal::HInstruction::InsertBefore(v8::internal::HInstruction*)
+      1    0.0%    0.0%  v8::internal::HGraph::SourcePositionToScriptPosition(v8::internal::SourcePosition)
+      1    0.0%    0.0%  v8::internal::HGraph::GetConstantHole()
+      1    0.0%    0.0%  v8::internal::HForceRepresentation::~HForceRepresentation()
+      1    0.0%    0.0%  v8::internal::HForInPrepareMap* v8::internal::HGraphBuilder::Add<v8::internal::HForInPrepareMap, v8::internal::HValue*>(v8::internal::HValue*)
+      1    0.0%    0.0%  v8::internal::HEnvironment::HEnvironment(v8::internal::Zone*, int)
+      1    0.0%    0.0%  v8::internal::HDematerializedObject::~HDematerializedObject()
+      1    0.0%    0.0%  v8::internal::HDematerializedObject::OperandAt(int) const
+      1    0.0%    0.0%  v8::internal::HCheckMaps* v8::internal::HGraphBuilder::Add<v8::internal::HCheckMaps, v8::internal::HValue*, v8::internal::Handle<v8::internal::Map>, v8::internal::HValue*>(v8::internal::HValue*, v8::internal::Handle<v8::internal::Map>, v8::internal::HValue*)
+      1    0.0%    0.0%  v8::internal::GlobalHandles::Create(v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::FunctionCallbackArguments::Call(void (*)(v8::FunctionCallbackInfo<v8::Value> const&))
+      1    0.0%    0.0%  v8::internal::FuncNameInferrer::PushVariableName(v8::internal::AstRawString const*)
+      1    0.0%    0.0%  v8::internal::FuncNameInferrer::PushEnclosingName(v8::internal::AstRawString const*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::VisitLiteral(v8::internal::Literal*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::VisitForTypeofValue(v8::internal::Expression*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::VisitDeclarations(v8::internal::ZoneList<v8::internal::Declaration*>*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::Visit(v8::internal::AstNode*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::TryLiteralCompare(v8::internal::CompareOperation*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::SetExpressionPosition(v8::internal::Expression*, v8::internal::FullCodeGenerator::InsertBreak)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::PopulateTypeFeedbackInfo(v8::internal::Handle<v8::internal::Code>)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::EmitVariableLoad(v8::internal::VariableProxy*, v8::internal::TypeofMode)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::EmitBinaryOp(v8::internal::BinaryOperation*, v8::internal::Token::Value)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::DoTest(v8::internal::Expression*, v8::internal::Label*, v8::internal::Label*, v8::internal::Label*)
+      1    0.0%    0.0%  v8::internal::FullCodeGenerator::AccumulatorValueContext::Plug(v8::internal::Variable*) const
+      1    0.0%    0.0%  v8::internal::FrameDescription::FrameDescription(unsigned int, v8::internal::JSFunction*)
+      1    0.0%    0.0%  v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::JSObject::BodyDescriptor, int>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::FixedArray::BodyDescriptor, int>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::FixedBodyVisitor<v8::internal::IncrementalMarkingMarkingVisitor, v8::internal::FixedBodyDescriptor<24, 40, 40>, void>::Visit(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  v8::internal::FeedbackNexus::FindHandlers(v8::internal::List<v8::internal::Handle<v8::internal::Code>, v8::internal::FreeStoreAllocationPolicy>*, int) const
+      1    0.0%    0.0%  v8::internal::FeedbackNexus::ExtractMaps(v8::internal::List<v8::internal::Handle<v8::internal::Map>, v8::internal::FreeStoreAllocationPolicy>*) const
+      1    0.0%    0.0%  v8::internal::FastNewClosureStub::MajorKey() const
+      1    0.0%    0.0%  v8::internal::FastDtoa(double, v8::internal::FastDtoaMode, int, v8::internal::Vector<char>, int*, int*)
+      1    0.0%    0.0%  v8::internal::Factory::SetRegExpAtomData(v8::internal::Handle<v8::internal::JSRegExp>, v8::internal::JSRegExp::Type, v8::internal::Handle<v8::internal::String>, v8::internal::JSRegExp::Flags, v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::Factory::NewSharedFunctionInfo(v8::internal::Handle<v8::internal::String>, int, v8::internal::FunctionKind, v8::internal::Handle<v8::internal::Code>, v8::internal::Handle<v8::internal::ScopeInfo>, v8::internal::Handle<v8::internal::TypeFeedbackVector>)
+      1    0.0%    0.0%  v8::internal::Factory::NewJSArray(v8::internal::ElementsKind, int, int, v8::internal::Strength, v8::internal::ArrayStorageAllocationMode, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  v8::internal::Factory::NewCell(v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::Factory::CopyFixedDoubleArray(v8::internal::Handle<v8::internal::FixedDoubleArray>)
+      1    0.0%    0.0%  v8::internal::ExpressionStatement::~ExpressionStatement()
+      1    0.0%    0.0%  v8::internal::ExitFrame::GetCallerStackPointer() const
+      1    0.0%    0.0%  v8::internal::Execution::ToString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>)
+      1    0.0%    0.0%  v8::internal::Deserializer::DeserializePartial(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSGlobalProxy>, v8::internal::Handle<v8::internal::FixedArray>*)
+      1    0.0%    0.0%  v8::internal::DescriptorArray::SetEnumCache(v8::internal::FixedArray*, v8::internal::FixedArray*, v8::internal::Object*)
+      1    0.0%    0.0%  v8::internal::DependentCode::Compact()
+      1    0.0%    0.0%  v8::internal::Deoptimizer::MessageFor(v8::internal::Deoptimizer::BailoutType)
+      1    0.0%    0.0%  v8::internal::Deoptimizer::EnsureCodeForDeoptimizationEntry(v8::internal::Isolate*, v8::internal::Deoptimizer::BailoutType, int)
+      1    0.0%    0.0%  v8::internal::Deoptimizer::DoComputeCompiledStubFrame(v8::internal::TranslationIterator*, int)
+      1    0.0%    0.0%  v8::internal::Deoptimizer::DeoptimizeFunction(v8::internal::JSFunction*)
+      1    0.0%    0.0%  v8::internal::ContextSlotCache::Lookup(v8::internal::Object*, v8::internal::String*, v8::internal::VariableMode*, v8::internal::VariableLocation*, v8::internal::InitializationFlag*, v8::internal::MaybeAssignedFlag*)
+      1    0.0%    0.0%  v8::internal::Context::builtins()
+      1    0.0%    0.0%  v8::internal::Compiler::GetFunctionFromEval(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Context>, v8::internal::LanguageMode, v8::internal::ParseRestriction, int, int, v8::internal::Handle<v8::internal::Object>, v8::ScriptOriginOptions)
+      1    0.0%    0.0%  v8::internal::CompileTimeValue::IsCompileTimeValue(v8::internal::Expression*)
+      1    0.0%    0.0%  v8::internal::CompilationInfo::literal() const
+      1    0.0%    0.0%  v8::internal::CompilationInfo::CompilationInfo(v8::internal::ParseInfo*, v8::internal::CodeStub*, v8::internal::CompilationInfo::Mode, v8::internal::Isolate*, v8::internal::Zone*)
+      1    0.0%    0.0%  v8::internal::CompilationCacheTable::LookupRegExp(v8::internal::Handle<v8::internal::String>, v8::internal::JSRegExp::Flags)
+      1    0.0%    0.0%  v8::internal::CompilationCacheEval::Lookup(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::LanguageMode, int)
+      1    0.0%    0.0%  v8::internal::CompilationCache::LookupEval(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Context>, v8::internal::LanguageMode, int)
+      1    0.0%    0.0%  v8::internal::CompareICStub::MajorKey() const
+      1    0.0%    0.0%  v8::internal::CodeStubGraphBuilderBase::~CodeStubGraphBuilderBase()
+      1    0.0%    0.0%  v8::internal::CodeStub::FindCodeInSpecialCache(v8::internal::Code**)
+      1    0.0%    0.0%  v8::internal::CodeFactory::StoreIC(v8::internal::Isolate*, v8::internal::LanguageMode)
+      1    0.0%    0.0%  v8::internal::CodeCache::UpdateDefaultCache(v8::internal::Handle<v8::internal::CodeCache>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Code>)
+      1    0.0%    0.0%  v8::internal::Code::Relocate(long)
+      1    0.0%    0.0%  v8::internal::CallNew::node_type() const
+      1    0.0%    0.0%  v8::internal::CallIC::initialize_stub(v8::internal::Isolate*, int, v8::internal::CallICState::CallType)
+      1    0.0%    0.0%  v8::internal::Call::Accept(v8::internal::AstVisitor*)
+      1    0.0%    0.0%  v8::internal::Builtins::InterruptCheck()
+      1    0.0%    0.0%  v8::internal::BoyerMoorePositionInfo::Set(int)
+      1    0.0%    0.0%  v8::internal::BinaryOperation::node_type() const
+      1    0.0%    0.0%  v8::internal::AstValueFactory::NewString(v8::internal::AstRawString const*)
+      1    0.0%    0.0%  v8::internal::AstTyper::Run(v8::internal::CompilationInfo*)
+      1    0.0%    0.0%  v8::internal::AstRawString::Internalize(v8::internal::Isolate*)
+      1    0.0%    0.0%  v8::internal::AstRawString::AsArrayIndex(unsigned int*) const
+      1    0.0%    0.0%  v8::internal::AstNumberingVisitor::VisitReference(v8::internal::Expression*)
+      1    0.0%    0.0%  v8::internal::AstNumberingVisitor::VisitCall(v8::internal::Call*)
+      1    0.0%    0.0%  v8::internal::Assignment::node_type() const
+      1    0.0%    0.0%  v8::internal::AssemblerBase::AssemblerBase(v8::internal::Isolate*, void*, int)
+      1    0.0%    0.0%  v8::internal::Assembler::immediate_arithmetic_op(unsigned char, v8::internal::Operand const&, v8::internal::Immediate, int)
+      1    0.0%    0.0%  v8::internal::Assembler::dd(unsigned int)
+      1    0.0%    0.0%  v8::internal::Assembler::cvtlsi2sd(v8::internal::XMMRegister, v8::internal::Operand const&)
+      1    0.0%    0.0%  v8::internal::Assembler::call(v8::internal::Handle<v8::internal::Code>, v8::internal::RelocInfo::Mode, v8::internal::TypeFeedbackId)
+      1    0.0%    0.0%  v8::internal::Assembler::Nop(int)
+      1    0.0%    0.0%  v8::internal::AllocationSiteCreationContext::ExitScope(v8::internal::Handle<v8::internal::AllocationSite>, v8::internal::Handle<v8::internal::JSObject>)
+      1    0.0%    0.0%  v8::internal::Accessors::IsJSObjectFieldAccessor(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, int*)
+      1    0.0%    0.0%  v8::internal::Accessors::FunctionLengthGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  v8::internal::Accessors::ArrayLengthGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  v8::base::Thread::GetThreadLocal(int)
+      1    0.0%    0.0%  v8::Value::ToString(v8::Isolate*) const
+      1    0.0%    0.0%  v8::V8::GetEternal(v8::Isolate*, int)
+      1    0.0%    0.0%  v8::TryCatch::~TryCatch()
+      1    0.0%    0.0%  v8::String::NewFromTwoByte(v8::Isolate*, unsigned short const*, v8::NewStringType, int)
+      1    0.0%    0.0%  v8::Object::Set(v8::Local<v8::Context>, v8::Local<v8::Value>, v8::Local<v8::Value>)
+      1    0.0%    0.0%  v8::Object::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+      1    0.0%    0.0%  v8::Number::Value() const
+      1    0.0%    0.0%  v8::Isolate::RunMicrotasks()
+      1    0.0%    0.0%  v8::EscapableHandleScope::EscapableHandleScope(v8::Isolate*)
+      1    0.0%    0.0%  uv
+      1    0.0%    0.0%  std::vector<unsigned char, v8::internal::zone_allocator<unsigned char> >::_M_fill_insert(__gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, v8::internal::zone_allocator<unsigned char> > >, unsigned long, unsigned char const&)
+      1    0.0%    0.0%  std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long)
+      1    0.0%    0.0%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    0.0%    0.0%  std::ios_base::failure::failure(std::string const&)
+      1    0.0%    0.0%  std::basic_ofstream<wchar_t, std::char_traits<wchar_t> >::~basic_ofstream()
+      1    0.0%    0.0%  std::basic_ifstream<wchar_t, std::char_traits<wchar_t> >::rdbuf() const
+      1    0.0%    0.0%  std::__throw_out_of_range(char const*)
+      1    0.0%    0.0%  node::TTYWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::FSReqWrap::FSReqWrap(node::Environment*, v8::Local<v8::Object>, char const*, char const*)
+      1    0.0%    0.0%  node::ContextifyScript::RunInContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::ContextifyContext::MakeContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  node::AsyncWrap::MakeCallback(v8::Local<v8::Function>, int, v8::Local<v8::Value>*)
+      1    0.0%    0.0%  node::AsyncWrap::AsyncWrap(node::Environment*, v8::Local<v8::Object>, node::AsyncWrap::ProviderType, node::AsyncWrap*)
+      1    0.0%    0.0%  int v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::JSObject::BodyDescriptor, int>::VisitSpecialized<56>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  int v8::internal::FlexibleBodyVisitor<v8::internal::NewSpaceScavenger, v8::internal::JSObject::BodyDescriptor, int>::VisitSpecialized<32>(v8::internal::Map*, v8::internal::HeapObject*)
+      1    0.0%    0.0%  double v8::internal::InternalStringToInt<unsigned short const*, unsigned short const*>(v8::internal::UnicodeCache*, unsigned short const*, unsigned short const*, int)
+      1    0.0%    0.0%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)1, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      1    0.0%    0.0%  bool v8::internal::ScavengingVisitor<(v8::internal::MarksHandling)0, (v8::internal::LoggingAndProfiling)0>::SemiSpaceCopyObject<(v8::internal::AllocationAlignment)0>(v8::internal::Map*, v8::internal::HeapObject**, v8::internal::HeapObject*, int)
+      1    0.0%    0.0%  _vswprintf_l
+      1    0.0%    0.0%  _vm_region_recurse_64
+      1    0.0%    0.0%  _uv__work_submit
+      1    0.0%    0.0%  _uv__strdup
+      1    0.0%    0.0%  _ungetwc_l
+      1    0.0%    0.0%  _swprintf_l
+      1    0.0%    0.0%  _swprintf
+      1    0.0%    0.0%  _pthread_rwlock_init
+      1    0.0%    0.0%  _getsourcefilter
+      1    0.0%    0.0%  ___libplatform_init
+      1    0.0%    0.0%  _____old_semwait_signal_nocancel
+
+ [Summary]:
+   ticks  total  nonlib   name
+    697   23.8%   26.5%  JavaScript
+   1913   65.4%   72.6%  C++
+    130    4.4%    4.9%  GC
+    293   10.0%          Shared libraries
+     24    0.8%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+    484   24.7%   16.5%  v8::internal::Builtins::~Builtins()
+    174    8.9%    5.9%  v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+    156    8.0%    5.3%  v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+    143    7.3%    4.9%  v8::internal::Runtime_CompileString(int, v8::internal::Object**, v8::internal::Isolate*)
+     93    4.8%    3.2%  v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+     75    3.8%    2.6%  v8::internal::Runtime_StringIndexOf(int, v8::internal::Object**, v8::internal::Isolate*)
+     67    3.4%    2.3%  v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+     63    3.2%    2.2%  v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+     46    2.4%    1.6%  v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     39    2.0%    1.3%  v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+     37    1.9%    1.3%  v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     37    1.9%    1.3%  v8::internal::Runtime_BinaryOpIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     36    1.8%    1.2%  v8::internal::Runtime_CharFromCode(int, v8::internal::Object**, v8::internal::Isolate*)
+     30    1.5%    1.0%  v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     29    1.5%    1.0%  v8::internal::Runtime_AllocateInTargetSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+     29    1.5%    1.0%  unibrow::Utf8::Encode(char*, unsigned int, int, bool)
+     28    1.4%    1.0%  v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     28    1.4%    1.0%  v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     28    1.4%    1.0%  v8::internal::Handle<v8::internal::String> v8::internal::JsonParser<false>::ScanJsonString<false>()
+     27    1.4%    0.9%  v8::internal::Runtime_GetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     19    1.0%    0.6%  v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::LookupIterator::Configuration)
+     18    0.9%    0.6%  v8::internal::Runtime_PushIfAbsent(int, v8::internal::Object**, v8::internal::Isolate*)
+     17    0.9%    0.6%  v8::internal::Runtime_TryInstallOptimizedCode(int, v8::internal::Object**, v8::internal::Isolate*)
+     16    0.8%    0.5%  ___carbon_delete
+     15    0.8%    0.5%  v8::internal::Runtime_NewRestParamSlow(int, v8::internal::Object**, v8::internal::Isolate*)
+     13    0.7%    0.4%  v8::internal::Runtime_Interrupt(int, v8::internal::Object**, v8::internal::Isolate*)
+     12    0.6%    0.4%  v8::internal::Runtime_NotifyStubFailure(int, v8::internal::Object**, v8::internal::Isolate*)
+     10    0.5%    0.3%  v8::internal::Runtime_HasOwnProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.4%    0.3%  v8::internal::Runtime_StoreCallbackProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.4%    0.2%  v8::internal::Runtime_RegExpExecMultiple(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.4%    0.2%  v8::internal::Runtime_ForInDone(int, v8::internal::Object**, v8::internal::Isolate*)
+      6    0.3%    0.2%  v8::internal::Runtime_DefineAccessorPropertyUnchecked(int, v8::internal::Object**, v8::internal::Isolate*)
+      6    0.3%    0.2%  __platform_bzero
+      6    0.3%    0.2%  __os_once
+      5    0.3%    0.2%  v8::internal::Runtime_HasProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.3%    0.2%  v8::internal::Runtime_DeclareModules(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.3%    0.2%  v8::internal::Runtime_DateSetValue(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_ToBooleanIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_StringTrim(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_StringToArray(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_SetNativeFlag(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Runtime_GetIndexedInterceptorElementNames(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.2%    0.1%  v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+      3    0.2%    0.1%  void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+      3    0.2%    0.1%  v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      3    0.2%    0.1%  v8::internal::Runtime_Throw(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.2%    0.1%  v8::internal::Runtime_SubString(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.2%    0.1%  v8::internal::Runtime_MoveArrayContents(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.2%    0.1%  v8::internal::Runtime_IsInPrototypeChain(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.2%    0.1%  v8::internal::Runtime_HasElement(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.2%    0.1%  v8::internal::Deoptimizer::New(v8::internal::JSFunction*, v8::internal::Deoptimizer::BailoutType, unsigned int, unsigned char*, int, v8::internal::Isolate*)
+      3    0.2%    0.1%  __simple_getenv
+      3    0.2%    0.1%  ___wait4_nocancel
+      3    0.2%    0.1%  ___psynch_rw_longrdlock
+      3    0.2%    0.1%  _____sigwait_nocancel
+      2    0.1%    0.1%  void v8::internal::RelocInfo::Visit<v8::internal::IncrementalMarkingMarkingVisitor>(v8::internal::Heap*)
+      2    0.1%    0.1%  v8::internal::String::CalculateLineEnds(v8::internal::Handle<v8::internal::String>, bool)
+      2    0.1%    0.1%  v8::internal::SeqString::Truncate(v8::internal::Handle<v8::internal::SeqString>, int)
+      2    0.1%    0.1%  v8::internal::Runtime_StringToLowerCase(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_StringCharCodeAtRT(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_NumberToStringSkipCache(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_DateLocalTimezone(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Runtime_CompareNilIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.1%    0.1%  v8::internal::Context::script_context()
+      2    0.1%    0.1%  v8::internal::ConsString* v8::internal::String::VisitFlat<v8::Utf8WriterVisitor>(v8::Utf8WriterVisitor*, v8::internal::String*, int)
+      2    0.1%    0.1%  v8::internal::BasicJsonStringifier::Result v8::internal::BasicJsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>)
+      2    0.1%    0.1%  int v8::internal::BinarySearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int, int*)
+      2    0.1%    0.1%  _OSSpinLockLock
+      1    0.1%    0.0%  v8::internal::Zone::Zone()
+      1    0.1%    0.0%  v8::internal::TransitionArray::FindTransitionToField(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>)
+      1    0.1%    0.0%  v8::internal::String::IsOneByteEqualTo(v8::internal::Vector<unsigned char const>)
+      1    0.1%    0.0%  v8::internal::SharedFunctionInfo::EvictFromOptimizedCodeMap(v8::internal::Code*, char const*)
+      1    0.1%    0.0%  v8::internal::Scope::LookupRecursive(v8::internal::VariableProxy*, v8::internal::Scope::BindingKind*, v8::internal::AstNodeFactory*)
+      1    0.1%    0.0%  v8::internal::Runtime_StringToNumber(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_StrictEquals(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_StoreIC_MissFromStubFailure(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_NumberAdd(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_IsExtensible(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_HasFastPackedElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_DeclareGlobals(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_CompareIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_ArrayConcat(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime_Apply(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Runtime::SetupArrayBufferAllocatingData(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSArrayBuffer>, unsigned long, bool, v8::internal::SharedFlag)
+      1    0.1%    0.0%  v8::internal::PolymorphicCodeCacheHashTableKey::AsHandle(v8::internal::Isolate*)
+      1    0.1%    0.0%  v8::internal::Map::CopyWithField(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::TypeImpl<v8::internal::HeapTypeConfig> >, PropertyAttributes, v8::internal::Representation, v8::internal::TransitionFlag)
+      1    0.1%    0.0%  v8::internal::JsonParser<false>::ParseJsonValue()
+      1    0.1%    0.0%  v8::internal::JSTypedArray::type()
+      1    0.1%    0.0%  v8::internal::JSObject::MigrateToMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+      1    0.1%    0.0%  v8::internal::InternalizedStringKey::IsMatch(v8::internal::Object*)
+      1    0.1%    0.0%  v8::internal::Handle<v8::internal::JSFunction> v8::internal::Factory::New<v8::internal::JSFunction>(v8::internal::Handle<v8::internal::Map>, v8::internal::AllocationSpace)
+      1    0.1%    0.0%  v8::internal::GlobalHandles::Create(v8::internal::Object*)
+      1    0.1%    0.0%  v8::internal::Factory::NewRawOneByteString(int, v8::internal::PretenureFlag)
+      1    0.1%    0.0%  v8::internal::Deoptimizer::GetDeoptimizationEntry(v8::internal::Isolate*, int, v8::internal::Deoptimizer::BailoutType, v8::internal::Deoptimizer::GetEntryMode)
+      1    0.1%    0.0%  v8::internal::AstNumberingVisitor::VisitCall(v8::internal::Call*)
+      1    0.1%    0.0%  v8::base::Thread::GetThreadLocal(int)
+      1    0.1%    0.0%  v8::Value::ToString(v8::Isolate*) const
+      1    0.1%    0.0%  v8::Number::Value() const
+      1    0.1%    0.0%  v8::HandleScope::Initialize(v8::Isolate*)
+      1    0.1%    0.0%  node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1    0.1%    0.0%  node::FSReqWrap::FSReqWrap(node::Environment*, v8::Local<v8::Object>, char const*, char const*)
+      1    0.1%    0.0%  node::AsyncWrap::AsyncWrap(node::Environment*, v8::Local<v8::Object>, node::AsyncWrap::ProviderType, node::AsyncWrap*)
+      1    0.1%    0.0%  int v8::internal::LinearSearch<(v8::internal::SearchMode)1, v8::internal::DescriptorArray>(v8::internal::DescriptorArray*, v8::internal::Name*, int, int, int*)
+      1    0.1%    0.0%  _uv__strdup
+      1    0.1%    0.0%  _malloc_zone_malloc
+      1    0.1%    0.0%  _malloc_default_zone
+      1    0.1%    0.0%  __os_alloc_once
+      1    0.1%    0.0%  ___munmap
+      1    0.1%    0.0%  ___libplatform_init
+      1    0.1%    0.0%  _____old_semwait_signal_nocancel
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 2.0% are not shown.
+
+   ticks parent  name
+    268    9.2%  /usr/local/bin/node
+     51   19.0%    v8::internal::Builtins::~Builtins()
+     25   49.0%      LazyCompile: ~byteLength buffer.js:259:20
+     16   64.0%        LazyCompile: ~fromString buffer.js:103:20
+     16  100.0%          LazyCompile: *Buffer buffer.js:47:16
+     16  100.0%            LazyCompile: ~writeFd fs.js:1202:19
+      9   36.0%        LazyCompile: *fromString buffer.js:103:20
+      9  100.0%          LazyCompile: *Buffer buffer.js:47:16
+      9  100.0%            LazyCompile: ~writeFd fs.js:1202:19
+      5    9.8%      Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      3   60.0%        LazyCompile: ~base.MemberExpression /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:334:34
+      3  100.0%          Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      3  100.0%            LazyCompile: *skipThrough /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:168:21
+      1   20.0%        LazyCompile: ~base.AssignmentExpression.base.AssignmentPattern /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:319:63
+      1  100.0%          Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1  100.0%            LazyCompile: ~skipThrough /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:168:21
+      1   20.0%        Function: ~<anonymous> :1:10
+      1  100.0%          Function: ~c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1  100.0%            LazyCompile: ~skipThrough /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:168:21
+      5    9.8%      Function: ~<anonymous> :8:49
+      5  100.0%        Function: <anonymous> :1:10
+      3   60.0%          LazyCompile: *res /Users/sergii/dev/blog/node_modules/jade/lib/index.js:219:21
+      3  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      2   40.0%          LazyCompile: ~res /Users/sergii/dev/blog/node_modules/jade/lib/index.js:219:21
+      2  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      2    3.9%      LazyCompile: ~SerializeObject native json.js:78:25
+      2  100.0%        LazyCompile: *JSONSerialize native json.js:123:23
+      2  100.0%          LazyCompile: ~SerializeObject native json.js:78:25
+      2  100.0%            LazyCompile: ~JSONSerialize native json.js:123:23
+      2    3.9%      LazyCompile: *c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1   50.0%        LazyCompile: *c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1  100.0%          LazyCompile: ~skipThrough /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:168:21
+      1  100.0%            LazyCompile: *c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1   50.0%        LazyCompile: *base.Program.base.BlockStatement /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:178:47
+      1  100.0%          LazyCompile: *c /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:48:37
+      1  100.0%            LazyCompile: ~skipThrough /Users/sergii/dev/blog/node_modules/acorn/dist/walk.js:168:21
+      2    3.9%      LazyCompile: *Parser.parse /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:920:24
+      2  100.0%        LazyCompile: marked /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:1146:16
+      2  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      2  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+     23    8.6%    v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    4.3%      LazyCompile: ~pp.parseExprAtom /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1073:29
+      1  100.0%        LazyCompile: ~pp.parseExprSubscripts /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1020:35
+      1  100.0%          LazyCompile: ~pp.parseMaybeUnary /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:990:31
+      1  100.0%            LazyCompile: ~pp.parseExprOps /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:945:28
+      1    4.3%      LazyCompile: ~posix.join path.js:475:22
+      1  100.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/findit/index.js:120:32
+      1  100.0%          LazyCompile: ~InnerArrayForEach native array.js:942:27
+      1  100.0%            LazyCompile: *forEach native array.js:961:22
+      1    4.3%      LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+      1  100.0%        LazyCompile: ~slugifyOnly /Users/sergii/dev/blog/scripts/lib/util/utils.js:11:21
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/process-metadata.js:125:56
+      1  100.0%            LazyCompile: ~InnerArrayMap native array.js:1019:23
+      1    4.3%      LazyCompile: ~getWeek /Users/sergii/dev/blog/node_modules/dateformat/lib/dateformat.js:152:17
+      1  100.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/dateformat/lib/dateformat.js:24:23
+      1  100.0%          LazyCompile: processMetadata /Users/sergii/dev/blog/scripts/lib/get-post-data/process-metadata.js:13:32
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    4.3%      LazyCompile: ~addWith /Users/sergii/dev/blog/node_modules/with/index.js:40:17
+      1  100.0%        LazyCompile: parse /Users/sergii/dev/blog/node_modules/jade/lib/index.js:92:15
+      1  100.0%          LazyCompile: ~exports.compile /Users/sergii/dev/blog/node_modules/jade/lib/index.js:196:27
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/render/compile-templates.js:13:24
+      1    4.3%      LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%        LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%          LazyCompile: ~QuickSort native array.js:728:26
+      1  100.0%            LazyCompile: ~QuickSort native array.js:728:26
+      1    4.3%      LazyCompile: ~PromiseArray._iterate /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:80:43
+      1  100.0%        LazyCompile: ~init /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:35:45
+      1  100.0%          LazyCompile: ~Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1  100.0%            LazyCompile: ~Promise._settlePromise0 /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:588:45
+      1    4.3%      LazyCompile: ~Promise.mapSeries /Users/sergii/dev/blog/node_modules/bluebird/js/release/each.js:19:40
+      1  100.0%        LazyCompile: ~Promise.each /Users/sergii/dev/blog/node_modules/bluebird/js/release/each.js:14:35
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:12:33
+      1  100.0%            LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1    4.3%      LazyCompile: ~Promise.each /Users/sergii/dev/blog/node_modules/bluebird/js/release/each.js:14:35
+      1  100.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:12:33
+      1  100.0%          LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1  100.0%            LazyCompile: *Promise._resolveFromExecutor /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:457:51
+      1    4.3%      LazyCompile: ~Parser.parseText /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:961:38
+      1  100.0%        LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1  100.0%          LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1  100.0%            LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1    4.3%      LazyCompile: ~Lexer.doctype /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:250:20
+      1  100.0%        LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      1  100.0%          LazyCompile: ~Lexer.lookahead /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:111:22
+      1  100.0%            LazyCompile: ~Parser.lookahead /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:101:22
+      1    4.3%      LazyCompile: ~Lexer.attributesBlock /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:746:29
+      1  100.0%        LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      1  100.0%          LazyCompile: ~Lexer.lookahead /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:111:22
+      1  100.0%            LazyCompile: ~Parser.lookahead /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:101:22
+      1    4.3%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/save-content.js:27:35
+      1  100.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%          LazyCompile: *Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1  100.0%            LazyCompile: *Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1    4.3%      LazyCompile: SyntaxError native messages.js:660:21
+      1  100.0%        LazyCompile: ~MakeGenericError native messages.js:136:26
+      1  100.0%          LazyCompile: ~Function native v8natives.js:1258:29
+      1  100.0%            LazyCompile: *assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      1    4.3%      LazyCompile: *pp.parseExprSubscripts /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:213:35
+      1  100.0%        LazyCompile: ~pp.parseMaybeUnary /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:183:31
+      1  100.0%          LazyCompile: *pp.parseMaybeAssign /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:99:32
+      1  100.0%            LazyCompile: ~pp.parseExpression /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:83:31
+      1    4.3%      LazyCompile: *pp.getTokenFromCode /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3393:32
+      1  100.0%        LazyCompile: *pp.parseNew /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1238:24
+      1  100.0%          LazyCompile: *pp.parseExprAtom /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1073:29
+      1  100.0%            LazyCompile: *pp.parseExprSubscripts /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1020:35
+      1    4.3%      LazyCompile: *pp.expect /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:2257:22
+      1  100.0%        LazyCompile: ~pp.parseParenExpression /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1153:36
+      1  100.0%          LazyCompile: ~pp.parseParenAndDistinguishExpression /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1160:50
+      1  100.0%            LazyCompile: *pp.parseExprAtom /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1073:29
+      1    4.3%      LazyCompile: *parse /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:904:15
+      1  100.0%        LazyCompile: isConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:33:20
+      1  100.0%          LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:85:20
+      1  100.0%            LazyCompile: *toConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:15:20
+      1    4.3%      LazyCompile: *JSONSerialize native json.js:123:23
+      1  100.0%        LazyCompile: ~SerializeObject native json.js:78:25
+      1  100.0%          LazyCompile: ~JSONSerialize native json.js:123:23
+      1  100.0%            LazyCompile: ~SerializeObject native json.js:78:25
+      1    4.3%      LazyCompile: *InnerArrayForEach native array.js:942:27
+      1  100.0%        LazyCompile: *forEach native array.js:961:22
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:154:24
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    4.3%      Handler: getMaxListenersAsync
+      1  100.0%        LazyCompile: ~handleEmbeds /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:150:22
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:121:27
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    4.3%      Function: ~c /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:81:69
+      1  100.0%        LazyCompile: ~skipThrough /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:179:21
+      1  100.0%          Function: ~c /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:81:69
+      1  100.0%            LazyCompile: ~base.NewExpression.base.CallExpression /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:301:53
+      1    4.3%      Function: ~<anonymous> :8:49
+      1  100.0%        Function: <anonymous> :1:10
+      1  100.0%          LazyCompile: *res /Users/sergii/dev/blog/node_modules/jade/lib/index.js:219:21
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+     18    6.7%    v8::internal::Runtime_StringReplaceGlobalRegExpWithString(int, v8::internal::Object**, v8::internal::Isolate*)
+     17   94.4%      LazyCompile: *replace native string.js:152:23
+      7   41.2%        LazyCompile: *InlineLexer.output /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:562:40
+      5   71.4%          LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      4   80.0%            LazyCompile: *Parser.parse /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:920:24
+      1   20.0%            LazyCompile: ~Parser.parse /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:929:34
+      1   14.3%          LazyCompile: ~Parser.parseText /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:961:38
+      1  100.0%            LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1   14.3%          LazyCompile: *InlineLexer.output /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:562:40
+      1  100.0%            LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      3   17.6%        LazyCompile: *Lexer.lex /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:121:21
+      3  100.0%          LazyCompile: ~generate /Users/sergii/dev/blog/node_modules/marked-toc/index.js:35:18
+      3  100.0%            LazyCompile: *toc /Users/sergii/dev/blog/node_modules/marked-toc/index.js:118:13
+      1    5.9%        LazyCompile: ~resolve /Users/sergii/dev/blog/node_modules/xml/lib/xml.js:132:17
+      1  100.0%          LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/xml/lib/xml.js:183:40
+      1  100.0%            LazyCompile: *InnerArrayForEach native array.js:942:27
+      1    5.9%        LazyCompile: ~Lexer.lex /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:136:31
+      1  100.0%          LazyCompile: ~Lexer.lex /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:127:21
+      1  100.0%            LazyCompile: marked /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:1146:16
+      1    5.9%        LazyCompile: ~Lexer.lex /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:130:31
+      1  100.0%          LazyCompile: ~Lexer.lex /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:121:21
+      1  100.0%            LazyCompile: ~generate /Users/sergii/dev/blog/node_modules/marked-toc/index.js:35:18
+      1    5.9%        LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1  100.0%          LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1    5.9%        LazyCompile: *module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+      1  100.0%          LazyCompile: *_.extend.slugify /Users/sergii/dev/blog/node_modules/marked-toc/index.js:42:22
+      1  100.0%            LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:59:26
+      1    5.9%        LazyCompile: *escape /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:1087:16
+      1  100.0%          LazyCompile: ~InlineLexer.output /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:562:40
+      1  100.0%            LazyCompile: ~Parser.tok /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:975:32
+      1    5.9%        LazyCompile: *Lexer.lex /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:127:21
+      1  100.0%          LazyCompile: marked /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:1146:16
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      1    5.6%      LazyCompile: ~replace native string.js:152:23
+      1  100.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/load-tags-info.js:9:23
+      1  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%            LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+     16    6.0%    v8::internal::Runtime_CreateObjectLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      3   18.8%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:41:52
+      3  100.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      3  100.0%          LazyCompile: *Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      3  100.0%            LazyCompile: *Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      2   12.5%      LazyCompile: ~recursiveDecomp /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:166:31
+      2  100.0%        LazyCompile: *RecursDecompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:165:50
+      2  100.0%          LazyCompile: *DecompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:194:44
+      2  100.0%            LazyCompile: *CompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:226:42
+      2   12.5%      Function: ~<anonymous> :8:49
+      2  100.0%        Function: <anonymous> :1:10
+      1   50.0%          LazyCompile: ~res /Users/sergii/dev/blog/node_modules/jade/lib/index.js:219:21
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      1   50.0%          LazyCompile: *res /Users/sergii/dev/blog/node_modules/jade/lib/index.js:219:21
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      2   12.5%      Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:1:73
+      2  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:1:11
+      2  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      2  100.0%            LazyCompile: ~Module._extensions..js module.js:402:37
+      1    6.3%      LazyCompile: ~readFlowCollection /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:636:28
+      1  100.0%        LazyCompile: *composeNode /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1256:21
+      1  100.0%          LazyCompile: *readBlockMapping /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:946:26
+      1  100.0%            LazyCompile: *composeNode /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1256:21
+      1    6.3%      LazyCompile: ~createPage /Users/sergii/dev/blog/scripts/lib/render-all/render-list-generic.js:35:28
+      1  100.0%        LazyCompile: ~renderIndex /Users/sergii/dev/blog/scripts/lib/render-all/render-list-generic.js:21:32
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-category-and-tags-lists.js:33:32
+      1  100.0%            LazyCompile: *InnerArrayForEach native array.js:942:27
+      1    6.3%      LazyCompile: ~Promise.map.concurrency /Users/sergii/dev/blog/scripts/lib/render-all/render-single-all.js:20:18
+      1  100.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%          LazyCompile: ~MappingPromiseArray._promiseFulfilled /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:31:60
+      1  100.0%            LazyCompile: ~PromiseArray._iterate /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:80:43
+      1    6.3%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-template.js:7:51
+      1  100.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%          LazyCompile: *Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1  100.0%            LazyCompile: *Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1    6.3%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:35:64
+      1  100.0%        LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1  100.0%          LazyCompile: *Promise._resolveFromExecutor /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:457:51
+      1  100.0%            LazyCompile: *Promise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:69:17
+      1    6.3%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/get-post-data.js:38:67
+      1  100.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%          LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1  100.0%            LazyCompile: ~Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1    6.3%      LazyCompile: fs.readFileSync fs.js:417:27
+      1  100.0%        LazyCompile: ~Module._extensions..js module.js:402:37
+      1  100.0%          LazyCompile: ~Module.load module.js:334:33
+      1  100.0%            LazyCompile: Module._load module.js:271:24
+     16    6.0%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      2   12.5%      Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/globule/node_modules/lodash/dist/lodash.js:10:11
+      2  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/globule/node_modules/lodash/dist/lodash.js:1:11
+      2  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      2  100.0%            LazyCompile: ~Module._extensions..js module.js:402:37
+      1    6.3%      LazyCompile: ~runFactory /Users/sergii/dev/blog/node_modules/amdefine/amdefine.js:147:24
+      1  100.0%        LazyCompile: ~define /Users/sergii/dev/blog/node_modules/amdefine/amdefine.js:250:20
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/transformers/node_modules/source-map/lib/source-map/source-map-generator.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1    6.3%      LazyCompile: ~reverse native array.js:484:22
+      1  100.0%        LazyCompile: ~Parser.parse /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:929:34
+      1  100.0%          LazyCompile: ~Parser.parse /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:920:24
+      1  100.0%            LazyCompile: marked /Users/sergii/dev/blog/node_modules/marked/lib/marked.js:1146:16
+      1    6.3%      LazyCompile: ~renderIndexFunction /Users/sergii/dev/blog/scripts/lib/render-all/render-list-generic.js:13:29
+      1  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/render-index.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%            LazyCompile: ~Module._extensions..js module.js:402:37
+      1    6.3%      LazyCompile: ~readDocument /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1405:22
+      1  100.0%        LazyCompile: ~loadDocuments /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1517:23
+      1  100.0%          LazyCompile: ~load /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1562:14
+      1  100.0%            LazyCompile: ~safeLoad /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/loader.js:1580:18
+      1    6.3%      LazyCompile: ~forEach native array.js:961:22
+      1  100.0%        Function: ~<anonymous> fs.js:1:11
+      1  100.0%          LazyCompile: ~NativeModule.compile node.js:982:44
+      1  100.0%            LazyCompile: ~NativeModule.require node.js:916:34
+      1    6.3%      LazyCompile: ~addWith /Users/sergii/dev/blog/node_modules/with/index.js:40:17
+      1  100.0%        LazyCompile: parse /Users/sergii/dev/blog/node_modules/jade/lib/index.js:92:15
+      1  100.0%          LazyCompile: ~exports.compile /Users/sergii/dev/blog/node_modules/jade/lib/index.js:196:27
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/render/compile-templates.js:13:24
+      1    6.3%      LazyCompile: ~Writable.write _stream_writable.js:186:36
+      1  100.0%        LazyCompile: ~Socket.write net.js:615:34
+      1  100.0%          LazyCompile: ~Console.log console.js:35:33
+      1  100.0%            LazyCompile: ~<anonymous> native v8natives.js:1202:16
+      1    6.3%      LazyCompile: ~Lexer.lex /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/marked/lib/marked.js:121:21
+      1  100.0%        LazyCompile: ~generate /Users/sergii/dev/blog/node_modules/marked-toc/index.js:35:18
+      1  100.0%          LazyCompile: ~toc /Users/sergii/dev/blog/node_modules/marked-toc/index.js:118:13
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      1    6.3%      LazyCompile: ~Async._drainQueue /Users/sergii/dev/blog/node_modules/bluebird/js/release/async.js:121:39
+      1  100.0%        LazyCompile: ~Async._drainQueues /Users/sergii/dev/blog/node_modules/bluebird/js/release/async.js:134:41
+      1  100.0%          LazyCompile: ~Async.drainQueues /Users/sergii/dev/blog/node_modules/bluebird/js/release/async.js:15:33
+      1  100.0%            LazyCompile: processImmediate timers.js:367:26
+      1    6.3%      LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1  100.0%        LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1  100.0%          LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1  100.0%            LazyCompile: *InnerArrayForEach native array.js:942:27
+      1    6.3%      LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1  100.0%        LazyCompile: *Promise._resolveFromExecutor /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:457:51
+      1  100.0%          LazyCompile: *Promise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:69:17
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:34:35
+      1    6.3%      Function: ~Token.BooleanLiteral /Users/sergii/dev/blog/node_modules/js-yaml/node_modules/esprima/esprima.js:25:11
+      1  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/js-yaml/node_modules/esprima/esprima.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%            LazyCompile: *Module._extensions..js module.js:402:37
+      1    6.3%      Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/general.js:1:11
+      1  100.0%        LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%          LazyCompile: ~Module._extensions..js module.js:402:37
+      1  100.0%            LazyCompile: ~Module.load module.js:334:33
+      1    6.3%      Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:10:11
+      1  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%            LazyCompile: *Module._extensions..js module.js:402:37
+     16    6.0%    /usr/local/bin/node
+      7   43.8%      LazyCompile: *JSONSerialize native json.js:123:23
+      7  100.0%        LazyCompile: ~SerializeObject native json.js:78:25
+      7  100.0%          LazyCompile: *JSONSerialize native json.js:123:23
+      5   71.4%            LazyCompile: ~SerializeArray native json.js:51:24
+      2   28.6%            LazyCompile: ~SerializeObject native json.js:78:25
+      5   31.3%      LazyCompile: ~parse native json.js:43:19
+      2   40.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      2  100.0%          LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      2  100.0%            LazyCompile: ~Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1   20.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/collect-initial-data.js:22:81
+      1  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%            LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1   20.0%        LazyCompile: readPackage module.js:68:21
+      1  100.0%          LazyCompile: ~tryPackage module.js:90:20
+      1  100.0%            LazyCompile: ~Module._findPath module.js:128:28
+      1   20.0%        LazyCompile: Module._extensions..json module.js:409:39
+      1  100.0%          LazyCompile: *Module.load module.js:334:33
+      1  100.0%            LazyCompile: Module._load module.js:271:24
+      3   18.8%      LazyCompile: ~stringify native json.js:158:23
+      2   66.7%        LazyCompile: ~Module._findPath module.js:128:28
+      1   50.0%          LazyCompile: ~Module._resolveFilename module.js:311:35
+      1  100.0%            LazyCompile: Module._load module.js:271:24
+      1   50.0%          LazyCompile: *Module._resolveFilename module.js:311:35
+      1  100.0%            LazyCompile: Module._load module.js:271:24
+      1   33.3%        LazyCompile: ~Promise.map.concurrency /Users/sergii/dev/blog/scripts/lib/render-all/render-single-all.js:20:18
+      1  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%            LazyCompile: ~MappingPromiseArray._promiseFulfilled /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:31:60
+      1    6.3%      LazyCompile: ~JSONSerialize native json.js:123:23
+      1  100.0%        LazyCompile: ~SerializeObject native json.js:78:25
+      1  100.0%          LazyCompile: ~JSONSerialize native json.js:123:23
+      1  100.0%            LazyCompile: ~SerializeArray native json.js:51:24
+     13    4.9%    v8::internal::Runtime_CompileString(int, v8::internal::Object**, v8::internal::Isolate*)
+     12   92.3%      LazyCompile: ~Function native v8natives.js:1258:29
+      3   25.0%        LazyCompile: *assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      1   33.3%          LazyCompile: ~Lexer.each /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:559:17
+      1  100.0%            LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      1   33.3%          LazyCompile: isEndOfAttribute /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:640:39
+      1  100.0%            LazyCompile: *Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1   33.3%          LazyCompile: *Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1  100.0%            LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      3   25.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/uglify-js/tools/node.js:1:11
+      3  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      3  100.0%            LazyCompile: *Module._extensions..js module.js:402:37
+      2   16.7%        LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      2  100.0%          LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1   50.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1   50.0%            LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1    8.3%        LazyCompile: ~promiseSetter /Users/sergii/dev/blog/node_modules/bluebird/js/release/join.js:20:33
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/join.js:3:9
+      1  100.0%            LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:2:26
+      1    8.3%        LazyCompile: ~exports.compile /Users/sergii/dev/blog/node_modules/jade/lib/index.js:196:27
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/render/compile-templates.js:13:24
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    8.3%        LazyCompile: ~assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      1  100.0%          LazyCompile: isEndOfAttribute /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:640:39
+      1  100.0%            LazyCompile: ~Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1    8.3%        LazyCompile: ~DEFNODE /Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/lib/ast.js:46:17
+      1  100.0%          Script: ~/Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/lib/ast.js
+      1  100.0%            node::ContextifyScript::RunInContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    7.7%      LazyCompile: isExpression /Users/sergii/dev/blog/node_modules/constantinople/index.js:92:22
+      1  100.0%        LazyCompile: isConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:33:20
+      1  100.0%          LazyCompile: *isConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:12:20
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:665:27
+     10    3.7%    v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      5   50.0%      LazyCompile: *split native string.js:424:23
+      2   40.0%        LazyCompile: *posix.join path.js:475:22
+      2  100.0%          LazyCompile: ~handleImg /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:235:19
+      2  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:35:64
+      1   20.0%        LazyCompile: ~posix.resolve path.js:419:25
+      1  100.0%          LazyCompile: ~Module._resolveLookupPaths module.js:209:38
+      1  100.0%            LazyCompile: *Module._resolveFilename module.js:311:35
+      1   20.0%        LazyCompile: *posix.resolve path.js:419:25
+      1  100.0%          LazyCompile: *mkdirP /Users/sergii/dev/blog/node_modules/mkdirp/index.js:7:17
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1   20.0%        LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/findit/index.js:120:32
+      1  100.0%          LazyCompile: *InnerArrayForEach native array.js:942:27
+      1  100.0%            LazyCompile: *forEach native array.js:961:22
+      3   30.0%      LazyCompile: *exec native regexp.js:88:22
+      3  100.0%        LazyCompile: ~parseMore /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:97:26
+      3  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      3  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1   10.0%      LazyCompile: ~split native string.js:424:23
+      1  100.0%        LazyCompile: ~posix.resolve path.js:419:25
+      1  100.0%          LazyCompile: ~realpathSync fs.js:1462:40
+      1  100.0%            LazyCompile: ~toRealPath module.js:111:20
+      1   10.0%      LazyCompile: ~DoConstructRegExp native regexp.js:20:27
+      1  100.0%        LazyCompile: ~RegExp native regexp.js:36:27
+      1  100.0%          Function: ~<anonymous> :1:10
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/uglify-js/tools/node.js:1:11
+     10    3.7%    v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      4   40.0%      LazyCompile: ~extend /Users/sergii/dev/blog/node_modules/extend/index.js:34:33
+      4  100.0%        LazyCompile: ~InnerArrayReduce native array.js:1147:26
+      3   75.0%          LazyCompile: ~reduce native array.js:1172:21
+      3  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/collect-initial-data.js:22:81
+      1   25.0%          LazyCompile: *reduce native array.js:1172:21
+      1  100.0%            LazyCompile: ~processMenu /Users/sergii/dev/blog/scripts/lib/render-all/render-all.js:97:21
+      2   20.0%      LazyCompile: *InnerArrayForEach native array.js:942:27
+      2  100.0%        LazyCompile: *forEach native array.js:961:22
+      2  100.0%          LazyCompile: *mergeTags /Users/sergii/dev/blog/scripts/lib/get-post-data/merge-post-list.js:23:19
+      2  100.0%            LazyCompile: *mergePostAll /Users/sergii/dev/blog/scripts/lib/get-post-data/merge-post-list.js:65:22
+      1   10.0%      LazyCompile: ~realpathSync fs.js:1462:40
+      1  100.0%        LazyCompile: ~toRealPath module.js:111:20
+      1  100.0%          LazyCompile: ~tryFile module.js:106:17
+      1  100.0%            LazyCompile: ~tryExtensions module.js:116:23
+      1   10.0%      LazyCompile: ~Module._findPath module.js:128:28
+      1  100.0%        LazyCompile: ~Module._resolveFilename module.js:311:35
+      1  100.0%          LazyCompile: Module._load module.js:271:24
+      1  100.0%            LazyCompile: ~Module.require module.js:350:36
+      1   10.0%      LazyCompile: ~DEFNODE :360:17
+      1  100.0%        Function: ~<anonymous> :1:10
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/uglify-js/tools/node.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1   10.0%      LazyCompile: *OpenReq.done /Users/sergii/dev/blog/node_modules/template/node_modules/graceful-fs/graceful-fs.js:59:34
+      1  100.0%        LazyCompile: ~<anonymous> native v8natives.js:1202:16
+      1  100.0%          LazyCompile: ~<anonymous> fs.js:81:18
+      8    3.0%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   12.5%      LazyCompile: ~pp.parseVar /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:2736:24
+      1  100.0%        LazyCompile: ~pp.parseVarStatement /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:2635:33
+      1  100.0%          LazyCompile: ~pp.parseStatement /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:2401:30
+      1  100.0%            LazyCompile: ~pp.parseFunctionBody /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1400:33
+      1   12.5%      LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/gm/lib/args.js:12:27
+      1  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/gm/index.js:1:11
+      1  100.0%          LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%            LazyCompile: ~Module._extensions..js module.js:402:37
+      1   12.5%      LazyCompile: ~WritableState _stream_writable.js:26:23
+      1  100.0%        LazyCompile: ~Writable _stream_writable.js:130:18
+      1  100.0%          LazyCompile: ~Duplex _stream_duplex.js:23:16
+      1  100.0%            LazyCompile: ~Socket net.js:109:16
+      1   12.5%      LazyCompile: ~Socket net.js:109:16
+      1  100.0%        LazyCompile: ~WriteStream tty.js:54:21
+      1  100.0%          LazyCompile: ~createWritableStdioStream node.js:616:37
+      1  100.0%            LazyCompile: ~<anonymous> node.js:677:48
+      1   12.5%      LazyCompile: ~PromiseArray /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:14:22
+      1  100.0%        LazyCompile: ~Promise.all /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:155:34
+      1  100.0%          LazyCompile: ~Promise.spread /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:131:37
+      1  100.0%            LazyCompile: ~module.exports /Users/sergii/dev/blog/scripts/lib/collect-initial-data/load-categories-tree.js:6:27
+      1   12.5%      LazyCompile: ~Agent _http_agent.js:20:15
+      1  100.0%        LazyCompile: ~Agent https.js:90:15
+      1  100.0%          Function: ~<anonymous> https.js:1:11
+      1  100.0%            LazyCompile: ~NativeModule.compile node.js:982:44
+      1   12.5%      Function: ~<anonymous> _http_outgoing.js:1:11
+      1  100.0%        LazyCompile: ~NativeModule.compile node.js:982:44
+      1  100.0%          LazyCompile: ~NativeModule.require node.js:916:34
+      1  100.0%            Function: ~<anonymous> http.js:1:11
+      1   12.5%      Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/js-yaml/lib/js-yaml/schema.js:1:11
+      1  100.0%        LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%          LazyCompile: *Module._extensions..js module.js:402:37
+      1  100.0%            LazyCompile: ~Module.load module.js:334:33
+      8    3.0%    v8::internal::Runtime_CharFromCode(int, v8::internal::Object**, v8::internal::Isolate*)
+      5   62.5%      LazyCompile: Join native array.js:106:14
+      5  100.0%        LazyCompile: ~InnerArrayJoin native array.js:321:24
+      5  100.0%          LazyCompile: *join native array.js:337:19
+      2   40.0%            Function: <anonymous> :1:10
+      1   20.0%            LazyCompile: ~SerializeArray native json.js:51:24
+      1   20.0%            LazyCompile: ~Compiler.compile /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:62:20
+      1   20.0%            LazyCompile: *handleImg /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:235:19
+      3   37.5%      LazyCompile: ~SparseJoinWithSeparatorJS native array.js:59:35
+      3  100.0%        LazyCompile: Join native array.js:106:14
+      3  100.0%          LazyCompile: ~InnerArrayJoin native array.js:321:24
+      3  100.0%            LazyCompile: *join native array.js:337:19
+      6    2.2%    v8::internal::Runtime_StringIndexOf(int, v8::internal::Object**, v8::internal::Isolate*)
+      4   66.7%      LazyCompile: *indexOf native string.js:80:25
+      3   75.0%        LazyCompile: *fs.stat fs.js:873:19
+      3  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:221:33
+      3  100.0%            LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+      1   25.0%        LazyCompile: *module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+      1  100.0%          LazyCompile: *_.extend.slugify /Users/sergii/dev/blog/node_modules/marked-toc/index.js:42:22
+      1  100.0%            LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:59:26
+      2   33.3%      LazyCompile: *replace native string.js:152:23
+      1   50.0%        LazyCompile: ~SitemapItem.toString /Users/sergii/dev/blog/node_modules/sitemap/lib/sitemap.js:119:43
+      1  100.0%          LazyCompile: ~DefaultString native runtime.js:529:23
+      1  100.0%            LazyCompile: *ConvertToString native array.js:163:25
+      1   50.0%        LazyCompile: *generateCallForArgumentCount /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:121:42
+      1  100.0%          LazyCompile: ~generateArgumentSwitchCase /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:135:40
+      1  100.0%            LazyCompile: ~makeNodePromisifiedEval /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:116:9
+      6    2.2%    v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   16.7%      LazyCompile: ~parseChar /Users/sergii/dev/blog/node_modules/character-parser/index.js:59:19
+      1  100.0%        LazyCompile: *Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1  100.0%          LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      1  100.0%            LazyCompile: ~Lexer.lookahead /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:111:22
+      1   16.7%      LazyCompile: ~RegExp native regexp.js:36:27
+      1  100.0%        LazyCompile: ~writeFd fs.js:1202:19
+      1  100.0%          LazyCompile: ~<anonymous> fs.js:1194:45
+      1  100.0%            LazyCompile: *OpenReq.done /Users/sergii/dev/blog/node_modules/template/node_modules/graceful-fs/graceful-fs.js:59:34
+      1   16.7%      LazyCompile: ~Parser.context /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:52:20
+      1  100.0%        LazyCompile: ~Parser.parseInclude /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:581:25
+      1  100.0%          LazyCompile: ~Parser.parseExpr /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:208:22
+      1  100.0%            LazyCompile: ~Parser.block /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:720:18
+      1   16.7%      LazyCompile: *replace native string.js:152:23
+      1  100.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/dateformat/lib/dateformat.js:24:23
+      1  100.0%          LazyCompile: processMetadata /Users/sergii/dev/blog/scripts/lib/get-post-data/process-metadata.js:13:32
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1   16.7%      LazyCompile: *indexOf native array.js:1094:22
+      1  100.0%        LazyCompile: *_unicodeCategory /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:7:34
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/uslug/lib/uslug.js:14:28
+      1  100.0%            LazyCompile: ~_.extend.slugify /Users/sergii/dev/blog/node_modules/marked-toc/index.js:42:22
+      1   16.7%      Function: ~c /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:81:69
+      1  100.0%        LazyCompile: ~recursive /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/walk.js:80:19
+      1  100.0%          LazyCompile: ~addWith /Users/sergii/dev/blog/node_modules/with/index.js:40:17
+      1  100.0%            LazyCompile: parse /Users/sergii/dev/blog/node_modules/jade/lib/index.js:92:15
+
+    200    6.8%  void node::Wrap<node::ContextifyContext>(v8::Local<v8::Object>, node::ContextifyContext*)
+    200  100.0%    v8::internal::Builtins::~Builtins()
+    119   59.5%      LazyCompile: *exports.runInThisContext vm.js:52:36
+    117   98.3%        LazyCompile: ~Module._compile module.js:366:37
+     78   66.7%          LazyCompile: *Module._extensions..js module.js:402:37
+     45   57.7%            LazyCompile: ~Module.load module.js:334:33
+     33   42.3%            LazyCompile: *Module.load module.js:334:33
+     39   33.3%          LazyCompile: ~Module._extensions..js module.js:402:37
+     37   94.9%            LazyCompile: *Module.load module.js:334:33
+      2    5.1%            LazyCompile: ~Module.load module.js:334:33
+     44   22.0%      LazyCompile: ~exports.runInThisContext vm.js:52:36
+     44  100.0%        LazyCompile: ~Module._compile module.js:366:37
+     44  100.0%          LazyCompile: ~Module._extensions..js module.js:402:37
+     44  100.0%            LazyCompile: ~Module.load module.js:334:33
+     29   14.5%      LazyCompile: ~runInThisContext node.js:901:28
+     29  100.0%        LazyCompile: ~NativeModule.compile node.js:982:44
+     29  100.0%          LazyCompile: ~NativeModule.require node.js:916:34
+      4   13.8%            LazyCompile: ~startup node.js:13:19
+      4   13.8%            LazyCompile: Module._load module.js:271:24
+      4   13.8%            Function: ~<anonymous> module.js:1:11
+      3   10.3%            Function: ~<anonymous> stream.js:1:11
+      2    6.9%            LazyCompile: ~startup.globalVariables node.js:211:37
+      2    6.9%            Function: ~<anonymous> tls.js:1:11
+      1    3.4%            LazyCompile: ~startup.globalTimeouts node.js:221:36
+      1    3.4%            Function: ~<anonymous> url.js:1:11
+      1    3.4%            Function: ~<anonymous> tty.js:1:11
+      1    3.4%            Function: ~<anonymous> internal/child_process.js:1:11
+      1    3.4%            Function: ~<anonymous> http.js:1:11
+      1    3.4%            Function: ~<anonymous> child_process.js:1:11
+      1    3.4%            Function: ~<anonymous> buffer.js:1:11
+      1    3.4%            Function: ~<anonymous> assert.js:1:11
+      1    3.4%            Function: ~<anonymous> _tls_wrap.js:1:11
+      1    3.4%            Function: ~<anonymous> _http_client.js:1:11
+      8    4.0%      LazyCompile: ~exports.runInContext vm.js:42:32
+      8  100.0%        LazyCompile: load_global /Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/tools/node.js:12:21
+      8  100.0%          LazyCompile: ~InnerArrayForEach native array.js:942:27
+      8  100.0%            LazyCompile: ~forEach native array.js:961:22
+
+    122    4.2%  __os_once
+     33   27.0%    v8::internal::Runtime_StringIndexOf(int, v8::internal::Object**, v8::internal::Isolate*)
+     32   97.0%      LazyCompile: *replace native string.js:152:23
+     28   87.5%        LazyCompile: *<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:58:28
+     28  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+     28  100.0%            LazyCompile: *gotValue /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:138:18
+      3    9.4%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/post-process.js:58:28
+      3  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      2   66.7%            LazyCompile: *gotValue /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:138:18
+      1   33.3%            LazyCompile: ~gotValue /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:138:18
+      1    3.1%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:181:63
+      1  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%            LazyCompile: *MappingPromiseArray._promiseFulfilled /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:31:60
+      1    3.0%      LazyCompile: *indexOf native string.js:80:25
+      1  100.0%        LazyCompile: *fs.stat fs.js:873:19
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/responsive-imgs.js:221:33
+      1  100.0%            LazyCompile: Promise._execute /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:178:38
+     20   16.4%    v8::internal::Runtime_CharFromCode(int, v8::internal::Object**, v8::internal::Isolate*)
+     20  100.0%      LazyCompile: Join native array.js:106:14
+     20  100.0%        LazyCompile: ~InnerArrayJoin native array.js:321:24
+     20  100.0%          LazyCompile: *join native array.js:337:19
+     13   65.0%            LazyCompile: ~SerializeArray native json.js:51:24
+      6   30.0%            Function: <anonymous> :1:10
+      1    5.0%            LazyCompile: ~SerializeObject native json.js:78:25
+      5    4.1%    /usr/local/bin/node
+      4   80.0%      LazyCompile: ~parse native json.js:43:19
+      3   75.0%        LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/collect-initial-data.js:22:81
+      3  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      3  100.0%            LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1   25.0%        LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%          LazyCompile: ~Promise._settlePromiseFromHandler /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:475:56
+      1  100.0%            LazyCompile: ~Promise._settlePromise /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:522:44
+      1   20.0%      LazyCompile: *JSONSerialize native json.js:123:23
+      1  100.0%        LazyCompile: ~SerializeObject native json.js:78:25
+      1  100.0%          LazyCompile: *JSONSerialize native json.js:123:23
+      1  100.0%            LazyCompile: ~SerializeObject native json.js:78:25
+      3    2.5%    v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+      3  100.0%      LazyCompile: *exec native regexp.js:88:22
+      1   33.3%        LazyCompile: ~splitInput /Users/sergii/dev/blog/scripts/lib/get-post-data/meta-marked.js:10:20
+      1  100.0%          LazyCompile: ~metaMarked /Users/sergii/dev/blog/scripts/lib/get-post-data/meta-marked.js:24:26
+      1  100.0%            LazyCompile: processMetadata /Users/sergii/dev/blog/scripts/lib/get-post-data/process-metadata.js:13:32
+      1   33.3%        LazyCompile: ~parseMore /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:97:26
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1   33.3%        LazyCompile: *Lexer.scan /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:84:17
+      1  100.0%          LazyCompile: ~Lexer.doctype /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:250:20
+      1  100.0%            LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      3    2.5%    v8::internal::Runtime_CompileString(int, v8::internal::Object**, v8::internal::Isolate*)
+      3  100.0%      LazyCompile: ~Function native v8natives.js:1258:29
+      1   33.3%        LazyCompile: ~makeNodePromisifiedEval /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:116:9
+      1  100.0%          LazyCompile: ~promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:238:22
+      1  100.0%            LazyCompile: ~Promise.promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:283:33
+      1   33.3%        LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1  100.0%          LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1   33.3%        LazyCompile: *assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      1  100.0%          LazyCompile: ~Lexer.code /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:575:17
+      1  100.0%            LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      3    2.5%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   33.3%      LazyCompile: ~runFactory /Users/sergii/dev/blog/node_modules/amdefine/amdefine.js:147:24
+      1  100.0%        LazyCompile: ~define /Users/sergii/dev/blog/node_modules/amdefine/amdefine.js:250:20
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/transformers/node_modules/source-map/lib/source-map/source-node.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1   33.3%      LazyCompile: ~pp.parseExprSubscripts /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:213:35
+      1  100.0%        LazyCompile: ~pp.parseMaybeUnary /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:183:31
+      1  100.0%          LazyCompile: ~pp.parseExprOps /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:148:28
+      1  100.0%            LazyCompile: ~pp.parseMaybeConditional /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:130:37
+      1   33.3%      LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1  100.0%        LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1  100.0%          LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1  100.0%            LazyCompile: *InnerArrayForEach native array.js:942:27
+
+     76    2.6%  node::Buffer::CreateFromString(v8::FunctionCallbackInfo<v8::Value> const&)
+     76  100.0%    v8::internal::Builtins::~Builtins()
+     76  100.0%      LazyCompile: ~fromString buffer.js:103:20
+     76  100.0%        LazyCompile: *Buffer buffer.js:47:16
+     76  100.0%          LazyCompile: ~writeFd fs.js:1202:19
+     76  100.0%            LazyCompile: ~<anonymous> fs.js:1194:45
+
+     73    2.5%  ___munmap
+     17   23.3%    v8::internal::Runtime_CompileString(int, v8::internal::Object**, v8::internal::Isolate*)
+     16   94.1%      LazyCompile: ~Function native v8natives.js:1258:29
+      5   31.3%        LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      5  100.0%          LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      4   80.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1   20.0%            LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      4   25.0%        LazyCompile: *assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      3   75.0%          LazyCompile: isEndOfAttribute /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:640:39
+      2   66.7%            LazyCompile: *Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1   33.3%            LazyCompile: ~Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1   25.0%          LazyCompile: ~Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1  100.0%            LazyCompile: ~Lexer.next /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:910:17
+      3   18.8%        LazyCompile: ~assertExpression /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:28:26
+      3  100.0%          LazyCompile: isEndOfAttribute /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:640:39
+      3  100.0%            LazyCompile: ~Lexer.attrs /Users/sergii/dev/blog/node_modules/jade/lib/lexer.js:608:18
+      1    6.3%        LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:85:20
+      1  100.0%          LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:15:20
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:665:27
+      1    6.3%        LazyCompile: ~generateHolderClass /Users/sergii/dev/blog/node_modules/bluebird/js/release/join.js:27:39
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/join.js:3:9
+      1  100.0%            LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:2:26
+      1    6.3%        LazyCompile: ~exports.compile /Users/sergii/dev/blog/node_modules/jade/lib/index.js:196:27
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/render/compile-templates.js:13:24
+      1  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1    6.3%        LazyCompile: ~DEFNODE :360:17
+      1  100.0%          Function: ~<anonymous> :1:10
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/uglify-js/tools/node.js:1:11
+      1    5.9%      LazyCompile: isExpression /Users/sergii/dev/blog/node_modules/constantinople/index.js:92:22
+      1  100.0%        LazyCompile: isConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:33:20
+      1  100.0%          LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:85:20
+      1  100.0%            LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:15:20
+     15   20.5%    v8::internal::Runtime_BinaryOpIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     10   66.7%      LazyCompile: ~<anonymous> :3:16
+     10  100.0%        LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+     10  100.0%          LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+     10  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1    6.7%      Script: ~/Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/lib/parse.js
+      1  100.0%        node::ContextifyScript::RunInContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%          LazyCompile: ~exports.runInContext vm.js:42:32
+      1  100.0%            LazyCompile: load_global /Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/tools/node.js:12:21
+      1    6.7%      LazyCompile: ~toISOString native date.js:503:25
+      1  100.0%        LazyCompile: ~Promise.map.concurrency /Users/sergii/dev/blog/scripts/lib/render-all/render-single-all.js:20:18
+      1  100.0%          LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+      1  100.0%            LazyCompile: ~MappingPromiseArray._promiseFulfilled /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:31:60
+      1    6.7%      LazyCompile: ~pp.getTokenFromCode /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2702:32
+      1  100.0%        LazyCompile: ~pp.readToken /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2495:25
+      1  100.0%          LazyCompile: ~pp.nextToken /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2484:25
+      1  100.0%            LazyCompile: ~pp.next /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:2434:20
+      1    6.7%      LazyCompile: ~SitemapItem.toString /Users/sergii/dev/blog/node_modules/sitemap/lib/sitemap.js:119:43
+      1  100.0%        LazyCompile: ~DefaultString native runtime.js:529:23
+      1  100.0%          LazyCompile: ~ConvertToString native array.js:163:25
+      1  100.0%            LazyCompile: Join native array.js:106:14
+      1    6.7%      LazyCompile: template /Users/sergii/dev/blog/node_modules/template/node_modules/lodash/dist/lodash.js:6221:22
+      1  100.0%        LazyCompile: ~template /Users/sergii/dev/blog/node_modules/template/index.js:20:24
+      1  100.0%          LazyCompile: *<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/index.js:86:23
+      1  100.0%            LazyCompile: *InnerArrayForEach native array.js:942:27
+     11   15.1%    v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      2   18.2%      LazyCompile: ~fs.Stats fs.js:109:20
+      1   50.0%        node::InitFs(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>, void*)
+      1  100.0%          LazyCompile: ~fs.lstatSync fs.js:885:24
+      1  100.0%            LazyCompile: ~realpathSync fs.js:1462:40
+      1   50.0%        LazyCompile: *fs.lstatSync fs.js:885:24
+      1  100.0%          LazyCompile: ~realpathSync fs.js:1462:40
+      1  100.0%            LazyCompile: *tryFile module.js:106:17
+      1    9.1%      LazyCompile: ~toConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:15:20
+      1  100.0%        LazyCompile: ~InnerArrayMap native array.js:1019:23
+      1  100.0%          LazyCompile: ~map native array.js:1040:18
+      1  100.0%            LazyCompile: ~Compiler.attrs /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:660:18
+      1    9.1%      LazyCompile: ~pp.parseExprOp /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:959:27
+      1  100.0%        LazyCompile: ~pp.parseExprOp /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:959:27
+      1  100.0%          LazyCompile: ~pp.parseExprOps /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:945:28
+      1  100.0%            LazyCompile: ~pp.parseMaybeConditional /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:927:37
+      1    9.1%      LazyCompile: ~kw /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3929:12
+      1  100.0%        LazyCompile: ~17 /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:3818:98
+      1  100.0%          LazyCompile: ~s /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1:457
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1:704
+      1    9.1%      LazyCompile: ~init /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise_array.js:35:45
+      1  100.0%        LazyCompile: ~ReductionPromiseArray /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:12:31
+      1  100.0%          LazyCompile: ~reduce /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:118:16
+      1  100.0%            LazyCompile: ~Promise.reduce /Users/sergii/dev/blog/node_modules/bluebird/js/release/reduce.js:102:37
+      1    9.1%      LazyCompile: ~fs.Stats evalmachine.<anonymous>:109:20
+      1  100.0%        LazyCompile: *fs.fstatSync fs.js:881:24
+      1  100.0%          LazyCompile: fs.readFileSync fs.js:417:27
+      1  100.0%            LazyCompile: *Module._extensions..js module.js:402:37
+      1    9.1%      LazyCompile: ~Text /Users/sergii/dev/blog/node_modules/jade/lib/nodes/text.js:12:42
+      1  100.0%        LazyCompile: ~Parser.parseInlineTagsInText /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:669:35
+      1  100.0%          LazyCompile: ~Parser.parseText /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:262:22
+      1  100.0%            LazyCompile: ~Parser.parseExpr /Users/sergii/dev/blog/node_modules/jade/lib/parser.js:208:22
+      1    9.1%      LazyCompile: ~Parser /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1542:18
+      1  100.0%        LazyCompile: ~parse /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:904:15
+      1  100.0%          LazyCompile: isConstant /Users/sergii/dev/blog/node_modules/constantinople/index.js:33:20
+      1  100.0%            LazyCompile: ~isConstant /Users/sergii/dev/blog/node_modules/jade/lib/compiler.js:12:20
+      1    9.1%      LazyCompile: ~DEFNODE :360:17
+      1  100.0%        Function: ~<anonymous> :1:10
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/uglify-js/tools/node.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1    9.1%      LazyCompile: ~Assertion.add /Users/sergii/dev/blog/node_modules/should/lib/assertion.js:138:25
+      1  100.0%        LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/should/lib/ext/bool.js:8:26
+      1  100.0%          LazyCompile: ~should.use /Users/sergii/dev/blog/node_modules/should/lib/should.js:146:22
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/should/lib/should.js:1:11
+      8   11.0%    v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      3   37.5%      LazyCompile: hasProp /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:118:24
+      2   66.7%        LazyCompile: ~promisifiableMethods /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:62:30
+      2  100.0%          LazyCompile: ~promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:238:22
+      2  100.0%            LazyCompile: ~Promise.promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:283:33
+      1   33.3%        LazyCompile: ~Promise.promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:283:33
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/general.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1   12.5%      LazyCompile: ~forEachMimeType /Users/sergii/dev/blog/node_modules/mime-types/index.js:158:51
+      1  100.0%        LazyCompile: ~InnerArrayForEach native array.js:942:27
+      1  100.0%          LazyCompile: ~forEach native array.js:961:22
+      1  100.0%            LazyCompile: ~populateMaps /Users/sergii/dev/blog/node_modules/mime-types/index.js:154:22
+      1   12.5%      LazyCompile: ~extend /Users/sergii/dev/blog/node_modules/extend/index.js:34:33
+      1  100.0%        LazyCompile: ~InnerArrayReduce native array.js:1147:26
+      1  100.0%          LazyCompile: *reduce native array.js:1172:21
+      1  100.0%            LazyCompile: ~processMenu /Users/sergii/dev/blog/scripts/lib/render-all/render-all.js:97:21
+      1   12.5%      LazyCompile: ~StringSplitOnRegExp native string.js:441:29
+      1  100.0%        LazyCompile: ~split native string.js:424:23
+      1  100.0%          LazyCompile: ~Module._nodeModulePaths module.js:188:35
+      1  100.0%            LazyCompile: ~Module.load module.js:334:33
+      1   12.5%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/verbalize/index.js:245:20
+      1  100.0%        LazyCompile: ~InnerArrayForEach native array.js:942:27
+      1  100.0%          LazyCompile: ~forEach native array.js:961:22
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/verbalize/index.js:1:11
+      1   12.5%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:5916:36
+      1  100.0%        LazyCompile: ~forEach /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:3291:21
+      1  100.0%          LazyCompile: ~mixin /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:5895:19
+      1  100.0%            LazyCompile: ~runInContext /Users/sergii/dev/blog/node_modules/marked-toc/node_modules/lodash/dist/lodash.js:432:24
+      6    8.2%    v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   16.7%      LazyCompile: ~promisifiableMethods /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:62:30
+      1  100.0%        LazyCompile: ~promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:238:22
+      1  100.0%          LazyCompile: ~Promise.promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:283:33
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/collect-initial-data/render/compile-templates.js:1:11
+      1   16.7%      LazyCompile: ~aU native messages.js:618:16
+      1  100.0%        LazyCompile: ~setBounds /Users/sergii/dev/blog/node_modules/bluebird/js/release/debuggability.js:533:19
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:2:26
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/bluebird/js/release/bluebird.js:1:11
+      1   16.7%      LazyCompile: ~T /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:25:15
+      1  100.0%        LazyCompile: ~inherits /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:22:24
+      1  100.0%          LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/map.js:2:26
+      1  100.0%            LazyCompile: ~module.exports /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:2:26
+      1   16.7%      LazyCompile: ~DefineObjectProperty native v8natives.js:464:30
+      1  100.0%        LazyCompile: ~DefineOwnProperty native v8natives.js:633:27
+      1  100.0%          LazyCompile: ~defineProperty native v8natives.js:766:30
+      1  100.0%            Function: ~<anonymous> buffer.js:1:11
+      1   16.7%      LazyCompile: ~DEFNODE /Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/lib/ast.js:46:17
+      1  100.0%        Script: ~/Users/sergii/dev/blog/node_modules/transformers/node_modules/uglify-js/lib/ast.js
+      1  100.0%          node::ContextifyScript::RunInContext(v8::FunctionCallbackInfo<v8::Value> const&)
+      1  100.0%            LazyCompile: ~exports.runInContext vm.js:42:32
+      1   16.7%      LazyCompile: *pp.parseMaybeAssign /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:99:32
+      1  100.0%        LazyCompile: ~pp.parseExpression /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:83:31
+      1  100.0%          LazyCompile: ~pp.parseStatement /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1690:30
+      1  100.0%            LazyCompile: ~pp.parseBlock /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1980:26
+      4    5.5%    v8::internal::Runtime_CompileOptimized(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   25.0%      LazyCompile: ~pp.parseExpression /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:83:31
+      1  100.0%        LazyCompile: ~pp.parseStatement /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1690:30
+      1  100.0%          LazyCompile: ~pp.parseTopLevel /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1662:29
+      1  100.0%            LazyCompile: ~parse /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:1633:42
+      1   25.0%      LazyCompile: ~exports.setImmediate timers.js:420:32
+      1  100.0%        LazyCompile: *Promise._resolveCallback /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:413:46
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/bluebird/js/release/promise.js:462:45
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/render-all/save-content.js:57:26
+      1   25.0%      LazyCompile: ~DecompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:194:44
+      1  100.0%        LazyCompile: ~CompIterator.next /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:226:42
+      1  100.0%          LazyCompile: ~normalize /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:269:28
+      1  100.0%            LazyCompile: ~nfkc /Users/sergii/dev/blog/node_modules/unorm/lib/unorm.js:292:17
+      1   25.0%      LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/rss/lib/index.js:63:32
+      1  100.0%        LazyCompile: *InnerArrayForEach native array.js:942:27
+      1  100.0%          LazyCompile: *forEach native array.js:961:22
+      1  100.0%            LazyCompile: ~generateXML /Users/sergii/dev/blog/node_modules/rss/lib/index.js:31:22
+      3    4.1%    v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   33.3%      LazyCompile: ~_.each._.forEach /Users/sergii/dev/blog/node_modules/underscore/underscore.js:97:32
+      1  100.0%        Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/underscore/underscore.js:6:10
+      1  100.0%          Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/underscore/underscore.js:1:11
+      1  100.0%            LazyCompile: ~Module._compile module.js:366:37
+      1   33.3%      LazyCompile: ~StringReplaceGlobalRegExpWithFunction native string.js:297:47
+      1  100.0%        LazyCompile: *replace native string.js:152:23
+      1  100.0%          LazyCompile: ~exports.format util.js:13:26
+      1  100.0%            LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+      1   33.3%      LazyCompile: ~7 /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1512:76
+      1  100.0%        LazyCompile: ~s /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1:457
+      1  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:1:704
+      1  100.0%            LazyCompile: ~13../identifier /Users/sergii/dev/blog/node_modules/with/node_modules/acorn/dist/acorn.js:2267:66
+      2    2.7%    v8::internal::Runtime_TryInstallOptimizedCode(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   50.0%      LazyCompile: ~pp.parseIdent /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:661:26
+      1  100.0%        LazyCompile: ~pp.parseExprAtom /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:258:29
+      1  100.0%          LazyCompile: ~pp.parseExprSubscripts /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:213:35
+      1  100.0%            LazyCompile: ~pp.parseMaybeUnary /Users/sergii/dev/blog/node_modules/acorn/dist/acorn.js:183:31
+      1   50.0%      LazyCompile: ~FromPropertyDescriptor native v8natives.js:201:32
+      1  100.0%        LazyCompile: ~getOwnPropertyDescriptor native v8natives.js:666:40
+      1  100.0%          LazyCompile: hasProp /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:118:24
+      1  100.0%            LazyCompile: ~promisifiableMethods /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:62:30
+      2    2.7%    v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1   50.0%      LazyCompile: ~promisifiableMethods /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:62:30
+      1  100.0%        LazyCompile: ~promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:238:22
+      1  100.0%          LazyCompile: ~Promise.promisifyAll /Users/sergii/dev/blog/node_modules/bluebird/js/release/promisify.js:283:33
+      1  100.0%            Function: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/general.js:1:11
+      1   50.0%      Function: ~<anonymous> /Users/sergii/dev/blog/node_modules/clean-css/lib/colors/hex-name-shortener.js:1:11
+      1  100.0%        LazyCompile: ~Module._compile module.js:366:37
+      1  100.0%          LazyCompile: *Module._extensions..js module.js:402:37
+      1  100.0%            LazyCompile: ~Module.load module.js:334:33
+
+     66    2.3%  RegExp: ([^]*?)<!--more([^]*?)-->
+     66  100.0%    v8::internal::Runtime_StringSplit(int, v8::internal::Object**, v8::internal::Isolate*)
+     66  100.0%      LazyCompile: *exec native regexp.js:88:22
+     66  100.0%        LazyCompile: ~parseMore /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:97:26
+     66  100.0%          LazyCompile: ~<anonymous> /Users/sergii/dev/blog/scripts/lib/get-post-data/generate-html-more.js:124:24
+     66  100.0%            LazyCompile: tryCatcher /Users/sergii/dev/blog/node_modules/bluebird/js/release/util.js:7:20
+
