@@ -111,6 +111,6 @@ function listContent() {
 function listImages() {
     return general.util.listFiles(settings.path.static.img)
         .filter(function (file) {
-            return ['.jpg', '.png', '.gif'].indexOf(path.extname(file)) >= 0;
+            return ['.jpg', '.png', '.gif'].indexOf(path.extname(file).toLowerCase()) >= 0;
         });
 }
