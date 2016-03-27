@@ -53,7 +53,11 @@ var processMetadata = function (data) {
             target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
         });
 
-        target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
+        if (target.meta.link) {
+            target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
+        } else {
+            target.meta.link = 'http://localhost:4000/' + target.meta.slug;
+        }
 
         if (target.meta.modifiedDate) {
             target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
@@ -61,42 +65,25 @@ var processMetadata = function (data) {
             target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
         }
 
-        //var oldPost = data.basic.oldData[target.path];
-        //
-        //delete oldPost.meta.img;
-        //target.changes = {
-        //    meta: !equal(oldPost.meta, target.meta),
-        //    md: !equal(oldPost.markdown, target.markdown)
-        //};
-        //
-        //if (oldPost) {
-        //    if (target.changes.meta || target.changes.md) {
-        //        var date = new Date();
-        //        var updatedText = target.text.replace(/modifiedDate\: *[\'\"].*?[\'\"]/,
-        //            "modifiedDate: '" +
-        //            date.toISOString().replace('T',' ').replace('Z','') + "'");
-        //        target.meta.modifiedDate = date;
-        //        console.log(target.path, 'changed')
-        //        fs.writeFileAsync(target.path, updatedText);
-        //    }
-        //}
-
         extend(data.common, {
             categories: target.meta.type === 'page' ? [] : target.meta.categories.map(function (category) {
                 return {
                     name: category.toLowerCase(),
-                    posts: target.meta.draft ? [] : [target],
+                    posts: [target]
                 }
             }),
             tags: target.meta.type === 'page' ? [] : target.meta.tags.map(function (tag) {
                 return {
                     name: tag.toLowerCase().replace(/ +/g, '-'),
-                    posts: target.meta.draft ? [] : [target],
+                    posts: [target]
                 }
             }),
             list: [target]
         });
-        target.link = target.meta.link = target.meta.link || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
+
+        target.link = target.meta.link = target.meta.link
+            || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
+
         delete target.text;
 
         return data;
@@ -111,7 +98,7 @@ module.exports = processMetadata;
 function daysBetween(d1, d2) {
     var diff = Math.abs(d1.getTime() - d2.getTime());
     return diff / (1000 * 60 * 60 * 24);
-};
+}
 
 function arrayifyIfString(item) {
     if (typeof item === 'string') {
