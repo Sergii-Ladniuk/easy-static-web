@@ -347,6 +347,11 @@ a {
     left:10px;
 }
 
+cite {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
 #banner-holder {
     background-image: url(http://localhost:4000/img/Valley-of-fire-banner.jpg);
 }

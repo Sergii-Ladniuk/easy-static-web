@@ -194,13 +194,11 @@ module.exports = function (grunt) {
             bower: [
                 "lib"
             ],
-            "public-debug": {
-                contents: [
-                    "public-debug",
-                    "!public-debug/img",
-                    "!public-debug/img/**"
-                ]
-            }
+            "public-debug": [
+                "public-debug/*",
+                "!public-debug/img",
+                "!public-debug/img/**"
+            ]
         },
         uglify: {
             options: {
@@ -208,11 +206,11 @@ module.exports = function (grunt) {
             },
             publish: {
                 files: {
-                     '../public/js/all.js': [
-                         'static/components/jquery/dist/jquery.min.js',
-                         //'static/components/bootstrap/dist/js/bootstrap.min.js',
-                         //'static/components/bootstrap-dropdown/index.js',
-                         'static/js/*.js']
+                    '../public/js/all.js': [
+                        'static/components/jquery/dist/jquery.min.js',
+                        //'static/components/bootstrap/dist/js/bootstrap.min.js',
+                        //'static/components/bootstrap-dropdown/index.js',
+                        'static/js/*.js']
                 }
             },
             'publish-alone': {
@@ -320,19 +318,19 @@ module.exports = function (grunt) {
         var done = this.async();
         require('./scripts/generate').generate().then(done);
     });
-    grunt.registerTask('fix-links', function() {
+    grunt.registerTask('fix-links', function () {
         var done = this.async();
         require('./scripts/tools/pre-publish')()
             .then(done);
     });
-    grunt.registerTask('deploy', function() {
+    grunt.registerTask('deploy', function () {
         var done = this.async();
         var msg = grunt.option('m') || grunt.option('msg') || 'update';
         require('./scripts/tools/deploy')(msg)
             .then(done);
     });
 
-    grunt.registerTask('generate', ['static', 'run-generate']);
+    grunt.registerTask('generate', ['clean:public-debug','static', 'run-generate']);
     grunt.registerTask('pre-publish', ['generate', 'uglify', 'cssmin',
         'copy:font-awesome-fonts-publish', 'copy:favicon-publish', 'copy:seo', 'copy:htaccess']);
     grunt.registerTask('publish', ['pre-publish', 'fix-links']);

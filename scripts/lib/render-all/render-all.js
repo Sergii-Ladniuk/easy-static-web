@@ -155,7 +155,7 @@ function processCategoriesAndTags(data) {
     data.categories.forEach(function (cat) {
         const categoryInfo = data.categoryInfo[cat.name];
         if (!categoryInfo) {
-            throw new Error('Unknown category "' + cat.name + "\nPlease add it to content/categories.json"
+            throw new Error('Unknown category "' + cat.name + '"\nPlease add it to content/categories.json'
                 + "\nThe entry is supposed to be: \n" + "\n\n"
                 + JSON.stringify(
                     {
@@ -170,7 +170,7 @@ function processCategoriesAndTags(data) {
         categoryInfo.posts.forEach(function (post) {
             post.categoriesEx = post.categoriesEx || [];
             post.categoriesEx.push(categoryInfo);
-        })
+        });
         categoryInfo.postNumber = getPostNumber(categoryInfo.posts);
         extend(cat, categoryInfo);
     });

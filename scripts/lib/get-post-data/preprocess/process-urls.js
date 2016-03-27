@@ -14,9 +14,7 @@ function toLocalhost(text, url, port) {
 }
 
 exports.changeToLocalhost = function (data) {
-    data.common.list.forEach(function (post) {
-        post.meta.link = toLocalhost(post.meta.link, data.basic.settings.server.prod.url, data.basic.settings.server.local.port);
-    });
+    data.target.link = 'http://localhost:4000/' + data.target.meta.slug;
     return data;
 };
 

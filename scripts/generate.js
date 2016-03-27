@@ -1,18 +1,28 @@
-var collectInitialData = require('./lib/collect-initial-data')
-var getPostData = require('./lib/get-post-data')
-var renderAll = require('./lib/render-all')
 var parseArgs = require('minimist');
+
+var collectInitialData = require('./lib/collect-initial-data');
+var getPostData = require('./lib/get-post-data');
+var renderAll = require('./lib/render-all');
+var benchmark = require('./lib/util/benchmarking');
+
 var argv = require('minimist')(process.argv.slice(2));
+var initialData;
 
 exports.generate = function () {
+    benchmark.start('generate');
     return require('./settings.js').load
         .then(function (settings) {
             console.log('generating...')
-            var data = collectInitialData(settings);
-            data.settings = settings;
+            if (!initialData) {
+                var data = collectInitialData(settings);
+                initialData = data;
+                data.settings = settings;
+            } else {
+                data = initialData;
+            }
             return getPostData(data)
         })
-        .then(function(data) {
+        .then(function (data) {
             var promise = renderAll(data);
             if (!promise.then) {
                 throw new Error('renderAll no promise');
@@ -20,7 +30,12 @@ exports.generate = function () {
             return promise;
         })
         .then(function () {
+            benchmark.finish('generate');
             console.log('ALL DONE.')
+
+            if (argv.l) {
+                setTimeout(exports.generate, 3000)
+            }
         });
 };
 
