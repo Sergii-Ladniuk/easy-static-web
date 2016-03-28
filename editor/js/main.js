@@ -75,7 +75,7 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
     $scope.alt = "";
     ImageService.addImg = function (url, alt) {
         //insertAtCursor($('.markdown-input')[0], '![' + alt + '](' + url + ')');
-        $scope.editor.insert('![' + alt + '](' + url + ')');
+        $scope.editor.insert('![' + alt + '](' + url.replace('4002','4000') + ')');
     };
     $scope.addLink = function () {
         $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://localhost:4000/'

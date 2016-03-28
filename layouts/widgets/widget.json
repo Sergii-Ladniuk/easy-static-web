@@ -16,7 +16,8 @@
       "copyright.jade",
       "return-to-top.html",
       "js.jade",
-      "metrics.html"
+      "metrics.html",
+      "fb-comments-include.html"
     ]
   },
   "copyright.jade"

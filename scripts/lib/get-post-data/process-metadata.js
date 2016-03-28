@@ -25,13 +25,8 @@ var processMetadata = function (data) {
             throw  new Error("No slug specified for", target.path)
         }
 
-        if (typeof target.meta.categories === 'string') {
-            target.meta.categories = parseArray(target.meta.categories);
-        }
-
-        if (typeof target.meta.tags === 'string') {
-            target.meta.tags = parseArray(target.meta.tags);
-        }
+        target.meta.categories = arrayifyIfString(target.meta.categories);
+        target.meta.tags =  arrayifyIfString(target.meta.tags);
 
         target.meta.seo = target.meta.seo || {};
         target.meta.seo.keywords = target.meta.seo.keywords || '';
@@ -48,10 +43,8 @@ var processMetadata = function (data) {
             }
         }
 
-
-        ['featured-tag', 'featured-category'].forEach(function (item) {
-            target.meta[item] = slugifyAll(arrayifyIfString(target.meta[item]));
-        });
+        target.meta['featured-tag'] = slugifyAll(arrayifyIfString(target.meta['featured-tag']));
+        target.meta['featured-category'] = toLowerAll(arrayifyIfString(target.meta['featured-category']));
 
         if (target.meta.link) {
             target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
@@ -102,7 +95,7 @@ function daysBetween(d1, d2) {
 
 function arrayifyIfString(item) {
     if (typeof item === 'string') {
-        return [item];
+        return parseArray(item);
     } else {
         return item;
     }
@@ -111,6 +104,12 @@ function arrayifyIfString(item) {
 function slugifyAll(arr) {
     return !arr || !arr.length ? [] : arr.map(function (item) {
         return general.util.slugifyOnly(item);
+    })
+}
+
+function toLowerAll(arr) {
+    return !arr || !arr.length ? [] : arr.map(function(item) {
+        return item.toLowerCase();
     })
 }
 

@@ -6,7 +6,7 @@
     </script>
     <div class="input-group">
         <input type="text" ng-model="postToLink" placeholder="Enter link..."
-               uib-typeahead="post as post.meta.title for post in service.posts | filter:{meta:{title: $viewValue}} | limitTo:8"
+               uib-typeahead="post as post.meta.title for post in service.posts | filter:{meta:{title: $viewValue}} | limitTo:20"
                class="form-control" typeahead-template-url="linkTypeaheadTemplate.html">
        <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="addLink()">Add Link</button>
