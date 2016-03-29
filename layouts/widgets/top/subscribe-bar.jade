@@ -6,13 +6,12 @@
                     //.form-inline
                     form.navbar-form
                         div.form-group
-                            label(for="email-input") Подписаться на блог:
-                            input.form-control(type="email", id="email-input", placeholder="Ваша электронная почта...")
-                            button.btn.btn-default(type="submit") Подписаться
+                            label(for="email-input") Подпишись на обновления:
+                            input.form-control(type="email", id="email-input", placeholder="Email")
+                            button.btn.btn-default(type="submit") Подпишусь
                 li
-                    p.navbar-text Соцсети
+                    p.navbar-text или
                 include ./social-networks-bar.html
                 li
                     a(href='', id="close-subscribe-bar")
                         span.fa.fa-close
-                        span Закрыть

@@ -251,20 +251,31 @@ a {
 }
 
 #subscribe-bar {
-    background-color:rgba(50,150,150,0.8);
+    background-color: #f25c00;
     height:40px;
 }
 
+#subscribe-bar li:hover {
+    background-color: #f25c00;
+}
+
 #subscribe-bar form:hover {
-    background-color: inherit;
+    background-color: #f25c00;
 }
 
 #subscribe-bar form label {
     color: #EDF2F4;
+	font-weight: 500;
+}
+
+#subscribe-bar .btn {
+	font-size: 16px;
+	color: #f25c00;
 }
 
 #subscribe-bar .btn-default {
-    background-color: #f25c00;
+	background-color: whitesmoke;
+	font-size: 16px;
 }
 
 #subscribe-bar .navbar-text {
@@ -274,6 +285,9 @@ a {
 #subscribe-bar .btn-default:hover {
     background-color: inherit;
 }
+
+.btn-default, #subscribe-bar .btn-default {
+    color: #f25c00;
 
 /*.navbar.affix {*/
 /*opacity: 1;*/
