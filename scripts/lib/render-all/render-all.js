@@ -312,8 +312,7 @@ function arrRemove(a, b) {
         if (b.indexOf(ea) === -1) {
             c.push(ea);
         }
-    })
-    logg = 1
+    });
     return c;
 }
 
