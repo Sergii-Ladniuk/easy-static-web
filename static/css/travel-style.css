@@ -1,5 +1,7 @@
 body {
     font-size: 16px;
+    /*for bottom navbar*/
+    padding-bottom: 70px;
 }
 
 h1 {
@@ -248,6 +250,31 @@ a {
     float: none;
 }
 
+#subscribe-bar {
+    background-color:rgba(50,150,150,0.8);
+    height:40px;
+}
+
+#subscribe-bar form:hover {
+    background-color: inherit;
+}
+
+#subscribe-bar form label {
+    color: #EDF2F4;
+}
+
+#subscribe-bar .btn-default {
+    background-color: #f25c00;
+}
+
+#subscribe-bar .navbar-text {
+    color: whitesmoke;
+}
+
+#subscribe-bar .btn-default:hover {
+    background-color: inherit;
+}
+
 /*.navbar.affix {*/
 /*opacity: 1;*/
 /*}*/
@@ -275,7 +302,7 @@ a {
     background-color: #337bae;
 }
 
-.btn-default {
+.btn-default, #subscribe-bar .btn-default {
     color: whitesmoke;
 }
 
@@ -296,11 +323,6 @@ a {
     width: 100%;
     padding-bottom: 15%;
     margin-bottom: -0.5em;
-}
-
-#banner-holder {
-    background-position: center;
-    background-size: cover;
 }
 
 #mainMenu {
@@ -326,25 +348,25 @@ a {
     margin-left: 8px;
 }
 
-#social-btns-bottom .ya-share2__icon,#social-btns-side .ya-share2__icon {
+#social-btns-bottom .ya-share2__icon, #social-btns-side .ya-share2__icon {
     width: 40px;
     height: 40px;
     background-size: 40px 40px;
 }
 
-#social-btns-bottom .ya-share2__counter,#social-btns-side .ya-share2__counter {
+#social-btns-bottom .ya-share2__counter, #social-btns-side .ya-share2__counter {
     padding-top: 13px;
 }
 
 #social-btns-side .ya-share2__item {
-    margin-bottom: 14px;   
+    margin-bottom: 14px;
 }
 
 #social-btns-side {
-    width:40px;
-    position: fixed ;
+    width: 40px;
+    position: fixed;
     bottom: 30%;
-    left:10px;
+    left: 10px;
 }
 
 cite {
@@ -356,27 +378,79 @@ cite {
     margin: 20px 0 0 0 !important;
     padding: 20px 0 0 0;
     font-weight: bold;
-    border-top: solid rgba(0,49,79,.3) ;
+    border-top: solid rgba(0, 49, 79, .3);
 }
 
+/*#subscribe-action {*/
+    /*background-image: url(http://localhost:4000/img/Alpamayo-Hike-88-w1440.jpg);*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    /*width: 100%;*/
+    /*margin-top:-100px;*/
+    /*margin-bottom:50px;*/
+/*}*/
+
+/*#subscribe-action .placeholder {*/
+    /*padding-bottom: 67%;*/
+/*}*/
+
+/*#subscribe-action .text {*/
+    /*text-align: center;*/
+    /*padding-top: 14%;*/
+    /*margin-bottom:20px;*/
+/*!*     color: #f0f0f0; *!*/
+/*}*/
+
+/*#subscribe-action .icon {*/
+    /*width: 50px;*/
+    /*height: 50px;*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    /*float:left;*/
+/*}*/
+/*#subscribe-action .activity-descr {*/
+/*!*     color: #f0f0f0; *!*/
+    /*float:left;*/
+    /*margin: 15px 15px 0 15px;*/
+/*}*/
+/*#subscribe-action .hike-icon{*/
+    /*background-image: url(data:image/png;base64,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);*/
+/*}*/
+/*#subscribe-action .row, #subscribe-action .row-fluid {*/
+    /*margin-top: 0px !important;*/
+    /*margin-bottom: 0px !important;*/
+/*}*/
+/*#subscribe-action .container-fluid {*/
+    /*margin-top:10%;*/
+    /*margin-left:10%;*/
+    /*margin-right:10%;*/
+    /*background-color: rgba(200,200,200,0.6)*/
+/*}*/
+
 #banner-holder {
+    background-position: center;
+    background-size: cover;
     background-image: url(http://localhost:4000/img/Valley-of-fire-banner.jpg);
 }
+
 @media only screen and (max-width: 600px) {
     #banner-holder {
         background-image: url(http://localhost:4000/img/Valley-of-fire-banner-md.jpg)
     }
 }
+
 @media only screen and (max-width: 350px) {
     #banner-holder {
         background-image: url(http://localhost:4000/img/Valley-of-fire-banner-sm.jpg)
     }
 }
+
 @media only screen and (min-width: 1440px) {
     #banner-holder {
         background-image: url(http://localhost:4000/img/Valley-of-fire-banner-w1920.jpg)
     }
 }
+
 @media only screen and (max-width: 768px) {
     body {
         font-size: 20px;
@@ -420,7 +494,7 @@ cite {
     }
 
     #social-btns-bottom .ya-share2__item {
-        margin-right: 14px;   
+        margin-right: 14px;
     }
 }
 

@@ -1,0 +1,18 @@
+.navbar.navbar-default.navbar-fixed-bottom#subscribe-bar(style='display:hidden')
+    div.container-fluid
+        div
+            ul.nav.navbar-nav
+                li
+                    //.form-inline
+                    form.navbar-form
+                        div.form-group
+                            label(for="email-input") Подписаться на блог:
+                            input.form-control(type="email", id="email-input", placeholder="Ваша электронная почта...")
+                            button.btn.btn-default(type="submit") Подписаться
+                li
+                    p.navbar-text Соцсети
+                include ./social-networks-bar.html
+                li
+                    a(href='', id="close-subscribe-bar")
+                        span.fa.fa-close
+                        span Закрыть
