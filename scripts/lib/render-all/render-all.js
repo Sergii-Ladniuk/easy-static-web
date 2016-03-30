@@ -283,7 +283,9 @@ function buildRelated(post, data) {
                 }
 
                 // make a copy of category's posts
-                var content = [].concat(next.info[name].posts);
+                var content = next.info[name].posts.filter(function(post) {
+                    return !post.meta.draft;
+                });
 
                 // remove the current post
                 content.splice(content.indexOf(post), 1);
