@@ -144,7 +144,7 @@ function processMenu(data) {
 function getPostNumber(posts) {
     return !posts.length ? 0 : posts
         .map(function (post) {
-            return post.draft ? 0 : 1;
+            return post.meta.draft ? 0 : 1;
         })
         .reduce(function (postNumberA, postNumberB) {
             return postNumberA + postNumberB;
@@ -166,7 +166,9 @@ function processCategoriesAndTags(data) {
                 + "\nJust place it in the right as subcategory or root category.\n\n"
             )
         }
-        categoryInfo.posts = cat.posts;
+        categoryInfo.posts = cat.posts.filter(function(post) {
+            return !post.meta.draft;
+        });
         categoryInfo.posts.forEach(function (post) {
             post.categoriesEx = post.categoriesEx || [];
             post.categoriesEx.push(categoryInfo);
@@ -198,7 +200,9 @@ function processCategoriesAndTags(data) {
         tag.slug = info.slug;
         tag.postNumber = tag.posts.length;
         totalPostsTagged += tag.postNumber;
-        info.posts = tag.posts;
+        info.posts = tag.posts = tag.posts.filter(function(post) {
+            return !post.meta.draft;
+        });
         info.postNumber = getPostNumber(tag.posts);
 
         info.posts.forEach(function (post) {
