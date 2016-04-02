@@ -5,13 +5,16 @@
                 li
                     //.form-inline
                     form.navbar-form
-                        div.form-group
+                        div.form-group.has-feedback
                             label(for="email-input") Подпишись на обновления:
                             input.form-control(type="email", id="email-input", placeholder="Email")
+                            i.fa.fa-envelope.form-control-feedback
+                        div.form-group.has-feedback
                             button.btn.btn-default(type="submit") Подпишусь
                 li
                     p.navbar-text или
                 include ./social-networks-bar.html
+            ul.nav.navbar-nav.navbar-right
                 li
-                    a(href='', id="close-subscribe-bar")
+                    button(id="close-subscribe-bar").btn.btn-link
                         span.fa.fa-close

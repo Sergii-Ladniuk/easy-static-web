@@ -49,7 +49,9 @@ $(function () {
         }
     });
 
-    $('#close-subscribe-bar').click(function () {
+    $('#close-subscribe-bar').click(function (event) {
+        event.stopPropagation();
+        document.cookie="username=John Doe";
         subscribeBarClosed = true;
         $('#subscribe-bar').fadeOut("slow");
     })

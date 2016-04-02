@@ -255,6 +255,10 @@ a {
     height:40px;
 }
 
+#subscribe-bar .container-fluid > div, #subscribe-bar .container-fluid > div > ul.nav {
+    height:20px;
+}
+
 #subscribe-bar li:hover {
     background-color: #f25c00;
 }
@@ -266,16 +270,27 @@ a {
 #subscribe-bar form label {
     color: #EDF2F4;
 	font-weight: 500;
+	margin-right: 10px;
+}
+
+#subscribe-bar form .fa {
+    margin-top: 8px;
+	color: #f25c00;
 }
 
 #subscribe-bar .btn {
 	font-size: 16px;
-	color: #f25c00;
+/*	color: #f25c00;*/
+	margin-left: 5px;
 }
 
 #subscribe-bar .btn-default {
-	background-color: whitesmoke;
 	font-size: 16px;
+	color: #f25c00;
+}
+
+#subscribe-bar .btn-default:hover {
+	background-color: whitesmoke;
 }
 
 #subscribe-bar .navbar-text {
@@ -283,21 +298,19 @@ a {
 }
 
 #subscribe-bar .btn-default:hover {
-    background-color: inherit;
+    background-color: #337bae;
+    color: whitesmoke;
+}
+
+#subscribe-bar #close-subscribe-bar {
+    margin-top: 6px;
+    margin-bottom: auto;
+    color: whitesmoke;
 }
 
 .btn-default, #subscribe-bar .btn-default {
     color: #f25c00;
-
-/*.navbar.affix {*/
-/*opacity: 1;*/
-/*}*/
-/*.navbar.affix a {*/
-/*opacity: 1;*/
-/*}*/
-/*.navbar.affix-top {*/
-/*opacity: 1;*/
-/*}*/
+}
 
 .email-input-sidebar {
     width: 90%;
@@ -316,7 +329,7 @@ a {
     background-color: #337bae;
 }
 
-.btn-default, #subscribe-bar .btn-default {
+.btn-default {
     color: whitesmoke;
 }
 
