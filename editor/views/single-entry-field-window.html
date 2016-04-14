@@ -1,0 +1,10 @@
+<div class="modal-header">
+    <button class="close" ng-click="$close()"><span class="fa fa-close"></span></button>
+    <h3 class="modal-title">{{args.title}}</h3>
+</div>
+<div class="modal-body" id="delete-product-question">
+    <div class="form-group">
+        <input ng-model="result" placeholder="{{args.placeholder}}...">
+        <button class="btn-success btn" ng-click="ok()">OK</button>
+    </div>
+</div>

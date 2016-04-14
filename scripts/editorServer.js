@@ -1,42 +1,31 @@
 var express = require('express');
 var path = require('path');
 var http = require('http');
+var util = require('util');
 
 var parseArgs = require('minimist');
 var argv = parseArgs(process.argv.slice(2));
 
-var rest = require('.//editor/editorRest');
+var previewBuilder = require('./editor/previewBuilder');
+var rest = require('./editor/editorService');
+var storage = require('./lib/render-all/html-storage');
+var settings = require('./settings').loadSync();
 
 var app = express();
 var port = 4002;
 
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('express-promise')());
 
-app.get('/list', function (req, res) {
-    var list = rest.list();
-    res.send(list)
-});
-
-app.get('/images', function (req, res) {
-    rest.images().then(function (list) {
-        res.send(list)
-    })
-});
-
-app.post('/post', function(req,res) {
-    if (req.body) {
-        rest.save(req.body)
-        res.send('ok')
-    } else {
-        res.send('')
-    }
-});
+require('./editor/editorGit').bind(app);
+require('./editor/editorCommonApi').bind(app);
 
 app.use("/img", express.static("./static/img"));
 app.use(express.static('./editor'));
+app.use(express.static('./public-debug'));
 
 // catch 404
 app.use(function (req, res) {
@@ -44,26 +33,21 @@ app.use(function (req, res) {
     res.send('404: такой страницы нет :(');
 });
 
-// error handlers
-
-// development error handler
-// will print stacktrace
-//if (app.get('env') === 'development') {
-//    app.use(function (err, req, res, next) {
-//        console.dir(err)
-//        res.status(err.status || 500);
-//        res.render(JSON.stringify(err));
-//    });
-//}
-
-// production error handler
-// no stacktraces leaked to user
 app.use(function (err, req, res, next) {
+    console.dir(err);
     res.status(err.status || 500);
 });
 
 module.exports = app;
 
-http.createServer(app).listen(port, function () {
-    console.log('Express server listening on port ' + port);
-});
+rest.loadContent()
+    .then(previewBuilder.init)
+    .then(previewBuilder.buildPreview)
+    .then(function () {
+        require('./testServer').run(true);
+    })
+    .then(function () {
+        http.createServer(app).listen(port, function () {
+            console.log('Express server listening on port ' + port);
+        });
+    });

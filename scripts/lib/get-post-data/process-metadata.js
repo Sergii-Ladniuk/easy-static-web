@@ -28,9 +28,9 @@ var processMetadata = function (data) {
         target.meta.categories = arrayifyIfString(target.meta.categories);
         target.meta.tags =  arrayifyIfString(target.meta.tags);
 
-        target.meta.seo = target.meta.seo || {};
+        target.meta.seo = target.meta.seo ? extend({}, target.meta.seo) : {};
         target.meta.seo.keywords = target.meta.seo.keywords || '';
-        target.meta.seo.keywords = parseArray(target.meta.seo.keywords);
+        target.meta.seo.keywords = parseArray(''+target.meta.seo.keywords);
 
         if (!target.meta.shortLink || !/\?(.*)/.test(target.meta.shortLink)) {
             target.meta.shortLink = target.meta.link;
@@ -52,8 +52,28 @@ var processMetadata = function (data) {
             target.meta.link = 'http://localhost:4000/' + target.meta.slug;
         }
 
+        if (target.meta.publishedDate) {
+            try {
+                if (typeof target.meta.publishedDate === 'string') {
+                    target.meta.publishedDate = new Date(target.meta.publishedDate);
+                }
+                target.meta.showDate = daysBetween(target.meta.publishedDate, new Date()) < 90;
+            } catch(err) {
+                console.error('publishedDate has wrong format:', target.meta.publishedDate);
+                throw err;
+            }
+        }
+
         if (target.meta.modifiedDate) {
-            target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
+            try {
+                if (typeof target.meta.modifiedDate === 'string') {
+                    target.meta.modifiedDate = new Date(target.meta.modifiedDate);
+                }
+                target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
+            } catch(err) {
+                console.error('modifiedDate has wrong format:', target.meta.modifiedDate);
+                throw err;
+            }
             var dateFormat = require('dateformat');
             target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
         }
@@ -123,7 +143,7 @@ function parseArray(str) {
 
 // tests:
 
-if (typeof describe === 'undefined') describe = function () {
+if (typeof describe === 'undefined') var describe = function () {
 };
 
 describe("process-metadata :", function () {

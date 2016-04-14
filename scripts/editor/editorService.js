@@ -14,28 +14,14 @@ var os = require('os');
 var newline = os.EOL;
 var yaml = require('yamljs');
 
+var storage = require('../lib/render-all/html-storage');
 var posts;
 
 exports.list = function () {
     if (posts) {
         return posts
     } else {
-        return listContent()
-            .map(function (file) {
-                return loadPosts(file)
-            }).then(function (_posts) {
-                posts = _posts;
-
-                posts.sort(function (a, b) {
-                    a = a.name.toLowerCase();
-                    b = b.name.toLowerCase();
-                    if (a < b) return -1;
-                    if (a > b) return 1;
-                    return 0;
-                });
-
-                return posts;
-            })
+        return loadContent();
     }
 };
 
@@ -56,20 +42,41 @@ exports.save = function (post) {
     } else {
         return loadPosts(file)
             .then(function () {
-                savePost(post);
+                return savePost(post);
             })
     }
 };
 
+var loadContent = exports.loadContent = function () {
+    return listContent()
+        .map(function (file) {
+            return loadPosts(file)
+        }).then(function (_posts) {
+            storage.content = posts = _posts;
+
+            posts.sort(function (a, b) {
+                a = a.name.toLowerCase();
+                b = b.name.toLowerCase();
+                if (a < b) return -1;
+                if (a > b) return 1;
+                return 0;
+            });
+
+            return posts;
+        })
+};
+
 function savePost(post) {
-    posts.forEach(function (cachedPost, index) {
+    return Promise.map(posts, function (cachedPost, index) {
         if (post.name === cachedPost.name) {
             if (post.content === cachedPost.content && JSON.stringify(post.meta) === JSON.stringify(cachedPost.meta)) {
                 console.log('no change');
+                return false;
             } else {
                 console.log('changed', index);
                 posts[index] = post;
                 post.meta.modifiedDate = new Date();
+                post.mtime = Date.now();
 
                 var separator = '---';
                 var metaYaml = yaml.stringify(post.meta, 4);
@@ -81,22 +88,25 @@ function savePost(post) {
                     (post.meta.draft ? settings.path.content_posts_drafts : settings.path.content_posts_published),
                     post.name);
 
-                return fs.writeFileAsync(
-                    filePath, text)
+                return fs.writeFileAsync(filePath, text)
+                    .then(function () {
+                        return true;
+                    })
             }
         }
     })
 }
 
 function loadPosts(file) {
-    return fs.readFileAsync(file, 'utf-8').then(function (text) {
+    return Promise.join(fs.readFileAsync(file, 'utf-8'), fs.statAsync(file)).spread(function (text, stat) {
 
         var parsedData = mm(text);
 
         return {
             name: path.basename(file),
             content: parsedData.markdown,
-            meta: parsedData.meta
+            meta: parsedData.meta,
+            mtime: stat.mtime.getTime()
         }
     });
 }

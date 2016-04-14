@@ -8,7 +8,8 @@ var benchmark = require('./lib/util/benchmarking');
 var argv = require('minimist')(process.argv.slice(2));
 var initialData;
 
-exports.generate = function () {
+exports.generate = function (args) {
+    args = args || {};
     benchmark.start('generate');
     return require('./settings.js').load
         .then(function (settings) {
@@ -17,6 +18,7 @@ exports.generate = function () {
                 var data = collectInitialData(settings);
                 initialData = data;
                 data.settings = settings;
+                data.contentInMemory = args.contentInMemory;
             } else {
                 data = initialData;
             }
@@ -33,12 +35,14 @@ exports.generate = function () {
             benchmark.finish('generate');
             console.log('ALL DONE.')
 
-            if (argv.l) {
-                setTimeout(exports.generate, 2000)
+            if (args.loop) {
+                setTimeout(exports.generate, args.period || 2000)
             }
         });
 };
 
 if (argv.r) {
-    exports.generate();
+    exports.generate({
+        loop: argv.l
+    });
 }

@@ -11,6 +11,8 @@ var generateHtmlAndMore = require('./generate-html-more');
 var mergePostList = require('./merge-post-list');
 var preprocess = require('./preprocess');
 
+var storage = require('../render-all/html-storage');
+
 var cash = require('../cash');
 const CASH_KEY = 'get-post-data';
 const CHANGED_POSTS = 'CHANGED_POSTS';
@@ -34,16 +36,33 @@ function listContent(data) {
 
 function loadContent(initialData) {
 
-    return listContent(initialData)
-        .filter(function (filePath) {
-            return path.extname(filePath) === '.md';
+    if (initialData.contentInMemory) {
+
+        return storage.content.map(function(content) {
+            return {
+                target: {
+                    markdown: content.content,
+                    meta: extend({}, content.meta),
+                    name: content.name,
+                    mtime: content.mtime
+                }, common: {},
+                basic: extend({}, initialData)
+            }
         })
-        .map(general.contentLoader || loadContentFromFile)
-        .map(function (data) {
-            data.common = {};
-            data.basic = extend({}, initialData);
-            return data;
-        });
+
+    } else {
+
+        return listContent(initialData)
+            .filter(function (filePath) {
+                return path.extname(filePath) === '.md';
+            })
+            .map(general.contentLoader || loadContentFromFile)
+            .map(function (data) {
+                data.common = {};
+                data.basic = extend({}, initialData);
+                return data;
+            });
+    }
 }
 
 function loadContentFromFile(filePath) {
@@ -120,10 +139,10 @@ module.exports = function (data) {
                         my_cash[id] = dataCopy(data);
                         changedPosts[data.target.meta.slug] = true;
 
-                        data.common.categories.forEach(function(category) {
+                        data.common.categories.forEach(function (category) {
                             changedCategories[category.name] = true;
                         });
-                        data.common.tags.forEach(function(tag) {
+                        data.common.tags.forEach(function (tag) {
                             changedCategories[tag.name] = true;
                         });
 

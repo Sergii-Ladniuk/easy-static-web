@@ -8,9 +8,13 @@ label {
 
 .ace_editor {
     width: 100%;
-    height: 75vh;
+    height: 70vh;
     overflow-y: scroll;
     font-size: 20px;
+}
+
+.post-list .list-group-item {
+    padding: 5px;
 }
 
 #images .image-list, #console {
@@ -23,13 +27,13 @@ label {
     height: 75vh;
 }
 
-#main > * {
-    height: 100%;
-}
+/*#main > * {*/
+    /*height: 100%;*/
+/*}*/
 
 .post-list {
     overflow-y: scroll;
-    height: 50vh;
+    height: 45vh;
     font-size: 12px;
 }
 
@@ -60,3 +64,29 @@ label {
     /*border-radius: 0;*/
     /*box-shadow: none;*/
 /*}*/
+
+#post-preview, #post-preview-old, #post-preview-new {
+    width: calc(1/0.85*40vw);
+    height: calc(1/0.85*100vh);
+    overflow-y: scroll;
+    position: fixed;
+    right: 0;
+    top:0;
+    zoom: 85%;
+    background-color: white;
+}
+
+#post-preview .lazy-load {
+    height: 0 !important;
+}
+
+#top-buttons {
+    margin-top: 5px;
+}
+#top-buttons .btn-default {
+    color: black;
+}
+
+.modal-body input {
+    width: 80%;
+}

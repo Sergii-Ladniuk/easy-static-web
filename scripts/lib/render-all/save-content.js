@@ -3,6 +3,7 @@ var fs = general.fs;
 var mkdirp = Promise.promisify(require('mkdirp'));
 var path = require('path');
 var postProcessHtml = require('./post-process').postProcessHtml;
+var htmlStorage = require('./html-storage');
 
 function saveContent(data, htmlPromise, index, folder, ext, fileName) {
     var ext = ext || "html";
@@ -13,51 +14,79 @@ function saveContent(data, htmlPromise, index, folder, ext, fileName) {
         fileName = '404';
     }
 
-    return new Promise(function (saveContentDone) {
-        var html2save;
-        var indexPath;
+    var publicPath = data.settings.path.public._;
+
+    if (htmlStorage.storeInMemory) {
+        var htmlPath = '';
+
+        if (folder) {
+            htmlPath = path.join(htmlPath, folder);
+        }
+
+        if (index) {
+            htmlPath = path.join(htmlPath, 'page/' + index.toString())
+        }
+
+        htmlPath = path.join(htmlPath, fileName + '.' + ext);
 
         if (!htmlPromise.then) {
             var text = htmlPromise;
-            htmlPromise = new Promise(function(done) {
+            htmlPromise = new Promise(function (done) {
                 done(text);
             });
         }
 
-        htmlPromise.then(function (html) {
-            return ext === 'html' ? postProcessHtml(data, html) : html;
-        }).then(function (html) {
-            html2save = html;
+        return htmlPromise.then(function(html) {
+            return postProcessHtml(data, html);
+        }).then(function(html) {
+            return htmlStorage.htmls[htmlPath] = html;
+        })
+    } else {
 
-            var publicPath = data.settings.path.public._;
+        return new Promise(function (saveContentDone) {
+            var html2save;
+            var indexPath;
 
-            if (!folder) {
-                return publicPath;
-            } else {
-                var dir = path.join(publicPath, folder);
-                return mkdirp(dir).then(function () {
-                    return dir;
-                })
+            if (!htmlPromise.then) {
+                var text = htmlPromise;
+                htmlPromise = new Promise(function (done) {
+                    done(text);
+                });
             }
-        }).then(function (dir) {
-            if (!index) {
-                return dir;
-            } else {
-                dir = path.join(dir, 'page/' + index.toString());
-                return mkdirp(dir).then(function () {
+
+            htmlPromise.then(function (html) {
+                return ext === 'html' ? postProcessHtml(data, html) : html;
+            }).then(function (html) {
+                html2save = html;
+
+                if (!folder) {
+                    return publicPath;
+                } else {
+                    var dir = path.join(publicPath, folder);
+                    return mkdirp(dir).then(function () {
+                        return dir;
+                    })
+                }
+            }).then(function (dir) {
+                if (!index) {
                     return dir;
-                })
-            }
-        }).then(function (dir) {
-            indexPath = path.join(dir, fileName + '.' + ext);
-            //FIXME!!
-            return fs.writeFileAsync(indexPath, html2save
-                //.replace(/localhost/g, '192.168.0.6')
-            );
-        }).then(function () {
-            saveContentDone();
-        });
-    })
+                } else {
+                    dir = path.join(dir, 'page/' + index.toString());
+                    return mkdirp(dir).then(function () {
+                        return dir;
+                    })
+                }
+            }).then(function (dir) {
+                indexPath = path.join(dir, fileName + '.' + ext);
+                //FIXME!!
+                return fs.writeFileAsync(indexPath, html2save
+                    //.replace(/localhost/g, '192.168.0.6')
+                );
+            }).then(function () {
+                saveContentDone();
+            });
+        })
+    }
 }
 
 module.exports = saveContent;

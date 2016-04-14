@@ -48,6 +48,7 @@ function buildImgTags(imagePattern, settings, alt) {
 function newPost(title, imagePattern, alt, type) {
     type = type || 'post';
     var slug = general.util.slugifyTranslit(title);
+    var fileName = slug + '.md';
     var me = {};
     return require('./settings.js').load
         .then(function (settings) {
@@ -57,11 +58,8 @@ function newPost(title, imagePattern, alt, type) {
         .then(function (imgs) {
             var meta = {
                 title: title,
-                link: me.settings.server.prod.url + slug,
-                debug_link: 'http://localhost:4000/' + slug,
                 slug: slug,
-                // TODO verify all correct with the date
-                date: new Date(),
+                modifiedDate: new Date(),
                 draft: true,
                 type: type,
                 categories: [],
@@ -69,7 +67,7 @@ function newPost(title, imagePattern, alt, type) {
                 seo: {
                     title: title,
                     description: '',
-                    keywords: ["TODO: keywords here"]
+                    keywords: ''
                 }
             };
 
@@ -80,18 +78,19 @@ function newPost(title, imagePattern, alt, type) {
             var metaYaml = yaml.stringify(meta, 4).replace('Zdraft:', newline + 'draft:');
             var text = [separator, metaYaml, separator, content].join(newline);
             console.log('\n\nTemplate: \n\n', text);
-            var outputPath = path.join(settings.path['content_' + type + 's' + '_drafts'], slug + '.md');
+            var outputPath = path.join(settings.path['content_' + type + 's' + '_drafts'], fileName);
             console.log('\n\nOutput path: \n', outputPath);
             return fs.writeFileAsync(outputPath, text);
         })
         .then(function () {
-            console.log('\n\nDONE.\n\n')
+            console.log('\n\nDONE.\n\n');
+            return fileName;
         })
 }
 
 module.exports = newPost;
 
 if (argv.r) {
-    newPost(argv.title, argv.img, argv.alt, argv.type);
+    newPost(argv.title, argv.type, argv.img, argv.alt);
 }
 
