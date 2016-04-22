@@ -16,6 +16,22 @@ eswEditor.controller('TopPanelActionsController', function ($scope, $http, $loca
     $scope.commit = function () {
         $http.post('/commit-git', {message: $scope.commitMessage}).then(gitCommandCallback);
     };
+    $scope.publish = function () {
+        $uibModal.open({
+            templateUrl: '/views/single-entry-field-window.html',
+            controller: 'EditOneFieldController',
+            resolve: {
+                args: function () {
+                    return {
+                        title: 'Publish',
+                        placeholder: 'Commit message...'
+                    };
+                }
+            }
+        }).result.then(function (title) {
+            $http.post('/publish', PostEditorService.post).then(gitCommandCallback);
+        });
+    };
 
     $scope.newPost = function (type) {
         $uibModal.open({

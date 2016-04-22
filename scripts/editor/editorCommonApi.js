@@ -4,6 +4,7 @@ var rest = require('./editorService');
 var storage = require('../lib/render-all/html-storage');
 var previewBuilder = require('./previewBuilder');
 var newPost = require('../new-post');
+var runProcesses = require('./runProcesses');
 
 function bind(app) {
     app.get('/list', function (req, res) {
@@ -36,6 +37,21 @@ function bind(app) {
         } else {
             res.send('')
         }
+    });
+
+    app.post('/publish', function(req,res) {
+        const post = req.body.post;
+        var cmds = [
+            {
+                cmd: 'grunt',
+                args: ['publish-deploy', '--msg="' + req.body.msg + '"']
+            },
+            {
+                cmd: 'git',
+                args: ['clean', '-f']
+            }
+        ];
+        var result = runProcesses(cmds, settings.path.content);
     });
 
     app.get('/preview/:post', function (req, res) {
