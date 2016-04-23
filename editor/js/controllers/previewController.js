@@ -17,13 +17,15 @@ eswEditor.controller('PreviewController', function ($scope, $http, PreviewServic
                 var scrollTop = $('#post-preview').scrollTop();
                 $('#post-preview-old').attr('id', 'post-preview-new');
                 $('#post-preview').attr('id', 'post-preview-old');
-                $('#post-preview-new').attr('id', 'post-preview');
                 $('#post-preview-old').css('z-index', 2);
+                $('#post-preview-new').attr('id', 'post-preview');
                 $('#post-preview').css('z-index', 1);
                 $('#post-preview > div').replaceWith('<div>' + previewHtml + '</div>')
                 $('#post-preview > div').replaceWith('<div>'
                     + '<link rel="stylesheet" href="http://localhost:4000/css/travel-style.css">'
                     + $('#post-preview .post').html() + +'</div>')
+                //$('article footer').remove();
+                //$('#post-preview script').remove();
                 $('#post-preview').scrollTop(scrollTop);
                 $('#post-preview-old').css('z-index', 0);
                 lastHtml = previewHtml;

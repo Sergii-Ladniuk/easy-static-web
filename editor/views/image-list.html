@@ -1,4 +1,7 @@
 <div ng-controller="ImageController">
+    <div>
+        <button class="btn btn-default" ng-click="refresh()">Refresh</button>
+    </div>
     <label>Image Filter: <input ng-model="filterImages"></label>
     <label>Image Alt: <input ng-model="alt"></label>
     <div id="images">
