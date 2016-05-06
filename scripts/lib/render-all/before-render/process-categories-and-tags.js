@@ -1,4 +1,5 @@
 var extend = require('extend');
+var general = require('../../general');
 
 module.exports = processCategoriesAndTags;
 

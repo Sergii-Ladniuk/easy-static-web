@@ -16,7 +16,7 @@ var processCategoriesAndTags = require('./before-render/process-categories-and-t
 
 module.exports = function (data) {
     return beforeRender(data)
-        .then(renderPages)
+        .then(doRender)
         .then(afterRender);
 };
 
@@ -68,7 +68,7 @@ function waitAllDeepPromises(data) {
     });
 }
 
-function renderPages(data) {
+function doRender(data) {
     var renderSingleAllPromise = renderSingleAll(data);
     return Promise.join(
         renderIndex(data),
