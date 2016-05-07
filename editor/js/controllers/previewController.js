@@ -1,38 +1,42 @@
-eswEditor.controller('PreviewController', function ($scope, $http, PreviewService) {
+eswEditor.controller('PreviewController', function (PreviewService) {
+    var lastPreviewHtml;
 
-    var lastHtml;
+    runUpdatePreviewLoop();
 
-    function updatePreview() {
-
+    function runUpdatePreviewLoop() {
         const promise = PreviewService.loadPreview();
+        const isPreviewNotAvailable = !promise;
 
-        if (!promise) {
-            setTimeout(updatePreview, 1000);
-            return;
+        if (isPreviewNotAvailable) {
+            waitAndTryReloadPreview()
+        } else {
+            promise.then(function (answer) {
+                var previewHtml = answer.data;
+                addPreviewToEditorHtml(previewHtml);
+                waitAndTryReloadPreview()
+            })
         }
-
-        promise.then(function (answer) {
-            var previewHtml = answer.data;
-            if (previewHtml !== lastHtml) {
-                var scrollTop = $('#post-preview').scrollTop();
-                $('#post-preview-old').attr('id', 'post-preview-new');
-                $('#post-preview').attr('id', 'post-preview-old');
-                $('#post-preview-old').css('z-index', 2);
-                $('#post-preview-new').attr('id', 'post-preview');
-                $('#post-preview').css('z-index', 1);
-                $('#post-preview > div').replaceWith('<div>' + previewHtml + '</div>')
-                $('#post-preview > div').replaceWith('<div>'
-                    + '<link rel="stylesheet" href="http://localhost:4000/css/travel-style.css">'
-                    + $('#post-preview .post').html() + +'</div>')
-                //$('article footer').remove();
-                //$('#post-preview script').remove();
-                $('#post-preview').scrollTop(scrollTop);
-                $('#post-preview-old').css('z-index', 0);
-                lastHtml = previewHtml;
-            }
-            setTimeout(updatePreview, 2000);
-        })
     }
 
-    updatePreview();
+    function waitAndTryReloadPreview() {
+        setTimeout(runUpdatePreviewLoop, 2000)
+    }
+
+    function addPreviewToEditorHtml(previewHtml) {
+        if (previewHtml !== lastPreviewHtml) {
+            var scrollTop = $('#post-preview').scrollTop();
+
+            var updatedPreviewFull = $(previewHtml);
+            var updatedPreviewHeader = updatedPreviewFull.find('.post > article > header')[0];
+            var updatedPreviewContent = updatedPreviewFull.find('.post > article > .post-content')[0];
+
+            var updatedPreviewDestinationElement = $('#post-preview > .content');
+            updatedPreviewDestinationElement.empty();
+            updatedPreviewDestinationElement
+                .append(updatedPreviewHeader)
+                .append(updatedPreviewContent);
+
+            lastPreviewHtml = previewHtml;
+        }
+    }
 });

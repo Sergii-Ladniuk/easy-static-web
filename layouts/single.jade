@@ -34,7 +34,8 @@ article
                     i.fa.fa-calendar
                     span
                         | !{content.meta.modifiedDateFormatted}
-    | !{content.html}
+    .post-content
+        | !{content.html}
     footer
         if content.meta.type === 'post'
             br
