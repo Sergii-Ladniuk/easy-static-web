@@ -16,6 +16,7 @@
     "extend": "3.0.0",
     "findit": "2.0.0",
     "ftp": "^0.3.10",
+    "gm": "^1.22.0",
     "grunt-contrib-uglify": "^0.11.1",
     "grunt-link-checker": "^0.1.0",
     "html": "0.0.10",
@@ -41,6 +42,7 @@
     "sitemap": "^1.5.0",
     "to-markdown": "^2.0.1",
     "translitit-cyrillic-russian-to-latin": "^0.1.0",
+    "uslug": "^1.0.4",
     "xml2js": "0.4.16"
   },
   "devDependencies": {
