@@ -41,15 +41,17 @@ var previewFunctionBuilder = function () {
             })
         } else {
             inProgress = true;
-            return generate({
-                contentInMemory: true
-            }).finally(function () {
-                inProgress = false;
-                if (requested) {
-                    requested = false;
-                    doBuild(post)
-                }
-            })
+            return generate({contentInMemory: true})
+                .catch(function(err) {
+                    console.log(err)
+                })
+                .finally(function () {
+                    inProgress = false;
+                    if (requested) {
+                        requested = false;
+                        doBuild(post)
+                    }
+                })
         }
     }
 };
