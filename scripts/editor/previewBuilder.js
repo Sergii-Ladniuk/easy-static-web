@@ -1,20 +1,23 @@
-var general = require('../lib/general');
+'use strict';
 
-var fs = general.fs;
-var path = require('path');
+const general = require('../lib/general');
+const logger = require('../lib/logger');
 
-var parseArgs = require('minimist');
+const fs = general.fs;
+const path = require('path');
 
-var settings = require('../settings.js').loadSync();
+const parseArgs = require('minimist');
 
-var os = require('os');
+const settings = require('../settings.js').loadSync();
 
-var buildPreviewSemaphor = Promise.promisifyAll(require('semaphore')(1));
+const os = require('os');
 
-var generate = require('../generate').generate;
-var htmlStorage = require('../lib/render-all/html-storage');
+const buildPreviewSemaphor = Promise.promisifyAll(require('semaphore')(1));
 
-var takeAsync = function (semaphor) {
+const generate = require('../generate').generate;
+const htmlStorage = require('../lib/render-all/html-storage');
+
+const takeAsync = function (semaphor) {
     return new Promise(function (done) {
         semaphor.take(function () {
             done();
@@ -22,16 +25,16 @@ var takeAsync = function (semaphor) {
     });
 };
 
-var init = exports.init = function () {
+const init = exports.init = function () {
     htmlStorage.storeInMemory = true;
     return new Promise(function (done) {
         done()
     })
 };
 
-var previewFunctionBuilder = function () {
-    var inProgress = false;
-    var requested = false;
+const previewFunctionBuilder = function () {
+    let inProgress = false;
+    let requested = false;
 
     return function doBuild(post) {
         if (inProgress) {
@@ -43,7 +46,7 @@ var previewFunctionBuilder = function () {
             inProgress = true;
             return generate({contentInMemory: true})
                 .catch(function(err) {
-                    console.log(err)
+                    logger.log('Generate failed due to an error: ',err);
                 })
                 .finally(function () {
                     inProgress = false;
