@@ -1,29 +1,8 @@
-User-agent: Yandex
-Disallow: /webstat/
-Disallow: */trackback
-Disallow: */feed
-Disallow: */comments
-Disallow: /*?*
-Disallow: /*?
-Disallow: /comment*
-Disallow: /page/
-Disallow: /category/
-Disallow: /kak-podpisatsya/
-Disallow: /*?utm_
-
 User-agent: *
-Disallow: /webstat/
-Disallow: */trackback
-Disallow: */feed
-Disallow: */comments
-Disallow: /*?*
-Disallow: /*?
-Disallow: /comment*
-Disallow: /page/
+Disallow: /1/
+Disallow: /logs/
 Disallow: /category/
-Disallow: /kak-podpisatsya/
-Disallow: /*?utm_
-
+Disallow: /page/
+Disallow: *?* 
 Host: marinatravelblog.com
 Sitemap: http://marinatravelblog.com/sitemap.xml
-
