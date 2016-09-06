@@ -5,7 +5,6 @@ var argv = parseArgs(process.argv.slice(2));
 var run = argv.r || argv.run;
 var msg = argv.m || argv.msg;
 var settings = require('../settings').loadSync();
-var Git = require("nodegit");
 
 
 var deploy = module.exports = function (msg) {
