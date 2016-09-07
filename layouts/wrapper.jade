@@ -27,37 +27,34 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
             if meta.seo.title
                 meta(property='og:title', content=meta.seo.title)
                 meta(name='twitter:title', content=meta.seo.title)
-            if !meta.seo.keywords.join
-                - console.log(meta.seo.keywords)
-            if meta.seo.keywords && meta.seo.keywords.join
-                meta(name='keywords', itemprop='keywords', content=meta.seo.keywords.join(','))
-                each kw in meta.seo.keywords
-                    meta(property='article:tag', content=kw)
-                if (meta.link)
-                    link(rel='canonical', href=meta.link)
-                    meta(property='og:url', content=meta.link)
-                    meta(property='og:type', content='article')
-                meta(property='og:site_name', content='marinatravelblog.com')
+            //if !meta.seo.keywords.join
+            //    - console.log(meta.seo.keywords)
+            //if meta.seo.keywords && meta.seo.keywords.join
+            //    meta(name='keywords', itemprop='keywords', content=meta.seo.keywords.join(','))
+            //    each kw in meta.seo.keywords
+            //        meta(property='article:tag', content=kw)
+            if (meta.link)
                 link(rel='canonical', href=meta.link)
                 meta(property='og:url', content=meta.link)
                 meta(property='og:type', content='article')
-                meta(property='og:site_name', content='Наша кругосветка и другие путешествия!')
+            meta(property='og:site_name', content='marinatravelblog.com')
+            meta(property='og:site_name', content='Наша кругосветка и другие путешествия!')
+            meta(property='og:image', content=meta.img)
+            meta(property='fb:admins', content='maryna.sukhomlynova')
+            meta(property='fb:admins', content='1581443312144127')
+            meta(property='fb:admins', content='990165311025249')
+            meta(property='fb:app_id', content='810214915703818')
+            if meta.publishedDate
+                meta(property='article:published_time', content=meta.publishedDate.toISOString())
+            if meta.modifiedDate
+                meta(property='article:modified_time', content=meta.modifiedDate.toISOString())
+            meta(name='twitter:card', content='summary_large_image')
+            meta(name='twitter:site', content='marinatravelblog.com')
+            meta(name='twitter:creator', content='@marinatravelblg')
+            if meta.img
                 meta(property='og:image', content=meta.img)
-                meta(property='fb:admins', content='maryna.sukhomlynova')
-                meta(property='fb:admins', content='1581443312144127')
-                meta(property='fb:admins', content='990165311025249')
-                meta(property='fb:app_id', content='810214915703818')
-                if meta.publishedDate
-                    meta(property='article:published_time', content=meta.publishedDate.toISOString())
-                if meta.modifiedDate
-                    meta(property='article:modified_time', content=meta.modifiedDate.toISOString())
-                meta(name='twitter:card', content='summary_large_image')
-                meta(name='twitter:site', content='marinatravelblog.com')
-                meta(name='twitter:creator', content='@marinatravelblg')
-                if meta.img
-                    meta(property='og:image', content=meta.img)
-                    meta(name='twitter:image', content=meta.img)
-                    meta(itemprop='image', content=meta.img)
+                meta(name='twitter:image', content=meta.img)
+                meta(itemprop='image', content=meta.img)
     body
         .container-fluid#top
             | !{widgets.banner}
