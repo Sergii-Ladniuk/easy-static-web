@@ -131,6 +131,14 @@ RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 # Redirect RSS Feed
 RedirectMatch 301 /feed$ /feed.xml
+RedirectMatch 301 /feed/$ /feed.xml
+
+# Redirect some shit
+RedirectMatch 301 /main$ /
+RedirectMatch 301 ^index.php$ /
+RedirectMatch 301 ^.*.htm$ /
+RedirectMatch 301 ^index.html$ /
+RedirectMatch 301 ^\?.* /
 
 ##################
 # Browser cache expiry
