@@ -134,20 +134,10 @@ RedirectMatch 301 /feed$ /feed.xml
 RedirectMatch 301 /feed/$ /feed.xml
 
 # Redirect samshit
-#RedirectMatch 301 /main$ /
-#RedirectMatch 301 ^index.php$ /
-#RedirectMatch 301 ^.*.htm$ /
-#RedirectMatch 301 ^index.html$ /
-#RedirectMatch 301 ^\?.* /
-Redirect 301 /index.html /
+RedirectMatch 301 /main$ /
 Redirect 301 /index.htm /
 Redirect 301 /main /
-Redirect 301 /index.php /
-
-
-
-
-
+RedirectMatch 301 ^index.php$ /
 
 ##################
 # Browser cache expiry
