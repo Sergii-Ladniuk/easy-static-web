@@ -14,7 +14,7 @@ function toLocalhost(text, url, port) {
 }
 
 exports.changeToLocalhost = function (data) {
-    data.target.link = 'http://localhost:4000/' + data.target.meta.slug;
+    data.target.link = 'http://localhost:4000/' + data.target.meta.slug+'/';
     return data;
 };
 

@@ -31,7 +31,8 @@ function renderer(data) {
     }
 
     function isHomeUrl(url) {
-        return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url);
+        return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url)
+            || new RegExp(general.util.escapeRegExp('http://localhost:4000')).test(url);
     }
 
     var currentImg, prevImg;
@@ -80,6 +81,10 @@ function renderer(data) {
         }
 
         href = fixUrl(href);
+
+        if (!/\/$/.test(href) && /localhost/.test(href))
+            href = href + '/';
+
         var out = '<a href="' + href + '"';
         if (title) {
             out += ' title="' + title + '"';

@@ -46,11 +46,7 @@ var processMetadata = function (data) {
         target.meta['featured-tag'] = slugifyAll(arrayifyIfString(target.meta['featured-tag']));
         target.meta['featured-category'] = toLowerAll(arrayifyIfString(target.meta['featured-category']));
 
-        if (target.meta.link) {
-            target.meta.link = target.meta.link.replace('marinatravelblog.com', 'localhost:4000');
-        } else {
-            target.meta.link = 'http://localhost:4000/' + target.meta.slug;
-        }
+        target.meta.link = 'http://localhost:4000/' + target.meta.slug + '/';
 
         if (target.meta.publishedDate) {
             try {
@@ -94,8 +90,7 @@ var processMetadata = function (data) {
             list: [target]
         });
 
-        target.link = target.meta.link = target.meta.link
-            || general.linkBuilder.postUrl(target.meta.slug || target.slugByPath, data);
+        target.link = target.meta.link;
 
         delete target.text;
 
