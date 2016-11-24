@@ -138,6 +138,14 @@ RedirectMatch 301 /main$ /
 Redirect 301 /index.htm /
 Redirect 301 /main /
 RedirectMatch 301 ^index.php$ /
+Redirect 301 /feed.xml/ /feed.xml
+Redirect 301 /author/admin/ /
+Redirect 301 /author/gderevo/ /
+Redirect 301 /author/rowena/ /
+Redirect 301 /author/rowens890/ /
+Redirect 301 /obo-mne/comment-page-1/ /o-nas
+Redirect 301 /wp-admin* /
+
 
 ##################
 # Browser cache expiry
@@ -148,10 +156,10 @@ ExpiresByType image/jpg A2592000
 ExpiresByType image/jpeg A2592000
 ExpiresByType image/gif A2592000
 ExpiresByType image/png A2592000
-ExpiresByType text/css A86400
-ExpiresByType text/html A86400
-ExpiresByType application/pdf A86400
-ExpiresByType text/x-javascript A86400
+ExpiresByType text/css A2592000
+ExpiresByType text/html A2592000
+ExpiresByType application/pdf A2592000
+ExpiresByType text/x-javascript A2592000
 ExpiresByType image/x-icon A2592000
 ExpiresDefault A86400
 </IfModule>
