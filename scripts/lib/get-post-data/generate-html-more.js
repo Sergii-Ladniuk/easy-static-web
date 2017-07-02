@@ -66,20 +66,7 @@ function renderer(data) {
         return out;
     };
 
-    function doFollow(url) {
-        return settings.generate['do-follow'].map(function (pattern) {
-            return new RegExp(general.util.escapeRegExp(pattern)).test(url)
-        }).reduce(function (a, b) {
-            return a || b;
-        })
-    }
-
     renderer.link = function (href, title, text) {
-        var nofollow = '';
-        if (!isHomeUrl(href) && !doFollow(href)) {
-            nofollow = ' rel="nofollow" '
-        }
-
         href = fixUrl(href);
 
         if (!/\/$/.test(href) && /localhost/.test(href))
@@ -89,7 +76,6 @@ function renderer(data) {
         if (title) {
             out += ' title="' + title + '"';
         }
-        out += nofollow;
         out += ' target="_blank" ';
         out += '>' + text + '</a>';
         return out;
