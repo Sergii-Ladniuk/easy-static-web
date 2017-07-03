@@ -46,7 +46,7 @@ const previewFunctionBuilder = function () {
             inProgress = true;
             return generate({contentInMemory: true})
                 .catch(function(err) {
-                    logger.log('Generate failed due to an error: ',err);
+                    console.log('Generate failed due to an error: ',err);
                 })
                 .finally(function () {
                     inProgress = false;
