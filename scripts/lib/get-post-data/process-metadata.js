@@ -22,7 +22,7 @@ var processMetadata = function (data) {
 
 
         if (!target.meta.slug) {
-            throw  new Error("No slug specified for", target.path)
+            throw  new Error("No slug specified for " + target.path + " " + target.name)
         }
 
         target.meta.categories = arrayifyIfString(target.meta.categories);

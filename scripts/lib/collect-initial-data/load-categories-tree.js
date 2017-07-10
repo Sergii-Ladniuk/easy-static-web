@@ -1,7 +1,6 @@
 var general = require('../general');
-
+var _ = require('lodash');
 var fs = general.fs;
-var path = require('path');
 
 module.exports = function (settings, db) {
     return Promise.join(fs.readFileAsync(settings.path.categories, 'utf-8'), fs.readFileAsync(settings.path.menu, 'utf-8'))
@@ -16,15 +15,23 @@ module.exports = function (settings, db) {
                 if (!categoryInfo[catLower]) {
                     categoryInfo[catLower] = cat;
                     categoryInfo[catLower].url = 'http://localhost:4000/category/' + cat.niceName + '/';
-                    if (cat.children) {
-                        var parent = categoryInfo[catLower];
-                        cat.children.forEach(function (child) {
-                            var childLower = child.name.toLowerCase();
-                            categoryInfo[childLower] = child;
-                            categoryInfo[childLower].url = parent.url + child.niceName + '/';
-                            categoryInfo[childLower].path = [parent.niceName, child.niceName];
-                        })
+                    function processChildren(parentCategory, parentCategoryLower) {
+                        if (parentCategory.children) {
+                            var parent = categoryInfo[parentCategoryLower];
+                            parentCategory.children.forEach(function (child) {
+                                var childLower = child.name.toLowerCase();
+                                categoryInfo[childLower] = child;
+                                categoryInfo[childLower].url = parent.url + child.niceName + '/';
+                                categoryInfo[childLower].path = _.flatMap([
+                                    parent.path
+                                        ? parent.path
+                                        : parent.niceName,
+                                    child.niceName]);
+                                processChildren(child, childLower);
+                            })
+                        }
                     }
+                    processChildren(cat, catLower);
                 }
             }
 
