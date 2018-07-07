@@ -337,7 +337,7 @@ a {
 }
 
 #social-btns-side .ya-share2__item {
-    margin-bottom: 14px;   
+    margin-bottom: 14px;
 }
 
 #social-btns-side {
@@ -360,21 +360,21 @@ cite {
 }
 
 #banner-holder {
-    background-image: url(http://localhost:4000/img/Valley-of-fire-banner.jpg);
+    background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner.jpg);
 }
 @media only screen and (max-width: 600px) {
     #banner-holder {
-        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-md.jpg)
+        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-md.jpg)
     }
 }
 @media only screen and (max-width: 350px) {
     #banner-holder {
-        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-sm.jpg)
+        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-sm.jpg)
     }
 }
 @media only screen and (min-width: 1440px) {
     #banner-holder {
-        background-image: url(http://localhost:4000/img/Valley-of-fire-banner-w1920.jpg)
+        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-w1920.jpg)
     }
 }
 @media only screen and (max-width: 768px) {
@@ -420,7 +420,7 @@ cite {
     }
 
     #social-btns-bottom .ya-share2__item {
-        margin-right: 14px;   
+        margin-right: 14px;
     }
 }
 
