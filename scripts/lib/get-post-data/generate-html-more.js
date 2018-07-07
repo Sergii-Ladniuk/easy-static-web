@@ -27,12 +27,14 @@ function renderer(data) {
     };
 
     function fixUrl(url) {
-        return url.replace(settings.server.prod.url, 'http://localhost:4000/');
+        return url
+            .replace('http://localhost:4000/', 'http://local.marinatravelblog.com:4000/')
+            .replace(settings.server.prod.url, 'http://local.marinatravelblog.com:4000/');
     }
 
     function isHomeUrl(url) {
         return new RegExp(general.util.escapeRegExp(settings.server.prod.url)).test(url)
-            || new RegExp(general.util.escapeRegExp('http://localhost:4000')).test(url);
+            || new RegExp(general.util.escapeRegExp('http://local.marinatravelblog.com:4000')).test(url);
     }
 
     var currentImg, prevImg;
@@ -69,7 +71,7 @@ function renderer(data) {
     renderer.link = function (href, title, text) {
         href = fixUrl(href);
 
-        if (!/\/$/.test(href) && /localhost/.test(href))
+        if (!/\/$/.test(href) && /local.marinatravelblog.com/.test(href))
             href = href + '/';
 
         var out = '<a href="' + href + '"';
@@ -114,7 +116,7 @@ module.exports = function (data) {
     return handleEmbeds(data)
         .then(function () {
             var post = data.target;
-            var tocTemplate = '<%= depth %><%= bullet %>[<%= heading %>](' + 'http://localhost:4000/' + post.meta.slug + '/#<%= url %>)\n';
+            var tocTemplate = '<%= depth %><%= bullet %>[<%= heading %>](' + 'http://local.marinatravelblog.com:4000/' + post.meta.slug + '/#<%= url %>)\n';
             var table = '## Содержание ##' + newline
                 + toc(post.markdown, {template: tocTemplate, bullet: ['1. ', '1. ', '1. ']});
             var tableHtml = util.format('<div class="toc">%s</div>', marked(table));

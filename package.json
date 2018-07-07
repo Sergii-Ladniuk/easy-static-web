@@ -17,6 +17,7 @@
     "findit": "2.0.0",
     "ftp": "^0.3.10",
     "gm": "^1.22.0",
+    "graceful-fs": "^4.1.11",
     "grunt-contrib-uglify": "^0.11.1",
     "grunt-link-checker": "^0.1.0",
     "html": "0.0.10",

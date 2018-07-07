@@ -23,7 +23,7 @@ function postProcessHtml(data, html) {
                 while (match = imgRegex.exec(html)) {
                     var attrs = match[1];
                     var src = srcRegex.exec(attrs)[1];
-                    if (/localhost:4000/.test(src)) {
+                    if (/local.marinatravelblog.com:4000/.test(src)) {
                         var sizeMatch = sizeRegex.exec(attrs);
                         var sizeClass = sizeMatch && sizeMatch[1] ? sizeMatch[1] : '';
                         var altMatch = altRegex.exec(attrs);

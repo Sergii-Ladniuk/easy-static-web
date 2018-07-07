@@ -47,7 +47,7 @@ function processCategoriesAndTags(data) {
 
         if (!data.tagInfo[tag.name])
             console.log('fail ' + tag.name)
-        tag.url = 'http://localhost:4000/tag/' + info.slug + '/';
+        tag.url = 'http://local.marinatravelblog.com:4000/tag/' + info.slug + '/';
         tag.slug = info.slug;
         tag.postNumber = tag.posts.length;
         totalPostsTagged += tag.postNumber;

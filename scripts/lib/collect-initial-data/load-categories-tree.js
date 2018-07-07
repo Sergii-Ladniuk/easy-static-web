@@ -14,7 +14,7 @@ module.exports = function (settings, db) {
                 var catLower = cat.name.toLowerCase();
                 if (!categoryInfo[catLower]) {
                     categoryInfo[catLower] = cat;
-                    categoryInfo[catLower].url = 'http://localhost:4000/category/' + cat.niceName + '/';
+                    categoryInfo[catLower].url = 'http://local.marinatravelblog.com:4000/category/' + cat.niceName + '/';
                     function processChildren(parentCategory, parentCategoryLower) {
                         if (parentCategory.children) {
                             var parent = categoryInfo[parentCategoryLower];

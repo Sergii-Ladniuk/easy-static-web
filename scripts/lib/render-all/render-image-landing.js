@@ -12,7 +12,7 @@ var renderImageLandings = module.exports = function (data) {
                     img.more = post.more;
                     img.postLink = post.meta.link;
                     img.folder = post.meta.slug + '/' + path.parse(img.src).name;
-                    img.landingUrl = 'http://localhost:4000/'+img.folder;
+                    img.landingUrl = 'http://local.marinatravelblog.com:4000/'+img.folder;
                     var promise =
                         saveContent(
                             data,

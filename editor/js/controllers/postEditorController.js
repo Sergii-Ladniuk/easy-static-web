@@ -5,7 +5,7 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
         $scope.editor.insert('![' + alt + '](' + url.replace('4002', '4000') + ')');
     };
     $scope.addLink = function () {
-        $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://localhost:4000/'
+        $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://local.marinatravelblog.com:4000/'
             + $scope.postToLink.meta.slug + ')');
     };
     $scope.$watch('service.post', function (post) {

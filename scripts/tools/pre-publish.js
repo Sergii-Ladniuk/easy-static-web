@@ -19,8 +19,8 @@ var version;
 
 function changeUrlsToProd(text) {
     return text
-        .replace(/localhost\:4000\/*img/g, 'marinatravelblog.com/wp-content/uploads')
-        .replace(/localhost\:4000/g, 'marinatravelblog.com');
+        .replace(/local.marinatravelblog.com\:4000\/*img/g, 'marinatravelblog.com/wp-content/uploads')
+        .replace(/local.marinatravelblog.com\:4000/g, 'marinatravelblog.com');
 }
 
 function prePublish() {
