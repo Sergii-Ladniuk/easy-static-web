@@ -116,25 +116,6 @@ exports.import = function (xmlFileName) {
                 }
             );
 
-            //categoriesRaw.forEach(function (entry) {
-            //    if (entry.parent) {
-            //        var category = {
-            //            niceName: entry.niceName,
-            //            name: entry.name,
-            //            url: 'http://localhost:4000/category/' + entry.parent + '/' + entry.niceName,
-            //            path: [entry.parent, entry.niceName],
-            //            postNumber: 0
-            //        };
-            //        categories.flat[category.niceName] = category;
-            //        if (categories.tree[entry.parent]) {
-            //            if (!categories.tree[entry.parent].children) {
-            //                categories.tree[entry.parent].children = [];
-            //            }
-            //            categories.tree[entry.parent].children.push(category);
-            //        }
-            //    }
-            //});
-
             var tags = {};
             wpJson.rss.channel[0]['wp:tag'].forEach(function (rawTag) {
                 const name = rawTag['wp:tag_name'][0];

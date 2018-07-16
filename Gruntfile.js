@@ -244,7 +244,7 @@ module.exports = function (grunt) {
                 maxConcurrency: 20
             },
             dev: {
-                site: 'localhost',
+                site: 'local.marinatravelblog.com',
                 options: {
                     initialPort: 4000
                 }
