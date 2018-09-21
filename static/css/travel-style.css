@@ -429,3 +429,10 @@ cite {
     line-height: 1;
     margin: 5px 0 -5px 0;
 }
+
+table.content-info-table td, table.content-info-table th {
+  border-style: solid;
+  border-color: grey;
+  border-width: thin;
+  padding: 0.5em;
+}
