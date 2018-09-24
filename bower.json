@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "font-awesome": "fontawesome#^4.5.0",
+    "font-awesome": "fontawesome#^4.7.0",
     "bower-bootswatch-flatly": "flatly-less#^2.3.2",
     "jquery": "^2.2.1"
   }
