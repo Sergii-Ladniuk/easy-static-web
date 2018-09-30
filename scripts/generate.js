@@ -13,7 +13,7 @@ exports.generate = function (args) {
     benchmark.start('generate');
     return require('./settings.js').load
         .then(function (settings) {
-            console.log('generating...')
+            console.log('generating...');
             if (!initialData) {
                 var data = collectInitialData(settings);
                 initialData = data;
@@ -33,7 +33,7 @@ exports.generate = function (args) {
         })
         .then(function () {
             benchmark.finish('generate');
-            console.log('ALL DONE.')
+            console.log('ALL DONE.');
 
             if (args.loop) {
                 setTimeout(exports.generate, args.period || 2000)
