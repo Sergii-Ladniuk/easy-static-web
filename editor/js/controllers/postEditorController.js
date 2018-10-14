@@ -2,7 +2,7 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
     $scope.service = PostEditorService;
     $scope.alt = "";
     ImageService.addImg = function (url, alt) {
-        $scope.editor.insert('![' + alt + '](' + url.replace('4002', '4000') + ')');
+        $scope.editor.insert('![' + alt + '](' + url.replace('4002', '4000') + ')\n\n');
     };
     $scope.addLink = function () {
         $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://local.marinatravelblog.com:4000/'
