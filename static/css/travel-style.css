@@ -85,7 +85,7 @@ a.youtube {
 }
 
 ol {
-    list-style-type: none;
+    list-style-type: none!important;
     counter-reset: item;
     margin: 0;
     padding: 0;
@@ -110,6 +110,20 @@ li ol > li {
 
 li ol > li:before {
     content: counters(item, ".") " ";
+}
+
+ol.carousel-indicators {
+    list-style-type: none;
+}
+
+ol.carousel-indicators > li {
+    counter-increment: none;
+}
+
+ol.carousel-indicators > li:before {
+    content: none!important;
+    counter-increment: none;
+    list-style-type: none;
 }
 
 .jump-thumbnail150 {
@@ -430,9 +444,23 @@ cite {
     margin: 5px 0 -5px 0;
 }
 
-table.content-info-table td, table.content-info-table th {
-  border-style: solid;
-  border-color: grey;
-  border-width: thin;
-  padding: 0.5em;
+.carousel{
+    margin-top: 20px;
+}
+.carousel .item{
+    min-height: 280px;
+}
+.carousel .item img{
+    margin: 0 auto;
+}
+
+.carousel-control span {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 5em;
+    line-height: 5em;
+}
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
 }
