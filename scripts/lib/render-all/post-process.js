@@ -1,6 +1,7 @@
 const responsiveImg = require('./responsive-imgs');
+const imageCarousel = require('./image-carousel');
 
-var progress = 0;
+let progress = 0;
 
 function reportProgress() {
     if (progress % 100 == 0)
@@ -61,23 +62,14 @@ function postProcessHtml(data, html) {
                     resultHtml = resultHtml.replace(toReplace.oldImgTag, toReplace.newImgTag);
                 }
             })
-            // .then(function () {
-            //     let imgGroupRegexp = /(<p>[^<]*?<div style="padding-bottom:67%;"[^>]*.*?<\/p>[^<]*?){2}/g;
-            //     let tasks = [];
-            //     while (match = imgGroupRegexp.exec(resultHtml)) {
-            //         let imgGroup = match[0];
-            //         let images = [];
-            //
-            //         if (imgGroup) {
-            //             while (singleImgMatch = /<p>[^<]*?<div style="padding-bottom:67%;"[^>]*.*?<\/p>/g.exec(imgGroup)) {
-            //                 let img = singleImgMatch[0];
-            //                 images.push(img);
-            //             }
-            //
-            //
-            //         }
-            //     }
-            // })
+            .then(function () {
+                return imageCarousel.getReplaceImgWithCarouselTasks(resultHtml, data.jadeTemplates['carousel.jade']);
+            })
+            .each(function (toReplace) {
+                if (toReplace) {
+                    resultHtml = resultHtml.replace(toReplace.initial, toReplace.updated);
+                }
+            })
             .then(function () {
                 postProcessDone(resultHtml)
             });

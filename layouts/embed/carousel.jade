@@ -1,0 +1,29 @@
+- carousel_id = 'img-carousel-'+index
+div.carousel.slide(data-ride='carousel', id=carousel_id)
+    ol.carousel-indicators
+     - var i = 0
+     while i < imgs.length
+         - active = ''
+         if (i === 0)
+            - active = 'active'
+         li(data-target=carousel_id, data-slide-to=i, class=active)
+         - i++
+
+    div.carousel-inner(role='listbox')
+     - var i = 0
+     while i < imgs.length
+         - active = ''
+         if (i === 0)
+             - active = 'active'
+         div.item(class=active)
+            | !{imgs[i]}
+         - i++
+
+    a.left.carousel-control(href="#"+carousel_id, role="button", data-slide="prev")
+    span.fa.fa-angle-left(area-hidden='true')
+    span.sr-only
+        | Previous
+    a.right.carousel-control(href="#"+carousel_id, role="button", data-slide="next")
+    span.fa.fa-angle-right(area-hidden='true')
+    span.sr-only
+        | Previous
