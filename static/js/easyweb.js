@@ -28,6 +28,17 @@ $(function () {
 
     $('#daysInTravel').text(Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24)));
 
+    setTimeout(() => {
+        let imgs = $('.carousel .item img');
+        let contentWidth = $('article').width();
+        for (let i = 0; i < imgs.length; i++) {
+            let img = imgs[i];
+            if (img.width > 0 && img.width < 800) {
+                $(img).css({left: (contentWidth - img.width) / 2});
+            }
+        }
+    }, 5000);
+
     (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
