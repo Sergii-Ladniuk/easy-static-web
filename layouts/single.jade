@@ -44,18 +44,37 @@ article
             //div#uptolike_holder_bottom
             script(type='text/javascript', src='//yastatic.net/es5-shims/0.0.2/es5-shims.min.js', charset='utf-8', async)
             script(type='text/javascript', src='//yastatic.net/share2/share.js', charset='utf-8', async)
-            #social-btns-side.hidden-xs.hidden-sm.ya-share2(data-services='facebook,vkontakte,evernote,pocket,whatsapp', data-counter='')
-            #social-btns-bottom.ya-share2(data-services='facebook,vkontakte,evernote,pocket,whatsapp', data-counter='')
+            #social-btns-side.hidden-xs.hidden-sm.ya-share2(data-services='facebook,vkontakte,pocket,telegram,viber', data-counter='')
+            #social-btns-bottom.ya-share2(data-services='facebook,vkontakte,pocket,telegram,viber', data-counter='')
             strong
                 br
                 p Подпишись и будь в курсе всех новостей! :)
-                a(href='https://www.facebook.com/marinatravelblog')  Facebook |
-                a(href='https://www.youtube.com/c/marinatravelblog?sub_confirmation=1')  Youtube |
-                a(href='http://marinatravelblog.com/feed.xml')  RSS |
-                a(href='http://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom&loc=ru_RU')  E-mail
-            br
-            br
-            p
+
+                .subsribe-block
+                    a.subscribe-link(href='https://t.me/marinatravelblog')
+                        span.fa.fa-telegram
+                        | Telegram
+                        span.pipe
+                        | |
+                    a.subscribe-link(href='https://www.facebook.com/marinatravelblog')
+                        span.fa.fa-facebook-square
+                        | Facebook
+                        span.pipe
+                        | |
+                    a.subscribe-link(href='https://www.youtube.com/c/marinatravelblog?sub_confirmation=1')
+                        span.fa.fa-youtube-square
+                        | Youtube
+                        span.pipe
+                        | |
+                    a.subscribe-link(href='http://marinatravelblog.com/feed.xml')
+                        span.fa.fa-rss-square
+                        | RSS
+                        span.pipe
+                        | |
+                    a.subscribe-link(href='http://feedburner.google.com/fb/a/mailverify?uri=marinatravelblogcom&loc=ru_RU')
+                        span.fa.fa-envelope
+                        | E-mail
+
             .related-posts
                 each relPostEntry in content.related
                     if relPostEntry.content && relPostEntry.content.length > 0
