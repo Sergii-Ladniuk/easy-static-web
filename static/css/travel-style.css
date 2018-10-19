@@ -444,9 +444,15 @@ cite {
     margin: 5px 0 -5px 0;
 }
 
-.carousel{
-    margin-top: 20px;
+.post .carousel{
+    margin: 0;
 }
+
+.post .carousel .carousel-inner {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
 .carousel .item{
     padding-bottom: 66%;
     height: 0;

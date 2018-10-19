@@ -1,12 +1,12 @@
 - carousel_id = 'img-carousel-'+index
-div.carousel.slide(data-ride='carousel', id=carousel_id)
+div.carousel.slide(data-ride='carousel', id=carousel_id, data-interval=4000)
     ol.carousel-indicators
      - var i = 0
      while i < imgs.length
-         - active = ''
+         - active = 'none'
          if (i === 0)
             - active = 'active'
-         li(data-target=carousel_id, data-slide-to=i, class=active)
+         li(data-target='#'+carousel_id, data-slide-to=i, class=active)
          - i++
 
     div.carousel-inner(role='listbox')
@@ -16,7 +16,10 @@ div.carousel.slide(data-ride='carousel', id=carousel_id)
          if (i === 0)
              - active = 'active'
          div.item(class=active)
-            | !{imgs[i]}
+             if (i === 0 || i === 1)
+                | !{imgs[i]}
+             else
+                | !{imgs[i].replace('src=','data-src=').replace('srcset=', 'data-srcset=')}
          - i++
 
     a.left.carousel-control(href="#"+carousel_id, role="button", data-slide="prev")

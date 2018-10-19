@@ -1,5 +1,4 @@
 doctype html
-// TODO ie checks
 html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: http://ogp.me/ns#")
     head
         meta(http-equiv='content-type', content='text/html; charset=utf-8')
@@ -27,12 +26,6 @@ html(lang='ru-RU',itemscope, itemtype='http://schema.org/Article',prefix="og: ht
             if meta.seo.title
                 meta(property='og:title', content=meta.seo.title)
                 meta(name='twitter:title', content=meta.seo.title)
-            //if !meta.seo.keywords.join
-            //    - console.log(meta.seo.keywords)
-            //if meta.seo.keywords && meta.seo.keywords.join
-            //    meta(name='keywords', itemprop='keywords', content=meta.seo.keywords.join(','))
-            //    each kw in meta.seo.keywords
-            //        meta(property='article:tag', content=kw)
             if (meta.link)
                 link(rel='canonical', href=meta.link)
                 meta(property='og:url', content=meta.link)
