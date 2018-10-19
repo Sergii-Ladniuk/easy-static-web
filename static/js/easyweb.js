@@ -28,28 +28,34 @@ $(function () {
 
     let carousel = function () {
 
-        let positionCarouselImg = (img, contentWidth) => {
-            if (!contentWidth) {
-                contentWidth = $('article').width();
+        let contentWidth = $('article').width();
+
+        let positionCarouselImg = (img) => {
+            let width = img.naturalWidth;
+            let height = img.naturalHeight;
+            let ratioH = height / (contentWidth * 0.66);
+            let ratioW = width / contentWidth;
+            if (ratioH > 1) {
+                width /= ratioH;
             }
-            if (img.width > 0 && img.width < contentWidth) {
-                $(img).css({left: (contentWidth - img.width) / 2});
+            if (ratioW > 1) {
+                height /= ratioW;
             }
-            if (img.height > 0 && img.height < contentWidth * 0.66) {
-                $(img).css({top: (contentWidth * 0.66 - img.height) / 2});
+            console.log('position ' + contentWidth + ' ' + width + ' ' + $(img).prop('src'));
+            if (width > 0 && width < contentWidth * 0.9) {
+                $(img).css({left: (contentWidth - width) / 2});
+            }
+            if (height > 0 && height < contentWidth * 0.66) {
+                $(img).css({top: (contentWidth * 0.66 - height) / 2});
             }
         };
 
         let resizeVerticalImagesInCarousel = () => {
             let imgs = $('.carousel .item img');
-            let contentWidth = $('article').width();
             imgs.on('load', (ev) => {
-                positionCarouselImg(ev.currentTarget, contentWidth);
+                positionCarouselImg(ev.currentTarget);
+                setTimeout(() => positionCarouselImg(ev.currentTarget), 1000);
             });
-            // for (let i = 0; i < imgs.length; i++) {
-            //     let img = imgs[i];
-            //     positionCarouselImg(img, contentWidth);
-            // }
         };
         resizeVerticalImagesInCarousel();
 
@@ -66,7 +72,7 @@ $(function () {
             return elementBottom <= viewportBottom && elementTop >= viewportTop;
         };
 
-        let cyclingCarousels = {}
+        let cyclingCarousels = {};
         $(window).on('resize scroll', function () {
             let carousels = $('.carousel');
             for (let i = 0; i < carousels.length; i++) {
