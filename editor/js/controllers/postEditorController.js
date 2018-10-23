@@ -3,10 +3,12 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
     $scope.alt = "";
     ImageService.addImg = function (url, alt) {
         $scope.editor.insert('![' + alt + '](' + url.replace('4002', '4000') + ')\n\n');
+        PostEditorService.save(PostEditorService.post);
     };
     $scope.addLink = function () {
         $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://local.marinatravelblog.com:4000/'
             + $scope.postToLink.meta.slug + ')');
+        PostEditorService.save(PostEditorService.post);
     };
     $scope.$watch('service.post', function (post) {
         if (post) {

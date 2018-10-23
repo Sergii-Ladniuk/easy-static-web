@@ -16,8 +16,7 @@ var renderWidget = function (name, data, children) {
             if (ext === '.jade') {
                 var dataCopy = extend({
                     widgets: children,
-                    year: new Date().getFullYear(),
-                    daysInTravel: Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24))
+                    year: new Date().getFullYear()
                 }, data);
                 html = widgetTemplate(dataCopy);
             } else {

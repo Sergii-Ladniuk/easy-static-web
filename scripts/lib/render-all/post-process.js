@@ -1,6 +1,7 @@
 const responsiveImg = require('./responsive-imgs');
+const imageCarousel = require('./image-carousel');
 
-var progress = 0;
+let progress = 0;
 
 function reportProgress() {
     if (progress % 100 == 0)
@@ -59,6 +60,14 @@ function postProcessHtml(data, html) {
                 reportProgress();
                 if (toReplace) {
                     resultHtml = resultHtml.replace(toReplace.oldImgTag, toReplace.newImgTag);
+                }
+            })
+            .then(function () {
+                return imageCarousel.getReplaceImgWithCarouselTasks(resultHtml, data.jadeTemplates['carousel.jade']);
+            })
+            .each(function (toReplace) {
+                if (toReplace) {
+                    resultHtml = resultHtml.replace(toReplace.initial, toReplace.updated);
                 }
             })
             .then(function () {

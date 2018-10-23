@@ -114,10 +114,18 @@ li ol > li:before {
 
 ol.carousel-indicators {
     list-style-type: none;
+    margin-bottom: 0.5em;
+}
+
+@media only screen and (max-width: 600px) {
+    ol.carousel-indicators {
+        margin-bottom: 1em;
+    }
 }
 
 ol.carousel-indicators > li {
     counter-increment: none;
+    /*box-shadow: 0 0 4px 2px rgba(238,238,238,0.2);*/
 }
 
 ol.carousel-indicators > li:before {
@@ -444,21 +452,30 @@ cite {
     margin: 5px 0 -5px 0;
 }
 
-.carousel{
-    margin-top: 20px;
+.post .carousel{
+    margin: 0;
 }
+
+.post .carousel .carousel-inner {
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
 .carousel .item{
-    min-height: 280px;
+    padding-bottom: 66%;
+    height: 0;
 }
 .carousel .item img{
     margin: 0 auto;
+    max-height: 100%;
+    position: absolute;
+    left: 0;
 }
 
 .carousel-control span {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 200%;
     font-size: 5em;
-    line-height: 5em;
+    /*vertical-align: middle;*/
 }
 
 .carousel-control.left, .carousel-control.right {

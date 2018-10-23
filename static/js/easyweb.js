@@ -16,22 +16,101 @@ $(function () {
     }
 
     if (is_touch_device()) {
-        $('.dropdown-toggle.disabled').each(function(index, item) {
+        $('.dropdown-toggle.disabled').each(function (index, item) {
             $(item).removeClass('disabled');
         })
     } else {
         $('.ya-share2__item_service_whatsapp').hide();
-        onload(function() {
+        onload(function () {
             $('.ya-share2__item_service_whatsapp').hide();
         })
     }
 
-    $('#daysInTravel').text(Math.round( (Date.now() - (new Date(2014,09,16,0,0,0,0)).getTime()) / (1000*60*60*24)));
+    let carousel = function () {
 
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
+        let contentWidth = $('article').width();
+
+        let positionCarouselImg = (img) => {
+            let width = img.naturalWidth;
+            let height = img.naturalHeight;
+            let ratioH = height / (contentWidth * 0.66);
+            let ratioW = width / contentWidth;
+            if (ratioH > 1) {
+                width /= ratioH;
+            }
+            if (ratioW > 1) {
+                height /= ratioW;
+            }
+            console.log('position ' + contentWidth + ' ' + width + ' ' + $(img).prop('src'));
+            if (width > 0 && width < contentWidth * 0.9) {
+                $(img).css({left: (contentWidth - width) / 2});
+            }
+            if (height > 0 && height < contentWidth * 0.66) {
+                $(img).css({top: (contentWidth * 0.66 - height) / 2});
+            }
+        };
+
+        let resizeVerticalImagesInCarousel = () => {
+            let imgs = $('.carousel .item img');
+            imgs.on('load', (ev) => {
+                positionCarouselImg(ev.currentTarget);
+                setTimeout(() => positionCarouselImg(ev.currentTarget), 1000);
+            });
+        };
+        resizeVerticalImagesInCarousel();
+
+        // setTimeout(resizeVerticalImagesInCarousel, 1000);
+        // setTimeout(resizeVerticalImagesInCarousel, 3000);
+        // setTimeout(resizeVerticalImagesInCarousel, 5000);
+
+        let isInViewport = function (el) {
+            let elementTop = $(el).offset().top;
+            let elementBottom = elementTop + $(el).outerHeight();
+            let viewportTop = $(window).scrollTop();
+            let viewportBottom = viewportTop + $(window).height();
+            let height = $(el).height;
+            return elementBottom <= viewportBottom && elementTop >= viewportTop;
+        };
+
+        let cyclingCarousels = {};
+        $(window).on('resize scroll', function () {
+            let carousels = $('.carousel');
+            for (let i = 0; i < carousels.length; i++) {
+                let carousel = carousels[i];
+                if (isInViewport(carousel)) {
+                    if (!cyclingCarousels[$(carousel).prop('id')]) {
+                        $(carousel).carousel('cycle');
+                        cyclingCarousels[$(carousel).prop('id')] = true;
+                    }
+                } else {
+                    $(carousel).carousel('pause');
+                    cyclingCarousels[$(carousel).prop('id')] = false;
+                }
+            }
+        });
+
+        $(window).on('resize', resizeVerticalImagesInCarousel);
+
+        $(".carousel").on("slide.bs.carousel", function (ev) {
+            let lazy;
+            lazy = $(ev.relatedTarget).find("img[data-src]");
+            lazy.attr("src", lazy.data('src'));
+            lazy.attr("srcset", lazy.data('srcset'));
+            lazy.removeAttr("data-src");
+            lazy.removeAttr("data-srcset");
+            lazy.on('load', (ev) => {
+                positionCarouselImg(ev.currentTarget);
+            })
+        });
+    };
+
+    carousel();
+
+    (function (d, s, id) {
+        let js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
