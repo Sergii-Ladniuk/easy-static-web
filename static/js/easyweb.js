@@ -26,15 +26,15 @@ $(function () {
         })
     }
 
-    let carousel = function () {
+    var carousel = function () {
 
-        let contentWidth = $('article').width();
+        var contentWidth = $('article').width();
 
-        let positionCarouselImg = (img) => {
-            let width = img.naturalWidth;
-            let height = img.naturalHeight;
-            let ratioH = height / (contentWidth * 0.66);
-            let ratioW = width / contentWidth;
+        var positionCarouselImg = function (img) {
+            var width = img.naturalWidth;
+            var height = img.naturalHeight;
+            var ratioH = height / (contentWidth * 0.66);
+            var ratioW = width / contentWidth;
             if (ratioH > 1) {
                 width /= ratioH;
             }
@@ -50,11 +50,13 @@ $(function () {
             }
         };
 
-        let resizeVerticalImagesInCarousel = () => {
-            let imgs = $('.carousel .item img');
-            imgs.on('load', (ev) => {
+        var resizeVerticalImagesInCarousel = function () {
+            var imgs = $('.carousel .item img');
+            imgs.on('load', function (ev) {
                 positionCarouselImg(ev.currentTarget);
-                setTimeout(() => positionCarouselImg(ev.currentTarget), 1000);
+                setTimeout(function () {
+                    return positionCarouselImg(ev.currentTarget)
+                }, 1000);
             });
         };
         resizeVerticalImagesInCarousel();
@@ -63,20 +65,20 @@ $(function () {
         // setTimeout(resizeVerticalImagesInCarousel, 3000);
         // setTimeout(resizeVerticalImagesInCarousel, 5000);
 
-        let isInViewport = function (el) {
-            let elementTop = $(el).offset().top;
-            let elementBottom = elementTop + $(el).outerHeight();
-            let viewportTop = $(window).scrollTop();
-            let viewportBottom = viewportTop + $(window).height();
-            let height = $(el).height;
+        var isInViewport = function (el) {
+            var elementTop = $(el).offset().top;
+            var elementBottom = elementTop + $(el).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+            var height = $(el).height;
             return elementBottom <= viewportBottom && elementTop >= viewportTop;
         };
 
-        let cyclingCarousels = {};
+        var cyclingCarousels = {};
         $(window).on('resize scroll', function () {
-            let carousels = $('.carousel');
-            for (let i = 0; i < carousels.length; i++) {
-                let carousel = carousels[i];
+            var carousels = $('.carousel');
+            for (var i = 0; i < carousels.length; i++) {
+                var carousel = carousels[i];
                 if (isInViewport(carousel)) {
                     if (!cyclingCarousels[$(carousel).prop('id')]) {
                         $(carousel).carousel('cycle');
@@ -92,13 +94,13 @@ $(function () {
         $(window).on('resize', resizeVerticalImagesInCarousel);
 
         $(".carousel").on("slide.bs.carousel", function (ev) {
-            let lazy;
+            var lazy;
             lazy = $(ev.relatedTarget).find("img[data-src]");
             lazy.attr("src", lazy.data('src'));
             lazy.attr("srcset", lazy.data('srcset'));
             lazy.removeAttr("data-src");
             lazy.removeAttr("data-srcset");
-            lazy.on('load', (ev) => {
+            lazy.on('load', function (ev) {
                 positionCarouselImg(ev.currentTarget);
             })
         });
@@ -107,7 +109,7 @@ $(function () {
     carousel();
 
     (function (d, s, id) {
-        let js, fjs = d.getElementsByTagName(s)[0];
+        var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s);
         js.id = id;
