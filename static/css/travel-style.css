@@ -125,7 +125,6 @@ ol.carousel-indicators {
 
 ol.carousel-indicators > li {
     counter-increment: none;
-    /*box-shadow: 0 0 4px 2px rgba(238,238,238,0.2);*/
 }
 
 ol.carousel-indicators > li:before {
@@ -148,10 +147,6 @@ ol.carousel-indicators > li:before {
     float: right;
     margin: 15px 15px 15px 0;
 }
-
-/*.jump-thumbnail150 + p {*/
-/*clear: both;*/
-/*}*/
 
 .post div.lazy-load {
     margin: 10px 0 10px 0;
