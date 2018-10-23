@@ -3,6 +3,7 @@ Disallow: /1/
 Disallow: /logs/
 Disallow: /category/
 Disallow: /page/
+Disallow: /tag/
 Disallow: *?* 
 Host: marinatravelblog.com
 Sitemap: http://marinatravelblog.com/sitemap.xml
