@@ -114,10 +114,12 @@ li ol > li:before {
 
 ol.carousel-indicators {
     list-style-type: none;
+    margin-bottom: 0.5em;
 }
 
 ol.carousel-indicators > li {
     counter-increment: none;
+    /*box-shadow: 0 0 4px 2px rgba(238,238,238,0.2);*/
 }
 
 ol.carousel-indicators > li:before {
