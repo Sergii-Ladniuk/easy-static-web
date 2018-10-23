@@ -314,17 +314,6 @@ a {
     text-align: right;
 }
 
-#banner {
-    width: 100%;
-    padding-bottom: 15%;
-    margin-bottom: -0.5em;
-}
-
-#banner-holder {
-    background-position: center;
-    background-size: cover;
-}
-
 #mainMenu {
     border-top: none;
     border-left: none;
@@ -381,24 +370,6 @@ cite {
     border-top: solid rgba(0,49,79,.3) ;
 }
 
-#banner-holder {
-    background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner.jpg);
-}
-@media only screen and (max-width: 600px) {
-    #banner-holder {
-        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-md.jpg)
-    }
-}
-@media only screen and (max-width: 350px) {
-    #banner-holder {
-        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-sm.jpg)
-    }
-}
-@media only screen and (min-width: 1440px) {
-    #banner-holder {
-        background-image: url(http://local.marinatravelblog.com:4000/img/Valley-of-fire-banner-w1920.jpg)
-    }
-}
 @media only screen and (max-width: 768px) {
     body {
         font-size: 20px;
