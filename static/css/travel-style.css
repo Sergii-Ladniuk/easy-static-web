@@ -41,7 +41,6 @@ a.youtube {
 }
 
 img {
-    /*max-height: 100%;*/
     height: auto;
     max-width: 100%;
 }
@@ -166,10 +165,6 @@ ol.carousel-indicators > li:before {
     width: 100%;
 }
 
-/*.sidebar .widget:first-of-type {*/
-/*margin-top: 120px;*/
-/*}*/
-
 .widget-header {
     font-weight: bold;
     text-align: center;
@@ -193,10 +188,8 @@ ul.nav > li:hover {
 }
 
 .tag-cloud a {
-    /*word-wrap: break-word;*/
     display: inline-block;
     margin: 0.2em;
-    /*float: left;*/
 }
 
 .related-posts .header {
@@ -265,16 +258,6 @@ a {
     float: none;
 }
 
-/*.navbar.affix {*/
-/*opacity: 1;*/
-/*}*/
-/*.navbar.affix a {*/
-/*opacity: 1;*/
-/*}*/
-/*.navbar.affix-top {*/
-/*opacity: 1;*/
-/*}*/
-
 .email-input-sidebar {
     width: 90%;
     margin: auto;
@@ -294,11 +277,6 @@ a {
 
 .btn-default {
     color: whitesmoke;
-}
-
-/* a button for collapsing navbar */
-#toggle-menu {
-    /*width: 140px;*/
 }
 
 .copyright > a {
@@ -441,16 +419,11 @@ cite {
 .carousel-control span {
     padding-top: 200%;
     font-size: 5em;
-    /*vertical-align: middle;*/
 }
 
 .carousel-control.left, .carousel-control.right {
     background-image: none
 }
-
-/*.subscribe-link + .subscribe-link {*/
-    /*margin-left: 0.5em;*/
-/*}*/
 
 .subscribe-block {
     margin-top: 1em;

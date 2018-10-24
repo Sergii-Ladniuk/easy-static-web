@@ -75,3 +75,7 @@ function run(fromMemory) {
 }
 
 exports.run = run;
+
+if (argv.run) {
+    run();
+}

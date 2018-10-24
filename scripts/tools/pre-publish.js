@@ -94,16 +94,16 @@ function prePublish() {
             return Promise.join(
                 generateCriticalCss({
                     base: settings.path.public._,
-                    src: 'peru-laguna-69-huaraz/index.html',
+                    src: 'ekvador-ozero-kilotoa-quilotoa/index.html',
                     dimensions: [{
                         width: 1300,
-                        height: 900
+                        height: 600
                     }, {
                         width: 320,
                         height: 640
                     }, {
                         width: 1600,
-                        height: 800
+                        height: 600
                     }],
                     minify: true
                 }),
