@@ -3,6 +3,7 @@
 const mainModule = require('../general.js');
 const path = require('path');
 const fs = mainModule.fs;
+const sharp = require('sharp');
 const gm = mainModule.gm;
 const util = require('util');
 const ncp = Promise.promisify(require('ncp').ncp);
@@ -21,15 +22,6 @@ gmSemaphor.takeAsync = function () {
     });
 };
 
-//gmSemaphor.takeAsync = function () {
-//    return new Promise(function (done) {
-//        done();
-//    });
-//}
-//gmSemaphor.leave = function () {
-//
-//}
-
 var imgDone = 0;
 function reportDoneImage() {
     imgDone++;
@@ -40,7 +32,7 @@ function reportDoneImage() {
 
 var compressing = {};
 
-function compress(fullFileName, gmAsync, sizes, settings, actualWidth) {
+function resize(fullFileName, sizes, settings, actualWidth) {
     if (!compressing[fullFileName]) {
         compressing[fullFileName] = true;
     } else {
@@ -65,18 +57,26 @@ function compress(fullFileName, gmAsync, sizes, settings, actualWidth) {
             if (!exists) {
                 var promise;
 
-                if (actualWidth > sizes[sizeLevel])
+                if (actualWidth >= sizes[sizeLevel])
                     promise = gmSemaphor.takeAsync()
                         .then(function () {
-                            return gmAsync
-                                .resize(sizes[sizeLevel])
-                                .quality(100)
-                                .writeAsync(outputFilePath);
+                            return new Promise((done, fail) => {
+                                sharp(srcPath)
+                                    .resize(sizes[sizeLevel])
+                                    .toFile(outputFilePath, err => {
+                                        if (err) {
+                                            console.log('Error during img resizing', err);
+                                            fail(err)
+                                        } else {
+                                            console.log('Image saved to ' + outputFilePath)
+                                            done()
+                                        }
+                                    })
+                            });
                         });
                 else {
                     promise = gmSemaphor.takeAsync()
                         .then(function () {
-                            //console.log('compress copy', srcPath, outputFilePath);
                             return ncp(srcPath, outputFilePath);
                         })
                         .delay(500)
@@ -103,11 +103,9 @@ function compress(fullFileName, gmAsync, sizes, settings, actualWidth) {
             } else {
                 return true;
             }
-        })
+        });
 
         compressTasks.push(compressPromise);
-
-
     });
 
     return Promise.all(compressTasks);
@@ -119,30 +117,14 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
     var settings = data.settings || data.basic.settings;
     var filePath = path.join(settings.path.static.img, fileName);
     var gmAsync = Promise.promisifyAll(gm(filePath));
+    var srcPath = path.join(settings.path.static.img, fileName);
+    var outputFilePath = path.join(settings.path.public.img, fileName);
+    var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
     return gmSemaphor.takeAsync()
         .then(function () {
             return gmAsync.sizeAsync()
         })
-        .catch(function (err) {
-            console.log(err);
-            var srcPath = path.join(settings.path.static.img, fileName);
-            var outputFilePath = path.join(settings.path.public.img, fileName);
-            var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
-            console.log('process copy', srcPath, outputFilePath);
-            console.log('process copy', srcPath, outputFilePathProd);
-            ncp(srcPath, outputFilePath).catch(function (err) {
-                console.log('process copy error', srcPath, outputFilePath, err);
-            });
-            //ncp(srcPath, outputFilePathProd).catch(function (err) {
-            //    console.log('process copy error', srcPath, outputFilePathProd, err);
-            //});
-            imageInfo.images[fileName] = {
-                mtime: new Date(),
-                html: false,
-                err: err
-            };
-            return null;
-        })
+        .catch(err => handleImgProcessError(err, srcPath, outputFilePath, outputFilePathProd))
         .then(function (size) {
             gmSemaphor.leave();
 
@@ -156,7 +138,7 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
             var css = processCss(size, imageInfo);
 
             if (size.width > sizes.sm + 100) {
-                compress(fileName, gmAsync, sizes, settings, size.width);
+                resize(fileName, sizes, settings, size.width);
 
                 var parsed = path.parse(fileName);
 
@@ -176,9 +158,6 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
 
                 return html;
             } else {
-                var srcPath = path.join(settings.path.static.img, fileName);
-                var outputFilePath = path.join(settings.path.public.img, fileName);
-                var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
                 console.log('copy', srcPath, outputFilePath);
                 console.log('copy', srcPath, outputFilePathProd);
                 ncp(srcPath, outputFilePath);
@@ -192,6 +171,21 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
             }
 
         })
+}
+
+function handleImgProcessError(err, srcPath, outputFilePath, outputFilePathProd) {
+    console.log(err);
+    console.log('process copy', srcPath, outputFilePath);
+    console.log('process copy', srcPath, outputFilePathProd);
+    ncp(srcPath, outputFilePath).catch(function (err) {
+        console.log('process copy error', srcPath, outputFilePath, err);
+    });
+    imageInfo.images[fileName] = {
+        mtime: new Date(),
+        html: false,
+        err: err
+    };
+    return null;
 }
 
 function processCss(size, imageInfo) {
@@ -283,44 +277,5 @@ function listImages(data) {
     var imgFolder = data.settings.path.static.img;
     return general.util.listFiles(imgFolder);
 }
-
-exports.removeUseless = function (data) {
-    //var imageInfo = data.imageInfo || data.basic.imageInfo;
-    //var imgFolder = data.settings.path.static.img;
-    //var unusedFolder = path.join(imgFolder, 'unused');
-    //var usedFolderJpg = path.join(imgFolder, 'used-jpg');
-    //var usedFolderOther = path.join(imgFolder, 'used-other');
-    //var postFinder = findit(imgFolder);
-    //var imgFolderPublic = data.settings.path.static.img;
-    //
-    //var tasks = [];
-    //
-    //var dirs = [
-    //    mkdirp(unusedFolder),
-    //    mkdirp(usedFolderJpg),
-    //    mkdirp(usedFolderOther)
-    //];
-    //return Promise.all(dirs)
-    //    .then(function () {
-    //        return Promise.map(listImages(data), function (filePath) {
-    //            var name = path.basename(filePath);
-    //            var ext = path.extname(filePath);
-    //            var promise;
-    //            if (!imageInfo.images[name]) {
-    //                promise = ncp(filePath, path.join(unusedFolder, name))
-    //            } else {
-    //                if (ext === '.jpg') {
-    //                    promise = ncp(filePath, path.join(usedFolderJpg, name))
-    //                } else {
-    //                    promise = ncp(filePath, path.join(usedFolderOther, name))
-    //                }
-    //            }
-    //            return promise;
-    //        }, {concurrency: 5});
-    //    })
-    //    .then(function () {
-    //        console.log('remove unused img done');
-    //    })
-};
 
 exports.handleImg = handleImg;

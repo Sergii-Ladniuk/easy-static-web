@@ -84,9 +84,6 @@ function doRender(data) {
 function afterRender(data) {
     return respImgs.saveImgInfo(data)
         .then(function () {
-            return respImgs.removeUseless(data)
-        })
-        .then(function () {
             data.list.forEach(function (post) {
                 delete post.categoriesEx;
                 delete post.tagsEx;

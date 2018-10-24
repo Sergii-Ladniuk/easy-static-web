@@ -1,17 +1,22 @@
-var node_ssh = require('node-ssh'),
+let node_ssh = require('node-ssh'),
     ssh = new node_ssh();
-var parseArgs = require('minimist');
-var argv = parseArgs(process.argv.slice(2));
-var run = argv.r || argv.run;
-var msg = argv.m || argv.msg;
-var settings = require('../settings').loadSync();
+let parseArgs = require('minimist');
+let argv = parseArgs(process.argv.slice(2));
+let run = argv.r || argv.run;
+let msg = argv.m || argv.msg;
+let settings = require('../settings').loadSync();
+let ImageUploader = require('./img-upload');
 
 
-var deploy = module.exports = function (msg) {
+let deploy = module.exports = function (msg) {
     msg = msg || 'update';
-    return commitAndPush(msg).then(function () {
-        return updateRemoteServer();
-    });
+
+    let imageUploader = new ImageUploader(settings);
+
+    return Promise.join(commitAndPush(msg), imageUploader.uploadImgs())
+        .then(function () {
+            return updateRemoteServer();
+        });
 };
 
 if (run) {
