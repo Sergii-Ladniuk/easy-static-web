@@ -6,6 +6,8 @@ var previewBuilder = require('./previewBuilder');
 var newPost = require('../new-post');
 var runProcesses = require('./runProcesses');
 
+const PostPublishService = require('../tools/publish-post');
+
 function bind(app) {
     app.get('/list', function (req, res) {
         var list = rest.list();
@@ -41,17 +43,19 @@ function bind(app) {
 
     app.post('/publish', function(req,res) {
         const post = req.body.post;
-        var cmds = [
-            {
-                cmd: 'grunt',
-                args: ['publish-deploy', '--msg="' + req.body.msg + '"']
-            },
-            {
-                cmd: 'git',
-                args: ['clean', '-f']
-            }
-        ];
-        var result = runProcesses(cmds, settings.path.content);
+        const postPublishService = new PostPublishService(settings);
+
+        let promise;
+
+        if (post.meta.draft) {
+            promise = postPublishService.publish(post.meta.slug);
+        } else {
+            promise = postPublishService.runDeploy();
+        }
+
+        promise
+            .then(out => res.status(200).send(out))
+            .catch(err => res.status(500).send(err));
     });
 
     app.get('/preview/:post', function (req, res) {

@@ -7,6 +7,10 @@ eswEditor.controller('TopPanelActionsController', function ($scope, $http, $loca
         }, 2000)
     }
 
+    function afterDeploy(res) {
+        alert(res.data + '\nPlease refresh the browser window now.');
+    }
+
     $scope.revert = function () {
         $http.post('/revert').then(gitCommandCallback);
     };
