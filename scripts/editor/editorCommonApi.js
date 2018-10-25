@@ -6,6 +6,7 @@ var previewBuilder = require('./previewBuilder');
 var newPost = require('../new-post');
 var runProcesses = require('./runProcesses');
 
+const settings = require('../settings').loadSync();
 const PostPublishService = require('../tools/publish-post');
 
 function bind(app) {
@@ -42,7 +43,8 @@ function bind(app) {
     });
 
     app.post('/publish', function(req,res) {
-        const post = req.body.post;
+        const post = req.body;
+
         const postPublishService = new PostPublishService(settings);
 
         let promise;

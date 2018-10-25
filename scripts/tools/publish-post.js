@@ -83,7 +83,7 @@ class PostPublishService {
     }
 }
 
-exports = PostPublishService;
+module.exports = PostPublishService;
 
 if (argv.run) {
     let post = argv.post;

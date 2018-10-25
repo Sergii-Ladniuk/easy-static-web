@@ -33,6 +33,7 @@ eswEditor.controller('TopPanelActionsController', function ($scope, $http, $loca
                 }
             }
         }).result.then(function (title) {
+            console.log(PostEditorService.post);
             $http.post('/publish', PostEditorService.post).then(gitCommandCallback);
         });
     };
