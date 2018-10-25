@@ -57,8 +57,14 @@ function bind(app) {
         }
 
         promise
-            .then(out => res.status(200).send(out))
-            .catch(err => res.status(500).send(err));
+            .then(out => {
+                console.log(out);
+                return res.status(200).send(out);
+            })
+            .catch(err => {
+                console.log(err);
+                return res.status(500).send(err);
+            });
     });
 
     app.get('/preview/:post', function (req, res) {
