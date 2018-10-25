@@ -1,6 +1,15 @@
 eswEditor.factory('PostEditorService', function ($http) {
-    var shouldSave, savingNow;
+    var shouldSave, savingNow, publishingNow;
     return {
+        publishStart: function() {
+          publishingNow = true;
+        },
+        publishDone: function() {
+          publishingNow = false;
+        },
+        isPublishing: function() {
+          return publishingNow;
+        },
         save: function save(post) {
             if (savingNow) {
                 shouldSave = true;

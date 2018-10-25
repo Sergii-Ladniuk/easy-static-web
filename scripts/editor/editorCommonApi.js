@@ -44,12 +44,13 @@ function bind(app) {
 
     app.post('/publish', function(req,res) {
         const post = req.body;
+        const publishDraft = req.query.publishDraft;
 
         const postPublishService = new PostPublishService(settings);
 
         let promise;
 
-        if (post.meta.draft) {
+        if (post.meta.draft && publishDraft) {
             promise = postPublishService.publish(post.meta.slug);
         } else {
             promise = postPublishService.runDeploy();

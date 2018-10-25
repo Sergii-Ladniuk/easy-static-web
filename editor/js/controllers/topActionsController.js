@@ -7,10 +7,6 @@ eswEditor.controller('TopPanelActionsController', function ($scope, $http, $loca
         }, 2000)
     }
 
-    function afterDeploy(res) {
-        alert(res.data + '\nPlease refresh the browser window now.');
-    }
-
     $scope.revert = function () {
         $http.post('/revert').then(gitCommandCallback);
     };
@@ -20,22 +16,13 @@ eswEditor.controller('TopPanelActionsController', function ($scope, $http, $loca
     $scope.commit = function () {
         $http.post('/commit-git', {message: $scope.commitMessage}).then(gitCommandCallback);
     };
-    $scope.publish = function () {
-        $uibModal.open({
-            templateUrl: '/views/single-entry-field-window.html',
-            controller: 'EditOneFieldController',
-            resolve: {
-                args: function () {
-                    return {
-                        title: 'Publish',
-                        placeholder: 'Commit message...'
-                    };
-                }
-            }
-        }).result.then(function (title) {
-            console.log(PostEditorService.post);
-            $http.post('/publish', PostEditorService.post).then(gitCommandCallback);
-        });
+    $scope.publish = function (publishDraft) {
+        PostEditorService.publishStart();
+        $http.post('/publish?publishDraft='+publishDraft, PostEditorService.post)
+          .then(function (res) {
+              PostEditorService.publishDone();
+              alert(res.data + '\nPlease refresh the browser window now.');
+          });
     };
 
     $scope.newPost = function (type) {
