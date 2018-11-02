@@ -67,9 +67,14 @@ img {
     margin: 1.5em 0 1.5em 0;
 }
 
+.post .carousel img, .post .carousel div {
+    margin: 0;
+}
+
 .lazy-load, .post img, .post div {
-    display: block;
-    margin: 1.5em 0 1.5em 0;
+    /* post carousel issue? */
+     display: block;
+     margin: 1.5em 0 1.5em 0;
 }
 
 iframe.youtube {
@@ -397,7 +402,7 @@ cite {
 }
 
 .post .carousel{
-    margin: 0;
+    /* margin: 0; */
 }
 
 .post .carousel .carousel-inner {
@@ -405,15 +410,22 @@ cite {
     margin-bottom: -10px;
 }
 
-.carousel .item{
+.img-carousel .item{
     padding-bottom: 66%;
+}
+
+.post-carousel {
+}
+
+.carousel .item {
     height: 0;
 }
-.carousel .item img{
-    margin: 0 auto;
-    max-height: 100%;
-    position: absolute;
-    left: 0;
+
+.img-carousel .item img{
+     margin: 0 auto;
+     max-height: 100%;
+     position: absolute;
+     left: 0;
 }
 
 .carousel-control span {

@@ -8,6 +8,8 @@ var util = require('util');
 
 var respImgs = require('../render-all/responsive-imgs');
 
+let EmbedService = require('./process-embeds');
+
 function renderer(data) {
     var settings = data.basic.settings;
     var renderer = new marked.Renderer();
@@ -69,6 +71,10 @@ function renderer(data) {
     };
 
     renderer.link = function (href, title, text) {
+        if ((href.includes('youtube') || href.includes('youtu.be') || href.includes('dailymotion.com')) && href === text) {
+            return href;
+        }
+
         href = fixUrl(href);
 
         if (!/\/$/.test(href) && /local.marinatravelblog.com/.test(href))
@@ -99,8 +105,8 @@ var parseMore = function (post, settings) {
         if (!post.meta['no-more']) {
             if (!post.meta.draft
                 && (settings.generate['mandatory-more']
-                || settings.generate['mandatory-more-limit']
-                && settings.generate['mandatory-more-limit'] < post.markdown.length)) {
+                    || settings.generate['mandatory-more-limit']
+                    && settings.generate['mandatory-more-limit'] < post.markdown.length)) {
                 throw new Error(msg)
             }
             else {
@@ -141,43 +147,14 @@ module.exports = function (data) {
 };
 
 function handleEmbeds(data) {
-    return data.basic.renderBlockingPromise.then(function (promises) {
-            return promises.embedTemplates;
-        })
-        .then(function (embed) {
-            var post = data.target;
-            var toReplace = [];
-            var tasks = [];
-            embed.forEach(function (templateDef) {
-                var match;
-                while (match = templateDef.regexp.exec(post.markdown)) {
-                    var item = match[0];
-                    var attrsRaw = match[1];
+    let post = data.target;
+    let text = post.markdown;
+    let replace = (src, dst) => post.markdown = post.markdown.replace(src, dst);
 
-                    var attrRegex = /(.*)?=\"(.*?)\"/g;
-                    var attrMatch;
-                    var attrs = {};
-                    while (attrMatch = attrRegex.exec(attrsRaw)) {
-                        var name = attrMatch[1];
-                        var val = attrMatch[2];
-                        attrs[name] = val;
-                    }
+    return processEmbeds(data, text, replace);
+}
 
-                    var nextReplacement = templateDef.template.then(function (template) {
-                        return {
-                            src: item,
-                            dest: typeof template === 'function' ? template(attrs) : template
-                        };
-                    });
-                    toReplace.push(nextReplacement);
-                }
-                var promise = Promise.map(toReplace, function (next) {
-                    post.markdown = post.markdown.replace(next.src, next.dest);
-                });
-                tasks.push(Promise.all(promise));
-            });
-            return Promise.all(tasks).then(function () {
-                return data;
-            })
-        })
+function processEmbeds(data, text, replace) {
+    // do nothings, embeds are processed after rendering
+    return Promise.resolve(data);
 }

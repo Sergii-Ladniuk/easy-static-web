@@ -1,0 +1,42 @@
+- posts = posts.filter(function(p) { return !category || p.meta.categories && p.meta.categories.includes(category)})
+- cols = parseInt(cols)
+- var i = 0
+- carousel_id = 'post-carousel-'+index
+- steps = posts.length / cols
+
+div.carousel.post-carousel.slide(data-ride='carousel', id=carousel_id, data-interval=500000)
+    ol.carousel-indicators
+        - var j = 0
+        while j < steps
+            - active = 'none'
+            if (j === 0)
+                - active = 'active'
+            li(data-target='#' + carousel_id, data-slide-to=j, class=active)
+            - j++
+
+    div.carousel-inner(role='listbox')
+        while i < posts.length
+            - var count = Math.min(cols, posts.length - i)
+            - active = ''
+            if (i === 0)
+                - active = 'active'
+            div.item(class=active)
+                div
+                    - var j = 0
+                        while j < count
+                            - var post = posts[i+j]
+                            .col-md-4
+                                img(src=post.meta.img, alt=post.meta.title).d-block.w-100
+                                span
+                                    | !{post.meta.title}
+                            - j++
+            - i = i + cols
+
+    a.left.carousel-control(href="#" + carousel_id, role="button", data-slide="prev")
+        span.fa.fa-angle-left(area-hidden='true')
+        span.sr-only
+            | Previous
+    a.right.carousel-control(href="#" + carousel_id, role="button", data-slide="next")
+        span.fa.fa-angle-right(area-hidden='true')
+        span.sr-only
+            | Previous

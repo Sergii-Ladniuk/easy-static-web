@@ -35,6 +35,7 @@ function mergeTags(a, b) {
             var dest = hash[i.name].posts;
             var src = i.posts;
             hash[i.name].posts = mergeOrdered(dest, src, compareByDate);
+            hash[i.name].landing = hash[i.name].landing || i.landing;
         }
     })
 }
@@ -81,10 +82,10 @@ if (typeof describe === 'undefined') describe = function () {
 describe("merge-post-all function :", function () {
 
     // posts simplified:
-    var p4 = {meta: {name: '4', date: new Date(2011, 10, 03)}};
-    var p3 = {meta: {name: '3', date: new Date(2012, 10, 03)}};
-    var p2 = {meta: {name: '2', date: new Date(2013, 11, 01)}};
-    var p1 = {meta: {name: '1', date: new Date(2014, 11, 01)}};
+    var p4 = {meta: {name: '4', date: new Date(2011, 10, 3)}};
+    var p3 = {meta: {name: '3', date: new Date(2012, 10, 3)}};
+    var p2 = {meta: {name: '2', date: new Date(2013, 11, 1)}};
+    var p1 = {meta: {name: '1', date: new Date(2014, 11, 1)}};
 
     var a = {
         common: {

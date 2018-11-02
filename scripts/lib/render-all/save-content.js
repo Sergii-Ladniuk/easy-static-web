@@ -78,11 +78,8 @@ function saveContent(data, htmlPromise, index, folder, ext, fileName) {
                 }
             }).then(function (dir) {
                 indexPath = path.join(dir, fileName + '.' + ext);
-                console.log("Saving " + indexPath);
-                //FIXME!!
-                return fs.writeFileAsync(indexPath, html2save
-                    //.replace(/localhost/g, '192.168.0.6')
-                );
+                // console.log("Saving " + indexPath);
+                return fs.writeFileAsync(indexPath, html2save);
             }).then(function () {
                 saveContentDone();
             }).catch(function(err) {

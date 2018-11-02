@@ -9,84 +9,114 @@ var os = require('os');
 var newline = os.EOL;
 var util = require('util');
 var equal = require('deep-equal');
+var dateFormat = require('dateformat');
+
+function getCategoryData(target) {
+    if (target.meta.type === 'post') {
+        return target.meta.categories.map(function (category) {
+            return {
+                name: category.toLowerCase(),
+                posts: [target]
+            }
+        });
+    }
+    if (target.meta.type === 'category') {
+        return target.meta.categories.map(function (category) {
+            return {
+                name: category.toLowerCase(),
+                landing: target,
+                posts: []
+            }
+        });
+    }
+    return [];
+}
+
+function getTagsData(target) {
+    return target.meta.type === 'page' ? [] : target.meta.tags.map(function (tag) {
+        return {
+            name: tag.toLowerCase().replace(/ +/g, '-'),
+            posts: [target]
+        }
+    });
+}
+
+function processPublishedDate(target) {
+    if (target.meta.publishedDate) {
+        try {
+            if (typeof target.meta.publishedDate === 'string') {
+                target.meta.publishedDate = new Date(target.meta.publishedDate);
+            }
+            target.meta.showDate = daysBetween(target.meta.publishedDate, new Date()) < 90;
+        } catch (err) {
+            console.error('publishedDate has wrong format:', target.meta.publishedDate);
+            throw err;
+        }
+    }
+}
+
+function processModifiedDate(target) {
+    if (target.meta.modifiedDate) {
+        try {
+            if (typeof target.meta.modifiedDate === 'string') {
+                target.meta.modifiedDate = new Date(target.meta.modifiedDate);
+            }
+            target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
+        } catch (err) {
+            console.error('modifiedDate has wrong format:', target.meta.modifiedDate);
+            throw err;
+        }
+        target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
+    }
+}
+
+function processMeta(target) {
+    if (!target.meta) {
+        var parsedData = mm(target.text);
+        extend(true, target, parsedData);
+    }
+
+
+    if (!target.meta.slug) {
+        throw  new Error("No slug specified for " + target.path + " " + target.name)
+    }
+
+    target.meta.categories = arrayifyIfString(target.meta.categories);
+    target.meta.tags = arrayifyIfString(target.meta.tags);
+
+    target.meta.seo = target.meta.seo ? extend({}, target.meta.seo) : {};
+    target.meta.seo.keywords = target.meta.seo.keywords || '';
+    target.meta.seo.keywords = parseArray('' + target.meta.seo.keywords);
+
+    if (!target.meta.shortLink || !/\?(.*)/.test(target.meta.shortLink)) {
+        target.meta.shortLink = target.meta.link;
+        target.meta.id = target.meta.slug;
+    } else {
+        target.meta.id = /\?(.*)/.exec(target.meta.shortLink)[1];
+        var regExp = /page_id=(.*)/;
+        if (regExp.test(target.meta.id)) {
+            target.meta.id = target.meta.id.replace(regExp, '$1');
+        }
+    }
+
+    target.meta['featured-tag'] = slugifyAll(arrayifyIfString(target.meta['featured-tag']));
+    target.meta['featured-category'] = toLowerAll(arrayifyIfString(target.meta['featured-category']));
+
+    target.meta.link = 'http://local.marinatravelblog.com:4000/' + target.meta.slug + '/';
+}
 
 var processMetadata = function (data) {
 
     try {
         var target = data.target;
 
-        if (!target.meta) {
-            var parsedData = mm(target.text);
-            extend(true, target, parsedData);
-        }
-
-
-        if (!target.meta.slug) {
-            throw  new Error("No slug specified for " + target.path + " " + target.name)
-        }
-
-        target.meta.categories = arrayifyIfString(target.meta.categories);
-        target.meta.tags =  arrayifyIfString(target.meta.tags);
-
-        target.meta.seo = target.meta.seo ? extend({}, target.meta.seo) : {};
-        target.meta.seo.keywords = target.meta.seo.keywords || '';
-        target.meta.seo.keywords = parseArray(''+target.meta.seo.keywords);
-
-        if (!target.meta.shortLink || !/\?(.*)/.test(target.meta.shortLink)) {
-            target.meta.shortLink = target.meta.link;
-            target.meta.id = target.meta.slug;
-        } else {
-            target.meta.id = /\?(.*)/.exec(target.meta.shortLink)[1];
-            var regExp = /page_id=(.*)/;
-            if (regExp.test(target.meta.id)) {
-                target.meta.id = target.meta.id.replace(regExp, '$1');
-            }
-        }
-
-        target.meta['featured-tag'] = slugifyAll(arrayifyIfString(target.meta['featured-tag']));
-        target.meta['featured-category'] = toLowerAll(arrayifyIfString(target.meta['featured-category']));
-
-        target.meta.link = 'http://local.marinatravelblog.com:4000/' + target.meta.slug + '/';
-
-        if (target.meta.publishedDate) {
-            try {
-                if (typeof target.meta.publishedDate === 'string') {
-                    target.meta.publishedDate = new Date(target.meta.publishedDate);
-                }
-                target.meta.showDate = daysBetween(target.meta.publishedDate, new Date()) < 90;
-            } catch(err) {
-                console.error('publishedDate has wrong format:', target.meta.publishedDate);
-                throw err;
-            }
-        }
-
-        if (target.meta.modifiedDate) {
-            try {
-                if (typeof target.meta.modifiedDate === 'string') {
-                    target.meta.modifiedDate = new Date(target.meta.modifiedDate);
-                }
-                target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
-            } catch(err) {
-                console.error('modifiedDate has wrong format:', target.meta.modifiedDate);
-                throw err;
-            }
-            var dateFormat = require('dateformat');
-            target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
-        }
+        processMeta(target);
+        processPublishedDate(target);
+        processModifiedDate(target);
 
         extend(data.common, {
-            categories: target.meta.type === 'page' ? [] : target.meta.categories.map(function (category) {
-                return {
-                    name: category.toLowerCase(),
-                    posts: [target]
-                }
-            }),
-            tags: target.meta.type === 'page' ? [] : target.meta.tags.map(function (tag) {
-                return {
-                    name: tag.toLowerCase().replace(/ +/g, '-'),
-                    posts: [target]
-                }
-            }),
+            categories: getCategoryData(target),
+            tags: getTagsData(target),
             list: [target]
         });
 
@@ -123,7 +153,7 @@ function slugifyAll(arr) {
 }
 
 function toLowerAll(arr) {
-    return !arr || !arr.length ? [] : arr.map(function(item) {
+    return !arr || !arr.length ? [] : arr.map(function (item) {
         return item.toLowerCase();
     })
 }
@@ -205,10 +235,6 @@ describe("process-metadata :", function () {
                 text = txt;
                 givenTarget.text = txt;
             })
-        //.then(general.fs.readFileAsync(path.join(__dirname, "samples", "sample-html-output.md"), "utf-8"))
-        //.then(function( txt){
-        //    expectedTarget.html = txt;
-        //}) ;
     });
 
 
@@ -218,10 +244,10 @@ describe("process-metadata :", function () {
         // then
         resultData.common.categories = resultData.common.categories.map(function (category) {
             return category.name;
-        })
+        });
         resultData.common.tags = resultData.common.tags.map(function (tag) {
             return tag.name;
-        })
+        });
         resultData.should.deepEqual(expectedData);
     })
 });

@@ -20,12 +20,23 @@ module.exports = function (data) {
     var tasks = [];
 
     data.categories.forEach(function (category) {
-        var f = renderIndexFunction(
-            pageSize,
-            category.path
-                ? path.join('category', category.path[0], category.path[1])
-                : path.join('category', category.niceName));
-        var promise = f(data, category.posts);
+        let promise;
+
+        if (category.landing && !category.landing.meta.draft) {
+            console.log(category.landing.meta);
+            let src = path.join(data.settings.path.public._, category.landing.meta.slug, 'index.html');
+            let dest = path.join(data.settings.path.public._, getCategoryPath(category), 'index.html');
+            console.log(src);
+            console.log(dest);
+            promise = fs.copyFileAsync(src, dest)
+                .then(_ => fs.unlinkAsync(src));
+        } else {
+            var f = renderIndexFunction(
+                pageSize,
+                getCategoryPath(category));
+            promise = f(data, category.posts);
+        }
+
 
         tasks.push(promise);
     });
@@ -41,6 +52,12 @@ module.exports = function (data) {
     return Promise.all(tasks);
 };
 
+
+function getCategoryPath(category) {
+    return category.path
+        ? path.join('category', category.path[0], category.path[1])
+        : path.join('category', category.niceName);
+}
 
 // tests
 

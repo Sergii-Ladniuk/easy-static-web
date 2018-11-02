@@ -13,6 +13,7 @@ var renderRss = require('./render-rss');
 var respImgs = require('../render-all/responsive-imgs');
 var sitemapRenderer = require('./render-sitemap');
 var processCategoriesAndTags = require('./before-render/process-categories-and-tags');
+let EmbedService = require('../get-post-data/process-embeds');
 
 module.exports = function (data) {
     return beforeRender(data)
@@ -21,11 +22,26 @@ module.exports = function (data) {
 };
 
 function beforeRender(data) {
-    return waitForDataCollectionDone(data)
+    return handleEmbeds(data)
+        .then(waitForDataCollectionDone)
         .then(processCategoriesAndTags)
         .then(processMenu)
         .then(waitForSeoGeneral)
         .then(renderWidgets)
+}
+
+function handleEmbeds(data) {
+    return Promise.map(data.list, post => {
+            let text = post.html;
+            let replace = (src, dst) => post.html = post.html.replace(src, dst);
+            return processEmbeds(data, text, replace);
+        })
+        .then(_ => data);
+}
+
+function processEmbeds(data, text, replace) {
+    let embed = new EmbedService(data, text, replace);
+    embed.process();
 }
 
 function waitForSeoGeneral(data) {

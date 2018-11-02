@@ -23,8 +23,9 @@ function postProcessHtml(data, html) {
                 var match;
                 while (match = imgRegex.exec(html)) {
                     var attrs = match[1];
-                    var src = srcRegex.exec(attrs)[1];
-                    if (/local.marinatravelblog.com:4000/.test(src)) {
+                    let srcMatch = srcRegex.exec(attrs);
+                    var src = srcMatch ? srcMatch[1] : null;
+                    if (src && /local.marinatravelblog.com:4000/.test(src)) {
                         var sizeMatch = sizeRegex.exec(attrs);
                         var sizeClass = sizeMatch && sizeMatch[1] ? sizeMatch[1] : '';
                         var altMatch = altRegex.exec(attrs);
@@ -35,10 +36,10 @@ function postProcessHtml(data, html) {
                         (function (oldImgTag, src, alt, title) {
                             var promise = new Promise(function (done) {
                                 responsiveImg.handleImg(data, src, alt, title, {
-                                        lg: 800,
-                                        md: 570,
-                                        sm: 330
-                                    })
+                                    lg: 800,
+                                    md: 570,
+                                    sm: 330
+                                })
                                     .then(function (newImgTag) {
                                         if (newImgTag) {
                                             done({
