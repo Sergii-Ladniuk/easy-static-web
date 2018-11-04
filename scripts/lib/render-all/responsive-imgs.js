@@ -23,6 +23,7 @@ gmSemaphor.takeAsync = function () {
 };
 
 var imgDone = 0;
+
 function reportDoneImage() {
     imgDone++;
     if (imgDone % 100 === 0) {
@@ -43,7 +44,7 @@ function resize(fullFileName, sizes, settings, actualWidth) {
     var fileName = parsedName.name;
     var ext = parsedName.ext;
 
-    ['lg', 'md', 'sm'].forEach(function (sizeLevel) {
+    ['lg', 'md', 'sm', 'xlg'].forEach(function (sizeLevel) {
         var width = sizes[sizeLevel];
         var suffix = '';
         if (sizeLevel !== 'lg') {
@@ -53,7 +54,7 @@ function resize(fullFileName, sizes, settings, actualWidth) {
         var srcPath = path.join(settings.path.static.img, fullFileName);
         var outputFilePath = path.join(settings.path.public.img, fileName + suffix + ext);
 
-        var compressPromise = exists(outputFilePath).then(function(exists) {
+        var compressPromise = exists(outputFilePath).then(function (exists) {
             if (!exists) {
                 var promise;
 
@@ -77,25 +78,20 @@ function resize(fullFileName, sizes, settings, actualWidth) {
                 else {
                     promise = gmSemaphor.takeAsync()
                         .then(function () {
-                            return ncp(srcPath, outputFilePath);
+                            if (sizeLevel !== 'xlg') {
+                                return ncp(srcPath, outputFilePath);
+                            }
                         })
                         .delay(500)
-                        .then(function () {
-                            //console.log('compress copy done', srcPath, outputFilePath);
-                        })
                         .catch(function (err) {
-                            //console.log('compress copy error', srcPath, outputFilePath, err);
+                            console.log('compress copy error', srcPath, outputFilePath, err);
                         });
                 }
 
                 return promise.then(function () {
-                        gmSemaphor.leave();
-                        reportDoneImage();
-                        //console.log('compress copy to prod', outputFilePath, outputFilePathProd);
-                        //return ncp(outputFilePath, outputFilePathProd).catch(function (err) {
-                        //    console.log('compress copy to prod error', outputFilePath, outputFilePathProd, err);
-                        //});
-                    })
+                    gmSemaphor.leave();
+                    reportDoneImage();
+                })
                     .then(function () {
                         return true;
                     });
@@ -112,7 +108,7 @@ function resize(fullFileName, sizes, settings, actualWidth) {
 }
 
 
-function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
+function processImage(data, fileName, alt, title, sizes, imageInfo, template, imageIndex) {
     //console.log('process ', fileName);
     var settings = data.settings || data.basic.settings;
     var filePath = path.join(settings.path.static.img, fileName);
@@ -142,12 +138,16 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template) {
 
                 var parsed = path.parse(fileName);
 
+                var xlg = size.width >= 2000;
+
                 var html = template({
                     file: parsed.name,
                     ext: parsed.ext,
                     title: title,
                     alt: alt,
-                    css: css
+                    css: css,
+                    xlg,
+                    imageIndex
                 });
 
 
@@ -216,7 +216,7 @@ function exists(file) {
         fs.stat(file, function (err, stat) {
             if (err == null) {
                 done(true);
-            } else if (err.code == 'ENOENT') {
+            } else if (err.code === 'ENOENT') {
                 done(false);
             } else {
                 console.error('Unexpected error when check exists: ', err);
@@ -226,7 +226,7 @@ function exists(file) {
     });
 }
 
-function handleImg(data, url, alt, title, sizes) {
+function handleImg(data, url, alt, title, sizes, imageIndex) {
     var settings = data.settings || data.basic.settings;
     var fileName = path.basename(url);
     var srcPath = path.join(settings.path.static.img, fileName);
@@ -246,7 +246,7 @@ function handleImg(data, url, alt, title, sizes) {
                         if (!info || !srcModifiedDate <= info.mtime) {
                             processImage(
                                 data, fileName, alt, title, sizes,
-                                imageInfo, template).then(handleImgDone);
+                                imageInfo, template, imageIndex).then(handleImgDone);
                         } else {
                             handleImgDone(imageInfo.images[fileName].html);
                         }

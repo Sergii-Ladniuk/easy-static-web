@@ -9,7 +9,7 @@ function replaceImgWithCarousel(html, jadeTemplatePromise) {
 }
 
 function doReplaceImgWithCarousel(html, jadeTemplate) {
-    let imgGroupRegexp = /(<p>[^<]*<div style="padding-bottom:[^>]*.*<\/p>[^<]*(<p><\/p>)*){2,}/g;
+    let imgGroupRegexp = /(<p>[^<]*<div style="padding-bottom:[^>]*><img[^>]*>[\n ]*<\/div><\/p>[\n ]*){2,}/g;
     let tasks = [];
     let match;
     let index = 0;
@@ -45,7 +45,7 @@ function parseImages(imgGroup) {
 }
 
 function replaceOne(jadeTemplate, imgs, index) {
-    return jadeTemplate({imgs, index}).replace(/<img/g, "<img class='d-block w-100'");
+    return jadeTemplate({imgs, index});
 }
 
 exports.getReplaceImgWithCarouselTasks = replaceImgWithCarousel;

@@ -69,7 +69,8 @@ function bind(app) {
 
     app.get('/preview/:post', function (req, res) {
         var name = req.params.post;
-        var html = storage.htmls[name] || storage.htmls[path.join(name, 'index.html')];
+        var html = (storage.htmls[name] || storage.htmls[path.join(name, 'index.html')])
+            .replace(/-sm\.jpg/g, '.jpg')
         res.send(html);
     });
 

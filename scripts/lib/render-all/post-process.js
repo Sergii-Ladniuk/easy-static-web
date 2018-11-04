@@ -21,6 +21,7 @@ function postProcessHtml(data, html) {
                 var titleRegex = /alt *= *[\"\'](.*?)[\"\']/;
                 var sizeRegex = /data-size *= *[\"\'](.*?)[\"\']/;
                 var match;
+                var index = 0;
                 while (match = imgRegex.exec(html)) {
                     var attrs = match[1];
                     let srcMatch = srcRegex.exec(attrs);
@@ -34,12 +35,14 @@ function postProcessHtml(data, html) {
                         var title = titleMatch && titleMatch[1] ? titleMatch[1] : '';
 
                         (function (oldImgTag, src, alt, title) {
+                            var imageNumber = index;
                             var promise = new Promise(function (done) {
                                 responsiveImg.handleImg(data, src, alt, title, {
+                                    xlg: 2000,
                                     lg: 800,
                                     md: 570,
                                     sm: 330
-                                })
+                                }, imageNumber)
                                     .then(function (newImgTag) {
                                         if (newImgTag) {
                                             done({
@@ -53,6 +56,8 @@ function postProcessHtml(data, html) {
                             });
                             tasks.push(promise);
                         })(match[0], src, alt, title);
+
+                        index++;
                     }
                 }
                 return tasks;

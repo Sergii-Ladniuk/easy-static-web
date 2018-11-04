@@ -72,10 +72,17 @@ img {
 }
 
 .lazy-load, .post img, .post div {
-    /* post carousel issue? */
      display: block;
      margin: 1.5em 0 1.5em 0;
 }
+
+/*img.xlg {*/
+    /*opacity: 1;*/
+    /*transition: opacity 0.5s;*/
+/*}*/
+/*img.xlg[data-xlg-src] {*/
+    /*opacity: 0.2;*/
+/*}*/
 
 iframe.youtube {
     height: 30vw;
@@ -426,6 +433,16 @@ cite {
      max-height: 100%;
      position: absolute;
      left: 0;
+}
+
+.img-carousel .item img[data-xlg-src] {
+    opacity: 0;
+}
+
+.img-carousel .item img {
+    opacity: 1;
+    width: auto;
+    transition: opacity 0.8s;
 }
 
 .carousel-control span {

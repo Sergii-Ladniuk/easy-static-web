@@ -1,4 +1,10 @@
 - padding = padding || /^p(.*)$/.exec(css)[1];
 - file = 'http://local.marinatravelblog.com:4000/img/'+file;
-.lazy-load(style='padding-bottom:'+padding+'%;')
-    img(alt=alt, src=file+ext, srcset=file+ext+' 800w,'+file+'-md'+ext+' 570w,'+file+'-sm'+ext+' 330w')
+- stdSizes = file + ext + ' 800w,' + file + '-md' + ext + ' 570w,' + file + '-sm' + ext + ' 330w'
+- xlgSizes = file + '-xlg' + ext + ' 2000w,' + stdSizes
+if xlg
+    .lazy-load(style='padding-bottom:' + padding + '%;')
+        img.xlg(alt=alt, src=file + '-sm' + ext, data-xlg-src=file + ext, data-xlg-srcset=xlgSizes)
+else
+    .lazy-load(style='padding-bottom:' + padding + '%;')
+        img(alt=alt, src=file + ext, srcset=stdSizes)

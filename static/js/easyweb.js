@@ -31,32 +31,43 @@ $(function () {
         var contentWidth = $('article').width();
 
         var positionCarouselImg = function (img) {
-            var width = img.naturalWidth;
-            var height = img.naturalHeight;
-            var ratioH = height / (contentWidth * 0.66);
-            var ratioW = width / contentWidth;
-            if (ratioH > 1) {
-                width /= ratioH;
-            }
-            if (ratioW > 1) {
-                height /= ratioW;
-            }
-            console.log('position ' + contentWidth + ' ' + width + ' ' + $(img).prop('src'));
-            if (width > 0 && width < contentWidth * 0.9) {
-                $(img).css({left: (contentWidth - width) / 2});
-            }
-            if (height > 0 && height < contentWidth * 0.66) {
-                $(img).css({top: (contentWidth * 0.66 - height) / 2});
+            if (!img.src) return;
+            if (img.src.includes('-xlg.jpg')) {
+                console.log(img.src, img.width, img.height, img.naturalWidth, img.naturalHeight, contentWidth, contentWidth * 0.6, $(img).css('display'));
+                if (contentWidth > img.width || $(img).css('left') > 0) {
+                    $(img).css({left: (contentWidth - img.width) / 2});
+                }
+                if (contentWidth * .6 > img.height || $(img).css('top') > 0) {
+                    $(img).css({top: (contentWidth * .6 - img.height) / 2});
+                }
+            } else {
+                var width = img.naturalWidth;
+                var height = img.naturalHeight;
+                var ratioH = height / (contentWidth * 0.66);
+                var ratioW = width / contentWidth;
+                if (ratioH > 1) {
+                    width /= ratioH;
+                }
+                if (ratioW > 1) {
+                    height /= ratioW;
+                }
+                console.log('position ' + contentWidth + ' ' + width + ' ' + $(img).prop('src'));
+                if (width > 0 && width < contentWidth * 0.9) {
+                    $(img).css({left: (contentWidth - width) / 2});
+                }
+                if (height > 0 && height < contentWidth * 0.66) {
+                    $(img).css({top: (contentWidth * 0.66 - height) / 2});
+                }
             }
         };
 
         var resizeVerticalImagesInCarousel = function () {
             var imgs = $('.carousel .item img');
-            imgs.on('load', function (ev) {
+            imgs.on('load resize afterShow', function (ev) {
                 positionCarouselImg(ev.currentTarget);
-                setTimeout(function () {
-                    return positionCarouselImg(ev.currentTarget)
-                }, 1000);
+                // setTimeout(function () {
+                //     return positionCarouselImg(ev.currentTarget)
+                // }, 1000);
             });
         };
         resizeVerticalImagesInCarousel();
@@ -91,19 +102,60 @@ $(function () {
             }
         });
 
-        $(window).on('resize', resizeVerticalImagesInCarousel);
+        $(window).on('resize scroll', resizeVerticalImagesInCarousel);
+
+        // var adjustIndicatorsPosition = function (img, carouselItem) {
+        //     if (img) {
+        //         var h = img.height / (img.width / contentWidth);
+        //         var carousel = $(carouselItem.parent().parent());
+        //         carousel.find('.carousel-indicators').css({bottom: (contentWidth * 0.666 - h) / 2 + 24})
+        //     }
+        // };
 
         $(".carousel").on("slide.bs.carousel", function (ev) {
             var lazy;
-            lazy = $(ev.relatedTarget).find("img[data-src]");
-            lazy.attr("src", lazy.data('src'));
-            lazy.attr("srcset", lazy.data('srcset'));
-            lazy.removeAttr("data-src");
-            lazy.removeAttr("data-srcset");
-            lazy.on('load', function (ev) {
-                positionCarouselImg(ev.currentTarget);
-            })
+            var carouselItem = $(ev.relatedTarget);
+            // var img = carouselItem.find("img")[0];
+            lazy = carouselItem.find("img[data-src]");
+            if (lazy && typeof lazy.data === 'function') {
+                lazy.attr("src", lazy.data('src'));
+                lazy.attr("srcset", lazy.data('srcset'));
+                lazy.removeAttr("data-src");
+                lazy.removeAttr("data-srcset");
+                lazy.on('load resize', function (ev) {
+                    positionCarouselImg(ev.currentTarget);
+                    // adjustIndicatorsPosition(img, carouselItem);
+                })
+            }
+            // adjustIndicatorsPosition(img, carouselItem);
         });
+
+        lazyImages = function () {
+            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.xlgSrc;
+                            lazyImage.srcset = lazyImage.dataset.xlgSrcset;
+                            lazyImage.removeAttribute('data-xlg-src');
+                            lazyImage.removeAttribute('data-xlg-srcset');
+                            lazyImage.classList.remove("xlg");
+                            lazyImageObserver.unobserve(lazyImage);
+                            // positionCarouselImg(lazyImage)
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function (lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        };
+
+        lazyImages();
     };
 
     carousel();
