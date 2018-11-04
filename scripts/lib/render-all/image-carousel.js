@@ -9,7 +9,7 @@ function replaceImgWithCarousel(html, jadeTemplatePromise) {
 }
 
 function doReplaceImgWithCarousel(html, jadeTemplate) {
-    let imgGroupRegexp = /(<p>[^<]*<div style="padding-bottom:[^>]*><img[^>]*>[\n ]*<\/div><\/p>[\n ]*){2,}/g;
+    let imgGroupRegexp = /([\n ]*<p>[^<]*<div style="padding-bottom:[^>]*>[\n ]*<img[^>]*>[\n ]*<\/div>[\n ]*<\/p>[\n ]*){2,}/g;
     let tasks = [];
     let match;
     let index = 0;

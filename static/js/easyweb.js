@@ -134,10 +134,10 @@ $(function () {
             var lazyImages = [].slice.call(document.querySelectorAll("img.xlg"));
 
             if ("IntersectionObserver" in window) {
-                let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                var lazyImageObserver = new IntersectionObserver(function (entries, observer) {
                     entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
-                            let lazyImage = entry.target;
+                            var lazyImage = entry.target;
                             lazyImage.src = lazyImage.dataset.xlgSrc;
                             lazyImage.srcset = lazyImage.dataset.xlgSrcset;
                             lazyImage.removeAttribute('data-xlg-src');
