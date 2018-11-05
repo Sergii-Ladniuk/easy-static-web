@@ -3,8 +3,11 @@
 - stdSizes = file + ext + ' 800w,' + file + '-md' + ext + ' 570w,' + file + '-sm' + ext + ' 330w'
 - xlgSizes = file + '-xlg' + ext + ' 2000w,' + stdSizes
 if xlg
+    - initialSrc = file + '-sm' + ext
+    if imageIndex === 0
+        - initialSrc = file + ext
     .lazy-load(style='padding-bottom:' + padding + '%;')
-        img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes)
+        img.xlg(alt=alt, src=initialSrc, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes)
 else
     .lazy-load(style='padding-bottom:' + padding + '%;')
         img(alt=alt, src=file + ext, srcset=stdSizes)
