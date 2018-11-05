@@ -54,8 +54,6 @@ $(function () {
             }
         });
 
-        $(window).on('resize scroll', resizeVerticalImagesInCarousel);
-
         $(".carousel").on("slide.bs.carousel", function (ev) {
             var lazy;
             var carouselItem = $(ev.relatedTarget);
