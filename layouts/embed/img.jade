@@ -4,7 +4,7 @@
 - xlgSizes = file + '-xlg' + ext + ' 2000w,' + stdSizes
 if xlg
     .lazy-load(style='padding-bottom:' + padding + '%;')
-        img.xlg(alt=alt, src=file + '-sm' + ext, data-xlg-src=file + ext, data-xlg-srcset=xlgSizes)
+        img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes)
 else
     .lazy-load(style='padding-bottom:' + padding + '%;')
         img(alt=alt, src=file + ext, srcset=stdSizes)

@@ -72,16 +72,16 @@ img {
 }
 
 .lazy-load, .post img, .post div {
-     display: block;
-     margin: 1.5em 0 1.5em 0;
+    display: block;
+    margin: 1.5em 0 1.5em 0;
 }
 
 /*img.xlg {*/
-    /*opacity: 1;*/
-    /*transition: opacity 0.5s;*/
+/*opacity: 1;*/
+/*transition: opacity 0.5s;*/
 /*}*/
 /*img.xlg[data-xlg-src] {*/
-    /*opacity: 0.2;*/
+/*opacity: 0.2;*/
 /*}*/
 
 iframe.youtube {
@@ -96,7 +96,7 @@ a.youtube {
 }
 
 ol {
-    list-style-type: none!important;
+    list-style-type: none !important;
     counter-reset: item;
     margin: 0;
     padding: 0;
@@ -139,7 +139,7 @@ ol.carousel-indicators > li {
 }
 
 ol.carousel-indicators > li:before {
-    content: none!important;
+    content: none !important;
     counter-increment: none;
     list-style-type: none;
 }
@@ -322,13 +322,13 @@ a {
     margin-left: 8px;
 }
 
-#social-btns-bottom .ya-share2__icon,#social-btns-side .ya-share2__icon {
+#social-btns-bottom .ya-share2__icon, #social-btns-side .ya-share2__icon {
     width: 40px;
     height: 40px;
     background-size: 40px 40px;
 }
 
-#social-btns-bottom .ya-share2__counter,#social-btns-side .ya-share2__counter {
+#social-btns-bottom .ya-share2__counter, #social-btns-side .ya-share2__counter {
     padding-top: 13px;
 }
 
@@ -337,10 +337,10 @@ a {
 }
 
 #social-btns-side {
-    width:40px;
-    position: fixed ;
+    width: 40px;
+    position: fixed;
     bottom: 30%;
-    left:10px;
+    left: 10px;
 }
 
 cite {
@@ -352,7 +352,7 @@ cite {
     margin: 20px 0 0 0 !important;
     padding: 20px 0 0 0;
     font-weight: bold;
-    border-top: solid rgba(0,49,79,.3) ;
+    border-top: solid rgba(0, 49, 79, .3);
 }
 
 @media only screen and (max-width: 768px) {
@@ -408,7 +408,7 @@ cite {
     margin: 5px 0 -5px 0;
 }
 
-.post .carousel{
+.post .carousel {
     /* margin: 0; */
 }
 
@@ -417,7 +417,7 @@ cite {
     margin-bottom: -10px;
 }
 
-.img-carousel .item{
+.img-carousel .item {
     padding-bottom: 66%;
 }
 
@@ -428,14 +428,18 @@ cite {
     height: 0;
 }
 
-.img-carousel .item img{
-     margin: 0 auto;
-     max-height: 100%;
-     position: absolute;
-     left: 0;
+.img-carousel .item img {
+    /*margin: 0 auto;*/
+    max-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.img-carousel .item img[data-xlg-src] {
+.img-carousel .item img[data-src] {
     opacity: 0;
 }
 
