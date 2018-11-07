@@ -16,10 +16,10 @@ div.carousel.img-carousel.slide(data-ride='carousel', id=carousel_id, data-inter
          if (i === 0)
              - active = 'active'
          div.item(class=active)
-             if (i === 0 || i === 1)
+             if (imgs[i].includes('xlg'))
+                 | !{imgs[i].replace(/src="[^"]*"/, ' ').replace(/srcset="[^"]*"/, ' ')}
+             else if (i === 0 || i === 1)
                 | !{imgs[i]}
-             else if imgs[i].includes('xlg')
-                | !{imgs[i].replace(/src="[^"]*"/, ' ').replace(/srcset="[^"]*"/, ' ')}
              else
                 | !{imgs[i].replace('src=','data-src=').replace('srcset=', 'data-srcset=')}
          - i++
