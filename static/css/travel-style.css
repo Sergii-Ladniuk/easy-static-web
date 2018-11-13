@@ -44,6 +44,134 @@ a.youtube {
 
 .social-buttons .fa {
     font-size: 32px;
+    margin-right: 1px;
+}
+
+.social-buttons {
+    text-align: center;
+}
+
+.social-teaser {
+}
+
+@media only screen and (min-width: 1000px) {
+    #sidebar {
+        position: fixed;
+        top: 75px;
+        margin-right: 8vw;
+        margin-left: 2em;
+        transition: top ease 0.8s;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #mobile-social-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 4.5em;
+        width: 100%;
+        background-color: whitesmoke;
+        margin: 0;
+        margin-bottom: -2px;
+    }
+
+    #mobile-social-bar .fa {
+        font-size: 3.5em;
+        margin-bottom: 0.1em;
+    }
+
+    #mobile-social-bar a {
+        top: 0;
+        bottom: 0;
+        padding: 0.5em;
+        margin: auto 0;
+        height: 100%;
+        width: calc(33% - 1em);
+    }
+
+    #mobile-social-bar a .text {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 570px) {
+    #mobile-social-bar {
+        height: 2.5em;
+    }
+
+    #mobile-social-bar .fa {
+        font-size: 1.5em;
+    }
+
+    #mobile-social-bar a .text {
+        font-size: 0.8em;
+    }
+}
+
+#mobile-social-bar a .text {
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 800px) {
+    #mobile-social-bar {
+        display: none;
+    }
+}
+
+#subscribe-modal .subsribe-block {
+    margin: 1.5em 0;
+}
+
+.modal .modal-header {
+    margin: 1.6em 0 0;
+    background-color: whitesmoke;
+}
+
+#subscribe-modal .subscribe-link {
+    display: block;
+    margin: 0.8em 1em;
+}
+
+#subscribe-modal, #share-modal {
+    padding: 1em;
+    top: auto;
+    bottom: 5em;
+}
+
+#subscribe-modal .modal-content {
+    padding: 1em;
+    margin: 0;
+}
+
+#subscribe-popup .modal-content {
+    padding: 1em;
+    margin: -10px 0;
+}
+
+#subscribe-popup {
+    margin: 10% 10%;
+}
+#subscribe-popup a {
+    margin-left: 1em;
+}
+#share-modal #social-btns-popup .ya-share2__icon, #social-btns-side .ya-share2__icon {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+}
+
+#share-modal #social-btns-popup .ya-share2__counter, #social-btns-side .ya-share2__counter {
+    padding-top: 13px;
+}
+
+#share-modal .modal-content {
+    padding: 0 1em;
+    margin: 0;
+}
+
+#share-modal .modal-content > div {
+    margin: 0;
 }
 
 img {
@@ -78,7 +206,7 @@ img {
 }
 
 .lazy-load, .post img, .post div {
-    display: block;
+    /* display: block; */
     margin: 1.5em 0 1.5em 0;
 }
 
