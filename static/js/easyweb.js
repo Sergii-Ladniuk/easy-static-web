@@ -77,7 +77,9 @@ $(function () {
                             var lazyImage = entry.target;
                             if (lazyImage.dataset.src) {
                                 lazyImage.src = lazyImage.dataset.src;
-                                lazyImage.srcset = lazyImage.dataset.srcset;
+                                if (lazyImage.dataset.srcset) {
+                                    lazyImage.srcset = lazyImage.dataset.srcset;
+                                }
                                 lazyImage.removeAttribute('data-src');
                                 lazyImage.removeAttribute('data-srcset');
                             }

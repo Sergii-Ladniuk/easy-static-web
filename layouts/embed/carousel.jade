@@ -17,11 +17,11 @@ div.carousel.img-carousel.slide(data-ride='carousel', id=carousel_id, data-inter
              - active = 'active'
          div.item(class=active)
              if (imgs[i].includes('xlg'))
-                 | !{imgs[i].replace(/src="[^"]*"/, ' ').replace(/srcset="[^"]*"/, ' ')}
+                 | !{imgs[i].replace(/ src="[^"]*"/, ' ').replace(/ srcset="[^"]*"/, ' ')}
              else if (i === 0 || i === 1)
                 | !{imgs[i]}
              else
-                | !{imgs[i].replace('src=','data-src=').replace('srcset=', 'data-srcset=')}
+                | !{imgs[i].replace(' src=',' data-src=').replace(' srcset=', ' data-srcset=')}
          - i++
 
     a.left.carousel-control(href="#"+carousel_id, role="button", data-slide="prev")
