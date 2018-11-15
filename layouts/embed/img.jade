@@ -1,14 +1,29 @@
-- padding = padding || /^p(.*)$/.exec(css)[1];
 - file = 'http://local.marinatravelblog.com:4000/img/'+file;
-- stdSizes = file + ext + ' 800w,' + file + '-md' + ext + ' 570w,' + file + '-sm' + ext + ' 330w'
+
+if width > 800
+    - stdSizes = file + ext + ' 800w,' + file + '-md' + ext + ' 570w,' + file + '-sm' + ext + ' 330w'
+else if width > 570
+    - stdSizes = file + ext + ' 570w,' + file + '-sm' + ext + ' 330w'
+else
+    - stdSizes = ''
+
 - xlgSizes = file + '-xlg' + ext + ' 2000w,' + stdSizes
-if xlg
-    if imageIndex === 0
-        .lazy-load(style='padding-bottom:' + padding + '%;')
-            img.xlg(alt=alt, src=file + ext, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes)
+- padding = padding || /^p(.*)$/.exec(css)[1];
+
+if alt && alt.startsWith('#')
+    .img-fixed-container(style='padding-bottom:' + Math.min(parseInt(padding), 60) + '%;')
+        img.fixed(alt=alt.substr(1), src=file + ext, srcset=stdSizes)
+else if alt && alt.startsWith('@')
+    .img-fixed-container(style='padding-bottom: calc(' + Math.min(parseInt(padding), 60) + '% + 4em);')
+        img.fixed.border(alt=alt.substr(1), src=file + ext, srcset=stdSizes)
+else
+    if xlg
+        if imageIndex === 0
+            .lazy-load(style='padding-bottom:' + padding + '%;')
+                img.xlg(alt=alt, src=file + ext, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes)
+        else
+            .lazy-load(style='padding-bottom:' + padding + '%;')
+                img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes)
     else
         .lazy-load(style='padding-bottom:' + padding + '%;')
-            img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes)
-else
-    .lazy-load(style='padding-bottom:' + padding + '%;')
-        img(alt=alt, src=file + ext, srcset=stdSizes)
+            img(alt=alt, src=file + ext, srcset=stdSizes)

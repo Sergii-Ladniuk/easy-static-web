@@ -147,6 +147,7 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template, im
                     alt: alt,
                     css: css,
                     xlg,
+                    width: size.width,
                     imageIndex
                 });
 
