@@ -150,7 +150,7 @@ a.youtube {
 }
 
 #subscribe-popup {
-    margin: 10% 10%;
+     margin: 10% 10%;
 }
 #subscribe-popup a {
     margin-left: 1em;
@@ -172,33 +172,6 @@ a.youtube {
 #subscribe-popup {
     height: 90vh;
 }
-@media only screen and (max-width: 570px) {
-    #subscribe-popup {
-        width: 95vw;
-        height: 95vh;
-        margin: 0 2vw;
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-
-    #subscribe-popup  .modal-content p {
-        width: 90vw;
-        margin-right: 10vw;
-    }
-
-    #subscribe-popup .subscribe-block {
-        font-size: 0.8em;
-        margin-left: 0.2em;
-        margin-right: 0.2em;
-        margin-top: 0.2em;
-        line-height: 1.5em;
-    }
-    #subscribe-popup .subscribe-block a {
-        white-space: nowrap;
-        overflow: hidden;
-    }
-}
 #subscribe-popup .subscribe-block-wrapper {
     margin-bottom: 0;
     background: none;
@@ -219,6 +192,36 @@ a.youtube {
 #subscribe-popup .modal-content p {
     width: 60vw;
 }
+
+@media only screen and (max-width: 570px) {
+    #subscribe-popup {
+        width: 95vw;
+        height: 95vh;
+        margin: 0.2em 2vw;
+        /* position: fixed; */
+        /* left: 0; */
+        /* top: 0; */
+        /* overflow: hidden; */
+    }
+
+    #subscribe-popup  .modal-content p {
+        width: 90vw;
+        margin-right: 10vw;
+    }
+
+    #subscribe-popup .subscribe-block {
+        font-size: 0.8em;
+        margin-left: 0.2em;
+        margin-right: 0.2em;
+        margin-top: 0.2em;
+        line-height: 1.5em;
+    }
+    #subscribe-popup .subscribe-block a {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
 #share-modal #social-btns-popup .ya-share2__icon, #social-btns-side .ya-share2__icon {
     width: 40px;
     height: 40px;

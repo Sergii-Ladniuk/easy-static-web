@@ -18,12 +18,14 @@ $(function () {
                 $('#sidebar').css({top: '75px'});
             }
 
-            let subscribePopupMargin = $(document).height() / 2;
-            if ($(window).scrollTop() > subscribePopupMargin) {// && !localStorage.subscribeShown) {
+            var showSubscribePopup = typeof subscribePopupValue !== 'undefined';
+            var subscribePopupMargin = $(document).height() * (showSubscribePopup ? subscribePopupValue : 0.5);
+
+            if (showSubscribePopup && $(window).scrollTop() > subscribePopupMargin && !localStorage.subscribeShown) {
                 localStorage.subscribeShown = true;
                 var subscribePopup = $('#subscribe-popup');
                 subscribePopup.modal('show');
-                subscribePopup.removeClass('hide')
+                subscribePopup.removeClass('hide');
             }
         });
 
@@ -60,6 +62,11 @@ $(function () {
     });
     $('#share-modal a, #share-modal a span').click(function () {
         var modal = $('#share-modal');
+        modal.modal('hide');
+        modal.addClass('hide');
+    });
+    $('#subscribe-popup a, #subscribe-popup a span').click(function () {
+        var modal = $('#subscribe-popup');
         modal.modal('hide');
         modal.addClass('hide');
     });
