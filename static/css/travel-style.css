@@ -463,12 +463,14 @@ cite {
 
 .img-carousel .item img[data-src] {
     opacity: 0;
+    height: 100%;
 }
 
 .img-carousel .item img {
     opacity: 1;
     width: auto;
     transition: opacity 0.8s;
+    height: 100%;
 }
 
 .carousel-control span {

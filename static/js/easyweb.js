@@ -7,8 +7,6 @@ function onload(f) {
 }
 
 $(function () {
-    console.log($(window).height());
-    console.log($(document).height());
     if (($(window).height() + 100) < $(document).height()) {
         $('#top-link-block').removeClass('hidden').affix({
             offset: {top: 100}
@@ -33,7 +31,6 @@ $(function () {
             var elementBottom = elementTop + $(el).outerHeight();
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-            var height = $(el).height;
             return elementBottom <= viewportBottom && elementTop >= viewportTop;
         };
 
@@ -67,6 +64,33 @@ $(function () {
             }
         });
 
+        function updateImgSrc(image) {
+            if (isScrolledIntoView(image)) {
+                if (image.dataset.src) {
+                    image.src = image.dataset.src;
+                    if (image.dataset.srcset) {
+                        image.srcset = image.dataset.srcset;
+                    }
+                    image.removeAttribute('data-src');
+                    image.removeAttribute('data-srcset');
+                }
+                image.classList.remove("xlg");
+            }
+        }
+
+        function isScrolledIntoView(elem) {
+            var $elem = $(elem);
+            var $window = $(window);
+
+            var docViewTop = $window.scrollTop();
+            var docViewBottom = docViewTop + $window.height();
+
+            var elemTop = $elem.offset().top;
+            var elemBottom = elemTop + $elem.height();
+
+            return ((elemTop-100 <= docViewBottom) && (elemBottom+100 >= docViewTop));
+        }
+
         lazyImages = function () {
             var lazyImages = [].slice.call(document.querySelectorAll("img.xlg"));
 
@@ -75,15 +99,7 @@ $(function () {
                     entries.forEach(function (entry) {
                         if (entry.isIntersecting) {
                             var lazyImage = entry.target;
-                            if (lazyImage.dataset.src) {
-                                lazyImage.src = lazyImage.dataset.src;
-                                if (lazyImage.dataset.srcset) {
-                                    lazyImage.srcset = lazyImage.dataset.srcset;
-                                }
-                                lazyImage.removeAttribute('data-src');
-                                lazyImage.removeAttribute('data-srcset');
-                            }
-                            lazyImage.classList.remove("xlg");
+                            updateImgSrc(lazyImage);
                             lazyImageObserver.unobserve(lazyImage);
                         }
                     });
@@ -91,6 +107,10 @@ $(function () {
 
                 lazyImages.forEach(function (lazyImage) {
                     lazyImageObserver.observe(lazyImage);
+                });
+            } else {
+                $(window).scroll(function () {
+                    lazyImages.forEach(updateImgSrc)
                 });
             }
         };

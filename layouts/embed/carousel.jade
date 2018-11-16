@@ -1,5 +1,5 @@
 - carousel_id = 'img-carousel-'+index
-div.carousel.img-carousel.slide(data-ride='carousel', id=carousel_id, data-interval=5000)
+div.carousel.img-carousel.slide(data-ride='carousel', id=carousel_id, data-interval=50000)
     ol.carousel-indicators
      - var i = 0
      while i < imgs.length
@@ -17,7 +17,7 @@ div.carousel.img-carousel.slide(data-ride='carousel', id=carousel_id, data-inter
              - active = 'active'
          div.item(class=active)
              if (imgs[i].includes('xlg'))
-                 | !{imgs[i].replace(/ src="[^"]*"/, ' ').replace(/ srcset="[^"]*"/, ' ')}
+                 | !{imgs[i]}
              else if (i === 0 || i === 1)
                 | !{imgs[i]}
              else
