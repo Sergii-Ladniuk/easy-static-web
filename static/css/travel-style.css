@@ -15,6 +15,10 @@ h3 {
     font-size: 1.7em;
 }
 
+h4 {
+    font-size: 1.5em;
+}
+
 .fa-chevron-right, .fa-chevron-left, .fa-chevron-up {
     margin: 0px 5px 0px 5px;
 }
