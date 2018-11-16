@@ -119,7 +119,7 @@ a.youtube {
     }
 }
 
-#subscribe-modal .subsribe-block {
+#subscribe-modal .subscribe-block {
     margin: 1.5em 0;
 }
 
@@ -154,6 +154,70 @@ a.youtube {
 }
 #subscribe-popup a {
     margin-left: 1em;
+}
+#subscribe-popup .subscribe-block {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 1em;
+    margin-bottom: 0;
+    margin-top: 10%;
+    padding-bottom: 0.2em;
+    z-index: 1;
+    position: relative;
+}
+#subscribe-popup h3 {
+    text-align: center;
+    margin: 5% 0 1em;
+}
+#subscribe-popup {
+    height: 90vh;
+}
+@media only screen and (max-width: 570px) {
+    #subscribe-popup {
+        width: 95vw;
+        height: 95vh;
+        margin: 0 2vw;
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+    #subscribe-popup  .modal-content p {
+        width: 90vw;
+        margin-right: 10vw;
+    }
+
+    #subscribe-popup .subscribe-block {
+        font-size: 0.8em;
+        margin-left: 0.2em;
+        margin-right: 0.2em;
+        margin-top: 0.2em;
+        line-height: 1.5em;
+    }
+    #subscribe-popup .subscribe-block a {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+#subscribe-popup .subscribe-block-wrapper {
+    margin-bottom: 0;
+    background: none;
+    z-index: 1;
+}
+#subscribe-popup .background {
+    background-image: url(http://localhost:4000/img/mt_hoffman.jpg);
+    background-size: cover;
+    opacity: 0.2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 4em;
+    margin: 0;
+    z-index: 0;
+}
+#subscribe-popup .modal-content p {
+    width: 60vw;
 }
 #share-modal #social-btns-popup .ya-share2__icon, #social-btns-side .ya-share2__icon {
     width: 40px;
@@ -422,7 +486,7 @@ a {
 }
 
 .btn-default {
-    color: whitesmoke;
+    /* color: whitesmoke; */
 }
 
 .copyright > a {
