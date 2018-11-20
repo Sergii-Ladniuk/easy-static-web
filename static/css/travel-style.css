@@ -142,7 +142,7 @@ a.youtube {
 
 .modal {
     width: 90vw;
-    top: inherit;
+    top: 0;
     padding: 10px;
 }
 
