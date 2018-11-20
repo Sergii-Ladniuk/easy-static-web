@@ -112,6 +112,12 @@ a.youtube {
     #sidebar {
         display: none;
     }
+
+    .modal {
+        top: inherit;
+        height: 85vh;
+        -webkit-backface-visibility: hidden;
+    }
 }
 
 #mobile-social-bar a .text {
@@ -130,7 +136,8 @@ a.youtube {
 
 .modal {
     width: 90vw;
-    top: 1em;
+    top: inherit;
+    padding: 10px;
 }
 
 .modal .modal-header {
@@ -150,7 +157,7 @@ a.youtube {
 
 #subscribe-modal .modal-content {
     padding: 1em;
-    margin: 0;
+    margin: 15vh 0;
 }
 
 #subscribe-popup .modal-content {
@@ -235,6 +242,7 @@ a.youtube {
     width: 40px;
     height: 40px;
     background-size: 40px 40px;
+    /* margin-right: 5em; */
 }
 
 #share-modal #social-btns-popup .ya-share2__counter, #social-btns-side .ya-share2__counter {
@@ -242,8 +250,8 @@ a.youtube {
 }
 
 #share-modal .modal-content {
-    padding: 0 1em;
-    margin: 0;
+    padding: 1em 1em;
+    margin: 25vh 0;
 }
 
 #share-modal .modal-content > div {

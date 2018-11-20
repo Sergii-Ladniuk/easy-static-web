@@ -79,4 +79,5 @@ $(function () {
     });
 
     $('#mobile-social-bar').removeClass('hide');
+    // $('.modal').appendTo('body')
 });
