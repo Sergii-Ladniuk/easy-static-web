@@ -130,6 +130,12 @@ a.youtube {
     }
 }
 
+@media only screen and (max-height: 500px) {
+    #mobile-social-bar {
+        display: none;
+    }
+}
+
 #subscribe-modal .subscribe-block {
     margin: 1.5em 0;
 }
@@ -171,6 +177,17 @@ a.youtube {
 #subscribe-popup a {
     margin-left: 1em;
 }
+@media only screen and (max-width: 570px) {
+    #subscribe-popup a {
+        margin-left: 0.4em;
+        font-size: 0.9em;
+    }
+
+    #subscribe-popup .modal-content {
+        width: 95vw;
+    }
+
+}
 #subscribe-popup .subscribe-block {
     text-align: center;
     font-size: 1.2em;
@@ -183,6 +200,7 @@ a.youtube {
 }
 #subscribe-popup h3 {
     text-align: center;
+    font-size: 1.5em;
     margin: 5% 0 1em;
 }
 #subscribe-popup {
@@ -222,19 +240,24 @@ a.youtube {
 
     #subscribe-popup  .modal-content p {
         width: 90vw;
-        margin-right: 10vw;
+        margin-right: 12vw;
+        padding-right: 1.5em;
+        font-size: 0.7em;
     }
 
     #subscribe-popup .subscribe-block {
         font-size: 0.8em;
-        margin-left: 0.2em;
-        margin-right: 0.2em;
-        margin-top: 0.2em;
+        margin-left: -1.5em;
+        /* margin-right: 0.2em; */
+        /* margin-top: 0.2em; */
         line-height: 1.5em;
+        padding: 1em 0;
     }
     #subscribe-popup .subscribe-block a {
         white-space: nowrap;
         overflow: hidden;
+        position: static;
+        display: inline;
     }
 }
 
