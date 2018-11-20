@@ -70,7 +70,7 @@ a.youtube {
         bottom: 0;
         left: 0;
         height: 4.5em;
-        width: 100%;
+        width: 100vw;
         background-color: whitesmoke;
         margin: 0;
         margin-bottom: -2px;
@@ -87,7 +87,7 @@ a.youtube {
         padding: 0.5em;
         margin: auto 0;
         height: 100%;
-        width: calc(33% - 1em);
+        width: calc(33%);
     }
 
     #mobile-social-bar a .text {
@@ -123,6 +123,11 @@ a.youtube {
     margin: 1.5em 0;
 }
 
+.modal {
+    width: 90vw;
+    top: 1em;
+}
+
 .modal .modal-header {
     margin: 1.6em 0 0;
     background-color: whitesmoke;
@@ -135,7 +140,6 @@ a.youtube {
 
 #subscribe-modal, #share-modal {
     padding: 1em;
-    top: auto;
     bottom: 5em;
 }
 
