@@ -27,6 +27,13 @@ $(function () {
                 subscribePopup.modal('show');
                 subscribePopup.removeClass('hide');
             }
+
+            var mobile_social_bar = $('#mobile-social-bar');
+            // if ($(document).height - $(window).scrollTop() <= 50) {
+            //     mobile_social_bar.hide();
+            // } else {
+            //     mobile_social_bar.show();
+            // }
         });
 
         function isScrolledIntoView(elem) {
@@ -70,4 +77,6 @@ $(function () {
         modal.modal('hide');
         modal.addClass('hide');
     });
+
+    $('#mobile-social-bar').removeClass('hide');
 });

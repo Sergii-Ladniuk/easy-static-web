@@ -100,7 +100,7 @@ article
                 noscript
                     p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
 
-        #mobile-social-bar
+        #mobile-social-bar.hide
             a.btn.btn-social-icon.btn-facebook(href="/")
                 span.button
                     span.fa.fa-home
@@ -118,11 +118,9 @@ article
                         | Поделиться
         .modal.hide#subscribe-modal(tabindex='-1', role='dialog', aria-labelledby='subscribe-modal')
             .modal-dialog.modal-sm(role='document')
-                .modal-header
+                .modal-content
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                         span(aria-hidden='true') ×
-                    h4.modal-title Подписаться
-                .modal-content
                     p.method
                         | Присоединись к 12000+ наших читателей!
                     .subsribe-block
@@ -143,11 +141,9 @@ article
                             | E-mail
         .modal.hide#share-modal(tabindex='-1', role='dialog', aria-labelledby='share-modal')
             .modal-dialog.modal-sm(role='document')
-                .modal-header
+                .modal-content
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                         span(aria-hidden='true') ×
-                    h4.modal-title Понравилась запись?
-                .modal-content
                     p
                         | Поделись с друзьями в соцсетях&nbsp;:)
                     #social-btns-popup.ya-share2(data-services='facebook,vkontakte,pocket,telegram,viber', data-counter='')
@@ -184,4 +180,5 @@ article
 
 script
     | var slug='#{content.meta.slug}',post_id='#{content.meta.id}',shortLink='#{content.meta.shortLink}',disqus_title='#{content.meta.title}';
-    | var subscribePopupValue=#{content.meta.subscribePopup};
+    if typeof content.meta.subscribePopup !== 'undefined'
+        | var subscribePopupValue=#{content.meta.subscribePopup};

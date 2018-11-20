@@ -98,6 +98,7 @@ a.youtube {
 @media only screen and (max-width: 570px) {
     #mobile-social-bar {
         height: 2.5em;
+        z-index: 10;
     }
 
     #mobile-social-bar .fa {
@@ -106,6 +107,10 @@ a.youtube {
 
     #mobile-social-bar a .text {
         font-size: 0.8em;
+    }
+
+    #sidebar {
+        display: none;
     }
 }
 
@@ -582,6 +587,10 @@ cite {
         font-size: 0.8em;
         text-align: left;
         margin-top: 0.5em;
+    }
+
+    .copyright {
+        z-index: 0;
     }
 
     #uptolike_holder_bottom, #uptolike_holder_bottom div {
