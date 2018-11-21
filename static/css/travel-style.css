@@ -708,14 +708,20 @@ cite {
 
 .img-carousel .item img[data-src] {
     opacity: 0;
-    height: 100%;
 }
 
 .img-carousel .item img {
     opacity: 1;
     width: auto;
     transition: opacity 0.8s;
+}
+
+.img-carousel .item img.no-panorama {
     height: 100%;
+}
+
+.img-carousel .item img.panorama {
+    width: 100%;
 }
 
 .carousel-control span {
