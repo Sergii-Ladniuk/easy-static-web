@@ -172,11 +172,13 @@ a.youtube {
 }
 
 #subscribe-popup {
-     margin: 10% 10%;
+    margin: 10% 10%;
 }
+
 #subscribe-popup a {
     margin-left: 1em;
 }
+
 @media only screen and (max-width: 570px) {
     #subscribe-popup a {
         margin-left: 0.4em;
@@ -188,6 +190,7 @@ a.youtube {
     }
 
 }
+
 #subscribe-popup .subscribe-block {
     text-align: center;
     font-size: 1.2em;
@@ -198,19 +201,23 @@ a.youtube {
     z-index: 1;
     position: relative;
 }
+
 #subscribe-popup h3 {
     text-align: center;
     font-size: 1.5em;
     margin: 5% 0 1em;
 }
+
 #subscribe-popup {
     height: 90vh;
 }
+
 #subscribe-popup .subscribe-block-wrapper {
     margin-bottom: 0;
     background: none;
     z-index: 1;
 }
+
 #subscribe-popup .background {
     background-image: url(http://localhost:4000/img/mt_hoffman.jpg);
     background-size: cover;
@@ -223,6 +230,7 @@ a.youtube {
     margin: 0;
     z-index: 0;
 }
+
 #subscribe-popup .modal-content p {
     width: 60vw;
 }
@@ -238,7 +246,7 @@ a.youtube {
         /* overflow: hidden; */
     }
 
-    #subscribe-popup  .modal-content p {
+    #subscribe-popup .modal-content p {
         width: 90vw;
         margin-right: 12vw;
         padding-right: 1.5em;
@@ -253,6 +261,7 @@ a.youtube {
         line-height: 1.5em;
         padding: 1em 0;
     }
+
     #subscribe-popup .subscribe-block a {
         white-space: nowrap;
         overflow: hidden;
@@ -738,8 +747,32 @@ cite {
     margin-bottom: 2em;
 }
 
+.subscribe-block > .subscribe-link {
+    margin-right: 0.8em;
+    width: 140px;
+    display: inline-block;
+}
+
+@media only screen and (min-width: 900px) {
+    .subscribe-block br {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .subscribe-block .fa-envelop, .subscribe-block  .fa-vk {
+        margin-top: 0.7em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .subscribe-block .fa {
+        margin-left: 0.5em !important;
+        margin-top: 0.8em;
+    }
+}
 .subscribe-link > .fa {
-    margin-right: 0.5em;
+    margin-right: 0.2em;
     margin-left: 0.5em;
 }
 
