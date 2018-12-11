@@ -154,6 +154,13 @@ Redirect 301 /author/rowens890/ /
 Redirect 301 /obo-mne/comment-page-1/ /o-nas
 Redirect 301 /wp-admin* /
 
+#################
+# Redirect old posts
+#################
+
+Redirect 301 /portugaliya-lissabon-2/ /portugaliya-lissabon-1/
+Redirect 301 /portugaliya-belem-i-drugie-rajony-lissabona/ /portugaliya-lissabon-1/
+
 ##################
 # Browser cache expiry
 ##################

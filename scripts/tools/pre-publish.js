@@ -89,6 +89,12 @@ function prePublish() {
         })
         .then(processCss)
         .then(processJs)
+        // .then(function () {
+        //     return fs.readFileAsync(path.join(settings.path.public._, 'ekvador-ozero-kilotoa-quilotoa/index.html'))
+        //         .then(text => {
+        //             let updated = text.replace('')
+        //         })
+        // })
         .then(function () {
             var generateCriticalCss = Promise.promisify(critical.generate);
             return Promise.join(

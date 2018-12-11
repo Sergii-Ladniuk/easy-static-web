@@ -9,6 +9,13 @@ else
 
 - xlgSizes = file + '-xlg' + ext + ' 2000w,' + stdSizes
 - padding = padding || /^p(.*)$/.exec(css)[1];
+- additional_class = 0;
+- isPanorama = parseInt(padding) < 60;
+
+if !isPanorama
+    - additional_class = 'no-panorama'
+else
+    - additional_class = 'panorama'
 
 if alt && alt.startsWith('#')
     .img-fixed-container(style='padding-bottom:' + Math.min(parseInt(padding), 60) + '%;')
@@ -20,10 +27,10 @@ else
     if xlg
         if imageIndex === 0
             .lazy-load(style='padding-bottom:' + padding + '%;')
-                img.xlg(alt=alt, src=file + ext, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes)
+                img.xlg(alt=alt, src=file + ext, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
         else
             .lazy-load(style='padding-bottom:' + padding + '%;')
-                img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes)
+                img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
     else
         .lazy-load(style='padding-bottom:' + padding + '%;')
-            img(alt=alt, src=file + ext, srcset=stdSizes)
+            img(alt=alt, src=file + ext, srcset=stdSizes, class=additional_class)
