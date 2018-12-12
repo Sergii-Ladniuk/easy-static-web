@@ -339,6 +339,10 @@ iframe.youtube {
     margin-bottom: 0.5em;
 }
 
+iframe {
+    margin: 18px 0;
+}
+
 a.youtube {
     font-style: italic;
     margin-bottom: 1.5em;
@@ -410,7 +414,7 @@ ol.carousel-indicators > li:before {
 }
 
 .post div.lazy-load {
-    margin: 10px 0 10px 0;
+    margin: 18px 0 18px 0;
     height: 0;
 }
 
