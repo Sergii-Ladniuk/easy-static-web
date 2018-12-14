@@ -477,6 +477,7 @@ ul.nav > li:hover {
 }
 
 .btn-email-sidebar a:hover,
+.btn-airbnb a:hover,
 .social-buttons a:hover,
 #paging:hover,
 a:hover,
@@ -535,6 +536,13 @@ a {
     font-size: 20px;
     width: 90%;
     margin-top: 10px;
+}
+
+.btn-airbnb {
+    background-color: #f25c00;
+    font-size: 20px;
+    width: 250px;
+    margin: 10px 0;
 }
 
 .btn-default:hover {
