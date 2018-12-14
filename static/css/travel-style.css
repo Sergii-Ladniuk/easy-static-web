@@ -784,3 +784,12 @@ cite {
     margin-right: 0.5em;
     margin-left: 0.5em;
 }
+
+.content-info-table td, .content-info-table th {
+    border: 1px solid black;
+    padding: 6px;
+}
+
+.content-info-table {
+    margin: 2em 0;
+}
