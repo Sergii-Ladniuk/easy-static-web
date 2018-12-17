@@ -55,8 +55,9 @@ function setDefaults() {
 
     exports.settings.path.source = {_: path.join(exports.settings.path.blog, "source")}
     exports.settings.path.source.img = path.join(exports.settings.path.source._, "img")
-    exports.settings.path.static = {_: path.join(exports.settings.path.blog, "static")}
-    exports.settings.path.static.img = path.join(exports.settings.path.static._, "img")
+    exports.settings.path.static = exports.settings.path.static || {}
+    exports.settings.path.static._ = path.join(exports.settings.path.blog, "static");
+    exports.settings.path.static.img = exports.settings.path.static.img || path.join(exports.settings.path.static._, "img")
     exports.settings.path.wpImg = path.join(exports.settings.path.blog, "zz_img_processed/img/")
     exports.settings.path.static.css = path.join(exports.settings.path.static._, "css")
 
