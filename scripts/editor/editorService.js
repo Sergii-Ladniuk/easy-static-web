@@ -31,7 +31,7 @@ exports.images = function () {
             file = path.basename(file);
             return {
                 name: file,
-                url: 'http://local.marinatravelblog.com:4002/img/' + file
+                url: 'http://localhost:4002/img/' + file
             }
         })
 };

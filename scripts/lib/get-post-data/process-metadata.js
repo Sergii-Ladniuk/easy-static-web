@@ -102,7 +102,7 @@ function processMeta(target) {
     target.meta['featured-tag'] = slugifyAll(arrayifyIfString(target.meta['featured-tag']));
     target.meta['featured-category'] = toLowerAll(arrayifyIfString(target.meta['featured-category']));
 
-    target.meta.link = 'http://local.marinatravelblog.com:4000/' + target.meta.slug + '/';
+    target.meta.link = 'http://localhost:4000/' + target.meta.slug + '/';
 }
 
 var processMetadata = function (data) {

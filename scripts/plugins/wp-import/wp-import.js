@@ -102,10 +102,10 @@ exports.import = function (xmlFileName) {
                     };
                     if (!next.parent) {
                         //FIXME
-                        category.url = 'http://local.marinatravelblog.com:4000/category/' + next.niceName;
+                        category.url = 'http://localhost:4000/category/' + next.niceName;
                     } else {
                         //FIXME
-                        category.url = 'http://local.marinatravelblog.com:4000/category/' + next.parent + '/' + next.niceName;
+                        category.url = 'http://localhost:4000/category/' + next.parent + '/' + next.niceName;
                         category.path = [next.parent, next.niceName];
                         categories.tree[next.parent] = categories.tree[next.parent] || {};
                         categories.tree[next.parent].children = categories.tree[next.parent].children || [];

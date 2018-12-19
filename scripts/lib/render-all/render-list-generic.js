@@ -38,7 +38,7 @@ function doRenderIndexFunction(renderPage, savePage, pageSize, folder) {
                 pageNumber: Math.min(pageNumber-start+1, 10),
                 pageIndex: pageIndex,
                 start: start,
-                url: 'http://local.marinatravelblog.com:4000/' + (folder ? folder + '/' : '')
+                url: 'http://localhost:4000/' + (folder ? folder + '/' : '')
             };
             var meta = {};
             if (!folder && !pageIndex) {

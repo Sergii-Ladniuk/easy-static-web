@@ -6,7 +6,7 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
         PostEditorService.save(PostEditorService.post);
     };
     $scope.addLink = function () {
-        $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://local.marinatravelblog.com:4000/'
+        $scope.editor.insert('[' + $scope.editor.getSelectedText() + '](' + 'http://localhost:4000/'
             + $scope.postToLink.meta.slug + ')');
         PostEditorService.save(PostEditorService.post);
     };

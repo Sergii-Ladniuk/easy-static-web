@@ -31,7 +31,7 @@ RespImgs.lazyLoadImages = function () {
         for (var i = 0; i < lazyloadUs.length; i++) {
             RespImgs.lazyloadImage(lazyloadUs[i]);
         }
-        document.getElementById('banner').style.backgroundImage = 'url(http://local.marinatravelblog.com:4000/img/' + 'Valley-of-fire-banner'
+        document.getElementById('banner').style.backgroundImage = 'url(http://localhost:4000/img/' + 'Valley-of-fire-banner'
             + RespImgs.getPrefix(RespImgs.screenWidth,true) + '.jpg)';
         //if (RespImgs.trgMax)
         //    document.getElementById('banner-holder').style.width = RespImgs.maxWidth + 'px';
@@ -81,7 +81,7 @@ RespImgs.lazyloadImage = function (lazyLoadMe) {
         var pre = RespImgs.getPrefix(RespImgs.screenWidth);
 
         //var baseUrl = 'http://192.168.0.6:4000//';
-        var baseUrl = 'http://local.marinatravelblog.com:4000/img/';
+        var baseUrl = 'http://localhost:4000/img/';
 
         img.setAttribute('src', baseUrl + imgUrl + pre + imgExt);
 

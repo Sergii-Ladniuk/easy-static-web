@@ -26,7 +26,7 @@ function postProcessHtml(data, html) {
                     var attrs = match[1];
                     let srcMatch = srcRegex.exec(attrs);
                     var src = srcMatch ? srcMatch[1] : null;
-                    if (src && /local.marinatravelblog.com:4000/.test(src)) {
+                    if (src && /localhost:4000/.test(src)) {
                         var sizeMatch = sizeRegex.exec(attrs);
                         var sizeClass = sizeMatch && sizeMatch[1] ? sizeMatch[1] : '';
                         var altMatch = altRegex.exec(attrs);
