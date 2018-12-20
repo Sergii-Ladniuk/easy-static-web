@@ -4,7 +4,6 @@ const mainModule = require('../general.js');
 const path = require('path');
 const fs = mainModule.fs;
 const sharp = require('sharp');
-const gm = mainModule.gm;
 const util = require('util');
 const ncp = Promise.promisify(require('ncp').ncp);
 const gmSemaphor = require('semaphore')(20);
@@ -112,13 +111,13 @@ function processImage(data, fileName, alt, title, sizes, imageInfo, template, im
     //console.log('process ', fileName);
     var settings = data.settings || data.basic.settings;
     var filePath = path.join(settings.path.static.img, fileName);
-    var gmAsync = Promise.promisifyAll(gm(filePath));
     var srcPath = path.join(settings.path.static.img, fileName);
     var outputFilePath = path.join(settings.path.public.img, fileName);
     var outputFilePathProd = path.join(settings.path.public_prod.img, fileName);
     return gmSemaphor.takeAsync()
         .then(function () {
-            return gmAsync.sizeAsync()
+            return sharp(filePath)
+                .metadata()
         })
         .catch(err => handleImgProcessError(err, srcPath, outputFilePath, outputFilePathProd))
         .then(function (size) {
