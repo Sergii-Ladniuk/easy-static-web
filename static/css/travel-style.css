@@ -805,3 +805,12 @@ cite {
 .footer-blog-link {
     margin-right: 30px;
 }
+
+@media only screen and (min-width: 484px) {
+  .krym-car-rent {
+    background-image: url('http://localhost:4000/img/arenda-avto-krym-car-rent-crimea-myrentacar.jpg');
+    width: 484px;
+    height: 102px;
+    margin-top:20px;
+  }
+}
