@@ -4,7 +4,7 @@ eswEditor.factory('PreviewService', function ($http, PostEditorService) {
             if (!PostEditorService.post || PostEditorService.isPublishing()) {
                 return;
             }
-            return $http.get('/preview/' + PostEditorService.post.meta.slug)
+            return $http.get('http://localhost:4002/preview/' + PostEditorService.post.meta.slug)
         }
     }
 });
