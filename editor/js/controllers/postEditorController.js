@@ -22,6 +22,7 @@ eswEditor.controller('PostEditorController', function ($scope, $http, PostEditor
     }, true);
     $scope.aceLoaded = function (_editor) {
         $scope.editor = _editor;
+        aceEditor = _editor;
         //$('.ace_line > *').attr('spellcheck', "true" ).attr('contenteditable', "true" )
     }
 });

@@ -1,5 +1,5 @@
 {
-  "name": "blog-hugo-tools",
+  "name": "easy-static-web",
   "main": "./lib/index.js",
   "version": "0.0.0",
   "private": true,
@@ -42,7 +42,8 @@
     "to-markdown": "^2.0.1",
     "translitit-cyrillic-russian-to-latin": "^0.1.0",
     "uslug": "^1.0.4",
-    "xml2js": "0.4.16"
+    "xml2js": "0.4.16",
+    "cors": "2.8.5"
   },
   "devDependencies": {
     "debug": "4.1.0",

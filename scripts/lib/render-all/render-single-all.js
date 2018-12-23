@@ -21,7 +21,7 @@ const renderSingleAll = function (data) {
             var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
 
             if (content.meta.slug !== '404' && !content.meta.draft) {
-                sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug, 'monthly', content.priority);
+                sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug + '/', 'monthly', content.priority);
             }
             if (!promise.then) {
                 throw new Error('bad promise')
