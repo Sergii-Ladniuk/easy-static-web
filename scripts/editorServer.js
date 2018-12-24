@@ -4,7 +4,6 @@ var express = require('express');
 var path = require('path');
 var http = require('http');
 var util = require('util');
-var cors = require('cors');
 
 var parseArgs = require('minimist');
 var argv = parseArgs(process.argv.slice(2));
@@ -17,7 +16,7 @@ var settings = require('./settings').loadSync();
 var app = express();
 var port = 4002;
 
-app.use(cors);
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
