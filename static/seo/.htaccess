@@ -165,12 +165,12 @@ Redirect 301 /32-pravila-bezopasnosti-v-puteshestvii /35-pravil-bezopasnosti-v-p
 Redirect 301 /novosti-gavaji/ /gavaji-ostrov-kauai/
 Redirect 301 /poluchenie-zagranpasporta-v-kieve-samostoyatelno-ovir-na-gercena-9/ /biometricheskij-zagranpasport-v-kieve-ukraina/
 Redirect 301 /kanal-na-youtube/ https://www.youtube.com/c/marinatravelblog
-# Redirect 301 /myanma-foto-baganskix-lyudej-zverej-i-suvenirov/ /myanma-drevnije-xramy-bagana-old-bagan/
-# Redirect 301 /myanma-freski-iz-xramov-bagana-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
-# Redirect 301 /myanma-interjery-xramov-bagana/ /myanma-drevnije-xramy-bagana-old-bagan/
-# Redirect 301 /myanma-otdelnye-xramy-bagana-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
-# Redirect 301 /myanma-vsyakie-detalki-iz-baganskix-xramov-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
-# Redirect 301 /myanma-zakaty-i-rassvety-nad-baganom-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-foto-baganskix-lyudej-zverej-i-suvenirov/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-freski-iz-xramov-bagana-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-interjery-xramov-bagana/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-otdelnye-xramy-bagana-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-vsyakie-detalki-iz-baganskix-xramov-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /myanma-zakaty-i-rassvety-nad-baganom-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
 
 #################
 # Redirect affiliates
