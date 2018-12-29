@@ -56,20 +56,9 @@ function processPublishedDate(target) {
 }
 
 function processModifiedDate(target) {
-    let actualModifiedDate = new Date(target.mtime);
-    console.log(`Name: ${target.name}\n mtime: ${actualModifiedDate}\n meta.mtime: ${target.meta.modifiedDate}\n\n`);
-    if (target.meta.modifiedDate) {
-        try {
-            if (typeof target.meta.modifiedDate === 'string') {
-                target.meta.modifiedDate = new Date(target.meta.modifiedDate);
-            }
-            target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
-        } catch (err) {
-            console.error('modifiedDate has wrong format:', target.meta.modifiedDate);
-            throw err;
-        }
-        target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
-    }
+    target.meta.modifiedDate = new Date(target.mtime);
+    target.meta.showDate = daysBetween(target.meta.modifiedDate, new Date()) < 90;
+    target.meta.modifiedDateFormatted = dateFormat(target.meta.modifiedDate, 'dd.mm.yyyy');
 }
 
 function processMeta(target) {
