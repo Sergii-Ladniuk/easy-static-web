@@ -56,6 +56,8 @@ function processPublishedDate(target) {
 }
 
 function processModifiedDate(target) {
+    let actualModifiedDate = new Date(target.mtime);
+    console.log(`Name: ${target.name}\n mtime: ${actualModifiedDate}\n meta.mtime: ${target.meta.modifiedDate}\n\n`);
     if (target.meta.modifiedDate) {
         try {
             if (typeof target.meta.modifiedDate === 'string') {
