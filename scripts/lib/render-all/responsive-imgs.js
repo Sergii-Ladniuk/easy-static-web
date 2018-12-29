@@ -7,11 +7,8 @@ const sharp = require('sharp');
 const util = require('util');
 const ncp = Promise.promisify(require('ncp').ncp);
 const gmSemaphor = require('semaphore')(20);
-var mkdirp = Promise.promisify(require('mkdirp'));
-var findit = require('findit');
 
 var compressTasks = [];
-
 
 gmSemaphor.takeAsync = function () {
     return new Promise(function (done) {
@@ -242,8 +239,9 @@ function handleImg(data, url, alt, title, sizes, imageIndex) {
                     .spread(function (srcStats, template) {
                         if (typeof template !== 'function')
                             throw new Error('bad template');
-                        var srcModifiedDate = srcStats.mtime;
-                        if (!info || !srcModifiedDate <= info.mtime) {
+                        let cachedDate = new Date(info.mtime);
+                        let imgFileModifedDate = new Date(srcStats.mtime);
+                        if (!info || imgFileModifedDate > cachedDate) {
                             processImage(
                                 data, fileName, alt, title, sizes,
                                 imageInfo, template, imageIndex).then(handleImgDone);

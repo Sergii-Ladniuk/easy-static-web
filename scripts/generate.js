@@ -36,7 +36,7 @@ exports.generate = function (args) {
             console.log('ALL DONE.');
 
             if (args.loop) {
-                setTimeout(exports.generate, args.period || 2000)
+                setTimeout(exports.generate.bind(args), args.period || 2000)
             }
         });
 };
