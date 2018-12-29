@@ -171,6 +171,7 @@ Redirect 301 /myanma-interjery-xramov-bagana/ /myanma-drevnije-xramy-bagana-old-
 Redirect 301 /myanma-otdelnye-xramy-bagana-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
 Redirect 301 /myanma-vsyakie-detalki-iz-baganskix-xramov-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
 Redirect 301 /myanma-zakaty-i-rassvety-nad-baganom-fotopost/ /myanma-drevnije-xramy-bagana-old-bagan/
+Redirect 301 /mylford-saund/ /novaja-zelandija-milford-saund/
 
 #################
 # Redirect affiliates
@@ -220,7 +221,7 @@ Redirect 301 /sputnik8/ https://c21.travelpayouts.com/click?shmarker=89308&promo
 Redirect 301 /gocitycard/ https://c62.travelpayouts.com/click?shmarker=89308&promo_id=1942&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.smartdestinations.com
 Redirect 301 /directferries/ https://www.directferries.com/?dfpid=2542&affid=1&rurl=
 Redirect 301 /dreamlines/ https://c81.travelpayouts.com/click?shmarker=89308&promo_id=1918&source_type=link&type=click
-
+Redirect 301 /nz-exc/ https://c14.travelpayouts.com/click?shmarker=89308&promo_id=654&source_type=customlink&type=click&custom_url=https%3A%2F%2Fweatlas.com%2Fplace%2Fnew_zealand%2Fauckland%3Faid%3D10690
 
 ##################
 # Browser cache expiry

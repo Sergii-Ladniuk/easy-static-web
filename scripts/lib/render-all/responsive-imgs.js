@@ -239,7 +239,7 @@ function handleImg(data, url, alt, title, sizes, imageIndex) {
                     .spread(function (srcStats, template) {
                         if (typeof template !== 'function')
                             throw new Error('bad template');
-                        let cachedDate = new Date(info.mtime);
+                        let cachedDate = info ? new Date(info.mtime) : null;
                         let imgFileModifedDate = new Date(srcStats.mtime);
                         if (!info || imgFileModifedDate > cachedDate) {
                             processImage(
