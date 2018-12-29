@@ -11,7 +11,7 @@ div.navbar.navbar-default#mainMenu
         div.navbar-collapse.collapse#mainMenu-colapse
             ul.nav.navbar-nav
                 li
-                    a(href="/#/")="Главная"
+                    a(href="/")="Главная"
                 each itemName in menuRootOrder
                     - var item = menu[itemName]
                     if item.children
