@@ -223,6 +223,7 @@ Redirect 301 /directferries/ https://www.directferries.com/?dfpid=2542&affid=1&r
 Redirect 301 /dreamlines/ https://c81.travelpayouts.com/click?shmarker=89308&promo_id=1918&source_type=link&type=click
 Redirect 301 /nz-exc/ https://c14.travelpayouts.com/click?shmarker=89308&promo_id=654&source_type=customlink&type=click&custom_url=https%3A%2F%2Fweatlas.com%2Fplace%2Fnew_zealand%2Fauckland%3Faid%3D10690
 Redirect 301 /nz-ferry/ https://c44.travelpayouts.com/click?shmarker=89308&promo_id=1764&source_type=customlink&type=click&custom_url=https%3A%2F%2F12go.asia%2Fru%2Ftravel%2Fwellington%2Fpicton
+Redirect 301 /insurance-ua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/?ulp=https%3A%2F%2Finsurance.tickets.ua%2F
 
 ##################
 # Browser cache expiry
