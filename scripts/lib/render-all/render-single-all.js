@@ -21,7 +21,7 @@ const renderSingleAll = function (data) {
             var promise = saveContent(data, renderPage(data, content, 'single.jade', content.meta), 0, content.meta.slug);
 
             if (content.meta.slug !== '404' && !content.meta.draft) {
-                sitemapRenderer.add('http://marinatravelblog.com/' + content.meta.slug + '/', 'monthly', content.priority);
+                sitemapRenderer.add('https://marinatravelblog.com/' + content.meta.slug + '/', 'monthly', content.priority);
             }
             if (!promise.then) {
                 throw new Error('bad promise')
@@ -37,7 +37,7 @@ module.exports = renderSingleAll;
 
 function getArticleData(content) {
     return {
-        "@context": "http://schema.org",
+        "@context": "https://schema.org",
         "@type": "Article",
         "mainEntityOfPage": {
             "@type": "WebPage",
@@ -61,18 +61,18 @@ function getArticleData(content) {
         "publisher": {
             "@type": "Organization",
             "name": "marinatravelblog",
-            "url": "http://marinatravelblog.com",
+            "url": "https://marinatravelblog.com",
             "sameAs": [
-                "http://www.facebook.com/marinatravelblog",
-                "http://twitter.com/marinatravelblg",
+                "https://www.facebook.com/marinatravelblog",
+                "https://twitter.com/marinatravelblg",
                 "https://www.youtube.com/c/marinatravelblog",
-                "http://vk.com/marinatravelblog",
+                "https://vk.com/marinatravelblog",
                 "https://plus.google.com/+Marinatravelblog/posts/",
                 "https://instagram.com/sergii_ladniuk/"
             ],
             "logo": {
                 "@type": "ImageObject",
-                "url": "http://marinatravelblog.com/wp-content/uploads/logo-valley-of-fire-long.jpg",
+                "url": "https://marinatravelblog.com/wp-content/uploads/logo-valley-of-fire-long.jpg",
                 "width": 401,
                 "height": 60
             }

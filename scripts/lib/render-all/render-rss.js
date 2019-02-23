@@ -10,10 +10,10 @@ const renderRss = module.exports = function (data) {
 
     var feedOpts = {
         title: 'marinatravelblog.com',
-        site_url: 'http://marinatravelblog.com',
+        site_url: 'https://marinatravelblog.com',
         description: 'Наша кругосветка и другие самостоятельные путешествия по Европе, Азии, США и Латинской Америке!',
         language: 'ru-RU',
-        feed_url: 'http://marinatravelblog.com/feed.xml'
+        feed_url: 'https://marinatravelblog.com/feed.xml'
     };
 
     var feed = new RSS(feedOpts);

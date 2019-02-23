@@ -6,7 +6,7 @@ var urls = [];
 
 exports.render = function (data) {
     var sitemap = sm.createSitemap({
-        hostname: 'http://marinatravelblog.com',
+        hostname: 'https://marinatravelblog.com',
         cacheTime: 600,        // 600 sec - cache purge period
         urls: urls
     });

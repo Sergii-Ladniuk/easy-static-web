@@ -21,7 +21,8 @@ function changeUrlsToProd(text) {
     return text
         .replace(/localhost\:4000\/*img/g, 'marinatravelblog.com/wp-content/uploads')
         .replace(/localhost\:4000\/*img/g, 'marinatravelblog.com/wp-content/uploads')
-        .replace(/localhost\:4000/g, 'marinatravelblog.com');
+        .replace(/localhost\:4000/g, 'marinatravelblog.com')
+        .replace(/http:\/\/marinatravelblog\.com/g, 'https://marinatravelblog.com');
 }
 
 function prePublish() {
