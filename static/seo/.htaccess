@@ -129,10 +129,6 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-# Redirect http -> https
-RewriteCond %{HTTPS} off
-RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 # Redirect RSS Feed
 RedirectMatch 301 /feed$ /feed.xml
 RedirectMatch 301 /feed/$ /feed.xml
