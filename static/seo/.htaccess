@@ -128,6 +128,9 @@ RewriteEngine On
 RewriteBase /
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+# Redirect /?p=*
+RewriteCond %{QUERY_STRING} ^p=([0-9]*) [NC]
+RewriteRule ^(.*)$ https://marinatravelblog.com [R=301,L,QSD]
 
 # Redirect RSS Feed
 RedirectMatch 301 /feed$ /feed.xml
