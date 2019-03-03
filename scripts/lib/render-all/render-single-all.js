@@ -47,13 +47,11 @@ function getArticleData(content) {
         "author": [{
             "@type": "Person",
             "name": "Maryna Sukhomlynova",
-            "url": "https://plus.google.com/113719564593581367589/",
             "affiliation": "marinatravelblog"
         },
             {
                 "@type": "Person",
                 "name": "Sergii Ladniuk",
-                "url": "https://plus.google.com/u/0/116606126305251345109",
                 "affiliation": "marinatravelblog"
             }],
         "datePublished": content.meta.publishedDate ? content.meta.publishedDate.toISOString() : "",
@@ -67,7 +65,6 @@ function getArticleData(content) {
                 "https://twitter.com/marinatravelblg",
                 "https://www.youtube.com/c/marinatravelblog",
                 "https://vk.com/marinatravelblog",
-                "https://plus.google.com/+Marinatravelblog/posts/",
                 "https://instagram.com/sergii_ladniuk/"
             ],
             "logo": {
