@@ -6,7 +6,7 @@ I am making a small static generation framework. Now it is designed for my websi
 
 # Conventions
 
-* *[your website URL]*  is the URL of your website e.g. ours http://marinatravelblog.com
+* *[your website URL]*  is the URL of your website e.g. ours https://marinatravelblog.com/
 * *[blog folder]*       is a folder where you want to keep the framework files, the website content source files and the HTML output. We'll call it also *project root*.
 
 # Installation
@@ -59,7 +59,7 @@ For example:
       "port": 4000
     },
     "prod": {
-      "url": "http://marinatravelblog/com"
+      "url": "https://marinatravelblog.com/"
     }
   },
   "generate": {
@@ -95,7 +95,7 @@ The last step will create folders:
     /public-debug
 ```
 
-Please explore them. 
+Please explore them.
 Note that as our output is static to support paging we build a lot of folders called 1,2,3,... (for each page) in public-debug, e.g.:
 ```
     /public-debug
@@ -133,7 +133,7 @@ Example:
 
 In the Terminal go to the project folder and run
 ```
-node scripts/testServer.js 
+node scripts/testServer.js
 ```
 If it answers: `Express server listening on port 4000`, then everything is OK.
 
@@ -147,12 +147,12 @@ After making any changes you have to run in another Terminal:
 ```
 grunt generate
 ```
-Then reload the browser tab containing <a href="http://localhost:4000" target="_blank"></a> 
+Then reload the browser tab containing <a href="http://localhost:4000" target="_blank"></a>
 
 # Intellij Idea
 
 * File -> Import... , point to the project root folder, agree to everything it says.
-* In the left bottom corner you have a grunt window. Double clicking on 'generate' will do the same as 'grunt generate' in the terminal. 
+* In the left bottom corner you have a grunt window. Double clicking on 'generate' will do the same as 'grunt generate' in the terminal.
 
 # Create a new post script
 
@@ -166,7 +166,7 @@ It creates a post:
 ```markdown
 ---
 title: тест
-link: 'http://marinatravelblog.com/test'
+link: 'https://marinatravelblog.com/test'
 debug_link: 'http://localhost:4000/test'
 slug: test
 date:
@@ -182,11 +182,11 @@ seo:
         - 'TODO: keywords here'
 
 ---
-![Кафайате](http://marinatravelblog.com/img/Cafayate-1000.jpg)
+![Кафайате](https://marinatravelblog.com/img/Cafayate-1000.jpg)
 
-![Кафайате](http://marinatravelblog.com/img/Cafayate-1001.jpg)
+![Кафайате](https://marinatravelblog.com/img/Cafayate-1001.jpg)
 
-![Кафайате](http://marinatravelblog.com/img/Cafayate-1002.jpg)
+![Кафайате](https://marinatravelblog.com/img/Cafayate-1002.jpg)
 ```
 
 Place the post images into static/img folder.
@@ -194,7 +194,7 @@ Place the post images into static/img folder.
 #Useful file references
 
 ```settings.json``` test and prod websites, do-follow links, related-posts-max-length
-```single.jade``` single post structure 
+```single.jade``` single post structure
 ```tags.json``` all tags
 ```categories.json``` all categories
 ```menu.json``` & ```menu.jade``` top menu structure
@@ -202,4 +202,3 @@ Place the post images into static/img folder.
 ```img.jade``` images code
 ```responsive-img-settings.json``` sizes for responsive images
 ```youtube.jade``` youtube videos load and "Subscribe" text
-
