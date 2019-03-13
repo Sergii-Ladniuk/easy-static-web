@@ -7,5 +7,5 @@ Disallow: /tag/
 Disallow: /privacy-policy/
 Disallow: /m/
 Disallow: *?*
-Host: https://marinatravelblog.com/
+Host: https://marinatravelblog.com
 Sitemap: https://marinatravelblog.com/sitemap.xml
