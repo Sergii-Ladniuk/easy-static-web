@@ -92,7 +92,7 @@ function doRender(data) {
         renderRss(data),
         renderCategoryLists(data))
         .then(function () {
-            console.log('\nRender pages done. Finilizing...');
+            console.log('\nRender pages done. Finalizing...');
             return data;
         })
 }
@@ -161,4 +161,3 @@ function processMenu(data) {
 
     return data;
 }
-
