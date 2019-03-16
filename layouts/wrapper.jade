@@ -46,6 +46,8 @@ html(lang='ru-RU',itemscope, itemtype='https://schema.org/Article',prefix="og: h
                 meta(property='og:image', content=meta.img)
                 meta(name='twitter:image', content=meta.img)
                 meta(itemprop='image', content=meta.img)
+            if (meta.noindex)
+                meta(name='robots', content='noindex')
 
     body
         .container-fluid#top
