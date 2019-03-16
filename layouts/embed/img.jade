@@ -27,10 +27,10 @@ else
     if xlg
         if imageIndex === 0
             .lazy-load(style='padding-bottom:' + padding + '%;')
-                img.xlg(alt=alt, src=file + ext, srcset=stdSizes, data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
+                img.xlg(alt=alt, src='http://localhost:4000/img/'+'1x1.png', data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
         else
             .lazy-load(style='padding-bottom:' + padding + '%;')
-                img.xlg(alt=alt, src=file + '-sm' + ext, data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
+                img.xlg(alt=alt, src='http://localhost:4000/img/'+'1x1.png', data-src=file + ext, data-srcset=xlgSizes, class=additional_class)
     else
         .lazy-load(style='padding-bottom:' + padding + '%;')
             img(alt=alt, src=file + ext, srcset=stdSizes, class=additional_class)
