@@ -814,3 +814,14 @@ cite {
     margin-top:20px;
   }
 }
+
+@media only screen and (max-width: 1500px) {
+    .aviasales-bot {
+        display: none;
+    }
+}
+
+.aviasales-bot {
+    margin-left: -15px;
+    margin-right: 15px;
+}
