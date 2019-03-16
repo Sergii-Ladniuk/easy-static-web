@@ -134,3 +134,15 @@ function is_touch_device() {
     return 'ontouchstart' in window        // works on most browsers
         || navigator.maxTouchPoints;       // works on IE10/11 and Surface
 }
+
+// Google Custom Search
+
+(function() {
+    var cx = '004020697667873441664:vxgsjyf7anw';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+})();

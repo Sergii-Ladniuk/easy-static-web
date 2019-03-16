@@ -3,6 +3,7 @@
   {
     "sidebar-right.jade": [
       "about-us.html",
+      "search.html",
       "email-subscribe.html",
       "tag-cloud.jade"
       ]
