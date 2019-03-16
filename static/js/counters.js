@@ -22,7 +22,7 @@
             };
         s.type = "text/javascript";
         s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//d31j93rd8oukbv.cloudfront.net/metrika/watch_ua.js";
+        s.src = (d.location.protocol === "https:" ? "https:" : "http:") + "//d31j93rd8oukbv.cloudfront.net/metrika/watch_ua.js";
 
         if (w.opera == "[object Opera]") {
             d.addEventListener("DOMContentLoaded", f, false);
@@ -53,6 +53,13 @@
     ga('create', 'UA-45472804-1', 'auto');
     ga('require', 'GTM-TW82CVP');
     ga('send', 'pageview');
+
+    var trackOutboundLink = function(url) {
+        ga('send', 'event', 'outbound', 'click', url, {
+            'transport': 'beacon',
+            'hitCallback': function(){document.location = url;}
+        });
+    }
 
 // hotjar
     (function (h, o, t, j, a, r) {

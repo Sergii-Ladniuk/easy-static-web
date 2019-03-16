@@ -51,17 +51,17 @@ article
                 p Подпишись и будь в курсе всех новостей! :)
 
                 .subscribe-block
-                    a.subscribe-link(href='https://t.me/marinatravelblog', target="_blank", rel="nofollow")
+                    a.subscribe-link(href='https://t.me/marinatravelblog', target="_blank", rel="nofollow", onclick="trackOutboundLink('t.me/marinatravelblog');return false;")
                         span.fa.fa-telegram
                         |&nbsp;Telegram
                         //span.pipe
                         //| |
-                    a.subscribe-link(href='https://www.facebook.com/marinatravelblog', target="_blank", rel="nofollow")
+                    a.subscribe-link(href='https://www.facebook.com/marinatravelblog', target="_blank", rel="nofollow", onclick="trackOutboundLink('www.facebook.com/marinatravelblog');return false;")
                         span.fa.fa-facebook-square(style="margin-left: 0.8em;")
                         |&nbsp;Facebook
                         //span.pipe
                         //| |
-                    a.subscribe-link(href='https://vk.com/marinatravelblog', target="_blank", rel="nofollow")
+                    a.subscribe-link(href='https://vk.com/marinatravelblog', target="_blank", rel="nofollow", onclick="trackOutboundLink('vk.com/marinatravelblog');return false;")
                         span.fa.fa-vk(style="margin-left: 0.8em;")
                         |&nbsp;Vkontakte
                         //span.pipe
