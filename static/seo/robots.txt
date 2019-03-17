@@ -4,7 +4,6 @@ Disallow: /logs/
 Disallow: /category/
 Disallow: /page/
 Disallow: /tag/
-Disallow: /privacy-policy/
 Disallow: /m/
 Disallow: *?*
 Host: https://marinatravelblog.com
