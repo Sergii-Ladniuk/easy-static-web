@@ -1,4 +1,7 @@
 $(function () {
+
+    var shareJsLoaded = false;
+
     if ($('#social-btns-side').length) {
 
         $('#social-btns-side').hide();
@@ -16,6 +19,14 @@ $(function () {
                 $('#sidebar').css({top: '0'});
             } else {
                 $('#sidebar').css({top: '75px'});
+            }
+
+            if (!shareJsLoaded && $(window).scrollTop() > $(document).height() / 4) {
+                console.log('loading share js...');
+                [].slice.call($('.share-js')).forEach(function (e) {
+                    e.src = e.dataset.src;
+                });
+                shareJsLoaded = true;
             }
 
             var showSubscribePopup = typeof subscribePopupValue !== 'undefined';
