@@ -65,17 +65,18 @@ $(function () {
         });
 
         function updateImgSrc(image) {
-            if (isScrolledIntoView(image)) {
-                if (image.dataset.src) {
-                    image.src = image.dataset.src;
-                    if (image.dataset.srcset) {
-                        image.srcset = image.dataset.srcset;
-                    }
-                    image.removeAttribute('data-src');
-                    image.removeAttribute('data-srcset');
+            var src = image.dataset.src;
+            var srcset = image.dataset.srcset;
+
+            if (src) {
+                image.src = src;
+                if (srcset) {
+                    image.srcset = srcset;
                 }
-                image.classList.remove("xlg");
+                image.removeAttribute('data-src');
+                image.removeAttribute('data-srcset');
             }
+            image.classList.remove("xlg");
         }
 
         function isScrolledIntoView(elem) {
@@ -88,7 +89,7 @@ $(function () {
             var elemTop = $elem.offset().top;
             var elemBottom = elemTop + $elem.height();
 
-            return ((elemTop-100 <= docViewBottom) && (elemBottom+100 >= docViewTop));
+            return ((elemTop - 100 <= docViewBottom) && (elemBottom + 100 >= docViewTop));
         }
 
         lazyImages = function () {
@@ -110,7 +111,14 @@ $(function () {
                 });
             } else {
                 $(window).scroll(function () {
-                    lazyImages.forEach(updateImgSrc)
+                    lazyImages = lazyImages.filter(function (image) {
+                        if (isScrolledIntoView(image)) {
+                            updateImgSrc(image);
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    })
                 });
             }
         };
@@ -137,7 +145,7 @@ function is_touch_device() {
 
 // Google Custom Search
 
-(function() {
+(function () {
     var cx = '004020697667873441664:vxgsjyf7anw';
     var gcse = document.createElement('script');
     gcse.type = 'text/javascript';
