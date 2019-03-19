@@ -93,7 +93,7 @@ $(function () {
         }
 
         lazyImages = function () {
-            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg"));
+            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg, .lazy-iframe"));
 
             if ("IntersectionObserver" in window) {
                 var lazyImageObserver = new IntersectionObserver(function (entries, observer) {
