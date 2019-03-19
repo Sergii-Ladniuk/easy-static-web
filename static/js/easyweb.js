@@ -81,6 +81,10 @@ $(function () {
             } else if ($(image).hasClass('lazy-fb-comments')) {
                 registerFacebookComments();
                 $(image).removeClass('lazy-fb-comments')
+            } else if ($(image).hasClass('lazy-script-holder')) {
+                let script = $(image)[0].firstElementChild;
+                script.src = script.dataset.src;
+                $(image).removeClass('lazy-script-holder')
             }
 
             image.classList.remove("xlg");
@@ -141,7 +145,7 @@ $(function () {
         }
 
         lazyImages = function () {
-            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg, .lazy-iframe, .lazy-disqus, .lazy-fb-comments"));
+            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg, .lazy-iframe, .lazy-disqus, .lazy-fb-comments, .lazy-script-holder"));
 
             if ("IntersectionObserver" in window) {
                 var lazyImageObserver = new IntersectionObserver(function (entries, observer) {
