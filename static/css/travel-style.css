@@ -553,8 +553,9 @@ a {
     /* color: whitesmoke; */
 }
 
-.copyright > a {
+.copyright > .brand {
     margin-left: 0.5em;
+    margin-right: 0.5em;
 }
 
 #days-in-travel {
