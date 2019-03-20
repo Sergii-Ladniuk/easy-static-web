@@ -65,17 +65,70 @@ $(function () {
         });
 
         function updateImgSrc(image) {
-            if (isScrolledIntoView(image)) {
-                if (image.dataset.src) {
-                    image.src = image.dataset.src;
-                    if (image.dataset.srcset) {
-                        image.srcset = image.dataset.srcset;
-                    }
-                    image.removeAttribute('data-src');
-                    image.removeAttribute('data-srcset');
+            var src = image.dataset.src;
+            var srcset = image.dataset.srcset;
+
+            if (src) {
+                image.src = src;
+                if (srcset) {
+                    image.srcset = srcset;
                 }
-                image.classList.remove("xlg");
+                image.removeAttribute('data-src');
+                image.removeAttribute('data-srcset');
+            } else if ($(image).hasClass('lazy-disqus')) {
+                registerDisqus();
+                $(image).removeClass('lazy-disqus')
+            } else if ($(image).hasClass('lazy-fb-comments')) {
+                registerFacebookComments();
+                $(image).removeClass('lazy-fb-comments')
+            } else if ($(image).hasClass('lazy-script-holder')) {
+                let script = $(image)[0].firstElementChild;
+                script.src = script.dataset.src;
+                $(image).removeClass('lazy-script-holder')
             }
+
+            image.classList.remove("xlg");
+        }
+
+        function registerDisqus() {
+            if (typeof slug !== 'undefined') {
+                var disqus_url = 'http://marinatravelblog.com/' + slug + '/';
+                var disqus_identifier = post_id + ' ' + shortLink;
+                var disqus_container_id = 'disqus_thread';
+                var disqus_shortname = 'httpmarinatravelblogcom';
+                var disqus_config_custom = window.disqus_config;
+                var disqus_config = function () {
+                    this.language = '';
+                    this.callbacks.onReady.push(function () {
+                        var script = document.createElement('script');
+                        script.async = true;
+                        script.src = '?cf_action=sync_comments&post_id=8783';
+                        var firstScript = document.getElementsByTagName('script')[0];
+                        firstScript.parentNode.insertBefore(script, firstScript);
+                    });
+                    if (disqus_config_custom) {
+                        disqus_config_custom.call(this);
+                    }
+                };
+                (function () {
+                    var dsq = document.createElement('script');
+                    dsq.type = 'text/javascript';
+                    dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+
+        function registerFacebookComments() {
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
         }
 
         function isScrolledIntoView(elem) {
@@ -88,11 +141,11 @@ $(function () {
             var elemTop = $elem.offset().top;
             var elemBottom = elemTop + $elem.height();
 
-            return ((elemTop-100 <= docViewBottom) && (elemBottom+100 >= docViewTop));
+            return ((elemTop - 100 <= docViewBottom) && (elemBottom + 100 >= docViewTop));
         }
 
         lazyImages = function () {
-            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg"));
+            var lazyImages = [].slice.call(document.querySelectorAll("img.xlg, .lazy-iframe, .lazy-disqus, .lazy-fb-comments, .lazy-script-holder"));
 
             if ("IntersectionObserver" in window) {
                 var lazyImageObserver = new IntersectionObserver(function (entries, observer) {
@@ -110,7 +163,14 @@ $(function () {
                 });
             } else {
                 $(window).scroll(function () {
-                    lazyImages.forEach(updateImgSrc)
+                    lazyImages = lazyImages.filter(function (image) {
+                        if (isScrolledIntoView(image)) {
+                            updateImgSrc(image);
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    })
                 });
             }
         };
@@ -120,29 +180,20 @@ $(function () {
 
     carousel();
 
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.5";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-});
-
-function is_touch_device() {
-    return 'ontouchstart' in window        // works on most browsers
-        || navigator.maxTouchPoints;       // works on IE10/11 and Surface
-}
+    function is_touch_device() {
+        return 'ontouchstart' in window        // works on most browsers
+            || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+    }
 
 // Google Custom Search
 
-(function() {
-    var cx = '004020697667873441664:vxgsjyf7anw';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-})();
+    (function () {
+        var cx = '004020697667873441664:vxgsjyf7anw';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    })();
+})

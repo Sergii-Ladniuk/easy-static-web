@@ -1,4 +1,14 @@
 $(function () {
+
+    var shareJsLoaded = false;
+
+    function registerShareJs() {
+        [].slice.call($('.share-js')).forEach(function (e) {
+            e.src = e.dataset.src;
+        });
+        shareJsLoaded = true;
+    }
+
     if ($('#social-btns-side').length) {
 
         $('#social-btns-side').hide();
@@ -16,6 +26,10 @@ $(function () {
                 $('#sidebar').css({top: '0'});
             } else {
                 $('#sidebar').css({top: '75px'});
+            }
+
+            if (!shareJsLoaded && $(window).scrollTop() > $(document).height() / 4) {
+                registerShareJs();
             }
 
             var showSubscribePopup = typeof subscribePopupValue !== 'undefined';
@@ -58,6 +72,9 @@ $(function () {
     });
     $('#mobile-share-btn').click(function (e) {
         var $share = $('#share-modal');
+        if (!shareJsLoaded) {
+            registerShareJs();
+        }
         $share.modal('show');
         $share.removeClass('hide');
         e.preventDefault();

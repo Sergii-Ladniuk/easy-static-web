@@ -825,3 +825,7 @@ cite {
     margin-left: -15px;
     margin-right: 15px;
 }
+
+.lazy-script-holder {
+    padding-bottom: 460px;
+}

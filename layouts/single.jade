@@ -42,8 +42,8 @@ article
             p
                 strong Понравилась запись? Обязательно поделись! :)
             //div#uptolike_holder_bottom
-            script(type='text/javascript', src='//yastatic.net/es5-shims/0.0.2/es5-shims.min.js', charset='utf-8', async)
-            script(type='text/javascript', src='//yastatic.net/share2/share.js', charset='utf-8', async)
+            script.share-js(type='text/javascript', data-src='//yastatic.net/es5-shims/0.0.2/es5-shims.min.js', charset='utf-8', async)
+            script.share-js(type='text/javascript', data-src='//yastatic.net/share2/share.js', charset='utf-8', async)
             #social-btns-side.hidden-xs.hidden-sm.ya-share2(data-services='facebook,vkontakte,telegram,viber', data-counter='')
             #social-btns-bottom.ya-share2(data-services='facebook,vkontakte,telegram,viber', data-counter='')
             strong
@@ -89,9 +89,9 @@ article
             if (content.meta.slug !== '404')
                 #uptolike_holder_side
                 .comments-type Комментируем через Facebook:
-                .fb-comments(data-href=content.meta.link, data-numposts='5', data-width='100%')
+                .fb-comments.lazy-fb-comments(data-href=content.meta.link, data-numposts='5', data-width='100%')
                 .comments-type Комментируем через Disqus:
-                #disqus_thread
+                #disqus_thread.lazy-disqus
                 noscript
                     p Включите JavaScript в Вашем браузере, чтобы сделать доступными комментарии.
 
@@ -113,11 +113,9 @@ article
                         | Поделиться
         .modal.hide#subscribe-modal(tabindex='-1', role='dialog', aria-labelledby='subscribe-modal')
             .modal-dialog.modal-sm(role='document')
-                .modal-header
+                .modal-content
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                         span(aria-hidden='true') ×
-                    h4.modal-title Подписаться
-                .modal-content
                     p.method
                         | Присоединись к 20000+ наших читателей!
                     .subsribe-block
@@ -135,11 +133,9 @@ article
                             | E-mail
         .modal.hide#share-modal(tabindex='-1', role='dialog', aria-labelledby='share-modal')
             .modal-dialog.modal-sm(role='document')
-                .modal-header
+                .modal-content
                     button.close(type='button', data-dismiss='modal', aria-label='Close')
                         span(aria-hidden='true') ×
-                    h4.modal-title Понравилась запись?
-                .modal-content
                     p
                         | Поделись с друзьями в соцсетях&nbsp;:)
                     #social-btns-popup.ya-share2(data-services='facebook,vkontakte,pocket,telegram,viber', data-counter='')
