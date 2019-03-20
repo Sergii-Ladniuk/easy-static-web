@@ -82,7 +82,7 @@ $(function () {
                 registerFacebookComments();
                 $(image).removeClass('lazy-fb-comments')
             } else if ($(image).hasClass('lazy-script-holder')) {
-                let script = $(image)[0].firstElementChild;
+                var script = $(image)[0].firstElementChild;
                 script.src = script.dataset.src;
                 $(image).removeClass('lazy-script-holder')
             }
