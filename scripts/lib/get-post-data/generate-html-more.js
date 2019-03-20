@@ -71,7 +71,9 @@ function renderer(data) {
     };
 
     renderer.link = function (href, title, text) {
-        if ((href.includes('youtube') || href.includes('youtu.be') || href.includes('dailymotion.com')) && href === text) {
+        if ((href.includes('youtube') || href.includes('youtu.be')
+                || href.includes('google.com/maps')
+                || href.includes('dailymotion.com')) && href === text) {
             return href;
         }
 
