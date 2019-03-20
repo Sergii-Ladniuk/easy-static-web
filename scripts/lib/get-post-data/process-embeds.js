@@ -35,6 +35,20 @@ class EmbedService {
                         let name = attrMatch[1];
                         let val = attrMatch[2];
                         attrs[name] = val;
+                        if (item.includes('iframe'))
+                            console.log('attr', name, val)
+                    }
+
+                    if (item.includes('iframe'))
+                        console.log(item, ':', attrsRaw)
+
+                    attrRegex = /(.*?)="<a.*?href="(.*?)".*?>/g;
+
+                    while (attrMatch = attrRegex.exec(attrsRaw)) {
+                        let name = attrMatch[1];
+                        let val = attrMatch[2];
+
+                        attrs[name] = val;
                     }
 
                     let nextReplacement = templateDef.template.then(function (template) {
