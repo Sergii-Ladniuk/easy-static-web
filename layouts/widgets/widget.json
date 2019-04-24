@@ -4,6 +4,7 @@
     "sidebar-right.jade": [
       "about-us.html",
       "search.html",
+      "wn-insurance-banner.html",
       "aviasales-bot.html"
       ]
   },
