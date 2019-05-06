@@ -206,6 +206,7 @@ Redirect 301 /faq-chavo/ /
 #################
 
 Redirect 301 /m/12goasia/ https://c44.travelpayouts.com/click?shmarker=89308&promo_id=1256&source_type=link&type=click
+Redirect 301 /m/agoda/ https://c104.travelpayouts.com/click?shmarker=89308&promo_id=2854&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.agoda.com%2Fru-ru%2F
 Redirect 301 /m/airbnb-coupon/ https://www.airbnb.com/c/msukhomlynova?s=8
 Redirect 301 /m/alamo/ https://ad.admitad.com/g/ect9jcqrby5fe19fcf9146fc09ba31/
 Redirect 301 /m/ali/ https://alitems.com/g/1e8d1144945fe19fcf9116525dc3e8/
@@ -215,7 +216,7 @@ Redirect 301 /m/aviasales/ https://www.aviasales.ru/?marker=89308
 Redirect 301 /m/avtobustravel/ https://c76.travelpayouts.com/click?shmarker=89308&promo_id=1758&source_type=link&type=click
 Redirect 301 /m/bikesbooking/ https://c57.travelpayouts.com/click?shmarker=89308&promo_id=1669&source_type=link&type=click
 Redirect 301 /m/blablacar/ https://c75.travelpayouts.com/click?shmarker=89308&promo_id=1670&source_type=link&type=click
-Redirect 301 /m/booking/ https://www.booking.com/index.html?aid=806819
+Redirect 301 /m/booking/ https://c84.travelpayouts.com/click?shmarker=89308&promo_id=2061&source_type=link&type=click
 Redirect 301 /m/booking10/ https://www.booking.com/s/11_6/m0rowe32
 Redirect 301 /m/busfor/ https://c48.travelpayouts.com/click?shmarker=89308&promo_id=1234&source_type=customlink&type=click&custom_url=https://busfor.ru/
 Redirect 301 /m/compensair/ https://c86.travelpayouts.com/click?shmarker=89308&promo_id=2103&source_type=link&type=click
