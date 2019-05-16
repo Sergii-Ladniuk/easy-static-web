@@ -249,6 +249,7 @@ Redirect 301 /m/travelata/ https://c18.travelpayouts.com/click?shmarker=89308&pr
 Redirect 301 /m/travelpayouts/ https://www.travelpayouts.com/?marker=89308&locale=ru
 Redirect 301 /m/tripster/ https://c11.travelpayouts.com/click?shmarker=89308&promo_id=652&source_type=customlink&type=click&custom_url=https://experience.tripster.ru
 Redirect 301 /m/viator/ https://c47.travelpayouts.com/click?shmarker=89308&promo_id=1944&source_type=link&type=click
+Redirect 301 /m/voyagin/ https://c109.travelpayouts.com/click?shmarker=89308&promo_id=3224&source_type=link&type=click
 Redirect 301 /m/worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
 Redirect 301 /worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
 Redirect 301 /m/weatlas/ https://c14.travelpayouts.com/click?shmarker=89308&promo_id=199&source_type=link&type=click
