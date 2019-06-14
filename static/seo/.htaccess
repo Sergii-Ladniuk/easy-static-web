@@ -211,7 +211,7 @@ Redirect 301 /m/airbnb-coupon/ https://www.airbnb.com/c/msukhomlynova?s=8
 Redirect 301 /m/alamo/ https://ad.admitad.com/g/ect9jcqrby5fe19fcf9146fc09ba31/
 Redirect 301 /m/ali/ https://alitems.com/g/1e8d1144945fe19fcf9116525dc3e8/
 Redirect 301 /m/alpindustria/ https://ad.admitad.com/g/f9d6c31d2e5fe19fcf91e6c3bbdfd6/
-Redirect 301 /m/autoeurope/ https://c52.travelpayouts.com/click?shmarker=89308&promo_id=1591&source_type=customlink&type=click&custom_url=http://www.autoeurope.ru
+Redirect 301 /m/autoeurope/ https://c52.travelpayouts.com/click?shmarker=89308&promo_id=1591&source_type=customlink&type=click&custom_url=https://www.autoeurope.ru
 Redirect 301 /m/aviasales/ https://www.aviasales.ru/?marker=89308
 Redirect 301 /m/avtobustravel/ https://c76.travelpayouts.com/click?shmarker=89308&promo_id=1758&source_type=link&type=click
 Redirect 301 /m/bikesbooking/ https://c57.travelpayouts.com/click?shmarker=89308&promo_id=1669&source_type=link&type=click
@@ -235,11 +235,11 @@ Redirect 301 /m/kiwicom/ https://www.kiwi.com/deep?affilid=marina
 Redirect 301 /m/kiwi-ru/ https://ad.admitad.com/g/v05avdbj2e5fe19fcf91e5d6040c39/?ulp=https://www.kiwi.com/ru/&subid=kiwi.com/ru
 Redirect 301 /m/kiwitaxi/ https://c1.travelpayouts.com/click?shmarker=89308&promo_id=530&source_type=link&type=click
 Redirect 301 /m/mau/ https://ad.admitad.com/g/go0ffstsxl5fe19fcf9161bba2e5b0/
-Redirect 301 /m/mistotravel/ https://c54.travelpayouts.com/click?shmarker=89308&promo_id=1512&source_type=customlink&type=click&custom_url=http://misto.travel
+Redirect 301 /m/mistotravel/ https://c54.travelpayouts.com/click?shmarker=89308&promo_id=1512&source_type=customlink&type=click&custom_url=https://misto.travel
 Redirect 301 /m/musement/ https://c83.travelpayouts.com/click?shmarker=89308&promo_id=1927&source_type=link&type=click
 Redirect 301 /m/myrentacar/ https://c7.travelpayouts.com/click?shmarker=89308&promo_id=646&source_type=customlink&type=click&custom_url=https://rentacarfor.me/
 Redirect 301 /m/omio/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
-Redirect 301 /m/onlinetours/ https://c43.travelpayouts.com/click?shmarker=89308&promo_id=1094&source_type=customlink&type=click&custom_url=http://www.onlinetours.ru/
+Redirect 301 /m/onlinetours/ https://c43.travelpayouts.com/click?shmarker=89308&promo_id=1094&source_type=customlink&type=click&custom_url=https://www.onlinetours.ru/
 Redirect 301 /m/raileurope/ https://c69.travelpayouts.com/click?shmarker=89308&promo_id=1935&source_type=customlink&type=click&custom_url=https://www.raileurope.com
 Redirect 301 /m/sutochno/ https://c99.travelpayouts.com/click?shmarker=89308&promo_id=2690&source_type=customlink&type=click&custom_url=https://sutochno.ru/
 Redirect 301 /m/ticketsnetwork/ https://c72.travelpayouts.com/click?shmarker=89308&promo_id=1947&source_type=link&type=click
