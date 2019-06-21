@@ -201,6 +201,9 @@ Redirect 301 /franciya-elzas-belfor-ribovil-rikevir-egisxajm-turkxajm/ /franciya
 Redirect 301 /franciya-elzas-kolmar-shato-kenigsburg-selestat-oberne-strasburg/ /franciya-elzas/
 Redirect 301 /faq-chavo/ /
 Redirect 301 /singapurskiy-sad-orchidey/ /singapur-strana-chudes/
+Redirect 301 /indoneziya-ostrov-bali-ubud/ /indoneziya-ostrov-bali/
+Redirect 301 /indoneziya-bali-amed-tulamben-denpasar-sanur-nusa-dua-uluwatu/ /indoneziya-ostrov-bali/
+Redirect 301 /indoneziya-bali-kuta-serfing-diving-ozera/ /indoneziya-ostrov-bali/
 
 #################
 # Redirect affiliates
