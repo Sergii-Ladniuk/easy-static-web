@@ -229,22 +229,27 @@ Redirect 301 /m/booking10/ https://www.booking.com/s/11_6/m0rowe32
 Redirect 301 /m/busfor/ https://c48.travelpayouts.com/click?shmarker=89308&promo_id=1234&source_type=customlink&type=click&custom_url=https://busfor.ru/
 Redirect 301 /m/compensair/ https://c86.travelpayouts.com/click?shmarker=89308&promo_id=2103&source_type=link&type=click
 Redirect 301 /m/decathlon/ https://ad.admitad.com/g/lkfb6yzxaf5fe19fcf91c6f64c83b2/
+Redirect 301 /m/directferries/ https://www.directferries.com/?dfpid=2542&affid=1&rurl=
 Redirect 301 /m/discovercarhire/ https://c117.travelpayouts.com/click?shmarker=89308&promo_id=3555&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.discovercarhire.com%2Fru%2F
+Redirect 301 /m/dreamlines/ https://c81.travelpayouts.com/click?shmarker=89308&promo_id=1918&source_type=link&type=click
 Redirect 301 /m/drimsim/ https://c102.travelpayouts.com/click?shmarker=89308&promo_id=2762&source_type=customlink&type=click&custom_url=https%3A%2F%2Fdrimsim.com
 Redirect 301 /m/economybooking/ https://c10.travelpayouts.com/click?shmarker=89308&promo_id=2018&source_type=customlink&type=click&custom_url=https://www.economybookings.com/
 Redirect 301 /m/escapewithpro/ https://escapewithpro.com/ru?i=KT9BZ9&utm_source=marinatravelblogcom&utm_medium=pr&utm_campaign=article_092418&utm_content=post
 Redirect 301 /m/flixbus-ru/ https://c97.travelpayouts.com/click?shmarker=89308&promo_id=2415&source_type=link&type=click
 Redirect 301 /m/flixbus-ua/ https://c98.travelpayouts.com/click?shmarker=89308&promo_id=2416&source_type=link&type=click
 Redirect 301 /m/getyourguide/ https://getyourguide.com/?partner_id=E8EKBEZ&utm_medium=affiliate&placement=other
+Redirect 301 /m/gocitycard/ https://c62.travelpayouts.com/click?shmarker=89308&promo_id=1942&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.smartdestinations.com
 Redirect 301 /m/goeuro/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/hopayacht/ https://c92.travelpayouts.com/click?shmarker=89308&promo_id=2463&source_type=customlink&type=click&custom_url=https://hopayacht.com/
 Redirect 301 /m/hotellook/ https://hotellook.ru/?marker=89308
 Redirect 301 /m/hostelworld/ https://c93.travelpayouts.com/click?shmarker=89308&promo_id=3518&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.russian.hostelworld.com%2F
 Redirect 301 /m/hotels/ https://c112.travelpayouts.com/click?shmarker=89308&promo_id=3356&source_type=link&type=click
+Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/?ulp=https%3A%2F%2Finsurance.tickets.ua%2F
 Redirect 301 /m/intuitravel/ https://c22.travelpayouts.com/click?shmarker=89308&promo_id=201&source_type=link&type=click
 Redirect 301 /m/kiwicom/ https://www.kiwi.com/deep?affilid=marina
 Redirect 301 /m/kiwi-ru/ https://ad.admitad.com/g/v05avdbj2e5fe19fcf91e5d6040c39/?ulp=https://www.kiwi.com/ru/&subid=kiwi.com/ru
 Redirect 301 /m/kiwitaxi/ https://c1.travelpayouts.com/click?shmarker=89308&promo_id=530&source_type=link&type=click
+Redirect 301 /m/leveltravel/ https://c26.travelpayouts.com/click?shmarker=89308&promo_id=660&source_type=customlink&type=click&custom_url=https%3A%2F%2Flevel.travel%2F
 Redirect 301 /m/mau/ https://ad.admitad.com/g/go0ffstsxl5fe19fcf9161bba2e5b0/
 Redirect 301 /m/mistotravel/ https://c54.travelpayouts.com/click?shmarker=89308&promo_id=1512&source_type=customlink&type=click&custom_url=https://misto.travel
 Redirect 301 /m/musement/ https://c83.travelpayouts.com/click?shmarker=89308&promo_id=1927&source_type=link&type=click
@@ -252,6 +257,7 @@ Redirect 301 /m/myrentacar/ https://c7.travelpayouts.com/click?shmarker=89308&pr
 Redirect 301 /m/omio/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/onlinetours/ https://c43.travelpayouts.com/click?shmarker=89308&promo_id=1094&source_type=customlink&type=click&custom_url=https://www.onlinetours.ru/
 Redirect 301 /m/raileurope/ https://c69.travelpayouts.com/click?shmarker=89308&promo_id=1935&source_type=customlink&type=click&custom_url=https://www.raileurope.com
+Redirect 301 /m/sputnik8/ https://c21.travelpayouts.com/click?shmarker=89308&promo_id=173&source_type=link&type=click
 Redirect 301 /m/sutochno/ https://c99.travelpayouts.com/click?shmarker=89308&promo_id=2690&source_type=customlink&type=click&custom_url=https://sutochno.ru/
 Redirect 301 /m/ticketsnetwork/ https://c72.travelpayouts.com/click?shmarker=89308&promo_id=1947&source_type=link&type=click
 Redirect 301 /m/ticketsua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/
@@ -265,13 +271,8 @@ Redirect 301 /m/voyagin/ https://c109.travelpayouts.com/click?shmarker=89308&pro
 Redirect 301 /m/worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
 Redirect 301 /worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
 Redirect 301 /m/weatlas/ https://c14.travelpayouts.com/click?shmarker=89308&promo_id=199&source_type=link&type=click
-Redirect 301 /m/sputnik8/ https://c21.travelpayouts.com/click?shmarker=89308&promo_id=173&source_type=link&type=click
-Redirect 301 /m/gocitycard/ https://c62.travelpayouts.com/click?shmarker=89308&promo_id=1942&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.smartdestinations.com
-Redirect 301 /m/directferries/ https://www.directferries.com/?dfpid=2542&affid=1&rurl=
-Redirect 301 /m/dreamlines/ https://c81.travelpayouts.com/click?shmarker=89308&promo_id=1918&source_type=link&type=click
 Redirect 301 /m/nz-exc/ https://c14.travelpayouts.com/click?shmarker=89308&promo_id=654&source_type=customlink&type=click&custom_url=https%3A%2F%2Fweatlas.com%2Fplace%2Fnew_zealand%2Fauckland%3Faid%3D10690
 Redirect 301 /m/nz-ferry/ https://c44.travelpayouts.com/click?shmarker=89308&promo_id=1764&source_type=customlink&type=click&custom_url=https%3A%2F%2F12go.asia%2Fru%2Ftravel%2Fwellington%2Fpicton
-Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/?ulp=https%3A%2F%2Finsurance.tickets.ua%2F
 
 ##################
 # Browser cache expiry
