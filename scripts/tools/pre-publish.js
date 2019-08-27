@@ -122,9 +122,9 @@ function prePublish() {
             nodeferJs = nodeferJs.replace(/\{version\}/g, version);
             console.log('processing&minifying html...');
             return Promise.map(general.util.listFiles(src)
-                .filter(function (file) {
-                    return path.extname(file) === '.html' || path.extname(file) === '.xml';
-                }),
+                    .filter(function (file) {
+                        return path.extname(file) === '.html' || path.extname(file) === '.xml';
+                    }),
                 function (file) {
                     var relPath = file.replace(src, '');
                     var slug = path.dirname(relPath);
@@ -188,6 +188,7 @@ if (run) {
 }
 
 var opDone = 0;
+
 function reportProgress() {
     if (opDone % 1000 === 0) {
         process.stdout.write(".");
