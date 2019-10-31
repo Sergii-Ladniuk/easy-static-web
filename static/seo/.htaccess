@@ -244,7 +244,7 @@ Redirect 301 /m/gocitycard/ https://c62.travelpayouts.com/click?shmarker=89308&p
 Redirect 301 /m/goeuro/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/hopayacht/ https://c92.travelpayouts.com/click?shmarker=89308&promo_id=2463&source_type=customlink&type=click&custom_url=https://hopayacht.com/
 Redirect 301 /m/hotellook/ https://hotellook.ru/?marker=89308
-Redirect 301 /m/hostelworld/ https://c93.travelpayouts.com/click?shmarker=89308&promo_id=3518&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.russian.hostelworld.com%2F
+Redirect 301 /m/hostelworld/ http://www.booking.com/index.html?aid=806819
 Redirect 301 /m/hotels/ https://c112.travelpayouts.com/click?shmarker=89308&promo_id=3356&source_type=link&type=click
 Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/?ulp=https%3A%2F%2Finsurance.tickets.ua%2F
 Redirect 301 /m/intuitravel/ https://c22.travelpayouts.com/click?shmarker=89308&promo_id=201&source_type=link&type=click
@@ -259,6 +259,7 @@ Redirect 301 /m/myrentacar/ https://c7.travelpayouts.com/click?shmarker=89308&pr
 Redirect 301 /m/omio/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/onlinetours/ https://c43.travelpayouts.com/click?shmarker=89308&promo_id=1094&source_type=customlink&type=click&custom_url=https://www.onlinetours.ru/
 Redirect 301 /m/raileurope/ https://c69.travelpayouts.com/click?shmarker=89308&promo_id=1935&source_type=customlink&type=click&custom_url=https://www.raileurope.com
+Redirect 301 /m/rentalcars/ https://c130.travelpayouts.com/click?shmarker=89308&promo_id=3814&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.rentalcars.com%2F
 Redirect 301 /m/sputnik8/ https://c21.travelpayouts.com/click?shmarker=89308&promo_id=173&source_type=link&type=click
 Redirect 301 /m/sutochno/ https://c99.travelpayouts.com/click?shmarker=89308&promo_id=2690&source_type=customlink&type=click&custom_url=https://sutochno.ru/
 Redirect 301 /m/ticketsnetwork/ https://c72.travelpayouts.com/click?shmarker=89308&promo_id=1947&source_type=link&type=click
