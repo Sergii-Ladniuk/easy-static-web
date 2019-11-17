@@ -43,11 +43,11 @@ a.youtube {
 }
 
 .social-buttons .btn {
-    font-size: 2.3vw;
+    font-size: 1.8vw;
 }
 
 .social-buttons .fa {
-    font-size: 32px;
+    font-size: 22px;
     margin-right: 1px;
 }
 
@@ -636,7 +636,7 @@ cite {
     }
 
     .social-buttons .fa {
-        font-size: 28px;
+        font-size: 22px;
     }
 
     .copyright,
