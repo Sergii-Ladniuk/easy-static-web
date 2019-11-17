@@ -2,8 +2,7 @@
   "menu.jade",
   {
     "sidebar-right.jade": [
-      "about-us.html",
-      "search.html"
+      "about-us.html"
       ]
   },
   {
