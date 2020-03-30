@@ -105,6 +105,10 @@ var processMetadata = function (data) {
         processPublishedDate(target);
         processModifiedDate(target);
 
+        if (target.meta.slug !== target.name.replace('.md', '')) {
+            console.warn(`File ${target.name} defines different slug ${target.meta.slug}!`)
+        }
+
         extend(data.common, {
             categories: getCategoryData(target),
             tags: getTagsData(target),
