@@ -51,6 +51,7 @@
     "bower": "1.8.4",
     "debug": "4.1.0",
     "grunt": "^0.4.5",
+    "grunt-cli": "0.1.13",
     "grunt-bower-task": "^0.4.0",
     "grunt-cli": " 0.1.13",
     "grunt-contrib-clean": "^0.7.0",
