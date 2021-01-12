@@ -16,7 +16,7 @@
     "deep-equal": "^1.0.1",
     "express": "3.4.0",
     "express-promise": "^0.4.0",
-    "extend": "3.0.0",
+    "extend": "3.0.2",
     "findit": "2.0.0",
     "ftp": "^0.3.10",
     "gm": "^1.22.0",
