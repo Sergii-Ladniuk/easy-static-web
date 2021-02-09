@@ -208,6 +208,7 @@ Redirect 301 /myanma-yangonskaya-kolcevaya-zheleznaya-doroga-yangon-circular-tra
 Redirect 301 /myanma-interesnye-mesta-v-yangone-i-samyj-vkusnyj-sup/ /myanma-gorod-yangon/
 Redirect 301 /myanma-ulichnaya-zhizn-koloritnogo-yangona/ /myanma-gorod-yangon/
 Redirect 301 /myanma-yangonskaya-arxitektura/ /myanma-gorod-yangon/
+Redirect 301 /emirates-i-aeroport-v-dubae/ /
 
 #################
 # Redirect affiliates
@@ -226,7 +227,7 @@ Redirect 301 /m/avtobustravel/ https://c76.travelpayouts.com/click?shmarker=8930
 Redirect 301 /m/bigbus/ https://c133.travelpayouts.com/click?shmarker=89308&promo_id=4036&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.bigbustours.com%2F
 Redirect 301 /m/bikesbooking/ https://c57.travelpayouts.com/click?shmarker=89308&promo_id=1669&source_type=link&type=click
 Redirect 301 /m/blablacar/ https://c75.travelpayouts.com/click?shmarker=89308&promo_id=1670&source_type=link&type=click
-Redirect 301 /m/booking/ http://www.booking.com/index.html?aid=806819
+Redirect 301 /m/booking/ https://tp.media/r?marker=89308&p=2076&u=https%3A%2F%2Fwww.booking.com%2F
 Redirect 301 /m/booking10/ https://www.booking.com/s/11_6/m0rowe32
 Redirect 301 /m/busbud/ https://c138.travelpayouts.com/click?shmarker=89308&promo_id=4109&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.busbud.com%2Fen
 Redirect 301 /m/busfor/ https://c48.travelpayouts.com/click?shmarker=89308&promo_id=1234&source_type=customlink&type=click&custom_url=https://busfor.ru/
@@ -234,9 +235,9 @@ Redirect 301 /m/compensair/ https://c86.travelpayouts.com/click?shmarker=89308&p
 Redirect 301 /compensair/ https://c86.travelpayouts.com/click?shmarker=89308&promo_id=2103&source_type=link&type=click
 Redirect 301 /m/decathlon/ https://ad.admitad.com/g/lkfb6yzxaf5fe19fcf91c6f64c83b2/
 Redirect 301 /m/directferries/ https://www.directferries.com/?dfpid=2542&affid=1&rurl=
-Redirect 301 /m/discovercarhire/ https://c117.travelpayouts.com/click?shmarker=89308&promo_id=3555&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.discovercarhire.com%2Fru%2F
+Redirect 301 /m/discovercarhire/ https://tp.media/r?marker=89308&p=3555&u=https%3A%2F%2Fwww.discovercars.com%2F
 Redirect 301 /m/dreamlines/ https://c81.travelpayouts.com/click?shmarker=89308&promo_id=1918&source_type=link&type=click
-Redirect 301 /m/drimsim/ https://c102.travelpayouts.com/click?shmarker=89308&promo_id=2762&source_type=customlink&type=click&custom_url=https%3A%2F%2Fdrimsim.com
+Redirect 301 /m/drimsim/ https://drimsim.app.link/D3LlDzRpo1
 Redirect 301 /m/economybooking/ https://c10.travelpayouts.com/click?shmarker=89308&promo_id=2018&source_type=customlink&type=click&custom_url=https://www.economybookings.com/
 Redirect 301 /m/escapewithpro/ https://escapewithpro.com/ru?i=KT9BZ9&utm_source=marinatravelblogcom&utm_medium=pr&utm_campaign=article_092418&utm_content=post
 Redirect 301 /m/flixbus-ru/ https://c97.travelpayouts.com/click?shmarker=89308&promo_id=2415&source_type=link&type=click
@@ -246,7 +247,7 @@ Redirect 301 /m/gocitycard/ https://c62.travelpayouts.com/click?shmarker=89308&p
 Redirect 301 /m/goeuro/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/hopayacht/ https://c92.travelpayouts.com/click?shmarker=89308&promo_id=2463&source_type=customlink&type=click&custom_url=https://hopayacht.com/
 Redirect 301 /m/hotellook/ https://hotellook.ru/?marker=89308
-Redirect 301 /m/hostelworld/ http://www.booking.com/index.html?aid=806819
+Redirect 301 /m/hostelworld/ https://marinatravelblog.com/m/booking/
 Redirect 301 /m/hotels/ https://c112.travelpayouts.com/click?shmarker=89308&promo_id=3356&source_type=link&type=click
 Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/yk224wdch25fe19fcf916acf6f3f63/?ulp=https%3A%2F%2Finsurance.tickets.ua%2F
 Redirect 301 /m/intuitravel/ https://c22.travelpayouts.com/click?shmarker=89308&promo_id=201&source_type=link&type=click
@@ -272,6 +273,7 @@ Redirect 301 /m/travelata/ https://c18.travelpayouts.com/click?shmarker=89308&pr
 Redirect 301 /m/travelpayouts/ https://www.travelpayouts.com/?marker=89308&locale=ru
 Redirect 301 /m/tripster/ https://c11.travelpayouts.com/click?shmarker=89308&promo_id=652&source_type=customlink&type=click&custom_url=https://experience.tripster.ru
 Redirect 301 /m/viator/ https://c47.travelpayouts.com/click?shmarker=89308&promo_id=1944&source_type=link&type=click
+Redirect 301 /m/visitorscoverage/ https://tp.media/r?marker=89308&p=4552&u=https%3A%2F%2Fwww.visitorscoverage.com
 Redirect 301 /m/voyagin/ https://c109.travelpayouts.com/click?shmarker=89308&promo_id=3224&source_type=link&type=click
 Redirect 301 /m/worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
 Redirect 301 /worldnomads/ https://www.worldnomads.com/Turnstile/AffiliateLink?partnerCode=M4RYNA&utm_source=M4RYNA&source=weblink&utm_content=weblink&path=https://worldnomads.com
