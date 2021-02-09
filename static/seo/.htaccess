@@ -138,7 +138,7 @@ RedirectMatch 301 /feed/$ /feed.xml
 
 # Redirect samshit
 RedirectMatch 301 /main$ /
-Redirect 301 /index.htm /
+#Redirect 301 /index.htm /
 Redirect 301 /main /
 RedirectMatch 301 ^index.php$ /
 Redirect 301 /feed.xml/ /feed.xml
