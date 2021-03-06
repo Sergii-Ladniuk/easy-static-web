@@ -834,3 +834,23 @@ cite {
 .lazy-script-holder {
     padding-bottom: 460px;
 }
+
+.lazy-iframe.kk {
+    border: none;
+    height: 240px;
+    margin: -1.5em 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .lazy-iframe.kk {
+        border: none;
+        height: 480px;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .lazy-iframe.kk {
+        border: none;
+        height: 360px;
+    }
+}

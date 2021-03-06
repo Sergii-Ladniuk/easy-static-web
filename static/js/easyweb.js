@@ -69,9 +69,9 @@ $(function () {
             var srcset = image.dataset.srcset;
 
             if (src) {
-                image.src = src;
+                image.src = src.replace('&amp;', '&');
                 if (srcset) {
-                    image.srcset = srcset;
+                    image.srcset = srcset.replace('&amp;', '&');
                 }
                 image.removeAttribute('data-src');
                 image.removeAttribute('data-srcset');
