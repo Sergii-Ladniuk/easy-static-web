@@ -841,10 +841,27 @@ cite {
     margin: -1.5em 0;
 }
 
+.lazy-iframe.kk-climate {
+    height: 615px;
+}
+
+@media only screen and (max-width: 1400px) {
+    .lazy-iframe.kk {
+        border: none;
+        height: 520px;
+    }
+    .lazy-iframe.kk-climate {
+        height: 910px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .lazy-iframe.kk {
         border: none;
         height: 480px;
+    }
+    .lazy-iframe.kk-climate {
+        height: 875px;
     }
 }
 
@@ -852,5 +869,8 @@ cite {
     .lazy-iframe.kk {
         border: none;
         height: 360px;
+    }
+    .lazy-iframe.kk-climate {
+        height: 735px;
     }
 }
