@@ -209,6 +209,14 @@ Redirect 301 /myanma-interesnye-mesta-v-yangone-i-samyj-vkusnyj-sup/ /myanma-gor
 Redirect 301 /myanma-ulichnaya-zhizn-koloritnogo-yangona/ /myanma-gorod-yangon/
 Redirect 301 /myanma-yangonskaya-arxitektura/ /myanma-gorod-yangon/
 Redirect 301 /emirates-i-aeroport-v-dubae/ /
+Redirect 301 /peresechenie-granicy-ehkvadora-i-peru/ /category/america/peru/
+Redirect 301 /peresechenie-granic-paragvaya-argentiny-i-brazilii-v-iguasu/ /argentina-brazil-vodopad-cataratas-iguazu/
+Redirect 301 /itogi-goda-2014/ /
+Redirect 301 /mify-ob-irlandii/ /
+Redirect 301 /novosty-blog-pereshel-na-novuiu-samopysnuiu-platformu/ /
+Redirect 301 /novosty-my-provely-dve-nedely-na-parusnoi-iakhte-na-kube-y-skoro-letym-domoi/ /
+Redirect 301 /poluchenie-tajskoj-vizy-na-bali/ /category/asia/thailand/
+Redirect 301 /vengriya-transport/ /category/europe/hungary/
 
 #################
 # Redirect affiliates
