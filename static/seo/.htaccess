@@ -161,6 +161,11 @@ Redirect 301 /wp-admin* /
 # Redirect old posts
 #################
 
+Redirect 301 /snariazhenye-zyma-2018-2019/ /veschi-dlya-pohoda-aliexpress/
+Redirect 301 /portugaliya-obshhie-vpechatleniya-i-pro-edu/ /portugaliya-putevoditel/
+Redirect 301 /top-tri-soborov-portugalii/ /portugaliya-putevoditel/
+Redirect 301 /portugaliya-trotuarnye-plitochki/ /portugaliya-putevoditel/
+Redirect 301 /obshhestvennyj-transport-i-arenda-avtomobilya-v-portugalii/ /portugaliya-putevoditel/
 Redirect 301 /portugaliya-lissabon-2/ /portugaliya-lissabon-1/
 Redirect 301 /portugaliya-belem-i-drugie-rajony-lissabona/ /portugaliya-lissabon-1/
 Redirect 301 /32-pravila-bezopasnosti-v-puteshestvii/ /35-pravil-bezopasnosti-v-puteshestvii/
@@ -257,6 +262,7 @@ Redirect 301 /m/hotellook/ https://hotellook.ru/?marker=89308
 Redirect 301 /m/hostelworld/ https://marinatravelblog.com/m/booking/
 Redirect 301 /m/hotels/ https://c112.travelpayouts.com/click?shmarker=89308&promo_id=3356&source_type=link&type=click
 Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/944q1ip6aq5fe19fcf91f3cd0719927a9c85ee7a
+Redirect 301 /m/insurance-zk/ https://ad.admitad.com/g/944q1ip6aq5fe19fcf91f3cd071992a08b165011/
 Redirect 301 /m/intuitravel/ https://c22.travelpayouts.com/click?shmarker=89308&promo_id=201&source_type=link&type=click
 Redirect 301 /m/kiwicom/ https://www.kiwi.com/deep?affilid=marina
 Redirect 301 /m/kiwi-ru/ https://ad.admitad.com/g/v05avdbj2e5fe19fcf91e5d6040c39/?ulp=https://www.kiwi.com/ru/&subid=kiwi.com/ru
