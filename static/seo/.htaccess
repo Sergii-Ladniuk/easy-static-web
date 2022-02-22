@@ -162,9 +162,9 @@ Redirect 301 /wp-admin* /
 #################
 
 Redirect 301 /snariazhenye-zyma-2018-2019/ /veschi-dlya-pohoda-aliexpress/
-Redirect 301 /portugaliya-obshhie-vpechatleniya-i-pro-edu/ /portugaliya-putevoditel/
-Redirect 301 /top-tri-soborov-portugalii/ /portugaliya-putevoditel/
-Redirect 301 /portugaliya-trotuarnye-plitochki/ /portugaliya-putevoditel/
+# Redirect 301 /portugaliya-obshhie-vpechatleniya-i-pro-edu/ /portugaliya-putevoditel/
+# Redirect 301 /top-tri-soborov-portugalii/ /portugaliya-putevoditel/
+# Redirect 301 /portugaliya-trotuarnye-plitochki/ /portugaliya-putevoditel/
 Redirect 301 /portugaliya-lissabon-2/ /portugaliya-lissabon-1/
 Redirect 301 /portugaliya-belem-i-drugie-rajony-lissabona/ /portugaliya-lissabon-1/
 Redirect 301 /32-pravila-bezopasnosti-v-puteshestvii/ /35-pravil-bezopasnosti-v-puteshestvii/
@@ -238,7 +238,7 @@ Redirect 301 /m/avtobustravel/ https://c76.travelpayouts.com/click?shmarker=8930
 Redirect 301 /m/bigbus/ https://c133.travelpayouts.com/click?shmarker=89308&promo_id=4036&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.bigbustours.com%2F
 Redirect 301 /m/bikesbooking/ https://c57.travelpayouts.com/click?shmarker=89308&promo_id=1669&source_type=link&type=click
 Redirect 301 /m/blablacar/ https://c75.travelpayouts.com/click?shmarker=89308&promo_id=1670&source_type=link&type=click
-Redirect 301 /m/booking/ https://tp.media/r?marker=89308&p=2076&u=https%3A%2F%2Fwww.booking.com%2F
+Redirect 301 /m/booking/ https://tp.media/r?marker=89308&trs=37973&p=2076&u=https%3A%2F%2Fbooking.com
 Redirect 301 /m/booking10/ https://www.booking.com/s/11_6/m0rowe32
 Redirect 301 /m/busbud/ https://c138.travelpayouts.com/click?shmarker=89308&promo_id=4109&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.busbud.com%2Fen
 Redirect 301 /m/busfor/ https://c48.travelpayouts.com/click?shmarker=89308&promo_id=1234&source_type=customlink&type=click&custom_url=https://busfor.ru/
@@ -260,7 +260,7 @@ Redirect 301 /m/hopayacht/ https://c92.travelpayouts.com/click?shmarker=89308&pr
 Redirect 301 /m/hotellook/ https://hotellook.ru/?marker=89308
 Redirect 301 /m/hostelworld/ https://marinatravelblog.com/m/booking/
 Redirect 301 /m/hotels/ https://c112.travelpayouts.com/click?shmarker=89308&promo_id=3356&source_type=link&type=click
-Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/944q1ip6aq5fe19fcf91f3cd0719927a9c85ee7a
+Redirect 301 /m/insurance-ua/ https://ad.admitad.com/g/944q1ip6aq5fe19fcf91f3cd071992/
 Redirect 301 /m/insurance-zk/ https://ad.admitad.com/g/944q1ip6aq5fe19fcf91f3cd071992a08b165011/
 Redirect 301 /m/intuitravel/ https://c22.travelpayouts.com/click?shmarker=89308&promo_id=201&source_type=link&type=click
 Redirect 301 /m/kiwicom/ https://www.kiwi.com/deep?affilid=marina
@@ -273,6 +273,7 @@ Redirect 301 /m/musement/ https://c83.travelpayouts.com/click?shmarker=89308&pro
 Redirect 301 /m/myrentacar/ https://c7.travelpayouts.com/click?shmarker=89308&promo_id=646&source_type=customlink&type=click&custom_url=https://rentacarfor.me/
 Redirect 301 /m/omio/ https://c91.travelpayouts.com/click?shmarker=89308&promo_id=2051&source_type=link&type=click
 Redirect 301 /m/onlinetours/ https://c43.travelpayouts.com/click?shmarker=89308&promo_id=1094&source_type=customlink&type=click&custom_url=https://www.onlinetours.ru/
+Redirect 301 /m/prioritypass/ https://c180.travelpayouts.com/click?shmarker=89308&promo_id=5451&source_type=link&type=click&trs=37973
 Redirect 301 /m/raileurope/ https://c69.travelpayouts.com/click?shmarker=89308&promo_id=1935&source_type=customlink&type=click&custom_url=https://www.raileurope.com
 Redirect 301 /m/rentalcars/ https://c130.travelpayouts.com/click?shmarker=89308&promo_id=3814&source_type=customlink&type=click&custom_url=https%3A%2F%2Fwww.rentalcars.com%2F
 Redirect 301 /m/sputnik8/ https://c21.travelpayouts.com/click?shmarker=89308&promo_id=173&source_type=link&type=click
