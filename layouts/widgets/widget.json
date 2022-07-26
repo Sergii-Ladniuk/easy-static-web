@@ -2,8 +2,7 @@
   "menu.jade",
   {
     "sidebar-right.jade": [
-      "about-us.html",
-      "aviasales-bot.html"
+      "about-us.html"
       ]
   },
   {
