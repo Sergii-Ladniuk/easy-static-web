@@ -60,7 +60,7 @@
     "grunt-mkdir": "^0.1.2",
     "grunt-prettify": "^0.4.0",
     "grunt-responsive-images": "0.1.7",
-    "js-yaml": "~3.5.2",
+    "js-yaml": "~3.13.1",
     "lodash": "^4.0.0",
     "mocha": "~2.4.5",
     "should": "~8.2.1",
